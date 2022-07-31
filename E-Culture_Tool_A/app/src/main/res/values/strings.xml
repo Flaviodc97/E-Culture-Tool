@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">E-Culture_Tool_A</string>
+    <string name="email">Email</string>
+    <string name="e_veloce_e_semplice">E\' veloce e semplice</string>
+    <string name="iscriviti">Iscriviti</string>
+    <string name="password">Password</string>
+    <string name="ripeti_la_password">Ripeti la password</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
+    <string name="curatore">Curatore</string>
+    <string name="registrati">REGISTRATI</string>
+    <string name="logo">Logo</string>
+    <string name="logout">Logout</string>
 </resources>

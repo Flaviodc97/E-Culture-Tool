@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,34 +17,35 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
-    EditText memail;
-    EditText mpassword;
-    Button mloginButton;
-    Button mospiteButton;
-    TextView mregisterText;
+public class RegisterActivity extends AppCompatActivity {
+    EditText memail,mpassword,mrpassword, mnome,mcognome;
+    Button mregisterButton;
     ProgressBar mprogressBar;
     FirebaseAuth fAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        memail = findViewById(R.id.InputEmail);
-        mpassword = findViewById(R.id.InputPassword);
-        mloginButton = findViewById(R.id.ButtonRegister);
-        mospiteButton = findViewById(R.id.ButtonOspite);
-        mregisterText = findViewById(R.id.VaiRegistrazione);
-        mprogressBar = findViewById(R.id.progressBarLogin);
+        setContentView(R.layout.activity_register);
+        memail = findViewById(R.id.Email);
+        mpassword = findViewById(R.id.Password);
+        mnome = findViewById(R.id.Nome);
+        mcognome = findViewById(R.id.Cognome);
+        mregisterButton = findViewById(R.id.ButtonRegister);
+        mprogressBar = findViewById(R.id.progressBarRegister);
+
         fAuth = FirebaseAuth.getInstance();
 
-        mregisterText.setOnClickListener(view -> {
 
-            startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
 
-        });
+        if(fAuth.getCurrentUser()!= null){
 
-        mloginButton.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            finish();
+        }
+
+
+        mregisterButton.setOnClickListener(view -> {
+
             String email = memail.getText().toString().trim();
             String password = mpassword.getText().toString().trim();
 
@@ -61,18 +61,27 @@ public class MainActivity extends AppCompatActivity {
                 mpassword.setError("Inserisci la Password");
                 return;
             }
+
+            if(password.length()<8){
+                mpassword.setError("la Password deve avere almeno 8 caratteri");
+                return;
+
+            }
+            
+
+
+
             mprogressBar.setVisibility(View.VISIBLE);
 
-            fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-
                     if(task.isSuccessful()){
-                        Toast.makeText(MainActivity.this, "Login effettuato con successo", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Account Creato con successo", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(),HomeActivity.class ));
                     }else{
-                        Toast.makeText(MainActivity.this, "Error " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Error " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         mprogressBar.setVisibility(View.INVISIBLE);
 
                     }
@@ -81,8 +90,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+
+
         });
 
     }
-
 }

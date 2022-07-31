@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/andro/Desktop/Registrazione/dw/wave2.xml" value="0.1375" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/wave.xml" value="0.1375" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/wave2.xml" value="0.1375" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_home.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_main.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_register.xml" value="0.165" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
