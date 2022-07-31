@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2205" />
-        <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1625" />
         <entry key="..\:/Users/andro/Desktop/Registrazione/dw/wave2.xml" value="0.1375" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1375" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1375" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/ic_lock.xml" value="0.1255" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/wave.xml" value="0.1375" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/wave2.xml" value="0.1375" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_home.xml" value="0.2755208333333333" />
