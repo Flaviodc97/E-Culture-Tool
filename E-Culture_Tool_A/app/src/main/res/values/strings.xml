@@ -11,4 +11,9 @@
     <string name="registrati">REGISTRATI</string>
     <string name="logo">Logo</string>
     <string name="logout">Logout</string>
+    <string name="example_example_it">example@example_it</string>
+    <string name="ciccio">ciccio</string>
+    <string name="cappuccio">cappuccio</string>
+    <string name="applica_modifiche">Applica Modifiche</string>
+    <string name="elimina_profilo">Elimina Profilo</string>
 </resources>

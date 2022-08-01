@@ -1,12 +1,12 @@
 package com.example.e_culture_tool_a;
 
-public class BadgeActivity {
+public class Badge {
 
     Integer ID;
     String Titolo;
     Integer Punti;
 
-    public BadgeActivity(Integer ID, String titolo, Integer punti) {
+    public Badge(Integer ID, String titolo, Integer punti) {
         this.ID = ID;
         Titolo = titolo;
         Punti = punti;

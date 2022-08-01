@@ -1,11 +1,11 @@
 package com.example.e_culture_tool_a;
 
-public class PlaceActivity {
+public class Place {
 
     Integer ID;
     String Nome;
 
-    public PlaceActivity(Integer ID, String nome) {
+    public Place(Integer ID, String nome) {
         this.ID = ID;
         Nome = nome;
     }

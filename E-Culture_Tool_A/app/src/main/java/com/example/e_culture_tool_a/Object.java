@@ -2,7 +2,7 @@ package com.example.e_culture_tool_a;
 
 import java.net.IDN;
 
-public class ObjectActivity {
+public class Object {
 
     Integer ID;
     String Titolo;
@@ -11,7 +11,7 @@ public class ObjectActivity {
     String QR;
     String Tipo;
 
-    public ObjectActivity(Integer ID, String titolo, String descrizione, String foto, String QR, String tipo) {
+    public Object(Integer ID, String titolo, String descrizione, String foto, String QR, String tipo) {
         this.ID = ID;
         Titolo = titolo;
         Descrizione = descrizione;

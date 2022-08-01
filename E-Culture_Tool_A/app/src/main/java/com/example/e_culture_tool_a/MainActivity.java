@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         mospiteButton = findViewById(R.id.ButtonOspite);
         mregisterText = findViewById(R.id.VaiRegistrazione);
         mprogressBar = findViewById(R.id.progressBarLogin);
+
         fAuth = FirebaseAuth.getInstance();
 
         mregisterText.setOnClickListener(view -> {
