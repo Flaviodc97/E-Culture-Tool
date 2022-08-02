@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -88,7 +87,7 @@ public class Profile extends AppCompatActivity {
 
 
             });
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class ));
+            startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
         });
 
 
@@ -141,6 +140,19 @@ public class Profile extends AppCompatActivity {
         });
         AlertDialog alertDialog = dialog.create();
         alertDialog.show();
+
+    }
+
+    public void goProfile(MenuItem item) {
+
+        startActivity( new Intent(getApplicationContext(), Profile.class));
+
+
+    }
+
+    public void goHome(View view) {
+
+        startActivity( new Intent(getApplicationContext(), HomeCuratoreActivity.class));
 
     }
 }

@@ -16,10 +16,13 @@
         android:theme="@style/Theme.ECulture_Tool_A"
         tools:targetApi="31">
         <activity
+            android:name=".HomeVisitatoreActivity"
+            android:exported="false" />
+        <activity
             android:name=".Profile"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".HomeCuratoreActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"

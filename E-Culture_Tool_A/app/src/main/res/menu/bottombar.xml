@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/back"
+        android:icon="@drawable/ic_baseline_arrow_back_24"
+        android:id="@+id/BackButton"/>
+
+    <item android:title=""
+        android:id="@+id/Vuoto"
+        />
+
+    <item android:title="@string/profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:id="@+id/ProfileButton"
+        android:onClick="goProfile"/>
+
+</menu>

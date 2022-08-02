@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Switch;
@@ -56,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         if(fAuth.getCurrentUser()!= null){
 
-            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
             finish();
         }
 
@@ -99,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
 
             }
-            
+
 
 
 
@@ -113,22 +112,24 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, "Account Creato con successo", Toast.LENGTH_SHORT).show();
                         user_id = fAuth.getCurrentUser().getUid();
                         DocumentReference docReference = fStore.collection("utenti").document(user_id);
-                        Map<String,Object> user = new HashMap<>();
+                        String sruolo = String.valueOf(ruolo);
+                        Map<String,String> user = new HashMap<>();
                         user.put("Nome",nome);
                         user.put("Cognome", cognome);
                         user.put("E-mail", email);
-                        user.put("Curatore", ruolo);
+                        user.put("Curatore", sruolo);
                         docReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 Log.d("TAG", "Caricato con successo" + user_id);
                             }
                         });
+                        mprogressBar.setVisibility(View.GONE);
 
-                        startActivity(new Intent(getApplicationContext(),HomeActivity.class ));
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class ));
                     }else{
                         Toast.makeText(RegisterActivity.this, "Error " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        mprogressBar.setVisibility(View.INVISIBLE);
+                        mprogressBar.setVisibility(View.GONE);
 
                     }
 
