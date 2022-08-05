@@ -118,11 +118,13 @@ public class MainActivity extends AppCompatActivity {
                 boolean b1 = Boolean.parseBoolean(ruolo);
 
                 if(b1){
+
                     startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
 
                 }else {
 
                     startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
+
                 }
 
 

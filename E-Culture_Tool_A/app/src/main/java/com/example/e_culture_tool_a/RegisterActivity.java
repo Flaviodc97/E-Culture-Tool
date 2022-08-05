@@ -127,6 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
                         mprogressBar.setVisibility(View.GONE);
 
                         startActivity(new Intent(getApplicationContext(), MainActivity.class ));
+                        finish();
                     }else{
                         Toast.makeText(RegisterActivity.this, "Error " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         mprogressBar.setVisibility(View.GONE);

@@ -138,11 +138,32 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editCognome" />
+                app:layout_constraintTop_toBottomOf="@+id/editCognome"
+                app:layout_constraintVertical_bias="0.31" />
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/round_bg"
+                android:onClick="logout"
+                android:text="@string/logout"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonModifica"
+                app:layout_constraintVertical_bias="0.04000002" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
     <!-- questa sezione viene sempre alla fine -->
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"

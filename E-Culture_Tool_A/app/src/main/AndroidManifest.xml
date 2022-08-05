@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.e_culture_tool_a">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,6 +17,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECulture_Tool_A"
         tools:targetApi="31">
+        <activity
+            android:name=".NewLuogoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewVisiteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyVisiteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyZoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyOggettiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyLuoghiActivity"
+            android:exported="false" />
         <activity
             android:name=".HomeVisitatoreActivity"
             android:exported="false" />
@@ -36,6 +56,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
     </application>
 
 </manifest>

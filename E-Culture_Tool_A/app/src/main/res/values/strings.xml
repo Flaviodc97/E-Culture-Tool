@@ -18,4 +18,22 @@
     <string name="elimina_profilo">Elimina Profilo</string>
     <string name="back">Back</string>
     <string name="profile">Profile</string>
+    <string name="qrcode">Qrcode</string>
+    <string name="le_mie_visite">Le mie Visite</string>
+    <string name="cerca_tramite_qrcode">Cerca tramite QRcode</string>
+    <string name="visitevisitatore">VisiteVisitatore</string>
+    <string name="qrcode_scanner">QRCode Scanner</string>
+    <string name="todo">TODO</string>
+    <string name="visite_personalizzate">Visite personalizzate</string>
+    <string name="visitecuratore">VisiteCuratore</string>
+    <string name="visite_consigliate_dai_curatori">Visite consigliate dai curatori</string>
+    <string name="visite_dei_curatori">Visite dei Curatori</string>
+    <string name="home_visitatore">Home Visitatore</string>
+    <string name="i_miei_percorsi">I miei percorsi</string>
+    <string name="i_miei_percorsig">I miei percorsi</string>
+    <string name="visite_curatore">Visite Curatore</string>
+    <string name="home">home</string>
+    <string name="bottoneadd">BottoneAdd</string>
+    <string name="piccola_descrizione_percorso_1">Piccola Descrizione Percorso 1</string>
+    <string name="percorso_1">Percorso 1</string>
 </resources>

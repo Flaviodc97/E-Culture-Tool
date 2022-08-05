@@ -4,7 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/andro/Desktop/Registrazione/dw/wave2.xml" value="0.1375" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/curvebuttonbgdefault.xml" value="0.177" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/curvedbg.xml" value="0.1275" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/ic_baseline_add_24_.xml" value="0.177" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/ic_baseline_qr_code_scanner_24.xml" value="0.1275" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/ic_bottonecerca.xml" value="0.1" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/ic_bottoneluogo.xml" value="0.1" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/ic_bottoneoggetto.xml" value="0.1" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/ic_bottonevisite.xml" value="0.1275" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/ic_bottonezona.xml" value="0.1" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/ic_fotocuratore.xml" value="0.1" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/ic_immagine_2022_08_02_163109660.xml" value="0.1" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1375" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable-v24/ic_visualizza.xml" value="0.1275" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.1" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1375" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/ic_lock.xml" value="0.1255" />
@@ -12,13 +24,22 @@
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/wave.xml" value="0.1375" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/wave2.xml" value="0.1375" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_home.xml" value="0.2755208333333333" />
-        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_home_visitatore.xml" value="0.1" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_home_visitatore.xml" value="0.25" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_main.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_mie_visite.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_miei_luoghi.xml" value="0.26145833333333335" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_oggetti.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_percorsi.xml" value="0.19427083333333334" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_visite.xml" value="0.165" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_zone.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_luogo.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_visite.xml" value="0.26145833333333335" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_profile.xml" value="0.17982456140350878" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_register.xml" value="0.165" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/menu/bottombar.xml" value="0.1" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/menu/menu.xml" value="0.335" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/menu/top_app_bar.xml" value="0.1" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/xml/file_paths.xml" value="0.1" />
       </map>
     </option>
   </component>

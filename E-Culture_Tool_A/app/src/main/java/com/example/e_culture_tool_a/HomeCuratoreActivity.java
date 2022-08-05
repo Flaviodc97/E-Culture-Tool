@@ -9,36 +9,55 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeCuratoreActivity extends AppCompatActivity {
-    Button mbuttonProfile;
+    ImageView mbuttonVisite;
+    ImageView mbuttonLuogo;
+    ImageView mbuttonZone;
+    ImageView mbuttonOggetti;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        mbuttonProfile = findViewById(R.id.ButtonProfile);
 
-        mbuttonProfile.setOnClickListener(view -> {
+        mbuttonVisite = findViewById(R.id.viewVisite);
+        mbuttonLuogo = findViewById(R.id.viewLuoghiBTN);
+        mbuttonZone = findViewById(R.id.viewZoneBTN);
+        mbuttonOggetti = findViewById(R.id.viewOggetti);
 
-            startActivity( new Intent(getApplicationContext(), Profile.class));
+
+
+
+
+        //Button Listener
+
+        mbuttonVisite.setOnClickListener(view -> {
+
+            startActivity(new Intent(getApplicationContext(), MyVisiteActivity.class));
+
+        });
+        mbuttonLuogo.setOnClickListener(view -> {
+
+            startActivity(new Intent(getApplicationContext(), MyLuoghiActivity.class));
+
+        });
+        mbuttonZone.setOnClickListener(view -> {
+
+            startActivity(new Intent(getApplicationContext(), MyZoneActivity.class));
+
+        });
+
+        mbuttonOggetti.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), MyOggettiActivity.class));
+
         });
     }
 
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity( new Intent(getApplicationContext(), MainActivity.class));
-        finish();
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
 
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.bottombar, menu);
-        return true;
-    }
 
 
     public void goProfile(MenuItem item) {
