@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/le_mie_visite"
-        android:text="@string/le_mie_visite"
+        android:text="I miei luoghi"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +79,7 @@
                 android:layout_height="65dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
-                android:background="@drawable/ic_bottonevisite"
+                android:background="@drawable/ic_bottoneluogo"
                 android:contentDescription="VisiteCuratore" />
 
             <TextView
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="110dp"
                 android:layout_marginTop="30dp"
-                android:text="Percorso 1"
+                android:text="Luogo 1"
                 android:textColor="#d703082b"
                 android:textSize="23dp"
                 android:textStyle="bold" />
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="110dp"
                 android:layout_marginTop="65dp"
-                android:text="Piccola Descrizione Percorso 1"
+                android:text="Piccola Descrizione Luogo 1"
                 android:textColor="#6003082b"
                 android:textSize="14dp"
                 android:textStyle="bold" />
