@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class MainActivity extends AppCompatActivity {
+
     EditText memail;
     EditText mpassword;
     Button mloginButton;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mospiteButton = findViewById(R.id.ButtonOspite);
         mregisterText = findViewById(R.id.VaiRegistrazione);
         mprogressBar = findViewById(R.id.progressBarLogin);
+
 
         fAuth = FirebaseAuth.getInstance();
 

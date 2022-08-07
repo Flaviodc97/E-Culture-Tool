@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -25,6 +26,9 @@ import androidx.core.content.FileProvider;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -34,6 +38,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class NewLuogoActivity extends AppCompatActivity {
@@ -42,9 +48,14 @@ public class NewLuogoActivity extends AppCompatActivity {
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 105;
     ImageView selectedImage;
-    Button cameraBtn, galleryBtn;
+    Button cameraBtn, galleryBtn, submitButton;
     String currentPhotoPath;
     StorageReference storageReference;
+    EditText mnome, mdescrizione;
+    FirebaseFirestore fStore;
+    FirebaseAuth fAth;
+    String user_id;
+    String picStorageUrl;
 
 
     @Override
@@ -54,8 +65,15 @@ public class NewLuogoActivity extends AppCompatActivity {
         selectedImage = findViewById(R.id.imageView);
         cameraBtn = findViewById(R.id.cameraBtn);
         galleryBtn = findViewById(R.id.galleriaBtn);
-
+        submitButton = findViewById(R.id.SubmitButton);
+        mnome = findViewById(R.id.NomeLuogo);
+        mdescrizione = findViewById(R.id.DescrizioneLuogo);
+        fAth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
+
+
+
         cameraBtn.setOnClickListener(view -> {
             askCamera();
             Toast.makeText(NewLuogoActivity.this, "camera click", Toast.LENGTH_SHORT).show();
@@ -66,7 +84,30 @@ public class NewLuogoActivity extends AppCompatActivity {
             startActivityForResult(gallery, GALLERY_REQUEST_CODE);
 
         });
+        submitButton.setOnClickListener( view -> {
+            user_id = fAth.getCurrentUser().getUid();
+            String nome = mnome.getText().toString().trim();
+            String descrizione = mdescrizione.getText().toString();
 
+            DocumentReference docReference = fStore.collection("utenti").document(user_id).collection("Luoghi").document();
+            Map<String, Object> luogo = new HashMap<>();
+            luogo.put("nome", nome);
+            luogo.put("descrizione", descrizione);
+            luogo.put("photo", picStorageUrl);
+            luogo.put("author", user_id);
+            docReference.set(luogo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(NewLuogoActivity.this, "Luogo caricato con successo", Toast.LENGTH_SHORT).show();
+                }
+
+
+
+            });
+
+            startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
+
+        });
     }
 
     private void askCamera() {
@@ -130,6 +171,7 @@ public class NewLuogoActivity extends AppCompatActivity {
                 //selectedImage.setImageURI(contentUri);
                 uploadtoFirebase(imageFileName, contentUri);
 
+
             }
 
         }
@@ -147,6 +189,7 @@ public class NewLuogoActivity extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
                              Log.d("Upload", "onSuccess: " + uri.toString());
                         Picasso.get().load(uri).into(selectedImage);
+                        picStorageUrl = uri.toString();
                     }
 
                 });

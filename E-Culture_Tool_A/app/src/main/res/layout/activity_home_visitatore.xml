@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
@@ -14,26 +15,27 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="150dp"
             android:src="@drawable/ic_immagine_2022_08_02_163109660" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/home_visitatore"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:textColor="#df03082b"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:text="@string/home_visitatore"
+            android:textColor="#df03082b"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="427dp"
+        android:layout_width="390dp"
+        android:layout_height="391dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/curvedbg"
         android:orientation="vertical">
 
@@ -94,6 +96,7 @@
                 android:layout_marginTop="15dp"
                 android:background="@drawable/curvebuttonbg"
                 android:contentDescription="@string/visitevisitatore" />
+
             <ImageView
                 android:id="@+id/MyVisiteimg"
                 android:layout_width="65dp"
@@ -169,19 +172,22 @@
 
 
     </LinearLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="408dp"
+            android:layout_height="72dp"
             android:background="@color/design_default_color_primary"
             app:itemIconTint="@color/white"
             app:itemTextColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:menu="@menu/bottombar" />
+            app:menu="@menu/bottombar"
+            tools:layout_editor_absoluteX="3dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"

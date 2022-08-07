@@ -47,64 +47,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_add_24"
         tools:ignore="DuplicateSpeakableTextCheck,DuplicateSpeakableTextCheck" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="480dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/curvebuttonbgdefault"
-        android:orientation="vertical"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="380dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="15dp"
-                app:srcCompat="@drawable/curvebuttonbg" />
-
-            <ImageView
-                android:id="@+id/VisiteCuratori"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="25dp"
-                android:background="@drawable/ic_bottonevisite"
-                android:contentDescription="VisiteCuratore" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="30dp"
-                android:text="Percorso 1"
-                android:textColor="#d703082b"
-                android:textSize="23dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="65dp"
-                android:text="Piccola Descrizione Percorso 1"
-                android:textColor="#6003082b"
-                android:textSize="14dp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
-    </LinearLayout>
     <!-- questa sezione viene sempre alla fine -->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
@@ -128,6 +73,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/TextLuoghi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="168dp"
+        tools:layout_editor_absoluteY="188dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
