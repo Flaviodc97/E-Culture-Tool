@@ -231,6 +231,39 @@ public class NewOggettoActivity extends AppCompatActivity {
 
         }
     }
+    private void uploadtoFirebase(String name, Uri contentUri) {
+
+        StorageReference image = storageReference.child("oggetti/"+ name);
+        image.putFile(contentUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                image.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Log.d("Upload", "onSuccess: " + uri.toString());
+                        Picasso.get().load(uri).into(selectedImage);
+                        picStorageUrl = uri.toString();
+                    }
+
+                });
+                Toast.makeText(NewOggettoActivity.this,"Upload con successo", Toast.LENGTH_SHORT).show();
+
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(NewOggettoActivity.this,"ERROR UPLOAD non andato a buon fine", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+
+
+    }
+
     private String getFileExt(Uri contentUri) {
         ContentResolver c = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
@@ -298,36 +331,5 @@ public class NewOggettoActivity extends AppCompatActivity {
         });
         startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
     }
-    private void uploadtoFirebase(String name, Uri contentUri) {
 
-        StorageReference image = storageReference.child("oggetti/"+ name);
-        image.putFile(contentUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                image.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Log.d("Upload", "onSuccess: " + uri.toString());
-                        Picasso.get().load(uri).into(selectedImage);
-                        picStorageUrl = uri.toString();
-                    }
-
-                });
-                Toast.makeText(NewOggettoActivity.this,"Upload con successo", Toast.LENGTH_SHORT).show();
-
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(NewOggettoActivity.this,"ERROR UPLOAD non andato a buon fine", Toast.LENGTH_SHORT).show();
-
-
-            }
-        });
-
-
-
-    }
 }
