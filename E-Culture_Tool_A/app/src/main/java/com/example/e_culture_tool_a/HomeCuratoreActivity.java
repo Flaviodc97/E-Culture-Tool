@@ -30,6 +30,8 @@ public class HomeCuratoreActivity extends AppCompatActivity {
     ImageView mbuttonLuogo;
     ImageView mbuttonZone;
     ImageView mbuttonOggetti;
+    ImageView mbuttonSearch;
+
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String user_id;
@@ -42,6 +44,7 @@ public class HomeCuratoreActivity extends AppCompatActivity {
         mbuttonLuogo = findViewById(R.id.viewLuoghiBTN);
         mbuttonZone = findViewById(R.id.viewZoneBTN);
         mbuttonOggetti = findViewById(R.id.viewOggetti);
+        mbuttonSearch = findViewById(R.id.viewSearch);
 
 
 
@@ -69,6 +72,13 @@ public class HomeCuratoreActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), MyOggettiActivity.class));
 
         });
+
+        mbuttonSearch.setOnClickListener(view -> {
+
+            startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+
+        });
+
     }
 
 

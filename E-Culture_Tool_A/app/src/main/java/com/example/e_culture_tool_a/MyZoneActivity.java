@@ -41,6 +41,6 @@ public class MyZoneActivity extends AppCompatActivity {
                 }
             }
         });
-        startActivity(new Intent(getApplicationContext(), NewZoneActivity.class));
+
     }
 }

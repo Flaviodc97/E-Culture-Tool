@@ -134,7 +134,7 @@ public class NewZoneActivity extends AppCompatActivity {
         Map<String, Object> zona = new HashMap<>();
         zona.put("nome", nome);
         zona.put("descrizione", descrizione);
-        //zona.put("luogoID", luogo_id);
+        zona.put("luogoID", luogo_id);
         zona.put("author", user_id);
         doc.set(zona).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

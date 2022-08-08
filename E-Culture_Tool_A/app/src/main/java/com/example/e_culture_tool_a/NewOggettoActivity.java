@@ -160,9 +160,30 @@ public class NewOggettoActivity extends AppCompatActivity {
             String nome = mnome.getText().toString().trim();
             String descrizione = mdescrizione.getText().toString().trim();
 
-            uploadtoFirestore(nome,descrizione);
+            Toast.makeText(NewOggettoActivity.this, " "+user_id +" "+ luogo_id, Toast.LENGTH_SHORT).show();
+
+
+            DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(luogo_id).collection("Zone").document(zona_id).collection("Oggetti").document();
+            Map<String, Object> oggetto = new HashMap<>();
+            oggetto.put("nome", nome);
+            oggetto.put("descrizione", descrizione);
+            oggetto.put("photo", picStorageUrl);
+            oggetto.put("zonaID", zona_id);
+            oggetto.put("author", user_id);
+            doc.set(oggetto).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(NewOggettoActivity.this,"Oggetto caricata con successo", Toast.LENGTH_SHORT).show();
+
+                }
+
+            });
+            startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
+
 
         });
+
+
 
     }
     private void askCamera() {
@@ -310,26 +331,7 @@ public class NewOggettoActivity extends AppCompatActivity {
         }
     }
 
-    private void uploadtoFirestore(String nome, String descrizione) {
-        fStore = FirebaseFirestore.getInstance();
-        fAuth = FirebaseAuth.getInstance();
-        user_id = fAuth.getCurrentUser().getUid();
-        DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(luogo_id).collection("Zone").document(zona_id).collection("Oggetti").document();
-        Map<String, Object> oggetto = new HashMap<>();
-        oggetto.put("nome", nome);
-        oggetto.put("descrizione", descrizione);
-        oggetto.put("photo", picStorageUrl);
-        oggetto.put("zonaID", zona_id);
-        oggetto.put("author", user_id);
-        doc.set(oggetto).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(NewOggettoActivity.this,"Oggetto caricata con successo", Toast.LENGTH_SHORT).show();
 
-            }
 
-        });
-        startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
-    }
 
 }

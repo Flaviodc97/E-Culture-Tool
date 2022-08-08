@@ -5,75 +5,99 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NewLuogoActivity">
+
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="16dp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/ic_bottoneluogo" />
+            <View
+                android:id="@+id/TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="@color/design_default_color_primary" />
 
-        <ImageView
-            android:id="@+id/imagePlaceHolder"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="52dp"
-            android:layout_marginEnd="52dp"
-            android:padding="50dp"
-            android:paddingStart="50dp"
-            android:paddingLeft="50dp"
-            android:paddingTop="50dp"
-            android:paddingEnd="50dp"
-            android:paddingRight="50dp"
-            android:paddingBottom="50dp"
-            android:visibility="invisible"
-            app:srcCompat="@android:drawable/ic_menu_gallery" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Crea Nuovo Luogo"
+                android:textColor="@color/white"
+                android:textStyle="normal" />
+        </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/cameraBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Camera"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.191"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.764" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_bottoneluogo" />
 
-        <Button
-            android:id="@+id/galleriaBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Galleria"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.537"
-            app:layout_constraintStart_toEndOf="@+id/cameraBtn"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.764" />
+            <ImageView
+                android:id="@+id/imagePlaceHolder"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="52dp"
+                android:layout_marginEnd="52dp"
+                android:padding="50dp"
+                android:paddingStart="50dp"
+                android:paddingLeft="50dp"
+                android:paddingTop="50dp"
+                android:paddingEnd="50dp"
+                android:paddingRight="50dp"
+                android:paddingBottom="50dp"
+                android:visibility="invisible"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
+        </RelativeLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cameraBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/curvebuttonbgdefault"
+                android:text="Camera"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/galleriaBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/curvebuttonbgdefault"
+                android:text="Galleria"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,26 +108,44 @@
                 android:id="@+id/NomeLuogo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/round_border"
                 android:ems="10"
                 android:hint="@string/nome"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:padding="16dp" />
 
             <EditText
                 android:id="@+id/DescrizioneLuogo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/round_border"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="Descrizione"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:padding="16dp" />
 
             <Button
                 android:id="@+id/SubmitButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Invia" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/curvedbg"
+                android:text="Invia"
+                android:textColor="@color/white" />
 
         </LinearLayout>
+
     </LinearLayout>
 
 

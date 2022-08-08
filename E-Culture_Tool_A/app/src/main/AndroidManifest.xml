@@ -19,6 +19,9 @@
         android:theme="@style/Theme.ECulture_Tool_A"
         tools:targetApi="31">
         <activity
+            android:name=".NewVisitaActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewOggettoActivity"
             android:exported="false" />
         <activity
