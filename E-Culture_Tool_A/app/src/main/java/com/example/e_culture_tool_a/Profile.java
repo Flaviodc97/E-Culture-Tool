@@ -34,6 +34,7 @@ import java.util.Map;
 public class Profile extends AppCompatActivity {
     EditText memail, mnome, mcognome;
     Button mbuttonmodifica;
+    String curatore;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String user_id;
@@ -45,6 +46,7 @@ public class Profile extends AppCompatActivity {
         mnome = findViewById(R.id.editNome);
         mcognome = findViewById(R.id.editCognome);
         mbuttonmodifica = findViewById(R.id.buttonModifica);
+
 
 
 
@@ -63,6 +65,7 @@ public class Profile extends AppCompatActivity {
             mnome.setText(value.getString("Nome"));
             mcognome.setText(value.getString("Cognome"));
             memail.setText(value.getString("E-mail"));
+            curatore = value.getString("Curatore");
 
             }
         });
@@ -77,6 +80,7 @@ public class Profile extends AppCompatActivity {
             user.put("Nome",nome);
             user.put("Cognome", cognome);
             user.put("E-mail", email);
+            user.put("Curatore", curatore);
             docReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
@@ -152,7 +156,27 @@ public class Profile extends AppCompatActivity {
 
     public void goHome(View view) {
 
-        startActivity( new Intent(getApplicationContext(), HomeCuratoreActivity.class));
+        fAuth = FirebaseAuth.getInstance();
+        user_id = fAuth.getCurrentUser().getUid();
+        fStore = FirebaseFirestore.getInstance();
+        DocumentReference docReference = fStore.collection("utenti").document(user_id);
+        docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                String ruolo = value.getString("Curatore");
+                boolean b1 = Boolean.parseBoolean(ruolo);
+                if(b1){
+                    startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
+
+                }else {
+
+                    startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
+                }
+
+
+            }
+        });
 
     }
     public void logout(View view) {

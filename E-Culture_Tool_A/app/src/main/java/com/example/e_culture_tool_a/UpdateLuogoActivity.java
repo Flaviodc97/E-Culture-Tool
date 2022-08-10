@@ -1,31 +1,37 @@
 package com.example.e_culture_tool_a;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,84 +46,145 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
-
-public class NewLuogoActivity extends AppCompatActivity {
-
+public class UpdateLuogoActivity extends AppCompatActivity {
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 105;
-    ImageView selectedImage;
-    Button cameraBtn, galleryBtn, submitButton;
-    String currentPhotoPath;
-    StorageReference storageReference;
+
+    String id;
     EditText mnome, mdescrizione;
-    FirebaseFirestore fStore;
-    FirebaseAuth fAth;
+    ImageView selectedImage;
+    String photourl;
+    Button mupdateButton, cameraBtn, galleryBtn, melimina;
     String user_id;
+    String currentPhotoPath;
     String picStorageUrl;
-
-
+    StorageReference storageReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_luogo);
-        selectedImage = findViewById(R.id.imageView);
-        cameraBtn = findViewById(R.id.cameraBtn);
-        galleryBtn = findViewById(R.id.galleriaBtn);
-        submitButton = findViewById(R.id.SubmitButton);
-        mnome = findViewById(R.id.NomeLuogo);
-        mdescrizione = findViewById(R.id.DescrizioneLuogo);
-        fAth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
+        setContentView(R.layout.activity_update_luogo);
         storageReference = FirebaseStorage.getInstance().getReference();
 
+        String inome = " ";
+        String idescrizione = " ";
+        String iphoto = " ";
+        Bundle extras = getIntent().getExtras();
 
+        if (extras != null) {
+             id = extras.getString("id");
+             inome = extras.getString("nome");
+             idescrizione = extras.getString("descrizione");
+             iphoto = extras.getString("photo");
+            //The key argument here must match that used in the other activity
+        }
 
+        mnome = findViewById(R.id.updateNomeLuogo);
+        mdescrizione = findViewById(R.id.updateDescrizioneLuogo);
+        selectedImage = findViewById(R.id.UpdateimageView);
+        cameraBtn = findViewById(R.id.cameraUpdateBtn);
+        galleryBtn = findViewById(R.id.galleriaUpdateBtn);
+        mupdateButton = findViewById(R.id.updateButtonLuogo);
+        mnome.setText(inome);
+        mdescrizione.setText(idescrizione);
+        Picasso.get().load(iphoto).into(selectedImage);
+        melimina = findViewById(R.id.deleteLuogo);
         cameraBtn.setOnClickListener(view -> {
             askCamera();
-            Toast.makeText(NewLuogoActivity.this, "camera click", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UpdateLuogoActivity.this, "camera click", Toast.LENGTH_SHORT).show();
         });
         galleryBtn.setOnClickListener(view -> {
-            Toast.makeText(NewLuogoActivity.this,"galleria click", Toast.LENGTH_SHORT).show();
-            Intent gallery = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            Toast.makeText(UpdateLuogoActivity.this,"galleria click", Toast.LENGTH_SHORT).show();
+            Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(gallery, GALLERY_REQUEST_CODE);
 
         });
-        submitButton.setOnClickListener( view -> {
-            user_id = fAth.getCurrentUser().getUid();
+        mupdateButton.setOnClickListener(view -> {
             String nome = mnome.getText().toString().trim();
-            String descrizione = mdescrizione.getText().toString();
-            String id = usingRandomUUID();
-            DocumentReference docReference = fStore.collection("utenti").document(user_id).collection("Luoghi").document(id);
-            Map<String, Object> luogo = new HashMap<>();
-            luogo.put("id", id);
-            luogo.put("nome", nome);
-            luogo.put("descrizione", descrizione);
-            luogo.put("photo", picStorageUrl);
-            luogo.put("author", user_id);
-            docReference.set(luogo).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused) {
-                    Toast.makeText(NewLuogoActivity.this, "Luogo caricato con successo", Toast.LENGTH_SHORT).show();
-                }
-
-
-
-            });
-
-            startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
+            String descrizione = mdescrizione.getText().toString().trim();
+            uploadtoFirestore(nome,descrizione);
 
         });
+        melimina.setOnClickListener(view -> {
+
+            deleteLuogo();
+
+
+
+        });
+
+
+
     }
 
-    private String usingRandomUUID() {
-        UUID randomUUID = UUID.randomUUID();
 
-        return randomUUID.toString().replaceAll("_", "");
+
+    public void deleteLuogo() {
+        FirebaseAuth fauth = FirebaseAuth.getInstance();
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        user_id = fauth.getCurrentUser().getUid();
+        AlertDialog.Builder dialog = new AlertDialog.Builder(UpdateLuogoActivity.this);
+        dialog.setTitle("Elimina Luogo");
+        dialog.setMessage("Sicuro di voler eliminare il luogo selezionato?");
+        dialog.setPositiveButton("Elimina Luogo", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(id);
+                doc.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(UpdateLuogoActivity.this, "Luogo eliminato con successo", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
+                        }
+                    }
+                });
+            }
+        });
+        dialog.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = dialog.create();
+        alertDialog.show();
+
+
+
+
+
     }
 
+
+
+
+
+    private void uploadtoFirestore(String nome, String descrizione) {
+
+        FirebaseAuth fauth = FirebaseAuth.getInstance();
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        user_id = fauth.getCurrentUser().getUid();
+        DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(id);
+        Map<String, Object> luogo = new HashMap<>();
+        luogo.put("id", id);
+        luogo.put("nome", nome);
+        luogo.put("descrizione", descrizione);
+        luogo.put("photo", picStorageUrl);
+        luogo.put("author", user_id);
+
+
+        doc.set(luogo).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(UpdateLuogoActivity.this,"Luogo modificato con successo", Toast.LENGTH_SHORT).show();
+            }
+        });
+        startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
+
+
+    }
     private void askCamera() {
         //Verifica che sia stata dato il permesso per la Camera
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
@@ -137,11 +204,11 @@ public class NewLuogoActivity extends AppCompatActivity {
         if(requestCode == CAMERA_PERM_CODE){
             if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
 
-               dispatchTakePictureIntent();
+                dispatchTakePictureIntent();
 
             }else{
                 // Se rifiutato il permesso della Camera
-                Toast.makeText(NewLuogoActivity.this,"Bisogna Garantire il Permesso per la Camera", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateLuogoActivity.this,"Bisogna Garantire il Permesso per la Camera", Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -195,20 +262,20 @@ public class NewLuogoActivity extends AppCompatActivity {
                 image.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                             Log.d("Upload", "onSuccess: " + uri.toString());
+                        Log.d("Upload", "onSuccess: " + uri.toString());
                         Picasso.get().load(uri).into(selectedImage);
                         picStorageUrl = uri.toString();
                     }
 
                 });
-                Toast.makeText(NewLuogoActivity.this,"Upload con successo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateLuogoActivity.this,"Upload con successo", Toast.LENGTH_SHORT).show();
 
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(NewLuogoActivity.this,"ERROR UPLOAD non andato a buon fine", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateLuogoActivity.this,"ERROR UPLOAD non andato a buon fine", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -264,4 +331,3 @@ public class NewLuogoActivity extends AppCompatActivity {
         }
     }
 }
-

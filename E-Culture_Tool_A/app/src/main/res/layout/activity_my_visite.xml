@@ -65,7 +65,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imageViewLuoghi"
                 android:layout_width="380dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="15dp"

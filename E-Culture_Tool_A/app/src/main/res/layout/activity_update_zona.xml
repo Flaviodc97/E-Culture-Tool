@@ -4,16 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewZoneActivity">
+    tools:context=".UpdateZonaActivity">
 
-    <View
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/design_default_color_primary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:background="@color/design_default_color_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/deleteZona"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/ic_baseline_delete_24"
+            android:contentDescription="@string/back" />
+
+
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/textTitle"
@@ -24,7 +46,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Crea Nuova Zona"
+        android:text="Modifica Zona"
         android:textColor="@color/white"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +71,7 @@
             app:srcCompat="@drawable/bottonezona" />
 
         <EditText
-            android:id="@+id/nomeZona"
+            android:id="@+id/UpdatenomeZona"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView2"
@@ -61,22 +83,22 @@
             android:padding="16dp" />
 
         <EditText
-            android:id="@+id/descrizioneZona"
+            android:id="@+id/UpdatedescrizioneZona"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nomeZona"
+            android:layout_below="@+id/UpdatenomeZona"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginRight="16dp"
-            android:hint="Descrizione della Zona"
             android:background="@drawable/round_border"
-            android:padding="16dp"/>
+            android:hint="Descrizione della Zona"
+            android:padding="16dp" />
 
         <Spinner
-            android:id="@+id/spinnerLuogo"
+            android:id="@+id/UpdatespinnerLuogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/descrizioneZona"
+            android:layout_below="@+id/UpdatedescrizioneZona"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginRight="16dp"
@@ -84,10 +106,10 @@
             android:minHeight="60dp" />
 
         <Button
-            android:id="@+id/inviaOggetto"
+            android:id="@+id/UpdateOggetto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/spinnerLuogo"
+            android:layout_below="@+id/UpdatespinnerLuogo"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="16dp"

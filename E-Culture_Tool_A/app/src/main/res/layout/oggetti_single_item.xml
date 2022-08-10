@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="2dp">
@@ -13,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageViewLuoghi"
+            android:id="@+id/imageView5"
             android:layout_width="380dp"
             android:layout_height="100dp"
             android:layout_marginLeft="15dp"
@@ -22,24 +23,34 @@
             app:srcCompat="@drawable/curvebuttonbg" />
 
         <ImageView
-            android:id="@+id/Image_Luoghi"
+            android:id="@+id/list_oggetti_image"
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="25dp"
-            app:srcCompat="@drawable/bottoneluogo" />
+            app:srcCompat="@drawable/bottoneoggetto" />
 
         <TextView
-            android:id="@+id/list_luoghi"
+            android:id="@+id/list_oggetti"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="110dp"
             android:layout_marginTop="30dp"
-            android:text="Luogo1"
+            android:text="Oggetto 1"
             android:textColor="#d703082b"
             android:textSize="23dp"
             android:textStyle="bold" />
-    </RelativeLayout>
 
+        <TextView
+            android:id="@+id/list_descrizione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="65dp"
+            android:text="Piccola Descrizione Oggetto 1"
+            android:textColor="#6003082b"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

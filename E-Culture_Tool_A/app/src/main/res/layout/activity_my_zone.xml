@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/AddPercorso"
+        android:id="@+id/AddOggetto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -40,6 +40,7 @@
         android:focusable="true"
         android:labelFor="@id/textView"
 
+        android:onClick="addZone"
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,49 +61,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/firestore_zone_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="380dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="15dp"
-                app:srcCompat="@drawable/curvebuttonbg" />
-
-            <ImageView
-                android:id="@+id/VisiteCuratori"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="25dp"
-                android:background="@drawable/ic_bottonezona"
-                android:contentDescription="VisiteCuratore" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="30dp"
-                android:text="Zona 1"
-                android:textColor="#d703082b"
-                android:textSize="23dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="65dp"
-                android:text="Piccola Descrizione Zona 1"
-                android:textColor="#6003082b"
-                android:textSize="14dp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 

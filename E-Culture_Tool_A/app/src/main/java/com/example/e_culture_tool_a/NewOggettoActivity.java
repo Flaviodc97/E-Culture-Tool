@@ -49,6 +49,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class NewOggettoActivity extends AppCompatActivity {
     public static final String TAG = "NEW_OGGETTO";
@@ -159,15 +160,17 @@ public class NewOggettoActivity extends AppCompatActivity {
         msubmit.setOnClickListener(view -> {
             String nome = mnome.getText().toString().trim();
             String descrizione = mdescrizione.getText().toString().trim();
-
+            String id = usingRandomUUID();
             Toast.makeText(NewOggettoActivity.this, " "+user_id +" "+ luogo_id, Toast.LENGTH_SHORT).show();
 
 
-            DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(luogo_id).collection("Zone").document(zona_id).collection("Oggetti").document();
+            DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(luogo_id).collection("Zone").document(zona_id).collection("Oggetti").document(id);
             Map<String, Object> oggetto = new HashMap<>();
+            oggetto.put("id", id);
             oggetto.put("nome", nome);
             oggetto.put("descrizione", descrizione);
             oggetto.put("photo", picStorageUrl);
+            oggetto.put("luogoID", luogo_id);
             oggetto.put("zonaID", zona_id);
             oggetto.put("author", user_id);
             doc.set(oggetto).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -185,6 +188,11 @@ public class NewOggettoActivity extends AppCompatActivity {
 
 
 
+    }
+    private String usingRandomUUID() {
+        UUID randomUUID = UUID.randomUUID();
+
+        return randomUUID.toString().replaceAll("_", "");
     }
     private void askCamera() {
         //Verifica che sia stata dato il permesso per la Camera

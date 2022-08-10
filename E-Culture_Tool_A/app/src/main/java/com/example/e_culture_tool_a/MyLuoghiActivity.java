@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -88,6 +89,18 @@ public class MyLuoghiActivity extends AppCompatActivity {
                 if(model.getPhoto()!= null) {
                     Picasso.get().load(model.getPhoto()).into(holder.list_image);
                 }
+                holder.list_click.setOnClickListener(view -> {
+                    String id= model.getId();
+                    String nome= model.getNome();
+                    String descrizione = model.getDescrizione();
+                    String photo = model.getPhoto();
+                    Intent i = new Intent(MyLuoghiActivity.this, UpdateLuogoActivity.class);
+                    i.putExtra("id",id);
+                    i.putExtra("nome",nome);
+                    i.putExtra("descrizione",descrizione);
+                    i.putExtra("photo",photo);
+                    startActivity(i);
+                });
 
             }
         };
@@ -102,11 +115,14 @@ public class MyLuoghiActivity extends AppCompatActivity {
     private class ProductsViewHolder extends RecyclerView.ViewHolder{
         private TextView list_name;
         private ImageView list_image;
+        private ImageView list_click;
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
             list_name=itemView.findViewById(R.id.list_luoghi);
             list_image=itemView.findViewById(R.id.Image_Luoghi);
+            list_click= itemView.findViewById(R.id.imageViewLuoghi);
+
 
         }
     }
