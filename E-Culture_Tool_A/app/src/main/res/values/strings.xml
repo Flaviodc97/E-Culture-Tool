@@ -37,4 +37,29 @@
     <string name="piccola_descrizione_percorso_1">Piccola Descrizione Percorso 1</string>
     <string name="percorso_1">Percorso 1</string>
     <string name="benvenuto">Benvenuto</string>
+
+
+
+
+    <string name="Titolo_luogo">Pulsante Luoghi</string>
+    <string name="Descrizione_luogo">Qua potrai gestire i tuoi luoghi</string>
+
+    <string name="Titolo_Zona">Pulsante Zone</string>
+    <string name="Descrizione_Zona">Qua potrai gestire le tue zone</string>
+
+    <string name="Titolo_Oggetto">Pulsante Oggetti</string>
+    <string name="Descrizione_Oggetto">Qua potrai gestire i tuoi Oggetti</string>
+
+    <string name="Titolo_Visite">Pulsante Visite</string>
+    <string name="Descrizione_Visite">Qua potrai gestire le tue visite</string>
+
+    <string name="Titolo_Qr">Pulsante Qr</string>
+    <string name="Descrizione_Qr">Qua potrai utilizzare il  Qr</string>
+
+    <string name="Titolo_Search">Pulsante Cerca</string>
+    <string name="Descrizione_Search">Qua potrai effettuare una ricerca </string>
+
+
+
+
 </resources>

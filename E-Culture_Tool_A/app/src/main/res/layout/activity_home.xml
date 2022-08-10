@@ -32,6 +32,16 @@
             android:textSize="25dp"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/imageQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/descriptionCuratore"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="0dp"
+            app:srcCompat="@drawable/ic_kuba_information_icons_set_1" />
+
     </RelativeLayout>
 
     <ScrollView
@@ -46,6 +56,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/RelativeLuogo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -79,10 +90,10 @@
                     android:textStyle="bold" />
 
 
-
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/RelativeZone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
@@ -115,12 +126,11 @@
                     android:textStyle="bold" />
 
 
-
             </RelativeLayout>
 
 
-
             <RelativeLayout
+                android:id="@+id/RelativeOggetto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
@@ -156,6 +166,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/RelativeVisite"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal">
@@ -191,6 +202,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/RelativeQr"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal">
@@ -225,6 +237,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/RelativeSearch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal">
