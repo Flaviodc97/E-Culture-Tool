@@ -40,7 +40,7 @@
 
 
 
-
+    <!-- Stringhe per Home curatore -->
     <string name="Titolo_luogo">Pulsante Luoghi</string>
     <string name="Descrizione_luogo">Qua potrai gestire i tuoi luoghi</string>
 
@@ -59,7 +59,65 @@
     <string name="Titolo_Search">Pulsante Cerca</string>
     <string name="Descrizione_Search">Qua potrai effettuare una ricerca </string>
 
+    <!-- Stringhe per MyLuoghi  -->
+    <string name="Titolo_My_Luogo">Contenitore per i tuoi luoghi</string>
+    <string name="Descrizione_My_Luogo">Qui ci sono tutti i luoghi inseriti da te  </string>
 
+    <string name="Titolo_Add_Luogo">Pulsante Aggiungi Luogo </string>
+    <string name="Descrizione_Add_Luogo">Tramite questo pulsante potrai inserire un nuovo luogo </string>
+
+    <!-- Stringhe per New Luogo  -->
+    <string name="Titolo_Camera_New_Luogo">Pulsante per caricare le immagini di un luogo</string>
+    <string name="Descrizione_Camera_New_Luogo">Questo pulsante ti permette di caricare un immagine dalla fotocamera</string>
+
+    <string name="Titolo_Gallery_New_Luogo">Pulsante per caricare le immagini di un luogo</string>
+    <string name="Descrizione_Gallery_New_Luogo">Questo pulsante ti permette di caricare un immagine dalla propria galleria</string>
+
+    <string name="Titolo_Nome_New_Luogo">Campo Nome luogo</string>
+    <string name="Descrizione_Nome_New_Luogo">In questo campo dovrai immettere  il nome del luogo che vuoi aggiungere </string>
+
+    <string name="Titolo_Descrizione_New_Luogo">Campo Descrizione Luogo</string>
+    <string name="Descrizione_Descrizione_New_Luogo">In questo campo dovrai immettere una piccola descrizione del luogo che vuoi aggiungere</string>
+
+    <!-- Stringhe per MyZone  -->
+    <string name="Titolo_My_Zone">Contenitore per le tue zone </string>
+    <string name="Descrizione_My_Zone">Qui ci sono tutte le zone inseriti da te  </string>
+
+    <string name="Titolo_Add_Zone">Pulsante Aggiungi Zona </string>
+    <string name="Descrizione_Add_Zone">Tramite questo pulsante potrai inserire una nuova zona </string>
+
+    <!-- Stringhe per New Zone  -->
+    <string name="Titolo_Nome_New_Zona">Campo Nome Zona</string>
+    <string name="Descrizione_Nome_New_Zona">In questo campo dovrai immettere  il nome della zona che vuoi aggiungere </string>
+
+    <string name="Titolo_Descrizione_New_Zona">Campo Descrizione Zona</string>
+    <string name="Descrizione_Descrizione_New_Zona">In questo campo dovrai immettere una piccola descrizione della zona che vuoi aggiungere </string>
+
+    <string name="Titolo_Spinner_New_Zona">Menù a tendina Zona</string>
+    <string name="Descrizione_Spinner_New_Zona">Tramite questo menù a tendina dovrai definire a quale luogo si riferisce la zona che stai inserendo</string>
+
+    <!-- Stringhe per MyOggetto  -->
+    <string name="Titolo_My_Oggetti">Contenitore per i tuoi oggetti </string>
+    <string name="Descrizione_My_Oggetti">Qui ci sono tutti gli oggetti inseriti da te  </string>
+
+    <string name="Titolo_Add_Oggetti">Pulsante Aggiungi Oggetto </string>
+    <string name="Descrizione_Add_Oggetti">Tramite questo pulsante potrai inserire un nuovo oggetto </string>
+
+    <!-- Stringhe per New Luogo  -->
+    <string name="Titolo_Camera_New_Oggetto">Pulsante per caricare le immagini di un oggetto</string>
+    <string name="Descrizione_Camera_New_Oggetto">Questo pulsante ti permette di caricare l\'immagine dell oggetto che vuoi inserire tramite la fotocamera   </string>
+
+    <string name="Titolo_Gallery_New_Oggetto">Pulsante per caricare le immagini di un oggetto</string>
+    <string name="Descrizione_Gallery_New_Oggetto">Questo pulsante ti permette di caricare l\'immagine dell oggetto che vuoi inserire tramite la galleria</string>
+
+    <string name="Titolo_Nome_New_Oggetto">Campo Nome Oggetto</string>
+    <string name="Descrizione_Nome_New_Oggetto">In questo campo dovrai immettere  il nome dell\'oggetto  che vuoi aggiungere </string>
+
+    <string name="Titolo_Descrizione_New_Oggetto">Campo Descrizione Luogo</string>
+    <string name="Descrizione_Descrizione_New_Oggetto">In questo campo dovrai immettere una piccola descrizione dell\'oggetto che vuoi aggiungere</string>
+
+    <string name="Titolo_Spinner_New_Oggetto">Menù a tendina Oggetto</string>
+    <string name="Descrizione_Spinner_New_Oggetto">Tramite questo menù a tendina dovrai definire a quale zona si riferisce l\'oggetto che stai inserendo</string>
 
 
 </resources>

@@ -106,63 +106,7 @@ public class HomeCuratoreActivity extends AppCompatActivity {
         //});
 
         /*RICORDA QUANDO ANDREMO A FARE LA PARTE PER TRADURRE BISOGNA USARE LE STRINGHE ANCHE QUI E NON I MESSAGGI NEI DOPPI APICI*/
-        /*arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new TapTargetSequence(HomeCuratoreActivity.this).targets(
-                        TapTarget.forView(mLuogo, "titolo1", "descrizione1")
-                                .outerCircleColor(R.color.teal_200)
-                                .outerCircleAlpha(0.99f)
-                                .targetCircleColor(R.color.white)
-                                .titleTextSize(15)
-                                .titleTextColor(R.color.white)
-                                .descriptionTextSize(12)
-                                .descriptionTextColor(R.color.white)
-                                .textColor(R.color.black)
-                                .textTypeface(Typeface.SANS_SERIF)
-                                .dimColor(R.color.black)
-                                .drawShadow(true)
-                                .cancelable(false)
-                                .tintTarget(false)
-                                .transparentTarget(true)
-                                .targetRadius(75),
 
-                        TapTarget.forView(mbuttonZone,"zone1","descrizione zona")
-                                .outerCircleColor(R.color.teal_700)
-                                .outerCircleAlpha(0.96f)
-                                .targetCircleColor(R.color.white)
-                                .titleTextSize(15)
-                                .titleTextColor(R.color.white)
-                                .descriptionTextSize(12)
-                                .descriptionTextColor(R.color.white)
-                                .textColor(R.color.black)
-                                .textTypeface(Typeface.SANS_SERIF)
-                                .dimColor(R.color.black)
-                                .drawShadow(true)
-                                .cancelable(false)
-                                .tintTarget(false)
-                                .transparentTarget(true)
-                                .targetRadius(75)).listener(new TapTargetSequence.Listener() {
-                    @Override
-                    public void onSequenceFinish() {
-
-                    }
-
-                    @Override
-                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
-
-                    }
-
-                    @Override
-                    public void onSequenceCanceled(TapTarget lastTarget) {
-
-                    }
-                }).start();
-
-            }
-        });
-
-         */
 
     }
 

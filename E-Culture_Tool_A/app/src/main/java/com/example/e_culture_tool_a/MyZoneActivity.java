@@ -2,12 +2,12 @@ package com.example.e_culture_tool_a;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +16,14 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
 
 import Models.Zone;
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground;
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
 
 public class MyZoneActivity extends AppCompatActivity {
 
@@ -36,6 +34,7 @@ public class MyZoneActivity extends AppCompatActivity {
     private RecyclerView mFirestoreList;
     private FirestoreRecyclerAdapter adapter;
 
+    ImageView Tutorial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +45,17 @@ public class MyZoneActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
         mFirestoreList=findViewById(R.id.firestore_zone_list);
+
+        Tutorial=findViewById(R.id.Question_my_zone);
+
+        Tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {showToutorial();
+            }
+        });
+
+
+
 
         Query query=fStore.collectionGroup("Zone").whereEqualTo("author", user_id);
         FirestoreRecyclerOptions<Zone> options=new FirestoreRecyclerOptions.Builder<Zone>().setQuery(query,Zone.class).build();
@@ -114,4 +124,72 @@ public class MyZoneActivity extends AppCompatActivity {
         super.onStart();
         adapter.startListening();
     }
+    public void showToutorial(){showToutorialZone();
+    }
+
+    public void showToutorialZone(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(MyZoneActivity.this)
+                .setTarget(R.id.Linear_my_zone)
+                .setPrimaryText(R.string.Titolo_My_Zone)
+                .setSecondaryText(R.string.Descrizione_Add_Zone)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                            showToutorial_Add_Zone();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+    public void showToutorial_Add_Zone(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(MyZoneActivity.this)
+                .setTarget(R.id.AddOggetto)
+                .setPrimaryText(R.string.Titolo_Add_Zone)
+                .setSecondaryText(R.string.Descrizione_Add_Zone)
+                .setPrimaryTextColour(color1)
+                .setSecondaryTextColour(color1)
+                .setBackgroundColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+
+
+
+
 }

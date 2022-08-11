@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,12 +43,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground;
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
+
 
 public class NewLuogoActivity extends AppCompatActivity {
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 105;
+
     ImageView selectedImage;
     Button cameraBtn, galleryBtn, submitButton;
     String currentPhotoPath;
@@ -57,6 +63,8 @@ public class NewLuogoActivity extends AppCompatActivity {
     FirebaseAuth fAth;
     String user_id;
     String picStorageUrl;
+
+    ImageView Tutorial;
 
 
     @Override
@@ -72,9 +80,15 @@ public class NewLuogoActivity extends AppCompatActivity {
         fAth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
+        Tutorial=findViewById(R.id.Question_new_luogo);
 
 
-
+        Tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showToutorial();
+            }
+        });
         cameraBtn.setOnClickListener(view -> {
             askCamera();
             Toast.makeText(NewLuogoActivity.this, "camera click", Toast.LENGTH_SHORT).show();
@@ -263,5 +277,142 @@ public class NewLuogoActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void showToutorial(){
+        showToutorial_Camera_New_Luogo();
+    }
+
+    public void showToutorial_Camera_New_Luogo(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewLuogoActivity.this)
+                .setTarget(R.id.cameraBtn)
+                .setPrimaryText(R.string.Titolo_Camera_New_Luogo)
+                .setSecondaryText(R.string.Descrizione_Camera_New_Luogo)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                            showToutorial_Galleria_New_Luogo();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+    public void showToutorial_Galleria_New_Luogo(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewLuogoActivity.this)
+                .setTarget(R.id.galleriaBtn)
+                .setPrimaryText(R.string.Titolo_Gallery_New_Luogo)
+                .setSecondaryText(R.string.Descrizione_Gallery_New_Luogo)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                        showToutorial_Nome_New_Luogo();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+    public void showToutorial_Nome_New_Luogo(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewLuogoActivity.this)
+                .setTarget(R.id.NomeLuogo)
+                .setPrimaryText(R.string.Titolo_Nome_New_Luogo)
+                .setSecondaryText(R.string.Descrizione_Nome_New_Luogo)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                        showToutorial_Descrizione_New_Luogo();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+    public void showToutorial_Descrizione_New_Luogo(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewLuogoActivity.this)
+                .setTarget(R.id.DescrizioneLuogo)
+                .setPrimaryText(R.string.Titolo_Descrizione_New_Luogo)
+                .setSecondaryText(R.string.Descrizione_Descrizione_New_Luogo)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+
+
+
+
 }
 

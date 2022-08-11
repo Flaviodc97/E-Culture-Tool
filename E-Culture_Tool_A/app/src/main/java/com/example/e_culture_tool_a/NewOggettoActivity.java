@@ -51,6 +51,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground;
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
+
 public class NewOggettoActivity extends AppCompatActivity {
     public static final String TAG = "NEW_OGGETTO";
     public static final int CAMERA_PERM_CODE = 101;
@@ -70,6 +74,7 @@ public class NewOggettoActivity extends AppCompatActivity {
     String zona_id;
     String luogo_id;
     String picStorageUrl;
+    ImageView Tutorial;
 
 
 
@@ -90,6 +95,14 @@ public class NewOggettoActivity extends AppCompatActivity {
         mcamera = findViewById(R.id.cameraOggetto);
         mgalleria = findViewById(R.id.galleriaOggetto);
         selectedImage = findViewById(R.id.imageOggetto);
+        Tutorial=findViewById(R.id.Question_new_oggetto);
+
+        Tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showToutorial();
+            }
+        });
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, zone);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -205,8 +218,6 @@ public class NewOggettoActivity extends AppCompatActivity {
 
     }
 
-
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -224,7 +235,6 @@ public class NewOggettoActivity extends AppCompatActivity {
 
     }
     //intent per aprire la camera
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -300,7 +310,6 @@ public class NewOggettoActivity extends AppCompatActivity {
 
     }
 
-
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -316,6 +325,7 @@ public class NewOggettoActivity extends AppCompatActivity {
         currentPhotoPath = image.getAbsolutePath();
         return image;
     }
+
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
@@ -339,6 +349,171 @@ public class NewOggettoActivity extends AppCompatActivity {
         }
     }
 
+    public void showToutorial(){
+        showToutorial_Camera_New_Oggetto();
+    }
+
+    public void showToutorial_Camera_New_Oggetto(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewOggettoActivity.this)
+                .setTarget(R.id.cameraOggetto)
+                .setPrimaryText(R.string.Titolo_Camera_New_Oggetto)
+                .setSecondaryText(R.string.Descrizione_Camera_New_Oggetto)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                            Toast.makeText(NewOggettoActivity.this, "CANEEEE", Toast.LENGTH_SHORT).show();
+
+                            showToutorial_Galleria_New_Oggetto();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+    public void showToutorial_Galleria_New_Oggetto(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewOggettoActivity.this)
+                .setTarget(R.id.galleriaOggetto)
+                .setPrimaryText(R.string.Titolo_Gallery_New_Oggetto)
+                .setSecondaryText(R.string.Descrizione_Gallery_New_Oggetto)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                            showToutorial_Nome_New_Oggetto();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+    public void showToutorial_Nome_New_Oggetto(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewOggettoActivity.this)
+                .setTarget(R.id.nomeOggetto)
+                .setPrimaryText(R.string.Titolo_Nome_New_Oggetto)
+                .setSecondaryText(R.string.Descrizione_Nome_New_Oggetto)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                            showToutorial_Descrizione_New_Oggetto();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+    public void showToutorial_Descrizione_New_Oggetto(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewOggettoActivity.this)
+                .setTarget(R.id.descrizioneOggetto)
+                .setPrimaryText(R.string.Titolo_Descrizione_New_Oggetto)
+                .setSecondaryText(R.string.Descrizione_Descrizione_New_Oggetto)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                        showToutorial_Spinner_New_Zona();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+    public void showToutorial_Spinner_New_Zona(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewOggettoActivity.this)
+                .setTarget(R.id.spinnerZoneOggetto)
+                .setPrimaryText(R.string.Titolo_Spinner_New_Zona)
+                .setSecondaryText(R.string.Descrizione_Spinner_New_Zona)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+
+                        }
+                    }
+                })
+                .show();
+        //
+    }
 
 
 

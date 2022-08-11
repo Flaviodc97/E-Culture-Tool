@@ -1,21 +1,17 @@
 package com.example.e_culture_tool_a;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,15 +22,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLConnection;
-
 import Models.Luogo;
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground;
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
 
 public class MyLuoghiActivity extends AppCompatActivity {
     public static final String TAG = "Prova";
@@ -44,6 +35,7 @@ public class MyLuoghiActivity extends AppCompatActivity {
     private String user_id;
     private RecyclerView mFirestoreList;
     private FirestoreRecyclerAdapter adapter;
+    private ImageView Tutorial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +45,7 @@ public class MyLuoghiActivity extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
+        Tutorial=findViewById(R.id.Question_my_luoghi);
 
         mFirestoreList=findViewById(R.id.firestore_luoghi_list);
 
@@ -109,6 +102,14 @@ public class MyLuoghiActivity extends AppCompatActivity {
         mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(adapter);
 
+
+        Tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showToutorial();
+            }
+        });
+
     }
 
 
@@ -156,4 +157,70 @@ public class MyLuoghiActivity extends AppCompatActivity {
     public void goHome(View view) {
         startActivity( new Intent(getApplicationContext(), HomeCuratoreActivity.class));
     }
+    public void showToutorial(){
+        showToutorialLuogo();
+    }
+
+    public void showToutorialLuogo(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(MyLuoghiActivity.this)
+                .setTarget(R.id.Linear_my_luoghi)
+                .setPrimaryText(R.string.Titolo_My_Luogo)
+                .setSecondaryText(R.string.Descrizione_My_Luogo)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                           showToutorial_Add_Luogo();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+    public void showToutorial_Add_Luogo(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(MyLuoghiActivity.this)
+                .setTarget(R.id.AddLuogo)
+                .setPrimaryText(R.string.Titolo_Add_Luogo)
+                .setSecondaryText(R.string.Descrizione_Add_Luogo)
+                .setPrimaryTextColour(color1)
+                .setSecondaryTextColour(color1)
+                .setBackgroundColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+
 }

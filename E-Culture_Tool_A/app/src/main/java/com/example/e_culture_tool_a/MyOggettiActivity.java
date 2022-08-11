@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,22 +15,19 @@ import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
-import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import Models.Oggetti;
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground;
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
 
 
 public class MyOggettiActivity extends AppCompatActivity {
@@ -43,6 +39,8 @@ public class MyOggettiActivity extends AppCompatActivity {
     private RecyclerView mFirestoreList;
     private FirestoreRecyclerAdapter adapter;
 
+    private ImageView Tutorial;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +51,14 @@ public class MyOggettiActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
         mFirestoreList=(RecyclerView) findViewById(R.id.firestore_oggetti_list);
+        Tutorial=findViewById(R.id.Question_my_oggetto);
+
+        Tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showToutorial();
+            }
+        });
 
         Query query=fStore.collectionGroup("Oggetti").whereEqualTo("author", user_id);
         Toast.makeText(MyOggettiActivity.this," user"+user_id,Toast.LENGTH_SHORT).show();;
@@ -154,6 +160,69 @@ public class MyOggettiActivity extends AppCompatActivity {
 
 
     }
+    public void showToutorial(){showToutorialOggetto();
+    }
+
+    public void showToutorialOggetto(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(MyOggettiActivity.this)
+                .setTarget(R.id.Linear_my_oggetto)
+                .setPrimaryText(R.string.Titolo_My_Oggetti)
+                .setSecondaryText(R.string.Descrizione_Add_Oggetti)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                            showToutorial_Add_Oggetto();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+    public void showToutorial_Add_Oggetto(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(MyOggettiActivity.this)
+                .setTarget(R.id.AddOggetto)
+                .setPrimaryText(R.string.Titolo_Add_Oggetti)
+                .setSecondaryText(R.string.Descrizione_Add_Oggetti)
+                .setPrimaryTextColour(color1)
+                .setSecondaryTextColour(color1)
+                .setBackgroundColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+
+                        }
+                    }
+                })
+                .show();
+        //
+    }
 
         /*
     public void goHome(View view) {
@@ -181,4 +250,5 @@ public class MyOggettiActivity extends AppCompatActivity {
     }
 
          */
+
 }

@@ -2,6 +2,7 @@ package com.example.e_culture_tool_a;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -29,6 +31,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground;
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
+
 public class NewZoneActivity extends AppCompatActivity {
     public static final String TAG = "Newzone";
     EditText mnome, mdescrizione;
@@ -40,6 +46,7 @@ public class NewZoneActivity extends AppCompatActivity {
     List<String> luoghi = new ArrayList<>();
     String luogo_id;
     String selectedLuogo;
+    ImageView Tutorial;
 
 
 
@@ -57,6 +64,14 @@ public class NewZoneActivity extends AppCompatActivity {
         mluogo = findViewById(R.id.spinnerLuogo);
 
         msubmit = findViewById(R.id.inviaOggetto);
+        Tutorial=findViewById(R.id.Question_new_zona);
+
+        Tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showToutorial();
+            }
+        });
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, luoghi);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -154,6 +169,115 @@ public class NewZoneActivity extends AppCompatActivity {
 
         return randomUUID.toString().replaceAll("_", "");
     }
+
+    public void showToutorial(){
+        showToutorial_Nome_New_Zona();
+    }
+
+    public void showToutorial_Nome_New_Zona(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewZoneActivity.this)
+                .setTarget(R.id.nomeZona)
+                .setPrimaryText(R.string.Titolo_Nome_New_Zona)
+                .setSecondaryText(R.string.Descrizione_Nome_New_Zona)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                            showToutorial_Descrizione_New_Zona();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+    public void showToutorial_Descrizione_New_Zona(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewZoneActivity.this)
+                .setTarget(R.id.descrizioneZona)
+                .setPrimaryText(R.string.Titolo_Descrizione_New_Zona)
+                .setSecondaryText(R.string.Descrizione_Descrizione_New_Zona)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                        showToutorial_Spinner_New_Zona();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+    public void showToutorial_Spinner_New_Zona(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewZoneActivity.this)
+                .setTarget(R.id.spinnerLuogo)
+                .setPrimaryText(R.string.Titolo_Spinner_New_Zona)
+                .setSecondaryText(R.string.Descrizione_Spinner_New_Zona)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+
+
+
+
+
+
+
+
+
 
 
 }
