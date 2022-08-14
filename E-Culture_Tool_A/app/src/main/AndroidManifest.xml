@@ -19,6 +19,21 @@
         android:theme="@style/Theme.ECulture_Tool_A"
         tools:targetApi="31">
         <activity
+            android:name=".UpdateVisitaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateEdgeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelectEdgeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecapVisitaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelectZoneActivity"
+            android:exported="false" />
+        <activity
             android:name=".UpdateOggettiActivity"
             android:exported="false" />
         <activity

@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         fAuth = FirebaseAuth.getInstance();
+        if(fAuth.getCurrentUser()!= null){
+
+            startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
+            finish();
+        }
 
 
         mregisterText.setOnClickListener(view -> {

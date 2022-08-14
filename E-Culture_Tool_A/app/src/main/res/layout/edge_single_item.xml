@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_click"
+            android:layout_width="380dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="15dp"
+            app:srcCompat="@drawable/curvebuttonbg" />
+
+        <TextView
+            android:id="@+id/zonaFine"
+            android:layout_width="wrap_content"
+            android:layout_height="69dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="324dp"
+            android:layout_marginTop="27dp"
+            android:background="@drawable/ic_baseline_circle_24"
+            android:text="TextView"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/zonaInizio"
+            android:layout_width="wrap_content"
+            android:layout_height="69dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="27dp"
+            android:background="@drawable/ic_baseline_circle_24"
+            android:text="TextView"
+            android:textAlignment="textEnd" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="183dp"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_toEndOf="@+id/zonaInizio"
+            app:srcCompat="@drawable/ic_baseline_arrow_right_alt_24" />
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

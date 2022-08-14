@@ -48,41 +48,43 @@
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/menu/menu.xml" value="0.335" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/menu/top_app_bar.xml" value="0.1" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/xml/file_paths.xml" value="0.1" />
+        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/circle.xml" value="0.1755" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_home.xml" value="0.335" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_home_visitatore.xml" value="0.23233695652173914" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_mai.xml" value="0.3046875" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_main.xml" value="0.146875" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_miei_luoghi.xml" value="0.2864583333333333" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_oggetti.xml" value="0.1" />
-        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_visite.xml" value="0.1" />
+        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_visite.xml" value="0.25" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_zone.xml" value="0.146875" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_luogo.xml" value="0.1" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_oggetto.xml" value="0.22" />
-        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_visite.xml" value="0.335" />
+        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_visita.xml" value="0.25" />
+        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_visite.xml" value="0.1" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_zona.xml" value="0.146875" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_zone.xml" value="0.1746987951807229" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_recap_visita.xml" value="0.25" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_register.xml" value="0.146875" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_search.xml" value="0.290625" />
+        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_select_edge.xml" value="0.25" />
+        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_select_zone.xml" value="0.25" />
+        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_edge.xml" value="0.25" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_luogo.xml" value="0.45" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_oggetti.xml" value="0.2796875" />
+        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_visita.xml" value="0.335" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_zona.xml" value="0.25" />
+        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/edge_single_item.xml" value="0.3991031390134529" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/luoghi_single_item.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/oggetti_single_item.xml" value="0.335" />
-        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/zone_single_item.xml" value="0.1" />
+        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/visita_single_item.xml" value="0.25" />
+        <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/zone_single_item.xml" value="0.335" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/menu/bottombar.xml" value="0.10740740740740741" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/menu/menu.xml" value="0.11614583333333334" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.3659725865573748" />
-        <entry key="app/src/main/res/layout/activity_miei_luoghi.xml" value="0.28074004261206237" />
-        <entry key="app/src/main/res/layout/activity_my_oggetti.xml" value="0.1816123188405797" />
-        <entry key="app/src/main/res/layout/activity_my_zone.xml" value="0.1816123188405797" />
-        <entry key="app/src/main/res/layout/activity_new_luogo.xml" value="0.22697875110815602" />
-        <entry key="app/src/main/res/layout/activity_new_oggetto.xml" value="0.1816123188405797" />
-        <entry key="app/src/main/res/layout/activity_new_zone.xml" value="0.1816123188405797" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
