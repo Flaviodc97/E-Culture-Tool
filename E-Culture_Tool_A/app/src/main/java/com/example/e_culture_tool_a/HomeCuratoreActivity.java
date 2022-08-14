@@ -43,6 +43,7 @@ public class HomeCuratoreActivity extends AppCompatActivity {
     ImageView mbuttonLuogo;
     ImageView mbuttonZone;
     ImageView mbuttonOggetti;
+    ImageView mbuttonQR;
     ImageView mbuttonSearch;
     ImageView arrow;
     MaterialTapTargetPrompt.Builder builder;
@@ -63,6 +64,8 @@ public class HomeCuratoreActivity extends AppCompatActivity {
 
         mbuttonZone = findViewById(R.id.viewZoneBTN);
         mbuttonOggetti = findViewById(R.id.viewOggetti);
+        mbuttonQR = findViewById(R.id.viewQR);
+
        // mbuttonSearch = findViewById(R.id.viewSearch);
         arrow=findViewById(R.id.imageQuestion);
 
@@ -96,6 +99,10 @@ public class HomeCuratoreActivity extends AppCompatActivity {
 
         mbuttonOggetti.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), MyOggettiActivity.class));
+
+        });
+        mbuttonQR.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), QRScannerActivity.class));
 
         });
 

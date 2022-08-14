@@ -19,6 +19,9 @@
         android:theme="@style/Theme.ECulture_Tool_A"
         tools:targetApi="31">
         <activity
+            android:name=".QRScannerActivity"
+            android:exported="false" />
+        <activity
             android:name=".UpdateVisitaActivity"
             android:exported="false" />
         <activity
