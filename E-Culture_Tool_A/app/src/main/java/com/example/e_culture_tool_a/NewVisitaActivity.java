@@ -115,6 +115,7 @@ public class NewVisitaActivity extends AppCompatActivity {
             String nomeVisita = mnomeVisita.getText().toString().trim();
             Log.d(TAG," "+luogo_id );
             Intent i = new Intent(NewVisitaActivity.this, SelectZoneActivity.class);
+            i.putExtra("nomeLuogo", selectedLuogo);
             i.putExtra("id", luogo_id);
             i.putExtra("nomeVisita", nomeVisita);
 

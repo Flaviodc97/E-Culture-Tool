@@ -52,6 +52,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
     Button mbuttonretry;
     String visitaID;
     Button mavanti;
+    String nomeLuogo;
 
     Graph<String, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
     @Override
@@ -68,6 +69,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
         Bundle args = intent.getBundleExtra("BUNDLE");
         luogo_id = extras.getString("luogoID");
         nomeVisita = extras.getString("nomeVisita");
+        nomeLuogo = extras.getString("nomeLuogo");
         zonelist = (ArrayList<String>) args.getSerializable("ARRAYLIST");
         zonelist.add(0,"Seleziona Zona");
         Log.d(TAG,"zone:"+zonelist);
@@ -126,7 +128,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
                 Log.d(TAG, ""+selected);
                 Log.d(TAG, "zone "+zone);
                 Log.d(TAG, "zonelist"+zonelist);
-                if(selected!=0) {
+                if(selected>1) {
                     selectedzonafine = adapterView.getItemAtPosition(i).toString();
                     mzonaFine.setVisibility(View.INVISIBLE);
                     mbuttonretry.setVisibility(View.VISIBLE);
@@ -154,19 +156,26 @@ public class SelectEdgeActivity extends AppCompatActivity {
 
         mbuttonretry.setOnClickListener(view -> {
             graph.addEdge(selectedzonainizio, selectedzonafine);
-            createEdge();
             Log.d(TAG, "GRFO"+graph.toString());
+            createEdge();
+
             onselect(adapterinizio,adapterfine);
         });
 
         mavanti.setOnClickListener(view -> {
+            graph.addEdge(selectedzonainizio, selectedzonafine);
+            Log.d(TAG, "GRFO"+graph.toString());
             createEdge();
 
             Intent i = new Intent(SelectEdgeActivity.this, RecapVisitaActivity.class);
             Bundle arg = new Bundle();
             i.putExtra("idVisita", visitaID);
             i.putExtra("nomeVisita", nomeVisita);
+            i.putExtra("luogoID", luogo_id);
+            i.putExtra("nomeLuogo", nomeLuogo);
+            arg.putSerializable("GRAPH",(Serializable) graph);
             arg.putSerializable("ARRAYLIST", (Serializable) zonelist);
+
             i.putExtra("BUNDLE", arg);
             startActivity(i);
 

@@ -13,7 +13,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -40,14 +43,34 @@ public class QRScannerActivity extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        fAuth = FirebaseAuth.getInstance();
+        user_id = fAuth.getCurrentUser().getUid();
+        fStore = FirebaseFirestore.getInstance();
+        DocumentReference docReference = fStore.collection("utenti").document(user_id);
+        docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        String risultato = result.getContents();
-        //dati.setText(risultato);
-        if(risultato!=null){
-            searchOggetto(risultato);
-        }
-        finish();
+                String ruolo = value.getString("Curatore");
+                boolean b1 = Boolean.parseBoolean(ruolo);
+                if(b1){
+                    IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+                    String risultato = result.getContents();
+                    //dati.setText(risultato);
+                    if(risultato!=null){
+                        searchOggetto(risultato);
+                    }
+                    finish();
+
+                }else {
+
+                    startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
+                }
+
+
+            }
+        });
+
     }
 
 

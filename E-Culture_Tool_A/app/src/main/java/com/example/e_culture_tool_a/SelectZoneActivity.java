@@ -34,6 +34,7 @@ public class SelectZoneActivity extends AppCompatActivity {
     String user_id;
     String luogo_id;
     String nomeVisita;
+    String nomeLuogo;
 
     List<String> zonevisita = new ArrayList<>();
     Button msub;
@@ -61,6 +62,8 @@ public class SelectZoneActivity extends AppCompatActivity {
         if (extras != null) {
             luogo_id = extras.getString("id");
             nomeVisita = extras.getString("nomeVisita");
+            nomeLuogo = extras.getString("nomeLuogo");
+
 
             Log.d(TAG, "zone:" + zonevisita);
             Log.d(TAG, "nomeVisita:" + nomeVisita);
@@ -118,6 +121,7 @@ public class SelectZoneActivity extends AppCompatActivity {
         Bundle args = new Bundle();
         intent.putExtra("luogoID", luogo_id);
         intent.putExtra("nomeVisita", nomeVisita);
+        intent.putExtra("nomeLuogo", nomeLuogo);
         args.putSerializable("ARRAYLIST",(Serializable)zonevisita);
         intent.putExtra("BUNDLE",args);
         startActivity(intent);
