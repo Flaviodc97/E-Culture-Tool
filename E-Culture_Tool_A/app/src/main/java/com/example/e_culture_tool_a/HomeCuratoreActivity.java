@@ -66,7 +66,7 @@ public class HomeCuratoreActivity extends AppCompatActivity {
         mbuttonOggetti = findViewById(R.id.viewOggetti);
         mbuttonQR = findViewById(R.id.viewQR);
 
-       // mbuttonSearch = findViewById(R.id.viewSearch);
+        mbuttonSearch = findViewById(R.id.viewSearch);
         arrow=findViewById(R.id.imageQuestion);
 
 
@@ -106,11 +106,11 @@ public class HomeCuratoreActivity extends AppCompatActivity {
 
         });
 
-        //mbuttonSearch.setOnClickListener(view -> {
+        mbuttonSearch.setOnClickListener(view -> {
 
-          //  startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+           startActivity(new Intent(getApplicationContext(), SearchActivity.class));
 
-        //});
+        });
 
         /*RICORDA QUANDO ANDREMO A FARE LA PARTE PER TRADURRE BISOGNA USARE LE STRINGHE ANCHE QUI E NON I MESSAGGI NEI DOPPI APICI*/
 
