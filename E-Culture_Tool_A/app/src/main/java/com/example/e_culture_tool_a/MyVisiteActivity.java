@@ -14,16 +14,13 @@ import android.widget.TextView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import Models.Visita;
-import Models.Zone;
 
 public class MyVisiteActivity extends AppCompatActivity {
 
@@ -112,8 +109,8 @@ public class MyVisiteActivity extends AppCompatActivity {
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
-            list_name = itemView.findViewById(R.id.list_myvisite);
-            list_click = itemView.findViewById(R.id.image_click);
+            list_name = itemView.findViewById(R.id.list_nomeMultipla);
+            list_click = itemView.findViewById(R.id.image_multipla_click);
 
         }
     }

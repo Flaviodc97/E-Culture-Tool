@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/image_click"
+            android:id="@+id/image_multipla_click"
             android:layout_width="380dp"
             android:layout_height="100dp"
             android:layout_marginLeft="15dp"
@@ -23,7 +23,7 @@
             app:srcCompat="@drawable/curvebuttonbg" />
 
         <ImageView
-            android:id="@+id/imageViewVisita"
+            android:id="@+id/imageViewDm"
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_centerVertical="true"
@@ -31,7 +31,7 @@
             app:srcCompat="@drawable/bottonezona" />
 
         <TextView
-            android:id="@+id/list_myvisite"
+            android:id="@+id/list_nomeMultipla"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="110dp"
@@ -56,8 +56,8 @@
             android:id="@+id/list_check"
             android:layout_width="55dp"
             android:layout_height="38dp"
-            android:layout_alignTop="@+id/image_click"
-            android:layout_alignEnd="@+id/image_click"
+            android:layout_alignTop="@+id/image_multipla_click"
+            android:layout_alignEnd="@+id/image_multipla_click"
             android:layout_marginStart="41dp"
             android:layout_marginTop="33dp"
             android:layout_marginEnd="27dp"

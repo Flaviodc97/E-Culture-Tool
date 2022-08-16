@@ -141,8 +141,8 @@ public class SelectZoneActivity extends AppCompatActivity {
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
-            list_name=itemView.findViewById(R.id.list_myvisite);
-            list_click=itemView.findViewById(R.id.image_click);
+            list_name=itemView.findViewById(R.id.list_nomeMultipla);
+            list_click=itemView.findViewById(R.id.image_multipla_click);
             list_selezione = itemView.findViewById(R.id.list_check);
 
         }
