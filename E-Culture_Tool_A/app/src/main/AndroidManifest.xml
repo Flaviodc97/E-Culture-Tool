@@ -19,6 +19,21 @@
         android:theme="@style/Theme.ECulture_Tool_A"
         tools:targetApi="31">
         <activity
+            android:name=".NewTempoDomandaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyTempoDomandeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateDomandeMultipleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyDomandeMultipleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddDomandaActivity"
+            android:exported="false" />
+        <activity
             android:name=".SearchActivity"
             android:exported="false" />
         <activity

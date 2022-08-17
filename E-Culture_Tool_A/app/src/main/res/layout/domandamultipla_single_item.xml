@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_multipla_click"
+            android:layout_width="380dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="15dp"
+            app:srcCompat="@drawable/curvebuttonbg" />
+
+        <ImageView
+            android:id="@+id/imageViewDm"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            app:srcCompat="@drawable/ic_quiz" />
+
+        <TextView
+            android:id="@+id/list_nomeMultipla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/image_multipla_click"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="14dp"
+            android:layout_toEndOf="@+id/imageViewDm"
+            android:text="Zona 1"
+            android:textColor="#d703082b"
+            android:textSize="23dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/check"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignTop="@+id/image_multipla_click"
+            android:layout_alignEnd="@+id/image_multipla_click"
+            android:layout_marginStart="124dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="44dp"
+            android:layout_toEndOf="@+id/list_nomeMultipla"
+            android:background="@drawable/ic_baseline_check_circle_24"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

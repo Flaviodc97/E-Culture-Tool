@@ -28,7 +28,7 @@ public class ViewHolder extends RecyclerView.ViewHolder{
         itemtxt=itemView.findViewById(R.id.list_luoghi);
         luoghi_img=itemView.findViewById(R.id.Image_Luoghi);
 
-        zonetxt=itemView.findViewById(R.id.list_myvisite);
+        zonetxt=itemView.findViewById(R.id.list_nomeMultipla);
         zone_desc_txt=itemView.findViewById(R.id.list_descrizione);
 
         oggettotxt=itemView.findViewById(R.id.list_oggetti);

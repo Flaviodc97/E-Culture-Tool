@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,7 +76,7 @@ public class MyOggettiActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull Oggetti model) {
                 holder.list_name.setText(model.getNome());
-                holder.list_descrizione.setText(model.getDescrizione()+"");
+
                 if(model.getPhoto()!= null) {
                     Picasso.get().load(model.getPhoto()).into(holder.list_image);
                 }
@@ -104,6 +105,37 @@ public class MyOggettiActivity extends AppCompatActivity {
 
 
                 });
+                holder.list_addDomanda.setOnClickListener(view -> {
+                    String id = model.getId();
+                    String nome = model.getNome();
+                    String luogoID = model.getLuogoID();
+                    String zonaID = model.getZonaID();
+                    String photo = model.getPhoto();
+                    Intent i = new Intent(MyOggettiActivity.this, MyDomandeMultipleActivity.class);
+                    i.putExtra("id",id);
+                    i.putExtra("nome",nome);
+                    i.putExtra("photo",photo);
+                    i.putExtra("luogoID", luogoID);
+                    i.putExtra("zonaID", zonaID);
+                    startActivity(i);
+
+                });
+                holder.list_addTempo.setOnClickListener(view -> {
+
+                    String id = model.getId();
+                    String nome = model.getNome();
+                    String luogoID = model.getLuogoID();
+                    String zonaID = model.getZonaID();
+                    String photo = model.getPhoto();
+                    Intent i = new Intent(MyOggettiActivity.this, MyTempoDomandeActivity.class);
+                    i.putExtra("id",id);
+                    i.putExtra("nome",nome);
+                    i.putExtra("photo",photo);
+                    i.putExtra("luogoID", luogoID);
+                    i.putExtra("zonaID", zonaID);
+                    startActivity(i);
+
+                });
 
                 if(model.getPhoto()!= null) {
                     Picasso.get().load(model.getPhoto()).into(holder.list_image);
@@ -119,16 +151,20 @@ public class MyOggettiActivity extends AppCompatActivity {
     }
     private class ProductsViewHolder extends RecyclerView.ViewHolder{
         private TextView list_name;
-        private TextView list_descrizione;
+
         private ImageView list_image;
         private ImageView list_click;
+        private Button list_addDomanda;
+        private Button list_addTempo;
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
             list_name=itemView.findViewById(R.id.list_oggetti);
-            list_descrizione=itemView.findViewById(R.id.list_descrizione);
+
             list_image=itemView.findViewById(R.id.list_oggetti_image);
             list_click = itemView.findViewById(R.id.imageView5);
+            list_addDomanda = itemView.findViewById(R.id.AddDomanda);
+            list_addTempo = itemView.findViewById(R.id.addTempo);
 
         }
 

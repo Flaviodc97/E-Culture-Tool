@@ -102,8 +102,8 @@ public class MyZoneActivity extends AppCompatActivity {
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
-            list_name=itemView.findViewById(R.id.list_myvisite);
-            list_click=itemView.findViewById(R.id.imageViewVisita);
+            list_name=itemView.findViewById(R.id.list_nomeMultipla);
+            list_click=itemView.findViewById(R.id.imageViewDm);
 
         }
     }

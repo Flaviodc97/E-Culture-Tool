@@ -290,7 +290,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
             super(itemView);
             list_zona_inizio=itemView.findViewById(R.id.zonaInizio);
             list_zona_fine=itemView.findViewById(R.id.zonaFine);
-            list_click = itemView.findViewById(R.id.image_click);
+            list_click = itemView.findViewById(R.id.image_multipla_click);
 
         }
 
