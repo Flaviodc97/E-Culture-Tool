@@ -1,4 +1,4 @@
-package Fragment;
+package com.example.e_culture_tool_a.Fragment;
 
 import android.os.Bundle;
 
@@ -23,31 +23,31 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-import Adapter.OggettoAdapter;
+import com.example.e_culture_tool_a.Adapter.ZonaAdapter;
 
-import Adapter.ZonaAdapter;
-import Models.Oggetti;
-import Models.Zone;
+import com.example.e_culture_tool_a.Models.Zone;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link OggettiFragment#newInstance} factory method to
+ * Use the {@link ZoneFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OggettiFragment extends Fragment {
+public class ZoneFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
     SearchView search;
+
     FirebaseFirestore fStore;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public OggettiFragment() {
+    public ZoneFragment() {
         // Required empty public constructor
     }
 
@@ -57,11 +57,11 @@ public class OggettiFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment OggettiFragment.
+     * @return A new instance of fragment ZoneFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static OggettiFragment newInstance(String param1, String param2) {
-        OggettiFragment fragment = new OggettiFragment();
+    public static ZoneFragment newInstance(String param1, String param2) {
+        ZoneFragment fragment = new ZoneFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -77,18 +77,16 @@ public class OggettiFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
     RecyclerView recyclerView;
-    List<Oggetti> OggettiList=new ArrayList<Oggetti>();
-
+    List<Zone> ZoneList=new ArrayList<Zone>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         fStore = FirebaseFirestore.getInstance();
-        View view=inflater.inflate(R.layout.fragment_oggetti, container, false);
-        OggettoAdapter adapter=new OggettoAdapter(OggettiList,getContext());
-        search=view.findViewById(R.id.SearchOggetti);
+        View view=inflater.inflate(R.layout.fragment_zone, container, false);
+        ZonaAdapter adapter=new ZonaAdapter(ZoneList,getContext());
+        search=view.findViewById(R.id.SearchZone);
         search.clearFocus();
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -103,31 +101,31 @@ public class OggettiFragment extends Fragment {
             }
         });
 
-        recyclerView=view.findViewById(R.id.firestore_list_oggetti);
+
+        recyclerView=view.findViewById(R.id.firestore_list_zone);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
-        Task<QuerySnapshot> query=fStore.collectionGroup("Oggetti").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        Task<QuerySnapshot> query=fStore.collectionGroup("Zone").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for (DocumentSnapshot doc:task.getResult()){
-                        Oggetti oggett=doc.toObject(Oggetti.class);
-                        OggettiList.add(oggett);
+                        Zone zone=doc.toObject(Zone.class);
+                        ZoneList.add(zone);
                     }
                 }
                 recyclerView.setAdapter(adapter);
             }
         });
+
         return view;
     }
-
-    public void FilterList(String Text, OggettoAdapter adapter){
-        List<Oggetti> filteredList=new ArrayList<Oggetti>();
-        for (Oggetti oggetto: OggettiList){
-            if(oggetto.getNome().toLowerCase().contains(Text.toLowerCase())){
-                filteredList.add(oggetto);
+    public void FilterList(String Text,ZonaAdapter adapter){
+        List<Zone> filteredList=new ArrayList<Zone>();
+        for (Zone zone: ZoneList){
+            if(zone.getNome().toLowerCase().contains(Text.toLowerCase())){
+                filteredList.add(zone);
             }
         }
         if (filteredList.isEmpty()){

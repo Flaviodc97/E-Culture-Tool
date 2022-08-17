@@ -8,12 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import Fragment.LuoghiFragment;
-import Fragment.OggettiFragment;
-import Fragment.ZoneFragment;
-import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
-import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground;
-import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
+import com.example.e_culture_tool_a.Fragment.LuoghiFragment;
+import com.example.e_culture_tool_a.Fragment.OggettiFragment;
+import com.example.e_culture_tool_a.Fragment.ZoneFragment;
 
 public class SearchActivity extends AppCompatActivity {
     Button btnLuoghi;

@@ -1,4 +1,4 @@
-package Adapter;
+package com.example.e_culture_tool_a.Adapter;
 
 import android.view.View;
 import android.widget.ImageView;

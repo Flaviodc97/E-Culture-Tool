@@ -47,7 +47,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/ContainerLuoghi"
-        android:name="Fragment.LuoghiFragment"
+        android:name="com.example.e_culture_tool_a.Fragment.LuoghiFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"

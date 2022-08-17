@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MyOggettiActivity">
     <View
-        android:id="@+id/TopViewCreaVisita"
+        android:id="@+id/TopView_my_luoghi"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@color/design_default_color_primary"
@@ -26,7 +26,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.102"
-        app:layout_constraintStart_toStartOf="@+id/TopViewCreaVisita"
+        app:layout_constraintStart_toStartOf="@+id/TopView_my_luoghi"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -60,26 +60,20 @@
         app:srcCompat="@drawable/ic_baseline_add_24"
         tools:ignore="DuplicateSpeakableTextCheck,DuplicateSpeakableTextCheck" />
 
-    <LinearLayout
-        android:id="@+id/Linear_my_oggetto"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/firestore_oggetti_list"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="72dp"
         android:background="@drawable/curvebuttonbgdefault"
-        android:orientation="vertical"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/firestore_oggetti_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
     <!-- questa sezione viene sempre alla fine -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"

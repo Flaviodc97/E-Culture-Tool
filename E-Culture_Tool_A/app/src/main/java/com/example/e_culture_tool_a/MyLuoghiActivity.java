@@ -22,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
-import Models.Luogo;
+import com.example.e_culture_tool_a.Models.Luogo;
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground;
 import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
@@ -167,7 +167,7 @@ public class MyLuoghiActivity extends AppCompatActivity {
         int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
 
         new MaterialTapTargetPrompt.Builder(MyLuoghiActivity.this)
-                .setTarget(R.id.Linear_my_luoghi)
+                .setTarget(R.id.firestore_luoghi_list)
                 .setPrimaryText(R.string.Titolo_My_Luogo)
                 .setSecondaryText(R.string.Descrizione_My_Luogo)
                 .setPrimaryTextColour(color2)

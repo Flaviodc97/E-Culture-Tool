@@ -183,14 +183,6 @@ public class SelectEdgeActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
-
     }
 
     private void createEdge() {
@@ -234,7 +226,6 @@ public class SelectEdgeActivity extends AppCompatActivity {
     }
     private String usingRandomUUID() {
         UUID randomUUID = UUID.randomUUID();
-
         return randomUUID.toString().replaceAll("_", "");
     }
 
@@ -244,12 +235,10 @@ public class SelectEdgeActivity extends AppCompatActivity {
         for(i = 1;i < zonelist.size() ; i++)
         {
             graph.addVertex(zonelist.get(i));
-
-
         }
         Log.d(TAG,"graph:"+graph.toString());
-
     }
+
 
     private void loadZone() {
         int i;
@@ -276,8 +265,6 @@ public class SelectEdgeActivity extends AppCompatActivity {
         mbuttonretry.setVisibility(View.INVISIBLE);
         mavanti.setVisibility(View.INVISIBLE);
         Log.d(TAG, ""+selected);
-
-
 
     }
 

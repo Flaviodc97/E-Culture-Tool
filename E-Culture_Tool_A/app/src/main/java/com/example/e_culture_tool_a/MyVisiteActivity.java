@@ -14,16 +14,13 @@ import android.widget.TextView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import Models.Visita;
-import Models.Zone;
+import com.example.e_culture_tool_a.Models.Visita;
 
 public class MyVisiteActivity extends AppCompatActivity {
 
@@ -128,17 +125,6 @@ public class MyVisiteActivity extends AppCompatActivity {
         super.onStart();
         adapter.startListening();
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -12,28 +12,34 @@
         android:id="@+id/item_rec_list"
         android:layout_width="389dp"
         android:layout_height="572dp"
+        android:layout_below="@+id/salvaButton"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="87dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="-1dp" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/curvebuttonbgdefault" />
 
     <Button
         android:id="@+id/shareButton"
-        android:layout_width="65dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/ic_baseline_share_24" />
 
     <Button
         android:id="@+id/salvaButton"
-        android:layout_width="113dp"
-        android:layout_height="86dp"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/ic_baseline_save_alt_24" />
 </RelativeLayout>

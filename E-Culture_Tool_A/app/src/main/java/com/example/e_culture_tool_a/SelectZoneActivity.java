@@ -25,7 +25,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import Models.Zone;
+import com.example.e_culture_tool_a.Models.Zone;
 
 public class SelectZoneActivity extends AppCompatActivity {
     private static final String TAG = "SELECT_ZONE";
@@ -96,13 +96,14 @@ public class SelectZoneActivity extends AppCompatActivity {
                         holder.list_selezione.setVisibility(View.VISIBLE);
 
                         zonevisita.add(model.getNome());
+
                         Log.d(TAG, "zone:" + zonevisita);
 
 
                     } else {
 
                         holder.list_selezione.setVisibility(View.INVISIBLE);
-                        zonevisita.remove(model.getId());
+                        zonevisita.remove(model.getNome());
                         Log.d(TAG, "zone:" + zonevisita);
                     }
 

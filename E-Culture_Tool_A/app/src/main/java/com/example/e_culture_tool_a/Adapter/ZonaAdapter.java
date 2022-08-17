@@ -1,4 +1,4 @@
-package Adapter;
+package com.example.e_culture_tool_a.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,47 +9,44 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_culture_tool_a.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import Models.Luogo;
 
-public class LuogoAdapter extends RecyclerView.Adapter<ViewHolder> {
-    List<Luogo> itemList1;
+import com.example.e_culture_tool_a.Models.Zone;
+
+public class ZonaAdapter extends RecyclerView.Adapter<ViewHolder>{
+    List<Zone> itemList2;
     private Context context;
 
-    public LuogoAdapter(List<Luogo> itemList,Context context) {
-        this.itemList1=itemList;
+    public ZonaAdapter(List<Zone> itemList, Context context) {
+        this.itemList2=itemList;
         this.context=context;
 
     }
-    public void setFilteredList(List<Luogo> filteredList){
-        this.itemList1=filteredList;
+    public void setFilteredList(List<Zone> filteredList){
+        this.itemList2=filteredList;
         notifyDataSetChanged();
     };
+
 
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.luoghi_single_item,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.zone_single_item,parent,false);
         ViewHolder viewHolder=new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.itemtxt.setText(itemList1.get(position).getNome());
-
-        if(itemList1.get(position).getPhoto()!= null) {
-            Picasso.get().load(itemList1.get(position).getPhoto()).into(holder.luoghi_img);
-        }
+        holder.zonetxt.setText(itemList2.get(position).getNome());
+        holder.zone_desc_txt.setText(itemList2.get(position).getDescrizione());
     }
 
     @Override
     public int getItemCount() {
-        return itemList1.size();
+        return itemList2.size();
     }
-
 }
