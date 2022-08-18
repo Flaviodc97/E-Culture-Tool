@@ -9,17 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class HomeVisitatoreActivity extends AppCompatActivity {
     ImageButton myvisiteButton;
@@ -81,7 +77,7 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
     }
     public void goProfile(MenuItem item) {
 
-        startActivity( new Intent(getApplicationContext(), Profile.class));
+        startActivity( new Intent(getApplicationContext(), Profilo.class));
 
     }
 }

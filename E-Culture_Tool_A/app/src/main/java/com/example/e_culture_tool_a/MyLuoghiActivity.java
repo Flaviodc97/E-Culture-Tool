@@ -181,7 +181,7 @@ public class MyLuoghiActivity extends AppCompatActivity {
     }
     public void goProfile(MenuItem item) {
 
-        startActivity( new Intent(getApplicationContext(), Profile.class));
+        startActivity( new Intent(getApplicationContext(), UpdateProfile.class));
 
 
     }

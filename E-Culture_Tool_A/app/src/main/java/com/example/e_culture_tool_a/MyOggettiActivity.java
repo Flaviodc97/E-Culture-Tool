@@ -3,15 +3,12 @@ package com.example.e_culture_tool_a;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -246,7 +243,7 @@ public class MyOggettiActivity extends AppCompatActivity {
     }
     public void goProfile(MenuItem item) {
 
-        startActivity( new Intent(getApplicationContext(), Profile.class));
+        startActivity( new Intent(getApplicationContext(), UpdateProfile.class));
 
 
     }
