@@ -41,7 +41,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-import Models.Edge;
+import com.example.e_culture_tool_a.Models.Edge;
 
 public class RecapVisitaActivity extends AppCompatActivity {
     private static final String TAG = "RECAP_VISITE" ;

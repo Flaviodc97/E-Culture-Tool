@@ -93,6 +93,40 @@
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/zone_single_item.xml" value="0.335" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/menu/bottombar.xml" value="0.10740740740740741" />
         <entry key="..\:/Users/flavio/Documents/GitHub/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/menu/menu.xml" value="0.11614583333333334" />
+        <entry key="app/src/main/res/drawable/ic_baseline_circle_24.xml" value="0.1895" />
+        <entry key="app/src/main/res/drawable/ic_baseline_save_alt_24.xml" value="0.1895" />
+        <entry key="app/src/main/res/drawable/ic_kuba_information_icons_set_1.xml" value="0.1895" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1895" />
+        <entry key="app/src/main/res/drawable/ic_lock.xml" value="0.1895" />
+        <entry key="app/src/main/res/drawable/item_bg.xml" value="0.1895" />
+        <entry key="app/src/main/res/layout/activity_miei_luoghi.xml" value="0.3978360795443302" />
+        <entry key="app/src/main/res/layout/activity_my_oggetti.xml" value="0.3090047393364929" />
+        <entry key="app/src/main/res/layout/activity_my_visite.xml" value="0.23259102339198645" />
+        <entry key="app/src/main/res/layout/activity_my_zone.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/activity_new_luogo.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_new_oggetto.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_new_visita.xml" value="0.46906474820143884" />
+        <entry key="app/src/main/res/layout/activity_new_visite.xml" value="0.2512325963229998" />
+        <entry key="app/src/main/res/layout/activity_new_zone.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_qrscanner.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_recap_visita.xml" value="0.23558654785156247" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_select_edge.xml" value="0.31503111927221855" />
+        <entry key="app/src/main/res/layout/activity_select_zone.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_update_edge.xml" value="0.3025210084033613" />
+        <entry key="app/src/main/res/layout/activity_update_visita.xml" value="0.4589764317722185" />
+        <entry key="app/src/main/res/layout/activity_update_zona.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/edge_single_item.xml" value="0.32945837665804856" />
+        <entry key="app/src/main/res/layout/fragment_luoghi.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/fragment_oggetti.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/fragment_zone.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/luoghi_single_item.xml" value="0.4801480912630802" />
+        <entry key="app/src/main/res/layout/oggetti_single_item.xml" value="0.31461769575526777" />
+        <entry key="app/src/main/res/layout/rounded_item.xml" value="0.14285714285714285" />
+        <entry key="app/src/main/res/layout/visita_single_item.xml" value="0.2506345414583927" />
+        <entry key="app/src/main/res/layout/zone_single_item.xml" value="0.3933042191927677" />
       </map>
     </option>
   </component>

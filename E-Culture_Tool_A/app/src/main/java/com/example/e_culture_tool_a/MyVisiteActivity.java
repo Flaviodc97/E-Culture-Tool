@@ -20,7 +20,7 @@ import com.google.firebase.firestore.Query;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import Models.Visita;
+import com.example.e_culture_tool_a.Models.Visita;
 
 public class MyVisiteActivity extends AppCompatActivity {
 
@@ -109,8 +109,8 @@ public class MyVisiteActivity extends AppCompatActivity {
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
-            list_name = itemView.findViewById(R.id.list_nomeMultipla);
-            list_click = itemView.findViewById(R.id.image_multipla_click);
+            list_name = itemView.findViewById(R.id.list_myvisite);
+            list_click = itemView.findViewById(R.id.image_click);
 
         }
     }
@@ -125,17 +125,6 @@ public class MyVisiteActivity extends AppCompatActivity {
         super.onStart();
         adapter.startListening();
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

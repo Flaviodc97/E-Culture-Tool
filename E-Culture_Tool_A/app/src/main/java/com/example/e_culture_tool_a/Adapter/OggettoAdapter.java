@@ -1,4 +1,4 @@
-package Adapter;
+package com.example.e_culture_tool_a.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,8 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import Models.Oggetti;
-import Models.Zone;
+import com.example.e_culture_tool_a.Models.Oggetti;
 
 public class OggettoAdapter extends RecyclerView.Adapter<ViewHolder>{
         List<Oggetti> itemList3;

@@ -7,39 +7,97 @@
     android:layout_height="match_parent"
     tools:context=".NewVisitaActivity">
 
-    <Button
-        android:id="@+id/sendluogo"
-        android:layout_width="120dp"
-        android:layout_height="107dp"
-        android:text="Button"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinnerLuogovisite"
-        android:layout_width="330dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/nomeVisita"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nome Visita"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/sendluogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerLuogovisite"
-        app:layout_constraintVertical_bias="0.507" />
+        <View
+            android:id="@+id/topViewCreaVisita"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/design_default_color_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/question_my_luoghi"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/descriptionCuratore"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_kuba_information_icons_set_1" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/le_mie_visite"
+            android:text="Crea Nuova Visita"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.102"
+            app:layout_constraintStart_toStartOf="@+id/TopView_my_luoghi"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/nomeVisita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topViewCreaVisita"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/rectangle"
+            android:ems="10"
+            android:hint="Nome Visita"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="16dp" />
+
+        <Spinner
+            android:id="@+id/spinnerLuogovisite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nomeVisita"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/Luogo_di_partenza"
+            android:minHeight="48dp"
+            android:popupBackground="@drawable/curvebuttonbg"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toStartOf="@+id/topViewCreaVisita"
+            app:layout_constraintStart_toEndOf="@+id/topViewCreaVisita"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/sendluogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerLuogovisite"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/curvebuttonbgdefault"
+            android:text="Button"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/topViewCreaVisita"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

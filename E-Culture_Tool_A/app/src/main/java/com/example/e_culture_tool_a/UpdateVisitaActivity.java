@@ -28,7 +28,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import Models.Edge;
+import com.example.e_culture_tool_a.Models.Edge;
 
 public class UpdateVisitaActivity extends AppCompatActivity {
     private static final String TAG = "UPDATE_VISITE";

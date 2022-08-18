@@ -25,7 +25,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import Models.Oggetti;
+import com.example.e_culture_tool_a.Models.Oggetti;
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground;
 import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
@@ -205,7 +205,7 @@ public class MyOggettiActivity extends AppCompatActivity {
         int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
 
         new MaterialTapTargetPrompt.Builder(MyOggettiActivity.this)
-                .setTarget(R.id.Linear_my_oggetto)
+                .setTarget(R.id.firestore_oggetti_list)
                 .setPrimaryText(R.string.Titolo_My_Oggetti)
                 .setSecondaryText(R.string.Descrizione_Add_Oggetti)
                 .setPrimaryTextColour(color2)

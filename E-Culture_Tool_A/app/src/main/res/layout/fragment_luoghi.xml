@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Fragment.LuoghiFragment">
+    tools:context="com.example.e_culture_tool_a.Fragment.LuoghiFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,6 +27,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="32dp"
             android:background="@drawable/curvebuttonbgdefault" />
 
     </RelativeLayout>

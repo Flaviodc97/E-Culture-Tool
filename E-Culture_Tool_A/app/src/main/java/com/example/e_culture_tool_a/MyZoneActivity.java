@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-import Models.Zone;
+import com.example.e_culture_tool_a.Models.Zone;
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground;
 import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
@@ -133,7 +133,7 @@ public class MyZoneActivity extends AppCompatActivity {
         int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
 
         new MaterialTapTargetPrompt.Builder(MyZoneActivity.this)
-                .setTarget(R.id.Linear_my_zone)
+                .setTarget(R.id.firestore_zone_list)
                 .setPrimaryText(R.string.Titolo_My_Zone)
                 .setSecondaryText(R.string.Descrizione_Add_Zone)
                 .setPrimaryTextColour(color2)

@@ -1,4 +1,4 @@
-package Fragment;
+package com.example.e_culture_tool_a.Fragment;
 
 import android.os.Bundle;
 
@@ -23,32 +23,28 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-import Adapter.LuogoAdapter;
-import Adapter.ZonaAdapter;
-import Models.Luogo;
-import Models.Zone;
+import com.example.e_culture_tool_a.Adapter.LuogoAdapter;
+import com.example.e_culture_tool_a.Models.Luogo;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ZoneFragment#newInstance} factory method to
+ * Use the {@link LuoghiFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ZoneFragment extends Fragment {
+public class LuoghiFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    SearchView search;
-
+    private SearchView search;
     FirebaseFirestore fStore;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public ZoneFragment() {
+    public LuoghiFragment() {
         // Required empty public constructor
     }
 
@@ -58,11 +54,11 @@ public class ZoneFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ZoneFragment.
+     * @return A new instance of fragment LuoghiFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ZoneFragment newInstance(String param1, String param2) {
-        ZoneFragment fragment = new ZoneFragment();
+    public static LuoghiFragment newInstance(String param1, String param2) {
+        LuoghiFragment fragment = new LuoghiFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -78,17 +74,24 @@ public class ZoneFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
     RecyclerView recyclerView;
-    List<Zone> ZoneList=new ArrayList<Zone>();
+    List<Luogo> itemList=new ArrayList<Luogo>();
+
+    String TAG="prova";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         fStore = FirebaseFirestore.getInstance();
-        View view=inflater.inflate(R.layout.fragment_zone, container, false);
-        ZonaAdapter adapter=new ZonaAdapter(ZoneList,getContext());
-        search=view.findViewById(R.id.SearchZone);
+        View view=inflater.inflate(R.layout.fragment_luoghi, container, false);
+        LuogoAdapter adapter=new LuogoAdapter(itemList,getContext());
+
+        search=view.findViewById(R.id.Search);
         search.clearFocus();
+
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -103,36 +106,38 @@ public class ZoneFragment extends Fragment {
         });
 
 
-        recyclerView=view.findViewById(R.id.firestore_list_zone);
+        recyclerView=view.findViewById(R.id.firestore_list_luoghi);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        Task<QuerySnapshot> query=fStore.collectionGroup("Zone").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for (DocumentSnapshot doc:task.getResult()){
-                        Zone zone=doc.toObject(Zone.class);
-                        ZoneList.add(zone);
+
+            Task<QuerySnapshot> query=fStore.collectionGroup("Luoghi").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if(task.isSuccessful()){
+                        for (DocumentSnapshot doc:task.getResult()){
+                            Luogo luog=doc.toObject(Luogo.class);
+                            itemList.add(luog);
+                        }
                     }
+                    recyclerView.setAdapter(adapter);
                 }
-                recyclerView.setAdapter(adapter);
-            }
-        });
+            });
+
 
         return view;
     }
-    public void FilterList(String Text,ZonaAdapter adapter){
-        List<Zone> filteredList=new ArrayList<Zone>();
-        for (Zone zone: ZoneList){
-            if(zone.getNome().toLowerCase().contains(Text.toLowerCase())){
-                filteredList.add(zone);
+    public void FilterList(String Text,LuogoAdapter adapter){
+        List<Luogo> filteredList=new ArrayList<Luogo>();
+        for (Luogo luogo: itemList){
+            if(luogo.getNome().toLowerCase().contains(Text.toLowerCase())){
+                filteredList.add(luogo);
             }
         }
         if (filteredList.isEmpty()){
             Toast.makeText(getContext(), "Nessun Dato trovato", Toast.LENGTH_SHORT).show();
         }else{
-            adapter.setFilteredList(filteredList);
+            adapter.setFilteredList(filteredList );
         }
     }
 }
