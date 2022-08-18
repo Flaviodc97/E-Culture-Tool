@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.e_culture_tool_a.Models.DomandeMultiple;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +24,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import Models.DomandeMultiple;
+
 
 public class MyDomandeMultipleActivity extends AppCompatActivity {
 

@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.e_culture_tool_a.Models.DomandeMultiple;
+import com.example.e_culture_tool_a.Models.DomandeTempo;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,11 +22,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.gson.Gson;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-import Models.DomandeMultiple;
-import Models.DomandeTempo;
+
+
 
 public class MyTempoDomandeActivity extends AppCompatActivity {
 

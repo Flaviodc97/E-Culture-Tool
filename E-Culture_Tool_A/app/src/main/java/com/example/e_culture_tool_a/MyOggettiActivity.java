@@ -261,7 +261,7 @@ public class MyOggettiActivity extends AppCompatActivity {
         new MaterialTapTargetPrompt.Builder(MyOggettiActivity.this)
                 .setTarget(R.id.firestore_oggetti_list)
                 .setPrimaryText(R.string.Titolo_My_Oggetti)
-                .setSecondaryText(R.string.Descrizione_Add_Oggetti)
+                .setSecondaryText(R.string.Descrizione_My_Oggetti)
                 .setPrimaryTextColour(color2)
                 .setSecondaryTextColour(color2)
                 .setPromptBackground(new RectanglePromptBackground())

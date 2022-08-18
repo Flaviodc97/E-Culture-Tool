@@ -158,7 +158,7 @@ public class MyZoneActivity extends AppCompatActivity {
         new MaterialTapTargetPrompt.Builder(MyZoneActivity.this)
                 .setTarget(R.id.firestore_zone_list)
                 .setPrimaryText(R.string.Titolo_My_Zone)
-                .setSecondaryText(R.string.Descrizione_Add_Zone)
+                .setSecondaryText(R.string.Descrizione_My_Zone)
                 .setPrimaryTextColour(color2)
                 .setSecondaryTextColour(color2)
                 .setPromptBackground(new RectanglePromptBackground())

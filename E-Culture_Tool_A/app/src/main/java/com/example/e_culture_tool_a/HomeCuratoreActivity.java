@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -245,6 +246,7 @@ public class HomeCuratoreActivity extends AppCompatActivity {
                     {
                         if (state == MaterialTapTargetPrompt.STATE_FINISHED)
                         {
+                            
                             showToutorialVisite();
                         }
                     }

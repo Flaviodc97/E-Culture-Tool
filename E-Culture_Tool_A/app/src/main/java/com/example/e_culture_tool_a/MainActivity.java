@@ -48,12 +48,30 @@ public class MainActivity extends AppCompatActivity {
         mregisterText = findViewById(R.id.VaiRegistrazione);
         mprogressBar = findViewById(R.id.progressBarLogin);
 
-
+        fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
-        if(fAuth.getCurrentUser()!= null){
 
-            startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
-            finish();
+        if(fAuth.getCurrentUser()!= null){
+            user_id = fAuth.getCurrentUser().getUid();
+            DocumentReference docReference = fStore.collection("utenti").document(user_id);
+            docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                    String ruolo = value.getString("Curatore");
+                    boolean b1 = Boolean.parseBoolean(ruolo);
+                    if(b1){
+                        startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
+                        finish();
+                    }else {
+
+                        startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
+                        finish();
+                    }
+
+
+                }
+            });
         }
 
 

@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.e_culture_tool_a.Models.DomandeMultiple;
+import com.example.e_culture_tool_a.Models.DomandeTempo;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,8 +31,6 @@ import com.google.firebase.firestore.Query;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import Models.DomandeMultiple;
-import Models.DomandeTempo;
 
 public class NewTempoDomandaActivity extends AppCompatActivity {
     private final String TAG = "New_Tempo";
