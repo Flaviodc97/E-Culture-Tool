@@ -21,6 +21,8 @@ public class ViewHolder extends RecyclerView.ViewHolder{
     public TextView oggetto_desc_txt;
     public ImageView oggetto_img;
 
+    public TextView sbagliatatxt;
+
 
 
     public ViewHolder(@NonNull View itemView) {
@@ -34,5 +36,7 @@ public class ViewHolder extends RecyclerView.ViewHolder{
         oggettotxt=itemView.findViewById(R.id.list_oggetti);
         oggetto_desc_txt=itemView.findViewById(R.id.list_descrizione);
         oggetto_img=itemView.findViewById(R.id.list_oggetti_image);
+
+        sbagliatatxt=itemView.findViewById(R.id.sbagliata);
     }
 }

@@ -87,13 +87,16 @@ public class SelectZoneActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull Zone model) {
+                //holder.list_name.setText(model.getNome());
                 holder.list_name.setText(model.getNome());
-
+                holder.list_options.setVisibility(View.INVISIBLE);
                 holder.list_click.setOnClickListener(view -> {
 
                     if (holder.list_selezione.getVisibility() == View.INVISIBLE) {
 
                         holder.list_selezione.setVisibility(View.VISIBLE);
+
+
 
                         zonevisita.add(model.getNome());
 
@@ -104,10 +107,7 @@ public class SelectZoneActivity extends AppCompatActivity {
 
                         holder.list_selezione.setVisibility(View.INVISIBLE);
                         zonevisita.remove(model.getNome());
-                        Log.d(TAG, "zone:" + zonevisita);
                     }
-
-
                 });
             }
         };
@@ -133,18 +133,20 @@ public class SelectZoneActivity extends AppCompatActivity {
 
     }
     private class ProductsViewHolder extends RecyclerView.ViewHolder{
+
         private TextView list_name;
-
+        private ImageView list_options;
         private ImageView list_click;
-
         private ImageView list_selezione;
 
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
-            list_name=itemView.findViewById(R.id.list_nomeMultipla);
-            list_click=itemView.findViewById(R.id.image_multipla_click);
-            list_selezione = itemView.findViewById(R.id.list_check);
+            list_name=itemView.findViewById(R.id.list_my_zone);
+            list_options=itemView.findViewById(R.id.ZoneOptions);
+
+            list_click=itemView.findViewById(R.id.image_click);
+            list_selezione = itemView.findViewById(R.id.icon_check);
 
         }
     }

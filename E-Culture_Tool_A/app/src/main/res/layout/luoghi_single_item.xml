@@ -47,6 +47,16 @@
                     android:layout_marginTop="16dp"
                     app:srcCompat="@drawable/bottoneluogo" />
 
+                <ImageView
+                    android:id="@+id/LuoghiOptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/imageViewLuoghi"
+                    android:layout_alignEnd="@+id/imageViewLuoghi"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="8dp"
+                    app:srcCompat="@drawable/ic_baseline_more_vert_24" />
+
                 <TextView
                     android:id="@+id/list_luoghi"
                     android:layout_width="wrap_content"

@@ -90,18 +90,22 @@ public class UpdateEdgeActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(selected!= 0) {
                     selectedzonainizio = adapterView.getItemAtPosition(i).toString();
+
                     zone.remove(selectedzonainizio);
+
                     mzonaInizio.setVisibility(View.INVISIBLE);
+
                     testo.setText("Inserire la zona di Arrivo");
+
                     showAlertDialogZonaFinale(UpdateEdgeActivity.this);
+
                     mzonaFine.setVisibility(View.VISIBLE);
+
                     adapterfine.notifyDataSetChanged();
 
                 }
                 selected++;
-                Log.d(TAG, ""+selected);
-                Log.d(TAG, "zone "+zone);
-                Log.d(TAG, "zonelist"+zonelist);
+
 
 
             }

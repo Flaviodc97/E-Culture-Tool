@@ -7,7 +7,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -82,7 +84,39 @@ public class MyLuoghiActivity extends AppCompatActivity {
                 if(model.getPhoto()!= null) {
                     Picasso.get().load(model.getPhoto()).into(holder.list_image);
                 }
-                holder.list_click.setOnClickListener(view -> {
+                holder.list_option.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        PopupMenu popupMenu=new PopupMenu(MyLuoghiActivity.this,view);
+                        popupMenu.getMenuInflater().inflate(R.menu.luoghi_menu,popupMenu.getMenu());
+                        popupMenu.show();
+                        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem menuItem) {
+                                switch (menuItem.getItemId()){
+                                    case R.id.IdAggiornaLuogo:
+                                        String id= model.getId();
+                                        String nome= model.getNome();
+                                        String descrizione = model.getDescrizione();
+                                        String photo = model.getPhoto();
+                                        Intent i = new Intent(MyLuoghiActivity.this, UpdateLuogoActivity.class);
+                                        i.putExtra("id",id);
+                                        i.putExtra("nome",nome);
+                                        i.putExtra("descrizione",descrizione);
+                                        i.putExtra("photo",photo);
+                                        startActivity(i);
+
+                                    break;
+                                    case R.id.IdDeleteLuogo:
+                                        Toast.makeText(MyLuoghiActivity.this, "CANCELLA", Toast.LENGTH_SHORT).show();
+                                    break;
+                                }
+                                return true;
+                            }
+                        });
+                    }
+                });
+                /*holder.list_click.setOnClickListener(view -> {
                     String id= model.getId();
                     String nome= model.getNome();
                     String descrizione = model.getDescrizione();
@@ -93,7 +127,7 @@ public class MyLuoghiActivity extends AppCompatActivity {
                     i.putExtra("descrizione",descrizione);
                     i.putExtra("photo",photo);
                     startActivity(i);
-                });
+                });*/
 
             }
         };
@@ -116,14 +150,13 @@ public class MyLuoghiActivity extends AppCompatActivity {
     private class ProductsViewHolder extends RecyclerView.ViewHolder{
         private TextView list_name;
         private ImageView list_image;
-        private ImageView list_click;
+        private ImageView list_option;
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
             list_name=itemView.findViewById(R.id.list_luoghi);
             list_image=itemView.findViewById(R.id.Image_Luoghi);
-            list_click= itemView.findViewById(R.id.imageViewLuoghi);
-
+            list_option= itemView.findViewById(R.id.LuoghiOptions);
 
         }
     }

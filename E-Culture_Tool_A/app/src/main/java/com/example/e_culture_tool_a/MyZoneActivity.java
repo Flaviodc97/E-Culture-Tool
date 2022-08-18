@@ -9,10 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -72,19 +75,40 @@ public class MyZoneActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull Zone model) {
                 holder.list_name.setText(model.getNome());
 
-                holder.list_click.setOnClickListener(view -> {
-                    String id = model.getId();
-                    String nome = model.getNome();
-                    String descrizione = model.getDescrizione();
-                    String luogoID = model.getLuogoID();
-                    Intent i = new Intent(MyZoneActivity.this, UpdateZonaActivity.class);
-                    i.putExtra("id", id);
-                    i.putExtra("nome", nome);
-                    i.putExtra("descrizione", descrizione);
-                    i.putExtra("luogoID", luogoID);
-                    startActivity(i);
+                holder.list_options.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        PopupMenu popupMenu=new PopupMenu(MyZoneActivity.this,view);
+                        popupMenu.getMenuInflater().inflate(R.menu.zone_menu,popupMenu.getMenu());
+                        popupMenu.show();
+                        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem menuItem) {
+                                switch (menuItem.getItemId()){
+                                    case R.id.IdAggiornaZona:
+                                        String id = model.getId();
+                                        String nome = model.getNome();
+                                        String descrizione = model.getDescrizione();
+                                        String luogoID = model.getLuogoID();
+                                        Intent i = new Intent(MyZoneActivity.this, UpdateZonaActivity.class);
+                                        i.putExtra("id", id);
+                                        i.putExtra("nome", nome);
+                                        i.putExtra("descrizione", descrizione);
+                                        i.putExtra("luogoID", luogoID);
+                                        startActivity(i);
+                                        break;
+                                    case R.id.IdDeleteZona:
+                                        Toast.makeText(MyZoneActivity.this, "CANCELLA", Toast.LENGTH_SHORT).show();
+                                        break;
+                                }
+                                return true;
+                            }
+                        });
 
+
+                    }
                 });
+
             }
         };
 
@@ -96,15 +120,14 @@ public class MyZoneActivity extends AppCompatActivity {
     }
     private class ProductsViewHolder extends RecyclerView.ViewHolder{
         private TextView list_name;
+        ImageView list_options;
 
-        private ImageView list_click;
 
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
-            list_name=itemView.findViewById(R.id.list_nomeMultipla);
-            list_click=itemView.findViewById(R.id.imageViewDm);
-
+            list_name=itemView.findViewById(R.id.list_my_zone);
+            list_options=itemView.findViewById(R.id.ZoneOptions);
         }
     }
     public void addZone(View view) {

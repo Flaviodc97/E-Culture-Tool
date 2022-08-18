@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/IdAggiornaVisita"
+        android:title="Aggiorna" />
+    <item
+        android:id="@+id/IdDeleteVisita"
+        android:title="Cancella" />
+</menu>

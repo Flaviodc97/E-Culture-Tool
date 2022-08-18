@@ -1,4 +1,4 @@
-package Models;
+package com.example.e_culture_tool_a.Models;
 
 import java.util.ArrayList;
 import java.util.List;

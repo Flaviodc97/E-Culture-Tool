@@ -1,6 +1,9 @@
 package com.example.e_culture_tool_a;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +15,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.e_culture_tool_a.Models.DomandeMultiple;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-import Models.DomandeMultiple;
+
 
 public class UpdateDomandeMultipleActivity extends AppCompatActivity {
     EditText mdomanda;
@@ -27,6 +31,8 @@ public class UpdateDomandeMultipleActivity extends AppCompatActivity {
     String domandaID, domanda,rgiusta, oggettoID,zonaID, luogoID;
     ListView mlistSbagliata;
     ArrayList<String>rsbagliata = new ArrayList<>();
+
+
 
 
     @Override
@@ -77,11 +83,8 @@ public class UpdateDomandeMultipleActivity extends AppCompatActivity {
 
             uploadToFirestore();
         });
-
-
-
-
     }
+
 
     private void removeSbagliata(int i, ArrayAdapter<String> adapter) {
         rsbagliata.remove(i);

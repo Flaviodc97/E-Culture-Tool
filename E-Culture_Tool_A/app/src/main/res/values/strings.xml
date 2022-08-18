@@ -121,5 +121,7 @@
     <string name="scelta_app_condivisione_percorso">Scegli con quale app condividere il percorso</string>
     <string name="app_per_condividere_non_trovata">Non è stata trovata un app per la condivisione.</string>
     <string name="Luogo_di_partenza">Scegli luogo di partenza</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

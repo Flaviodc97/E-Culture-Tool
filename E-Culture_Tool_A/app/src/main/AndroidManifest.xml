@@ -76,9 +76,6 @@
             android:name=".NewLuogoActivity"
             android:exported="false" />
         <activity
-            android:name=".NewVisiteActivity"
-            android:exported="false" />
-        <activity
             android:name=".MyVisiteActivity"
             android:exported="false" />
         <activity

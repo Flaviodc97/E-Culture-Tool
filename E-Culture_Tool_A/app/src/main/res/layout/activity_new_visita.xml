@@ -93,7 +93,7 @@
             android:layout_marginTop="64dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/curvebuttonbgdefault"
-            android:text="Button"
+            android:text="Continua"
             android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/topViewCreaVisita"
             app:layout_constraintStart_toStartOf="parent"

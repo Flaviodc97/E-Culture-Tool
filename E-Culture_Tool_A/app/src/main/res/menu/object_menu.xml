@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Id_multiple"
+        android:title="Domande Multiple" />
+    <item
+        android:id="@+id/Id_Tempo"
+        android:title="Domande a tempo" />
+    <item
+        android:id="@+id/Id_Modifica"
+        android:title="Modifica" />
+</menu>

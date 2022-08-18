@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -47,22 +50,39 @@ public class MyVisiteActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull Visita model) {
                 holder.list_name.setText(model.getNome());
-                holder.list_click.setOnClickListener(view -> {
+                holder.list_options.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        PopupMenu popupMenu=new PopupMenu(MyVisiteActivity.this,view);
+                        popupMenu.getMenuInflater().inflate(R.menu.visite_menu,popupMenu.getMenu());
+                        popupMenu.show();
+                        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem menuItem) {
+                                switch (menuItem.getItemId()){
+                                    case R.id.IdAggiornaVisita:
+                                        String id = model.getId();
+                                        String nome = model.getNome();
+                                        String author = model.getAuthor();
+                                        String luogoID =model.getLuogoID();
 
-                    String id = model.getId();
-                    String nome = model.getNome();
-                    String author = model.getAuthor();
-                    String luogoID =model.getLuogoID();
+                                        Intent i = new Intent(MyVisiteActivity.this, UpdateVisitaActivity.class);
+                                        i.putExtra("id", id);
+                                        i.putExtra("nome", nome);
+                                        i.putExtra("author", author);
+                                        i.putExtra("luogoID", luogoID);
+                                        startActivity(i);
+                                    break;
+                                    case R.id.IdDeleteVisita:
+                                        Toast.makeText(MyVisiteActivity.this, "Cancella", Toast.LENGTH_SHORT).show();
+                                    break;
+                                }
 
-                    Intent i = new Intent(MyVisiteActivity.this, UpdateVisitaActivity.class);
-                    i.putExtra("id", id);
-                    i.putExtra("nome", nome);
-                    i.putExtra("author", author);
-                    i.putExtra("luogoID", luogoID);
-                    startActivity(i);
+                                return true;
+                            }
+                        });
 
-
-
+                    }
                 });
             }
 
@@ -103,14 +123,13 @@ public class MyVisiteActivity extends AppCompatActivity {
 
     private class ProductsViewHolder extends RecyclerView.ViewHolder {
         private TextView list_name;
-
-        private ImageView list_click;
+        private ImageView list_options;
 
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
-            list_name = itemView.findViewById(R.id.list_myvisite);
-            list_click = itemView.findViewById(R.id.image_click);
+            list_name = itemView.findViewById(R.id.list_my_visite);
+            list_options=itemView.findViewById(R.id.VisiteOptions);
 
         }
     }
@@ -130,7 +149,6 @@ public class MyVisiteActivity extends AppCompatActivity {
 
 
     public void addPercorso(View view) {
-
         startActivity(new Intent(getApplicationContext(), NewVisitaActivity.class));
     }
 }

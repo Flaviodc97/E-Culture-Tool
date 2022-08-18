@@ -1,8 +1,10 @@
 package com.example.e_culture_tool_a;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +12,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -53,6 +57,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
     String visitaID;
     Button mavanti;
     String nomeLuogo;
+    TextView testo2;
 
     Graph<String, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
     @Override
@@ -83,6 +88,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
         mzonaFine = findViewById(R.id.zonaFineSpinner);
         mbuttonretry = findViewById(R.id.buttonretry);
         mavanti = findViewById(R.id.buttonAvanti);
+        testo2=findViewById(R.id.NameEdge);
 
         loadZone();
         loadGraph();
@@ -95,6 +101,8 @@ public class SelectEdgeActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterfine = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, zone);
         adapterfine.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mzonaFine.setAdapter(adapterfine);
+        showAlertDialogZonaIniziale(SelectEdgeActivity.this);
+        testo2.setText("Inserire la zona di Partenza");
 
 
         mzonaInizio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -104,8 +112,15 @@ public class SelectEdgeActivity extends AppCompatActivity {
                     selectedzonainizio = adapterView.getItemAtPosition(i).toString();
 
                     zone.remove(selectedzonainizio);
+
                     mzonaInizio.setVisibility(View.INVISIBLE);
+
+                    testo2.setText("Inserire la zona di Arrivo");
+
+                    showAlertDialogZonaFinale(SelectEdgeActivity.this);
+
                     mzonaFine.setVisibility(View.VISIBLE);
+
                     adapterfine.notifyDataSetChanged();
 
                 }
@@ -183,6 +198,28 @@ public class SelectEdgeActivity extends AppCompatActivity {
         });
 
 
+    }
+    public void showAlertDialogZonaIniziale(SelectEdgeActivity view){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setMessage("Adesso Inserisci la zona di Partenza")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+        builder.create().show();
+    }
+    public void showAlertDialogZonaFinale(SelectEdgeActivity view){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setMessage("Adesso Inserisci la zona di Arrivo")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+        builder.create().show();
     }
 
     private void createEdge() {
