@@ -28,6 +28,7 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String user_id;
+    Boolean flag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +38,19 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
         myvisiteButton = (ImageButton) findViewById(R.id.VisiteVisitatori);
         visiteCuratoriButton = (ImageView)findViewById(R.id.Visiteimg);
         visiteCuratoriButton.setOnClickListener(view -> {
+            Intent intent = new Intent(HomeVisitatoreActivity.this, MyVisiteActivity.class);
+            intent.putExtra("flag", flag);
+            startActivity(intent);
 
-            startActivity( new Intent(getApplicationContext(), MyVisiteActivity.class));
 
         });
         myvisiteButton.setOnClickListener(view -> {
             startActivity( new Intent(getApplicationContext(), MyVisiteActivity.class));
         });
         qrButton.setOnClickListener( view -> {
-
-            Toast.makeText(HomeVisitatoreActivity.this, "QRActivity Work in progress",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(HomeVisitatoreActivity.this, QRScannerActivity.class);
+            intent.putExtra("flag", flag);
+            startActivity(intent);
         });
     }
 
