@@ -67,6 +67,7 @@ public class UpdateDomandeMultipleActivity extends AppCompatActivity {
                 removeSbagliata(i, adapter);
             }
         });
+        
 
 
         mAddSbagliata.setOnClickListener(view -> {

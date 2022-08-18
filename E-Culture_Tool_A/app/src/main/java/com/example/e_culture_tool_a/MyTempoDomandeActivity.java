@@ -18,7 +18,12 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.gson.Gson;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import Models.DomandeMultiple;
 import Models.DomandeTempo;
 
 public class MyTempoDomandeActivity extends AppCompatActivity {
@@ -67,19 +72,18 @@ public class MyTempoDomandeActivity extends AppCompatActivity {
                     holder.list_nome.setText(model.getNome());
                     holder.list_click.setOnClickListener(view -> {
                         String id= model.getId();
-                        String nome= model.getNome();
-                        Intent i = new Intent(MyTempoDomandeActivity.this, UpdateDomandeMultipleActivity.class);
-                        Bundle args = new Bundle();
-                        i.putExtra("id",id);
-                        i.putExtra("nome",nome);
-                        //i.putExtra("rgiusta",rgiusta);
-                        i.putExtra("oggettoID", oggettoID);
-                        i.putExtra("zonaID", zonaid);
-                        i.putExtra("luogoID", luogoid);
-                        //args.putSerializable("ARRAYLIST",(Serializable)rs);
-                        i.putExtra("BUNDLE",args);
-
-
+                        String author = model.getAuthor();
+                        String luogoID = model.getLuogoID();
+                        String zonaID = model.getZonaID();
+                        String oggettoID = model.getOggettoID();
+                        String nome = model.getNome();
+                        Integer tempo = model.getTempo();
+                        ArrayList<DomandeMultiple> dm = new ArrayList<>();
+                        dm = model.getDm();
+                        Gson gson = new Gson();
+                        String myJson = gson.toJson(model);
+                        Intent i = new Intent(MyTempoDomandeActivity.this, UpdateTempoDomandeActivity.class);
+                        i.putExtra("myjson", myJson);
                         startActivity(i);
                     });
 
