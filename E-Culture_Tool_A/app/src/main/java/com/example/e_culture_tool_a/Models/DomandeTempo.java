@@ -2,6 +2,7 @@ package Models;
 
 import android.widget.ArrayAdapter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DomandeTempo {

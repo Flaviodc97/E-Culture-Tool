@@ -32,6 +32,7 @@ public class MyVisiteActivity extends AppCompatActivity {
     String user_id;
     private RecyclerView mFirestoreList;
     private FirestoreRecyclerAdapter adapter;
+    Query query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,14 @@ public class MyVisiteActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
         mFirestoreList = findViewById(R.id.list_visite);
-        Query query = fStore.collection("utenti").document(user_id).collection("Visita");
+        Boolean flag = false;
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null) flag = extras.getBoolean("flag");
+        if(flag){
+            query = fStore.collectionGroup("Visita");
+        }else{
+            query = fStore.collection("utenti").document(user_id).collection("Visita");
+        }
         FirestoreRecyclerOptions<Visita> options = new FirestoreRecyclerOptions.Builder<Visita>().setQuery(query, Visita.class).build();
 
         adapter = new FirestoreRecyclerAdapter<Visita, ProductsViewHolder>(options) {

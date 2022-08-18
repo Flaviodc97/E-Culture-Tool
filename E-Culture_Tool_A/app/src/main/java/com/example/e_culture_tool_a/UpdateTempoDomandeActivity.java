@@ -25,21 +25,27 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 import Models.DomandeMultiple;
 import Models.DomandeTempo;
 
-public class NewTempoDomandaActivity extends AppCompatActivity {
-    private final String TAG = "New_Tempo";
+public class UpdateTempoDomandeActivity extends AppCompatActivity {
+
+    private final String TAG = "UPDATE_TEMPO";
+
+    String tempoDomandeID;
+    String author;
+    String luogoID;
     String oggettoID;
-    String luogoid;
-    String zonaid;
-    EditText mnome, msecondi;
-    Button mSubmitButton;
+    String zonaID;
+    Integer tempo;
     ArrayList<DomandeMultiple> dm = new ArrayList<>();
+    EditText mnome, msecondi;
+    Button mSubmitButton, mremoveDomande;
+    DomandeTempo dt;
 
     private FirebaseFirestore fStore;
     private FirebaseAuth fAuth;
@@ -50,24 +56,32 @@ public class NewTempoDomandaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_tempo_domanda);
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            oggettoID = extras.getString("oggettoID");
-            luogoid = extras.getString("luogoID");
-            zonaid = extras.getString("zonaID");
-        }
+        setContentView(R.layout.activity_update_tempo_domande);
+
+        Gson gson = new Gson();
+        dt = gson.fromJson(getIntent().getStringExtra("myjson"), DomandeTempo.class);
 
         mnome = findViewById(R.id.NomeDomandaTempo);
         msecondi = findViewById(R.id.UpdateSecondiDomandaTempo);
         mSubmitButton = findViewById(R.id.UpdateSubmitDomandaTempo);
+        mremoveDomande = findViewById(R.id.removeDomande);
+
 
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
+
         mFirestoreList=findViewById(R.id.UpdaterecyclerDomandeMUltiple);
 
-        Query query=fStore.collectionGroup("DomandeMultiple").whereEqualTo("oggettoID", oggettoID);
+        String a = String.valueOf(dt.getTempo());
+        dm = dt.getDm();
+
+        Log.d(TAG," sm "+dm);
+
+        mnome.setText(dt.getNome());
+        msecondi.setText(a);
+
+        Query query=fStore.collectionGroup("DomandeMultiple").whereEqualTo("oggettoID", dt.getOggettoID());
         FirestoreRecyclerOptions<DomandeMultiple> options=new FirestoreRecyclerOptions.Builder<DomandeMultiple>().setQuery(query, DomandeMultiple.class).build();
 
         adapter= new FirestoreRecyclerAdapter<DomandeMultiple, ProductsViewHolder>(options) {
@@ -81,25 +95,44 @@ public class NewTempoDomandaActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull DomandeMultiple model) {
 
-              holder.list_nome.setText(model.getNome());
-              holder.list_click.setOnClickListener(view -> {
+                holder.list_nome.setText(model.getNome());
+                for(int i = 0 ; i<dm.size(); i++)
+                {
 
-                   if (holder.list_check.getVisibility() == View.INVISIBLE) {
-
-                       holder.list_check.setVisibility(View.VISIBLE);
-
-                       dm.add(model);
-                       Log.d(TAG, "zone:" + dm);
+                    if( dm.get(i).getId().equals(model.getId())){
+                        Log.d(TAG," dm dentro onbiend "+dm.get(i).getId());
+                        Log.d(TAG," model dentro onbiend "+model.getId());
+                        holder.list_check.setVisibility(View.VISIBLE);
 
 
-                   } else {
+                    }
 
-                       holder.list_check.setVisibility(View.INVISIBLE);
-                       dm.remove(model);
-                       Log.d(TAG, "zone:" + dm);
-                   }
+                }
 
-               });
+
+
+                holder.list_click.setOnClickListener(view -> {
+
+                    if(holder.list_check.getVisibility() == View.INVISIBLE) {
+
+                        holder.list_check.setVisibility(View.VISIBLE);
+
+                        dm.add(model);
+                        Log.d(TAG, "zone:" + dm);
+
+
+                    } else {
+
+                        holder.list_check.setVisibility(View.INVISIBLE);
+                        for( int i = 0; i<dm.size(); i++) {
+                            if (dm.get(i).getId().equals(model.getId())) {
+                                dm.remove(i);
+                            }
+                        }
+                        Log.d(TAG, "zone:" + dm);
+                    }
+
+                });
             }
         };
 
@@ -107,39 +140,50 @@ public class NewTempoDomandaActivity extends AppCompatActivity {
         mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(adapter);
 
-    mSubmitButton.setOnClickListener(view -> {
+        mSubmitButton.setOnClickListener(view -> {
 
-        savetoFirestore();
-    });
-
-
-
+            savetoFirestore();
+        });
+        mremoveDomande.setOnClickListener(view -> {
+            removetoFirestore();
+        });
     }
 
-    private void savetoFirestore() {
+    private void removetoFirestore() {
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
-        String tempoID = usingRandomUUID();
-        String nometempo = mnome.getText().toString().trim();
-        String tempo = msecondi.getText().toString();
-        int secondi =Integer.parseInt(tempo);
 
-        DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(luogoid).collection("Zone").document(zonaid).collection("Oggetti").document(oggettoID).collection("DomandeTempo").document(tempoID);
-        DomandeTempo dt = new DomandeTempo(tempoID,user_id,luogoid,zonaid,oggettoID,nometempo,secondi,dm);
-        doc.set(dt).addOnCompleteListener(new OnCompleteListener<Void>() {
+        DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(dt.getLuogoID()).collection("Zone").document(dt.getZonaID()).collection("Oggetti").document(dt.getOggettoID()).collection("DomandeTempo").document(dt.getId());
+        doc.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(NewTempoDomandaActivity.this, "Domande a tempo inserito correttamente",Toast.LENGTH_SHORT);
-                startActivity(new Intent(NewTempoDomandaActivity.this, MyOggettiActivity.class));
+                Toast.makeText(UpdateTempoDomandeActivity.this, "Domanda a tempo eliminato con successo", Toast.LENGTH_SHORT);
+                startActivity(new Intent(UpdateTempoDomandeActivity.this, MyOggettiActivity.class));
             }
         });
     }
 
-    private String usingRandomUUID() {
-        UUID randomUUID = UUID.randomUUID();
+    private void savetoFirestore() {
 
-        return randomUUID.toString().replaceAll("_", "");
+        fStore = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
+        user_id = fAuth.getCurrentUser().getUid();
+        String tempoID = tempoDomandeID;
+        String nometempo = mnome.getText().toString().trim();
+        String tempo = msecondi.getText().toString();
+        int secondi =Integer.parseInt(tempo);
+
+        DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(dt.getLuogoID()).collection("Zone").document(dt.getZonaID()).collection("Oggetti").document(dt.getOggettoID()).collection("DomandeTempo").document(dt.getId());
+        DomandeTempo ndt = new DomandeTempo(dt.getId(),user_id, dt.getLuogoID(), dt.getZonaID(),dt.getOggettoID(),nometempo,secondi,dm);
+        doc.set(ndt).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(UpdateTempoDomandeActivity.this, "Domande a tempo modificata correttamente",Toast.LENGTH_SHORT);
+                startActivity(new Intent(UpdateTempoDomandeActivity.this, MyOggettiActivity.class));
+            }
+        });
+
     }
 
     private class ProductsViewHolder extends RecyclerView.ViewHolder{
@@ -170,6 +214,5 @@ public class NewTempoDomandaActivity extends AppCompatActivity {
         super.onStart();
         adapter.startListening();
     }
-
 
 }
