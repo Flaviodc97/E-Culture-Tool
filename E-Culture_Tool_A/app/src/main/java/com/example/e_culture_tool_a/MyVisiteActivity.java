@@ -16,7 +16,11 @@ import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -33,6 +37,7 @@ public class MyVisiteActivity extends AppCompatActivity {
     private RecyclerView mFirestoreList;
     private FirestoreRecyclerAdapter adapter;
     Query query;
+    Boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,7 @@ public class MyVisiteActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
         mFirestoreList = findViewById(R.id.list_visite);
-        Boolean flag = false;
+        flag = false;
         Bundle extras = getIntent().getExtras();
         if(extras!=null) flag = extras.getBoolean("flag");
         if(flag){
@@ -58,40 +63,46 @@ public class MyVisiteActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull Visita model) {
                 holder.list_name.setText(model.getNome());
-                holder.list_options.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        PopupMenu popupMenu=new PopupMenu(MyVisiteActivity.this,view);
-                        popupMenu.getMenuInflater().inflate(R.menu.visite_menu,popupMenu.getMenu());
-                        popupMenu.show();
-                        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                            @Override
-                            public boolean onMenuItemClick(MenuItem menuItem) {
-                                switch (menuItem.getItemId()){
-                                    case R.id.IdAggiornaVisita:
-                                        String id = model.getId();
-                                        String nome = model.getNome();
-                                        String author = model.getAuthor();
-                                        String luogoID =model.getLuogoID();
+                if(!flag){
+                    holder.list_options.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            PopupMenu popupMenu=new PopupMenu(MyVisiteActivity.this,view);
+                            popupMenu.getMenuInflater().inflate(R.menu.visite_menu,popupMenu.getMenu());
+                            popupMenu.show();
+                            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                                @Override
+                                public boolean onMenuItemClick(MenuItem menuItem) {
+                                    switch (menuItem.getItemId()){
+                                        case R.id.IdAggiornaVisita:
+                                            String id = model.getId();
+                                            String nome = model.getNome();
+                                            String author = model.getAuthor();
+                                            String luogoID =model.getLuogoID();
 
-                                        Intent i = new Intent(MyVisiteActivity.this, UpdateVisitaActivity.class);
-                                        i.putExtra("id", id);
-                                        i.putExtra("nome", nome);
-                                        i.putExtra("author", author);
-                                        i.putExtra("luogoID", luogoID);
-                                        startActivity(i);
-                                    break;
-                                    case R.id.IdDeleteVisita:
-                                        Toast.makeText(MyVisiteActivity.this, "Cancella", Toast.LENGTH_SHORT).show();
-                                    break;
+                                            Intent i = new Intent(MyVisiteActivity.this, UpdateVisitaActivity.class);
+                                            i.putExtra("id", id);
+                                            i.putExtra("nome", nome);
+                                            i.putExtra("author", author);
+                                            i.putExtra("luogoID", luogoID);
+                                            startActivity(i);
+                                            break;
+                                        case R.id.IdDeleteVisita:
+                                            eliminaVisita(model);
+                                            break;
+                                    }
+
+                                    return true;
                                 }
+                            });
 
-                                return true;
-                            }
-                        });
+                        }
+                    });
 
-                    }
-                });
+                }else{
+                    holder.list_options.setVisibility(View.INVISIBLE);
+                }
+
             }
 
             @NonNull
@@ -126,6 +137,21 @@ public class MyVisiteActivity extends AppCompatActivity {
         mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(adapter);
 
+
+    }
+
+    private void eliminaVisita(Visita model) {
+        fStore = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
+        user_id = fAuth.getCurrentUser().getUid();
+        DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Visita").document(model.getId());
+        doc.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(MyVisiteActivity.this, "Visita eliminata con successo", Toast.LENGTH_LONG);
+
+            }
+        });
 
     }
 

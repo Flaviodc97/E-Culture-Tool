@@ -62,6 +62,7 @@ public class UpdateEdgeActivity extends AppCompatActivity {
         visitaID = extras.getString("visitaID");
 
         zonelist = (ArrayList<String>) args.getSerializable("ARRAYLIST");
+        zonelist.add(0,"Seleziona una Zona");
 
 
         fStore = FirebaseFirestore.getInstance();

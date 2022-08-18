@@ -69,14 +69,13 @@ public class UpdateLuogoActivity extends AppCompatActivity {
 
         String inome = " ";
         String idescrizione = " ";
-        String iphoto = " ";
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
              id = extras.getString("id");
              inome = extras.getString("nome");
              idescrizione = extras.getString("descrizione");
-             iphoto = extras.getString("photo");
+             picStorageUrl = extras.getString("photo");
             //The key argument here must match that used in the other activity
         }
 
@@ -88,7 +87,7 @@ public class UpdateLuogoActivity extends AppCompatActivity {
         mupdateButton = findViewById(R.id.updateButtonLuogo);
         mnome.setText(inome);
         mdescrizione.setText(idescrizione);
-        Picasso.get().load(iphoto).into(selectedImage);
+        Picasso.get().load(picStorageUrl).into(selectedImage);
         melimina = findViewById(R.id.deleteLuogo);
         cameraBtn.setOnClickListener(view -> {
             askCamera();
