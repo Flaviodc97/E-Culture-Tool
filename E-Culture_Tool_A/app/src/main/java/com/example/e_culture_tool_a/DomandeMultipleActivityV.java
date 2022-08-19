@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,12 +22,15 @@ public class DomandeMultipleActivityV extends AppCompatActivity {
     private static final String RIGHT = "Risposta Giusta!";
     private static final String WRONG = "Risposta Sbagliata!";
     private TextView domanda, result;
-    private Button r1, r2, r3, r4, homev;
+    private Button r1, r2, r3, r4, fineQuiz;
     DomandeMultiple dm;
     Map<String, String> map = new LinkedHashMap<>();
     ArrayList<String> rb = new ArrayList<>();
     String rg;
     private final static Integer sizesb = 3;
+    Boolean puntim;
+    Boolean flagm = true;
+    String idOggetto, nomeOggetto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +40,31 @@ public class DomandeMultipleActivityV extends AppCompatActivity {
         Gson gson = new Gson();
         dm = gson.fromJson(getIntent().getStringExtra("myjson"), DomandeMultiple.class);
 
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null){
+            idOggetto = extras.getString("id");
+            nomeOggetto = extras.getString("nome");
+        }
+
         domanda = findViewById(R.id.domanda);
         r1 = findViewById(R.id.r1);
         r2 = findViewById(R.id.r2);
         r3 = findViewById(R.id.r3);
         r4 = findViewById(R.id.r4);
         result = findViewById(R.id.result);
-        homev = findViewById(R.id.homeV);
+        fineQuiz = findViewById(R.id.fineQuiz);
         domanda.setText(dm.getNome());
 
         loadRisposte();
 
-        homev.setOnClickListener(view -> {
-            Intent intent = new Intent(DomandeMultipleActivityV.this, HomeVisitatoreActivity.class);
+        fineQuiz.setOnClickListener(view -> {
+            Intent intent = new Intent(DomandeMultipleActivityV.this, FineDomandeActivity.class);
+            intent.putExtra("puntim", puntim);
+            intent.putExtra("flagm", flagm);
+            intent.putExtra("id", idOggetto);
+            intent.putExtra("nome", nomeOggetto);
             startActivity(intent);
+            finish();
         });
 
     }
@@ -77,7 +90,10 @@ public class DomandeMultipleActivityV extends AppCompatActivity {
 
     public void verificaR(View view) {
         String answer = ((Button) view).getText().toString().trim();
-        if(answer.equals(rg)) result.setText(RIGHT);
+        if(answer.equals(rg)){
+            result.setText(RIGHT);
+            puntim = true;
+        }
         else result.setText(WRONG);
         r1.setEnabled(false);
         r2.setEnabled(false);

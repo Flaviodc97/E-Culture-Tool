@@ -29,7 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 public class Profilo extends AppCompatActivity {
 
     TextView memail, mnome, mcognome;
-    Button mbuttonmodifica;
+    Button mbuttonmodifica, medaglie;
     String curatore;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -44,6 +44,7 @@ public class Profilo extends AppCompatActivity {
         mnome = findViewById(R.id.editNome);
         mcognome = findViewById(R.id.editCognome);
         mbuttonmodifica = findViewById(R.id.buttonModifica);
+        medaglie = findViewById(R.id.medaglie);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -64,6 +65,11 @@ public class Profilo extends AppCompatActivity {
 
         mbuttonmodifica.setOnClickListener(view -> {
             Intent intent = new Intent(Profilo.this, UpdateProfile.class);
+            startActivity(intent);
+        });
+
+        medaglie.setOnClickListener(view -> {
+            Intent intent = new Intent(Profilo.this, VisualizzaMedaglieActivity.class);
             startActivity(intent);
         });
     }

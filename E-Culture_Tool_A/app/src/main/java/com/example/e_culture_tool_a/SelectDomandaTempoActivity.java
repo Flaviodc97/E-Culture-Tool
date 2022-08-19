@@ -60,6 +60,8 @@ public class SelectDomandaTempoActivity extends AppCompatActivity {
                     String myJson = gson.toJson(model);
                     Intent intent = new Intent(SelectDomandaTempoActivity.this, DomandeTempoActivityV.class);
                     intent.putExtra("myjson", myJson);
+                    intent.putExtra("id", idOggetto);
+                    intent.putExtra("nome", nomeOggetto);
                     startActivity(intent);
                 });
             }

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="2dp">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -46,17 +44,7 @@
                     android:layout_alignTop="@+id/imagemedagliatempo"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    app:srcCompat="@drawable/bottoneoggetto" />
-
-                <ImageView
-                    android:id="@+id/options"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/imagemedagliatempo"
-                    android:layout_alignEnd="@+id/imagemedagliatempo"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="8dp"
-                    app:srcCompat="@drawable/ic_baseline_more_vert_24" />
+                    app:srcCompat="@drawable/ic_medaglia3" />
 
                 <TextView
                     android:id="@+id/nome_medaglia_tempo"
@@ -71,22 +59,8 @@
                     android:textSize="23dp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/list_descrizione"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/nome_medaglia_tempo"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_toEndOf="@+id/list_medaglie_tempo_image"
-                    android:text="Piccola Descrizione Oggetto 1"
-                    android:textColor="#6003082b"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -67,6 +67,8 @@ public class SelectDomandaMultiplaActivity extends AppCompatActivity {
                     String myJson = gson.toJson(model);
                     Intent intent = new Intent(SelectDomandaMultiplaActivity.this, DomandeMultipleActivityV.class);
                     intent.putExtra("myjson", myJson);
+                    intent.putExtra("id", idOggetto);
+                    intent.putExtra("nome", nomeOggetto);
                     startActivity(intent);
                 });
 

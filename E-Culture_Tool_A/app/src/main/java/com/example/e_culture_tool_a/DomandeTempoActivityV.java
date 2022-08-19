@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,6 +33,9 @@ public class DomandeTempoActivityV extends AppCompatActivity {
     long millisUntilFinished;
     Integer prova;
     Integer dim;
+    Integer puntit = 0;
+    Boolean flagt = true;
+    String idOggetto, nomeOggetto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,12 @@ public class DomandeTempoActivityV extends AppCompatActivity {
         Gson gson = new Gson();
         dt = gson.fromJson(getIntent().getStringExtra("myjson"), DomandeTempo.class);
 
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null){
+            idOggetto = extras.getString("id");
+            nomeOggetto = extras.getString("nome");
+        }
+
         domanda = findViewById(R.id.domanda);
         domandaM = findViewById(R.id.domandaM);
         r1 = findViewById(R.id.r1);
@@ -50,20 +58,27 @@ public class DomandeTempoActivityV extends AppCompatActivity {
         r3 = findViewById(R.id.r3);
         r4 = findViewById(R.id.r4);
         result = findViewById(R.id.result);
-        homev = findViewById(R.id.homeV);
+        homev = findViewById(R.id.fineQuiz);
         domanda.setText(dt.getNome());
         time = findViewById(R.id.time);
         next = findViewById(R.id.next);
 
         next.setOnClickListener(view -> {
             if(prova>=dim){
-                Intent intent = new Intent(DomandeTempoActivityV.this, HomeVisitatoreActivity.class);
+                Intent intent = new Intent(DomandeTempoActivityV.this, FineDomandeActivity.class);
+                intent.putExtra("flagt", flagt);
+                intent.putExtra("puntit", puntit);
+                intent.putExtra("dimensione", rm.size());
+                intent.putExtra("id", idOggetto);
+                intent.putExtra("nome", nomeOggetto);
                 startActivity(intent);
+                finish();
             }else{
                 r1.setEnabled(true);
                 r2.setEnabled(true);
                 r3.setEnabled(true);
                 r4.setEnabled(true);
+                result.setText("");
                 loadRisposte();
             }
 
@@ -122,13 +137,15 @@ public class DomandeTempoActivityV extends AppCompatActivity {
 
     public void verificaR(View view) {
         String answer = ((Button) view).getText().toString().trim();
-        if(answer.equals(rg)) result.setText(RIGHT);
+        if(answer.equals(rg)){
+            result.setText(RIGHT);
+            puntit++;
+        }
         else result.setText(WRONG);
         r1.setEnabled(false);
         r2.setEnabled(false);
         r3.setEnabled(false);
         r4.setEnabled(false);
-
     }
 
 }
