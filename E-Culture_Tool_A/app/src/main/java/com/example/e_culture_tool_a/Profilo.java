@@ -46,6 +46,8 @@ public class Profilo extends AppCompatActivity {
         mbuttonmodifica = findViewById(R.id.buttonModifica);
         medaglie = findViewById(R.id.medaglie);
 
+        isCuratore();
+
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
@@ -71,6 +73,27 @@ public class Profilo extends AppCompatActivity {
         medaglie.setOnClickListener(view -> {
             Intent intent = new Intent(Profilo.this, VisualizzaMedaglieActivity.class);
             startActivity(intent);
+        });
+    }
+
+    private void isCuratore() {
+        fAuth = FirebaseAuth.getInstance();
+        user_id = fAuth.getCurrentUser().getUid();
+        fStore = FirebaseFirestore.getInstance();
+        DocumentReference docReference = fStore.collection("utenti").document(user_id);
+        docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                String ruolo = value.getString("Curatore");
+                boolean b1 = Boolean.parseBoolean(ruolo);
+                if(b1){
+                    medaglie.setVisibility(View.INVISIBLE);
+
+                }
+
+
+            }
         });
     }
 
