@@ -22,6 +22,12 @@
             android:name=".ShowVisitaActivity"
             android:exported="false" />
         <activity
+            android:name=".VisualizzaMedaglieActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FineDomandeActivity"
+            android:exported="false" />
+        <activity
             android:name=".Profilo"
             android:exported="false" />
         <activity
