@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,6 +41,7 @@ public class MyTempoDomandeActivity extends AppCompatActivity {
     String photoOggetto;
     String zonaid;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,8 @@ public class MyTempoDomandeActivity extends AppCompatActivity {
             fStore = FirebaseFirestore.getInstance();
             fAuth = FirebaseAuth.getInstance();
             user_id = fAuth.getCurrentUser().getUid();
+
+
 
             mFirestoreList=findViewById(R.id.rectempo);
             Query query=fStore.collectionGroup("DomandeTempo").whereEqualTo("oggettoID", oggettoID);

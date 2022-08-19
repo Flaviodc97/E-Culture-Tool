@@ -19,10 +19,7 @@
         android:theme="@style/Theme.ECulture_Tool_A"
         tools:targetApi="31">
         <activity
-            android:name=".VisualizzaMedaglieActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FineDomandeActivity"
+            android:name=".ShowVisitaActivity"
             android:exported="false" />
         <activity
             android:name=".Profilo"

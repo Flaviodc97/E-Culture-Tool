@@ -28,6 +28,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_culture_tool_a.Models.Visita;
+import com.google.gson.Gson;
+
+import org.jgrapht.Graph;
+import org.jgrapht.graph.DefaultEdge;
+
+import java.util.ArrayList;
 
 public class MyVisiteActivity extends AppCompatActivity {
 
@@ -102,6 +108,17 @@ public class MyVisiteActivity extends AppCompatActivity {
                 }else{
                     holder.list_options.setVisibility(View.INVISIBLE);
                 }
+                holder.list_onclick.setOnClickListener(view -> {
+                    Intent intent = new Intent(MyVisiteActivity.this, ShowVisitaActivity.class);
+                    Gson gson = new Gson();
+                    String myJson = gson.toJson(model);
+                    intent.putExtra("myjson", myJson);
+                    startActivity(intent);
+
+
+
+
+                });
 
             }
 
@@ -158,12 +175,14 @@ public class MyVisiteActivity extends AppCompatActivity {
     private class ProductsViewHolder extends RecyclerView.ViewHolder {
         private TextView list_name;
         private ImageView list_options;
+        private ImageView list_onclick;
 
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
             list_name = itemView.findViewById(R.id.list_my_visite);
             list_options=itemView.findViewById(R.id.VisiteOptions);
+            list_onclick = itemView.findViewById(R.id.image_click);
 
         }
     }

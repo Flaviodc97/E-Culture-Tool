@@ -5,14 +5,33 @@ public class Visita {
     private String nome;
     private String author;
     private String luogoID;
+    private String file;
+    private String message;
     public Visita(){}
 
-
-    public Visita(String id, String nome, String author, String luogoID) {
+    public Visita(String id, String nome, String author, String luogoID, String file, String message) {
         this.id = id;
         this.nome = nome;
         this.author = author;
         this.luogoID = luogoID;
+        this.file = file;
+        this.message = message;
+    }
+
+    public String getFile() {
+        return file;
+    }
+
+    public void setFile(String file) {
+        this.file = file;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getId() {

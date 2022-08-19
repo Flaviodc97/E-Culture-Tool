@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -56,7 +57,8 @@ public class RecapVisitaActivity extends AppCompatActivity {
     String user_id;
     String luogo_id;
     String nomeLuogo;
-    String filename ="Visita.txt";
+    String filename ="Visita_";
+    String ext=".txt";
     Graph<String, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
 
     List<String> zonelist = new ArrayList<>();
@@ -136,19 +138,23 @@ public class RecapVisitaActivity extends AppCompatActivity {
         mFirestoreList.setHasFixedSize(true);
         mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(adapter);
+        loadMessage();
+        UpdateToFirestore();
 
 
     msave.setOnClickListener(view -> {
 
-        loadMessage();
+
         salvaFile();
 
+
     });
-        mshare.setOnClickListener(view -> {
+    mshare.setOnClickListener(view -> {
 
 
-            loadMessage();
+
             shareMessage();
+
 
           /*  File path = getApplicationContext().getFilesDir();
             File readFrom = new File(path,filename);
@@ -168,6 +174,20 @@ public class RecapVisitaActivity extends AppCompatActivity {
 */
 
         });
+
+    }
+
+    private void UpdateToFirestore() {
+
+        fStore = FirebaseFirestore.getInstance();
+
+        fAuth = FirebaseAuth.getInstance();
+
+        user_id= fAuth.getCurrentUser().getUid();
+
+        DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Visita").document(visitaID);
+        doc.update("file", filename+nomeVisita+ext);
+        doc.update("message", message);
 
     }
 
@@ -204,7 +224,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
         if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)){
             // Salva in: /storage/emulated/0/Downloads.
             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                    filename); // tolgo .json dal nome
+                    filename+nomeVisita+ext); // tolgo .json dal nome
 
             try {
                 FileOutputStream f = new FileOutputStream(file);
