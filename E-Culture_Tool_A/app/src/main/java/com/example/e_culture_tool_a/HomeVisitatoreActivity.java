@@ -33,6 +33,9 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
         qrButton = (ImageView)findViewById(R.id.QrImg);
         myvisiteButton = (ImageButton) findViewById(R.id.VisiteVisitatori);
         visiteCuratoriButton = (ImageView)findViewById(R.id.Visiteimg);
+
+
+        // Se l'utente clicca su Visite curatori viene Reinderizzato in MyvisiteActivity dove visualizzera le visite dei Curatori
         visiteCuratoriButton.setOnClickListener(view -> {
             Intent intent = new Intent(HomeVisitatoreActivity.this, MyVisiteActivity.class);
             intent.putExtra("flag", flag);
@@ -40,9 +43,12 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
 
 
         });
+        // Se l'utente clicca sulle mie Visite viene reinderizzato in MyvisiteActivity dove visualizza le sue visite
         myvisiteButton.setOnClickListener(view -> {
             startActivity( new Intent(getApplicationContext(), MyVisiteActivity.class));
         });
+
+        // Se l'utente clicca sul QRButton viene reinderizzato in QRScannerActivity
         qrButton.setOnClickListener( view -> {
             Intent intent = new Intent(HomeVisitatoreActivity.this, QRScannerActivity.class);
             intent.putExtra("flag", flag);

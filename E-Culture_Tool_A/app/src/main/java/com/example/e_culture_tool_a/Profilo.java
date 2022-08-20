@@ -46,6 +46,8 @@ public class Profilo extends AppCompatActivity {
         mbuttonmodifica = findViewById(R.id.buttonModifica);
         medaglie = findViewById(R.id.medaglie);
 
+
+        // se l'utente e'un curatore viene nascosto il button degli achievement
         isCuratore();
 
         fAuth = FirebaseAuth.getInstance();
@@ -53,6 +55,7 @@ public class Profilo extends AppCompatActivity {
 
         user_id = fAuth.getCurrentUser().getUid();
 
+        // Caricamento degli attributi dell'utente nelle TexView
         DocumentReference doc = fStore.collection("utenti").document(user_id);
         doc.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -65,17 +68,23 @@ public class Profilo extends AppCompatActivity {
             }
         });
 
+
+        // Se l'utente clicca su modifica profilo
         mbuttonmodifica.setOnClickListener(view -> {
             Intent intent = new Intent(Profilo.this, UpdateProfile.class);
             startActivity(intent);
         });
 
+
+        // Se l'utente clicca su achievement
         medaglie.setOnClickListener(view -> {
             Intent intent = new Intent(Profilo.this, VisualizzaMedaglieActivity.class);
             startActivity(intent);
         });
     }
 
+
+    // Nasconde il button achievement se l'utente e'un curatore
     private void isCuratore() {
         fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
@@ -107,6 +116,7 @@ public class Profilo extends AppCompatActivity {
 
     }
 
+    // Rimuove il profilo da Firebase Firestore e Firebase Authentication
     public void deleteProfile(MenuItem item) {
         FirebaseUser userIstance = fAuth.getCurrentUser();
         AlertDialog.Builder dialog = new AlertDialog.Builder(Profilo.this);
@@ -177,6 +187,8 @@ public class Profilo extends AppCompatActivity {
         });
 
     }
+
+    // Permette all'utente di eseguire il logout
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
         startActivity( new Intent(getApplicationContext(), MainActivity.class));

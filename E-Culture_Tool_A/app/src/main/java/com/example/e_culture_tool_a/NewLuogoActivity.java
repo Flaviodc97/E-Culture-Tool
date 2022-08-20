@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -82,27 +83,43 @@ public class NewLuogoActivity extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         Tutorial=findViewById(R.id.Question_new_luogo);
 
-
+        // Se si clicca sul Button tutorial parte un tutorial per inserire un nuovo luogo
         Tutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showToutorial();
             }
         });
+
+        //Se si clicca su Camera parte l'intent con apertura della Camera
         cameraBtn.setOnClickListener(view -> {
             askCamera();
-            Toast.makeText(NewLuogoActivity.this, "camera click", Toast.LENGTH_SHORT).show();
+
         });
+
+        //Se su clicca su Galleria parte l'intent con apertura della galleria
         galleryBtn.setOnClickListener(view -> {
-            Toast.makeText(NewLuogoActivity.this,"galleria click", Toast.LENGTH_SHORT).show();
             Intent gallery = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(gallery, GALLERY_REQUEST_CODE);
 
         });
+        // Se l'utente clicca su Invia viene Creato il luogo
         submitButton.setOnClickListener( view -> {
             user_id = fAth.getCurrentUser().getUid();
             String nome = mnome.getText().toString().trim();
             String descrizione = mdescrizione.getText().toString();
+
+            //Verifica che il campo nome non sia vuoto
+            if(TextUtils.isEmpty(nome)){
+                mnome.setError("inserire un nome");
+                return;
+            }
+
+            //Verifica che il campo descrizione non sia vuoto
+            if(TextUtils.isEmpty(descrizione)){
+                mdescrizione.setError("inserire una descrizione");
+                return;
+            }
             String id = usingRandomUUID();
             DocumentReference docReference = fStore.collection("utenti").document(user_id).collection("Luoghi").document(id);
             Map<String, Object> luogo = new HashMap<>();
@@ -126,17 +143,24 @@ public class NewLuogoActivity extends AppCompatActivity {
         });
     }
 
+
+    // Generazione di una Stringa Casuale
     private String usingRandomUUID() {
         UUID randomUUID = UUID.randomUUID();
 
         return randomUUID.toString().replaceAll("_", "");
     }
 
+
+    //Verifica dei permessi per la Camera
     private void askCamera() {
-        //Verifica che sia stata dato il permesso per la Camera
+
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
+
+            // Se non si ha i permessi per la Camera vengono chiesti
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERM_CODE);
         }else{
+            //Se si ha i permessi per la Camera
             dispatchTakePictureIntent();
 
         }
@@ -161,7 +185,7 @@ public class NewLuogoActivity extends AppCompatActivity {
         }
 
     }
-    //intent per aprire la camera
+
 
 
     @Override
@@ -171,14 +195,15 @@ public class NewLuogoActivity extends AppCompatActivity {
             if(resultCode == Activity.RESULT_OK)
             {
                 File f = new File(currentPhotoPath);
-                //selectedImage.setImageURI(Uri.fromFile(f));
+
                 Log.d("Uri", "url file is " + Uri.fromFile(f));
 
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-
+                //Viene preso Uri dal File risultato dello scatto
                 Uri contentUri = Uri.fromFile(f);
                 mediaScanIntent.setData(contentUri);
                 this.sendBroadcast(mediaScanIntent);
+                //Viene caricata la foto sullo Storage Firebase
                 uploadtoFirebase(f.getName(), contentUri);
             }
 
@@ -186,11 +211,14 @@ public class NewLuogoActivity extends AppCompatActivity {
         if(requestCode == GALLERY_REQUEST_CODE){
             if(resultCode == Activity.RESULT_OK)
             {
+                //Viene preso l'Uri dalla foto selezionata nella galleria
                 Uri contentUri = data.getData();
+                // Nome del File appena inserito
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                 String imageFileName = "JPEG_" + timeStamp + "." + getFileExt(contentUri);
                 Log.d("Uri", "image Uri:" + imageFileName);
-                //selectedImage.setImageURI(contentUri);
+
+                // Viene caricata la foto sullo Storage Firebase
                 uploadtoFirebase(imageFileName, contentUri);
 
 
@@ -199,6 +227,8 @@ public class NewLuogoActivity extends AppCompatActivity {
         }
     }
 
+
+    // Viene Caricato su Firebase l'immagine del luogo
     private void uploadtoFirebase(String name, Uri contentUri) {
 
         StorageReference image = storageReference.child("luogo/"+ name);
@@ -209,8 +239,10 @@ public class NewLuogoActivity extends AppCompatActivity {
                 image.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                             Log.d("Upload", "onSuccess: " + uri.toString());
+                        // Viene caricata l'immagine nella ImageView
                         Picasso.get().load(uri).into(selectedImage);
+
+                        // Viene preso il link alla foto sullo storage
                         picStorageUrl = uri.toString();
                     }
 
@@ -232,6 +264,7 @@ public class NewLuogoActivity extends AppCompatActivity {
 
     }
 
+    // Ritorna l'estensione dell'immagine
     private String getFileExt(Uri contentUri) {
         ContentResolver c = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
@@ -240,8 +273,9 @@ public class NewLuogoActivity extends AppCompatActivity {
     }
 
 
+    // Viene Creato il file con il nome unico
     private File createImageFile() throws IOException {
-        // Create an image file name
+        // nome del file con nome con la data e ora attuale
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
@@ -251,15 +285,17 @@ public class NewLuogoActivity extends AppCompatActivity {
                 storageDir      /* directory */
         );
 
-        // Save a file: path for use with ACTION_VIEW intents
+        // Salvato il path della foto
         currentPhotoPath = image.getAbsolutePath();
         return image;
     }
+
+    // Viene Avviata l'intent per scattare una foto
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Ensure that there's a camera activity to handle the intent
+        // Verifica se c'e'una camera attiva nel dispositivo
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
+            // File dove andra'la foto scattata
             File photoFile = null;
             try {
                 photoFile = createImageFile();
@@ -267,7 +303,7 @@ public class NewLuogoActivity extends AppCompatActivity {
                 // Error occurred while creating the File
 
             }
-            // Continue only if the File was successfully created
+            // Continua solo se il file e'stato creato con successo
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
                         "com.example.android.fileprovider",
@@ -375,11 +411,11 @@ public class NewLuogoActivity extends AppCompatActivity {
                     }
                 })
                 .show();
-        //
+
     }
 
     public void showToutorial_Descrizione_New_Luogo(){
-        //
+
         int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
         int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
 

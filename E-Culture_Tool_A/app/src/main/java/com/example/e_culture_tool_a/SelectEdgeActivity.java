@@ -68,7 +68,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
 
 
 
-
+        // Variabili ottenuti da Intent
         Intent intent = getIntent();
         Bundle extras = getIntent().getExtras();
         Bundle args = intent.getBundleExtra("BUNDLE");
@@ -90,10 +90,14 @@ public class SelectEdgeActivity extends AppCompatActivity {
         mavanti = findViewById(R.id.buttonAvanti);
         testo2=findViewById(R.id.NameEdge);
 
+        // viene caricato lo spinner di Zone
         loadZone();
+        // viene caricato il Grafo
         loadGraph();
+        // viene Creata la visita su Firestore
         crateVisita();
 
+        // permette di non far selezionare automaticamente il primo valore negli spinner
         selected = 0;
         ArrayAdapter<String> adapterinizio = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, zone);
         adapterinizio.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -168,7 +172,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
 
 
 
-
+        // Button per inserire nuove Zone per la Creazioni degli edge
         mbuttonretry.setOnClickListener(view -> {
             graph.addEdge(selectedzonainizio, selectedzonafine);
             Log.d(TAG, "GRFO"+graph.toString());
@@ -177,6 +181,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
             onselect(adapterinizio,adapterfine);
         });
 
+        // andiamo avanti nel recapVisiteActivity
         mavanti.setOnClickListener(view -> {
             graph.addEdge(selectedzonainizio, selectedzonafine);
             Log.d(TAG, "GRFO"+graph.toString());
@@ -199,6 +204,8 @@ public class SelectEdgeActivity extends AppCompatActivity {
 
 
     }
+
+
     public void showAlertDialogZonaIniziale(SelectEdgeActivity view){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setMessage("Adesso Inserisci la zona di Partenza")
@@ -222,6 +229,8 @@ public class SelectEdgeActivity extends AppCompatActivity {
         builder.create().show();
     }
 
+
+    // Creazione Edge su Firestore
     private void createEdge() {
         fStore = FirebaseFirestore.getInstance();
         fAth = FirebaseAuth.getInstance();
@@ -242,6 +251,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
 
 
 
+    // Creazione visita su Firestore
     private void crateVisita() {
         fStore = FirebaseFirestore.getInstance();
         fAth = FirebaseAuth.getInstance();
@@ -261,12 +271,15 @@ public class SelectEdgeActivity extends AppCompatActivity {
             }
         });
     }
+
+    //Generazione di una Stringa Casuale
     private String usingRandomUUID() {
         UUID randomUUID = UUID.randomUUID();
         return randomUUID.toString().replaceAll("_", "");
     }
 
 
+    // Caricamento dei Vertici(Zone) nel grafo
     private void loadGraph() {
         int i;
         for(i = 1;i < zonelist.size() ; i++)
@@ -276,7 +289,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
         Log.d(TAG,"graph:"+graph.toString());
     }
 
-
+    // Caricamento della Zonalist
     private void loadZone() {
         int i;
         for(i = 0;i < zonelist.size() ; i++)
@@ -287,6 +300,8 @@ public class SelectEdgeActivity extends AppCompatActivity {
         }
     }
 
+
+    // quando viene utilizzato button retry si inizializzano gli spinner e la zonalist
     private void onselect(ArrayAdapter<String> adapterinizio, ArrayAdapter<String> adapterfine) {
 
         zone.clear();

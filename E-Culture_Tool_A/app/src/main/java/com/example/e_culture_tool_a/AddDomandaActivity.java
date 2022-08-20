@@ -2,6 +2,7 @@ package com.example.e_culture_tool_a;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ public class AddDomandaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_domanda);
 
+        // Vengono presi i dati  provenienti dall'intent se essi esistono
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             oggettoID = extras.getString("oggettoID");
@@ -60,10 +62,14 @@ public class AddDomandaActivity extends AppCompatActivity {
         mNewSbagliata = findViewById(R.id.nuovaRispostaSbagliata);
         mSave = findViewById(R.id.saveButton);
 
+
+        // Se l'utente clicca su nuova Risposta Sbagliata viene inserita l'attuale risposta Sbagliata nell'Arraylist e l'EditText impostato come vuoto
         mNewSbagliata.setOnClickListener(view -> {
             sbagliateList.add(mSbagliata.getText().toString().trim());
             mSbagliata.setText(" ");
         });
+
+        // Se l'utente clicca su Salva vengono salvati i campi inseriti in Stringhe e viene salvato tutto su Firebase Firestore
         mSave.setOnClickListener(view -> {
             save();
             saveToFirestore();
@@ -76,11 +82,15 @@ public class AddDomandaActivity extends AppCompatActivity {
 
     }
 
+    // Viene salvata la Domanda Multipla su Firebase Firestore
     private void saveToFirestore() {
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         String user_id = fAuth.getCurrentUser().getUid();
+
+        //Viene assegnata una Stringa Casuale come ID della Domanda Multipla
         domandaID = usingRandomUUID();
+
         DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(luogoid).collection("Zone").document(zonaid).collection("Oggetti").document(oggettoID).collection("DomandeMultiple").document(domandaID);
         DomandeMultiple dm = new DomandeMultiple(domandaID, domanda,rgiusta,sbagliateList,user_id,luogoid,zonaid,oggettoID);
         doc.set(dm).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -94,12 +104,32 @@ public class AddDomandaActivity extends AppCompatActivity {
 
     }
 
+
+    // Viene salvato in Stringhe il contenuto delle EditText
     private void save() {
         domanda = mDomanda.getText().toString().trim();
+
+
         rgiusta = mGiusta.getText().toString().trim();
+        if(TextUtils.isEmpty(domanda)){
+            mDomanda.setError("Inserire una Domanda");
+            return;
+        }
+
+        if(TextUtils.isEmpty(rgiusta)){
+            mGiusta.setError("Inserire una risposta Giusta");
+            return;
+        }
         sbagliateList.add(mSbagliata.getText().toString().trim());
+        if(sbagliateList.size()<3){
+            mDomanda.setError("Inserire almeno 3 risposte errate");
+            mGiusta.setError("Inserire almeno 3 risposte errate");
+            return;
+        }
 
     }
+
+    //Viene Creata una Stringa casuale
     private String usingRandomUUID() {
         UUID randomUUID = UUID.randomUUID();
 

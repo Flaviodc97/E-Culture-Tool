@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -66,6 +67,8 @@ public class NewZoneActivity extends AppCompatActivity {
         msubmit = findViewById(R.id.inviaOggetto);
         Tutorial=findViewById(R.id.Question_new_zona);
 
+
+        // Se l'utente clicca sul button Tutorial
         Tutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +76,7 @@ public class NewZoneActivity extends AppCompatActivity {
             }
         });
 
+        // Settiamo l'adapter per lo spinner dei luoghi
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, luoghi);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mluogo.setAdapter(adapter);
@@ -81,20 +85,26 @@ public class NewZoneActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot document : task.getResult())  {
-
+                        // aggiungiamo i luoghi nel'arrayList
                         luoghi.add(document.getString("nome"));
                     }
                 }else {
                     Log.d(TAG, "Error getting documents: ", task.getException());
                 }
+                //notifichiamo all'adapter che l'arraylist e' stato modificato
                 adapter.notifyDataSetChanged();
             }
         });
+
+        // Al click dell'item nello Spinner
         mluogo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
+                //otteniamo il luogo selezionato
                 selectedLuogo = parent.getItemAtPosition(position).toString(); //this is your selected item
                 Toast.makeText(NewZoneActivity.this," "+selectedLuogo , Toast.LENGTH_SHORT).show();
+
+                //cerchiamo l'id del luogo selezionato
                 fStore.collection("utenti").document(user_id)
                         .collection("Luoghi").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -121,12 +131,22 @@ public class NewZoneActivity extends AppCompatActivity {
 
 
 
+        // se l'utente clicca su Invia
         msubmit.setOnClickListener(view -> {
             String nome = mnome.getText().toString().trim();
             String descrizione = mdescrizione.getText().toString().trim();
+            if(TextUtils.isEmpty(nome)){
+                mnome.setError("inserire il nome");
+                return;
+            }
+            if(TextUtils.isEmpty(descrizione)){
+                mnome.setError("inserire la descrizione");
+                return;
+            }
 
             Log.d(TAG, "documents: " +luogo_id);
-            //Se controllo nome e cognome fare questo
+
+            // upload della zona su Firebase Firestore
             uploadtoFirestore(nome, descrizione);
 
 
@@ -142,6 +162,8 @@ public class NewZoneActivity extends AppCompatActivity {
 
     }
 
+
+    //Upload della zona su Firebase FIRESTORE
     private void uploadtoFirestore(String nome, String descrizione) {
         fStore = FirebaseFirestore.getInstance();
         fAth = FirebaseAuth.getInstance();
@@ -164,6 +186,8 @@ public class NewZoneActivity extends AppCompatActivity {
         });
         startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
     }
+
+    //Generazione di una Stringa casuale
     private String usingRandomUUID() {
         UUID randomUUID = UUID.randomUUID();
 

@@ -54,8 +54,6 @@ public class ShowVisitaActivity extends AppCompatActivity {
     private TextView mnomeVisita;
     Button mshare, msave;
 
-    String filename;
-    String message;
 
     private RecyclerView mFirestoreList;
     private FirestoreRecyclerAdapter adapter;
@@ -78,13 +76,15 @@ public class ShowVisitaActivity extends AppCompatActivity {
         msave = findViewById(R.id.ShowsalvaButton);
 
 
-
+        // Salvataggio del FIle sul dispositivo
         msave.setOnClickListener(view -> {
 
 
             salvaFile();
 
         });
+
+        //Codivisione del file via Bluetooth Gmail ecc.
         mshare.setOnClickListener(view -> {
 
 

@@ -39,7 +39,7 @@
                     app:srcCompat="@drawable/curvebuttonbg" />
 
                 <ImageView
-                    android:id="@+id/list_medaglie_tempo_image"
+                    android:id="@+id/list_medaglie_multiple"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:layout_alignStart="@+id/imagemedagliatempo"
@@ -65,7 +65,7 @@
                     android:layout_alignTop="@+id/imagemedagliatempo"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:layout_toEndOf="@+id/list_medaglie_tempo_image"
+                    android:layout_toEndOf="@+id/list_medaglie_multiple"
                     android:text="Oggetto 1"
                     android:textColor="#d703082b"
                     android:textSize="23dp"
@@ -79,7 +79,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
-                    android:layout_toEndOf="@+id/list_medaglie_tempo_image"
+                    android:layout_toEndOf="@+id/list_medaglie_multiple"
                     android:text="Piccola Descrizione Oggetto 1"
                     android:textColor="#6003082b"
                     android:textSize="14dp"

@@ -99,6 +99,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
         mFirestoreList=(RecyclerView) findViewById(R.id.item_rec_list);
 
 
+        // Query per trovare tutti gli edge di una Visita specifica
         Query query=fStore.collectionGroup("Edge").whereEqualTo("visitaID", visitaID);
         FirestoreRecyclerOptions<Edge> options=new FirestoreRecyclerOptions.Builder<Edge>().setQuery(query,Edge.class).build();
 
@@ -138,13 +139,16 @@ public class RecapVisitaActivity extends AppCompatActivity {
         mFirestoreList.setHasFixedSize(true);
         mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(adapter);
+        // Carichiamo il messaggio da usare nel file
         loadMessage();
         UpdateToFirestore();
 
 
+
+        // Se l'utente clicca su salva visita
     msave.setOnClickListener(view -> {
 
-
+        // salvataggio del file sul telefono
         salvaFile();
 
 
@@ -152,31 +156,16 @@ public class RecapVisitaActivity extends AppCompatActivity {
     mshare.setOnClickListener(view -> {
 
 
-
+        // condivisione del file
             shareMessage();
 
-
-          /*  File path = getApplicationContext().getFilesDir();
-            File readFrom = new File(path,filename);
-            Intent intentshare = new Intent(Intent.ACTION_SEND);
-            intentshare.setType("txt");
-            intentshare.putExtra(Intent.EXTRA_STREAM, Uri.parse(readFrom.getPath()));
-            Intent chooser = Intent.createChooser(intentshare,getString(R.string.scelta_app_condivisione_percorso));
-
-            // Verifico che un'app sia disponibile
-            if (chooser.resolveActivity(getPackageManager()) == null) {
-                Toast.makeText(RecapVisitaActivity.this, R.string.app_per_condividere_non_trovata, Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Avvio l'app scelta
-            startActivity(chooser);
-*/
 
         });
 
     }
 
+
+    // Update della visita con i dati del file
     private void UpdateToFirestore() {
 
         fStore = FirebaseFirestore.getInstance();
@@ -191,6 +180,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
 
     }
 
+    // Permette la condivisione del file via Bluetooth, Gmail ecc.
     private void shareMessage() {
         salvaFile();
 
@@ -208,25 +198,28 @@ public class RecapVisitaActivity extends AppCompatActivity {
         //Attributi che l'intent deve avere per poter effettuare lo share e il richiamo di applicazioni che consentono di ricevere file
         Intent intentShare = new Intent(Intent.ACTION_SEND);
         intentShare.setType("text/*");
-        intentShare.putExtra(Intent.EXTRA_SUBJECT, "Subject Here"); //per condividere con email app
+        intentShare.putExtra(Intent.EXTRA_SUBJECT, "La mia visita a " + nomeLuogo); //per condividere con email app
         intentShare.putExtra(Intent.EXTRA_STREAM, contentUri);
         intentShare.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         RecapVisitaActivity.this.startActivity(Intent.createChooser(intentShare, "Condividi file"));
 
 
     }
-
+    // Permette di verificare se e'possibile scrivere nella memoria esterna del telefono
     public boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
         return Environment.MEDIA_MOUNTED.equals(state);
     }
+
+    //permette di salvare il file della visita sul telefono
     private void salvaFile() {
         if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)){
             // Salva in: /storage/emulated/0/Downloads.
             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                    filename+nomeVisita+ext); // tolgo .json dal nome
+                    filename+nomeVisita+ext);
 
             try {
+                //scrittura del file
                 FileOutputStream f = new FileOutputStream(file);
                 f.write(message.getBytes(StandardCharsets.UTF_8));
                 f.close();
@@ -235,10 +228,13 @@ public class RecapVisitaActivity extends AppCompatActivity {
             }
             Toast.makeText(this,"file salvato" ,Toast.LENGTH_LONG).show();
         } else {
+            //se non si hanno i permessi per la scrittura sullo storage del telefono
             requestPermissions();
         }
 
     }
+
+    // Permette di richiedere il permesso per la scrittura sullo storage del telefono
     private void requestPermissions() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
             //mostro spiegazione del permesso richeisto
@@ -257,6 +253,8 @@ public class RecapVisitaActivity extends AppCompatActivity {
         int check = ContextCompat.checkSelfPermission(this,permessi);
         return (check == PackageManager.PERMISSION_GRANTED);
     }
+
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -275,6 +273,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
         }
     }
 
+    // caricamento del messaggio da condividire o salvare sul telefono
     private void loadMessage() {
 
         //File path = getApplicationContext().getFilesDir();
@@ -288,15 +287,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
             }
         }
 
-        /*try {
-            FileOutputStream writer = new FileOutputStream(new File(path,filename));
-            writer.write(message.getBytes());
-            writer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-        */
 
         Log.d(TAG," "+ message);
     }
@@ -332,81 +323,6 @@ public class RecapVisitaActivity extends AppCompatActivity {
 
 
 
-
-        /* int i;
-        vs = (VerticalStepView) findViewById(R.id.verticalStep);
-
-        DefaultDirectedGraph<String, DefaultEdge> graph = new DefaultDirectedGraph<>(DefaultEdge.class);
-
-        Intent intent = getIntent();
-        Bundle args = intent.getBundleExtra("BUNDLE");
-        zonelist = (ArrayList<String>) args.getSerializable("ARRAYLIST");
-        Log.d(TAG,"zone:"+zonelist);
-
-        for(i = 0 ; i < zonelist.size() ; i ++){
-
-            graph.addVertex(zonelist.get(i));
-        }
-        for(i = 0 ; i < zonelist.size()-1 ; i ++){
-
-                graph.addEdge(zonelist.get(i), zonelist.get(i + 1));
-
-
-        }
-
-        String id = "idtest";
-        String nome = "nomepercorsotest";
-
-        JSONObject visita = new JSONObject();
-        try {
-            visita.put("id", id);
-            visita.put("name", nome);
-            for(i = 0 ; i < zonelist.size() ; i ++){
-                visita.put("zona"+i, zonelist.get(i));
-            }
-
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        String jsonStr = visita.toString();
-        String filename ="ciao.txt";
-
-        FileOutputStream fo = null;
-        try {
-            fo = openFileOutput(filename,MODE_PRIVATE);
-            fo.write(jsonStr.getBytes());
-        } catch (FileNotFoundException e) {
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            try {
-                fo.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-
-
-        vs.setStepsViewIndicatorComplectingPosition(zonelist.size()-1)
-                .reverseDraw(false)
-                .setStepViewTexts(zonelist)
-                .setLinePaddingProportion(0.85f)
-                .setStepsViewIndicatorCompletedLineColor(Color.parseColor("#FFFF00"))
-                .setStepViewComplectedTextColor(Color.parseColor("#FFFF00"))
-                .setStepViewComplectedTextColor(ContextCompat.getColor(this, com.baoyachi.stepview.R.color.uncompleted_text_color))
-                .setStepViewUnComplectedTextColor(ContextCompat.getColor(this, com.baoyachi.stepview.R.color.uncompleted_text_color))
-                .setStepsViewIndicatorUnCompletedLineColor(ContextCompat.getColor(this, com.baoyachi.stepview.R.color.uncompleted_text_color))
-                .setStepsViewIndicatorCompleteIcon(ContextCompat.getDrawable(this, com.baoyachi.stepview.R.drawable.default_icon))
-                .setStepsViewIndicatorAttentionIcon(ContextCompat.getDrawable(this, com.baoyachi.stepview.R.drawable.default_icon))
-                .setStepsViewIndicatorDefaultIcon(ContextCompat.getDrawable(this, com.baoyachi.stepview.R.drawable.default_icon));
-
-
-*/
 
 
 }

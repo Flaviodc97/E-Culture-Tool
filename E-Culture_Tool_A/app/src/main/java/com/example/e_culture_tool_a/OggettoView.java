@@ -35,6 +35,8 @@ public class OggettoView extends AppCompatActivity {
         DomM = findViewById(R.id.DomM);
         DomT = findViewById(R.id.DomT);
 
+
+        // Variabili provenienti dall'intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             idOggetto = extras.getString("id");
@@ -46,10 +48,14 @@ public class OggettoView extends AppCompatActivity {
             zonaid = extras.getString("zonaID");
         }
 
+
+        // Settaggio delle textView e ImageView con i valori dell'oggetto
         nomeO.setText(nomeOggetto);
         descrO.setText(descrizioneOggetto);
         Picasso.get().load(photoOggetto).into(fotoO);
 
+
+        // se l'utente clicca su DomandeMultiple
         DomM.setOnClickListener(view -> {
             Intent intent = new Intent(OggettoView.this, SelectDomandaMultiplaActivity.class);
             intent.putExtra("id", idOggetto);
@@ -57,6 +63,8 @@ public class OggettoView extends AppCompatActivity {
             startActivity(intent);
         });
 
+
+        //se l'utente clicca su Sfide a Tempo
         DomT.setOnClickListener(view -> {
             Intent intent = new Intent(OggettoView.this, SelectDomandaTempoActivity.class);
             intent.putExtra("id", idOggetto);

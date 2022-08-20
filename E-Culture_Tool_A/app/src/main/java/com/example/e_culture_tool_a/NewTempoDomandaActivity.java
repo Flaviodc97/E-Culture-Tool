@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +52,8 @@ public class NewTempoDomandaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_tempo_domanda);
+
+        // Passaggio della variabili provenienti dall'Intent se esistono
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             oggettoID = extras.getString("oggettoID");
@@ -67,6 +70,7 @@ public class NewTempoDomandaActivity extends AppCompatActivity {
         user_id = fAuth.getCurrentUser().getUid();
         mFirestoreList=findViewById(R.id.UpdaterecyclerDomandeMUltiple);
 
+        // Query per ottenere le domande multiple per un determinato oggetto
         Query query=fStore.collectionGroup("DomandeMultiple").whereEqualTo("oggettoID", oggettoID);
         FirestoreRecyclerOptions<DomandeMultiple> options=new FirestoreRecyclerOptions.Builder<DomandeMultiple>().setQuery(query, DomandeMultiple.class).build();
 
@@ -116,6 +120,8 @@ public class NewTempoDomandaActivity extends AppCompatActivity {
 
     }
 
+
+    // Salvataggio su Firestore della Domanda a Tempo
     private void savetoFirestore() {
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
@@ -124,6 +130,14 @@ public class NewTempoDomandaActivity extends AppCompatActivity {
         String nometempo = mnome.getText().toString().trim();
         String tempo = msecondi.getText().toString();
         int secondi =Integer.parseInt(tempo);
+        if(TextUtils.isEmpty(nometempo)){
+            mnome.setError("inserire un nome");
+            return;
+        }
+        if(TextUtils.isEmpty(tempo)){
+            msecondi.setError("inserire i secondi");
+            return;
+        }
 
         DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(luogoid).collection("Zone").document(zonaid).collection("Oggetti").document(oggettoID).collection("DomandeTempo").document(tempoID);
         DomandeTempo dt = new DomandeTempo(tempoID,user_id,luogoid,zonaid,oggettoID,nometempo,secondi,dm);
@@ -136,6 +150,7 @@ public class NewTempoDomandaActivity extends AppCompatActivity {
         });
     }
 
+    //Generazione di una Stringa Casuale
     private String usingRandomUUID() {
         UUID randomUUID = UUID.randomUUID();
 

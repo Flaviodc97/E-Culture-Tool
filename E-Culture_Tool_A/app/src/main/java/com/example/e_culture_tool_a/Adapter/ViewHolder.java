@@ -35,7 +35,7 @@ public class ViewHolder extends RecyclerView.ViewHolder{
 
         oggettotxt=itemView.findViewById(R.id.nome_medaglia_tempo);
         oggetto_desc_txt=itemView.findViewById(R.id.list_descrizione);
-        oggetto_img=itemView.findViewById(R.id.list_medaglie_tempo_image);
+        oggetto_img=itemView.findViewById(R.id.list_medaglie_multiple);
 
         sbagliatatxt=itemView.findViewById(R.id.sbagliata);
     }

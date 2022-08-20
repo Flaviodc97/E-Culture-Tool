@@ -85,6 +85,8 @@ public class UpdateEdgeActivity extends AppCompatActivity {
         adapterfine.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mzonaFine.setAdapter(adapterfine);
         showAlertDialogZonaIniziale(UpdateEdgeActivity.this);
+
+        // al click item dello spinner
         mzonaInizio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -116,6 +118,7 @@ public class UpdateEdgeActivity extends AppCompatActivity {
 
             }
         });
+        //al click su item dello spinner
         mzonaFine.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -143,7 +146,7 @@ public class UpdateEdgeActivity extends AppCompatActivity {
 
 
         mbuttonmodifica.setOnClickListener(view -> {
-
+            //Update dell'Edge su Firestore
             updateEdge();
             startActivity(new Intent(UpdateEdgeActivity.this, MyVisiteActivity.class));
             finish();

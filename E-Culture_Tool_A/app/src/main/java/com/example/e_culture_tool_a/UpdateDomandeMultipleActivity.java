@@ -87,11 +87,14 @@ public class UpdateDomandeMultipleActivity extends AppCompatActivity {
     }
 
 
+    // Rimozione di una Risposta Sbagliata
+
     private void removeSbagliata(int i, ArrayAdapter<String> adapter) {
         rsbagliata.remove(i);
         adapter.notifyDataSetChanged();
     }
 
+    // Caricamento su Firestore della Domanda Multipla Aggiornata
     private void uploadToFirestore() {
 
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
@@ -107,12 +110,14 @@ public class UpdateDomandeMultipleActivity extends AppCompatActivity {
 
     }
 
+    // Inserimento di una nuova risposta Sbagliata
     private void addNuovarispostaSbagliata(ArrayAdapter<String> adapter) {
         rsbagliata.add(mrSbagliata.getText().toString().trim());
         mrSbagliata.setText(" ");
         adapter.notifyDataSetChanged();
     }
 
+    // Rimozione Di una domanda
     public void removeDomanda(View view) {
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         FirebaseAuth fAuth = FirebaseAuth.getInstance();

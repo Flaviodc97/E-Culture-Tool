@@ -51,47 +51,31 @@ public class MainActivity extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
 
+        /* Se l'utente e' già loggato viene reinderizzato alla HomeCuratoreActivity o HomeVisitatoreActivity*/
         if(fAuth.getCurrentUser()!= null){
-            user_id = fAuth.getCurrentUser().getUid();
-            DocumentReference docReference = fStore.collection("utenti").document(user_id);
-            docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-
-                    String ruolo = value.getString("Curatore");
-                    boolean b1 = Boolean.parseBoolean(ruolo);
-                    if(b1){
-                        startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
-                        finish();
-                    }else {
-
-                        startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
-                        finish();
-                    }
-
-
-                }
-            });
+            redirect();
         }
 
-
+        /* Se l'utente clicca su crea un account viene renderizzato su RegisterActivity */
         mregisterText.setOnClickListener(view -> {
 
             startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
 
         });
-
+        /* Se l'utente clicca sul button Login vengono testati i valori inseriti nelle EditText e viene effettuato il Login*/
         mloginButton.setOnClickListener(view -> {
             String email = memail.getText().toString().trim();
             String password = mpassword.getText().toString().trim();
 
+
+            // Se il campo email e' vuoto viene inserito un errore nella EditText
             if(TextUtils.isEmpty(email)){
 
                 memail.setError("Inserisci l'email");
                 return;
 
             }
-
+            // Se il campo password e' vuoto viene inserito un errore nella EditText
             if(TextUtils.isEmpty(password)){
 
                 mpassword.setError("Inserisci la Password");
@@ -99,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
             }
             mprogressBar.setVisibility(View.VISIBLE);
 
+
+            // Login con funzione di Firebase Authentication
             fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -128,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /* Se l'utente e' loggato o effettua il login viene reinderizzato alla HomeCuratoreActivity o alla HomeVisitatoreActivity in base al tipo di Account con cui ci si e' loggati*/
     private void redirect() {
         fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();

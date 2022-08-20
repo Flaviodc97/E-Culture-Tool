@@ -82,6 +82,8 @@ public class UpdateTempoDomandeActivity extends AppCompatActivity {
         mnome.setText(dt.getNome());
         msecondi.setText(a);
 
+
+        // Query che restiruisce le DOmandeMultiple relative a un oggetto
         Query query=fStore.collectionGroup("DomandeMultiple").whereEqualTo("oggettoID", dt.getOggettoID());
         FirestoreRecyclerOptions<DomandeMultiple> options=new FirestoreRecyclerOptions.Builder<DomandeMultiple>().setQuery(query, DomandeMultiple.class).build();
 
@@ -150,6 +152,7 @@ public class UpdateTempoDomandeActivity extends AppCompatActivity {
         });
     }
 
+    //rimozione su firestore di una Domanda a tempo
     private void removetoFirestore() {
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
@@ -165,6 +168,7 @@ public class UpdateTempoDomandeActivity extends AppCompatActivity {
         });
     }
 
+    // Salvataggio su Firestore della Domanda a Tempo modificata
     private void savetoFirestore() {
 
         fStore = FirebaseFirestore.getInstance();

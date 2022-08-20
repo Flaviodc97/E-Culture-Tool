@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -97,6 +98,7 @@ public class NewOggettoActivity extends AppCompatActivity {
         selectedImage = findViewById(R.id.imageOggetto);
         Tutorial=findViewById(R.id.Question_new_oggetto);
 
+        //Mostra il tutorial se cliccato
         Tutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,6 +106,7 @@ public class NewOggettoActivity extends AppCompatActivity {
             }
         });
 
+        //Settiamo adapter per lo spinner zone
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, zone);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mzone.setAdapter(adapter);
@@ -114,21 +117,27 @@ public class NewOggettoActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot document : task.getResult())  {
                             if(user_id.equals(document.getString("author"))) {
+
+                                //aggiungiamo zone all'arraylist
                                 zone.add(document.getString("nome"));
                             }
                     }
                 }else {
                     Log.d(TAG, "Error getting documents: ", task.getException());
                 }
+                //notifichiamo all'adapter dello spinner che la list zona e' stata modificata
                 adapter.notifyDataSetChanged();
             }
         });
 
+        // Quando viene selezionato un elemento dello spinner
         mzone.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
+                //viene preso l'elemento selzionato
                 selectedZona = parent.getItemAtPosition(i).toString();
-                Toast.makeText(NewOggettoActivity.this, "Cliccato su"+selectedZona, Toast.LENGTH_SHORT).show();
+
+                //Cerchiamo l'id della zona selezionata e relativo luogo id
                 fStore.collectionGroup("Zone").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -157,11 +166,13 @@ public class NewOggettoActivity extends AppCompatActivity {
 
         msubmit = findViewById(R.id.inviaOggetto);
 
+        //intent per la scatto foto con camera
         mcamera.setOnClickListener(view -> {
 
             askCamera();
         });
 
+        //intent per galleria
         mgalleria.setOnClickListener(view -> {
             Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(gallery, GALLERY_REQUEST_CODE);
@@ -174,9 +185,17 @@ public class NewOggettoActivity extends AppCompatActivity {
             String nome = mnome.getText().toString().trim();
             String descrizione = mdescrizione.getText().toString().trim();
             String id = usingRandomUUID();
-            Toast.makeText(NewOggettoActivity.this, " "+user_id +" "+ luogo_id, Toast.LENGTH_SHORT).show();
+            if(TextUtils.isEmpty(nome)){
+                mnome.setError("inserire un nome");
+                return;
+            }
+            if(TextUtils.isEmpty(descrizione)){
+                mnome.setError("inserire una descrizione");
+                return;
+            }
 
 
+            //Caricamento oggetto su Firebase Firestore
             DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(luogo_id).collection("Zone").document(zona_id).collection("Oggetti").document(id);
             Map<String, Object> oggetto = new HashMap<>();
             oggetto.put("id", id);
@@ -202,16 +221,24 @@ public class NewOggettoActivity extends AppCompatActivity {
 
 
     }
+
+    //Generazione di una Stringa casuale
     private String usingRandomUUID() {
         UUID randomUUID = UUID.randomUUID();
 
         return randomUUID.toString().replaceAll("_", "");
     }
+    //Verifica dei permessi per la Camera
     private void askCamera() {
         //Verifica che sia stata dato il permesso per la Camera
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
+
+            // Se non si ha i permessi per la Camera vengono chiesti
+
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERM_CODE);
         }else{
+            //Se si ha i permessi per la Camera
+
             dispatchTakePictureIntent();
 
         }
@@ -234,7 +261,7 @@ public class NewOggettoActivity extends AppCompatActivity {
         }
 
     }
-    //intent per aprire la camera
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -247,10 +274,11 @@ public class NewOggettoActivity extends AppCompatActivity {
                 Log.d("Uri", "url file is " + Uri.fromFile(f));
 
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-
+                //Viene preso Uri dal File risultato dello scatto
                 Uri contentUri = Uri.fromFile(f);
                 mediaScanIntent.setData(contentUri);
                 this.sendBroadcast(mediaScanIntent);
+                //Viene caricata la foto sullo Storage Firebase
                 uploadtoFirebase(f.getName(), contentUri);
             }
 
@@ -258,11 +286,13 @@ public class NewOggettoActivity extends AppCompatActivity {
         if(requestCode == GALLERY_REQUEST_CODE){
             if(resultCode == Activity.RESULT_OK)
             {
+                //Viene preso l'Uri dalla foto selezionata nella galleria
                 Uri contentUri = data.getData();
+                // Nome del File appena inserito
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                 String imageFileName = "JPEG_" + timeStamp + "." + getFileExt(contentUri);
                 Log.d("Uri", "image Uri:" + imageFileName);
-                //selectedImage.setImageURI(contentUri);
+                // Viene caricata la foto sullo Storage Firebase
                 uploadtoFirebase(imageFileName, contentUri);
 
 
@@ -270,6 +300,7 @@ public class NewOggettoActivity extends AppCompatActivity {
 
         }
     }
+    // Viene Caricato su Firebase l'immagine del luogo
     private void uploadtoFirebase(String name, Uri contentUri) {
 
         StorageReference image = storageReference.child("oggetti/"+ name);
@@ -281,7 +312,9 @@ public class NewOggettoActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         Log.d("Upload", "onSuccess: " + uri.toString());
+                        // Viene caricata l'immagine nella ImageView
                         Picasso.get().load(uri).into(selectedImage);
+                        // Viene preso il link alla foto sullo storage
                         picStorageUrl = uri.toString();
                     }
 
@@ -302,16 +335,16 @@ public class NewOggettoActivity extends AppCompatActivity {
 
 
     }
-
+    // Ritorna l'estensione dell'immagine
     private String getFileExt(Uri contentUri) {
         ContentResolver c = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(c.getType(contentUri));
 
     }
-
+    // Viene Creato il file con il nome unico
     private File createImageFile() throws IOException {
-        // Create an image file name
+        // nome del file con nome con la data e ora attuale
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
@@ -321,16 +354,18 @@ public class NewOggettoActivity extends AppCompatActivity {
                 storageDir      /* directory */
         );
 
-        // Save a file: path for use with ACTION_VIEW intents
+
+        // Salvato il path della foto
         currentPhotoPath = image.getAbsolutePath();
         return image;
     }
-
+    // Viene Avviata l'intent per scattare una foto
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Ensure that there's a camera activity to handle the intent
+        // Verifica se c'e'una camera attiva nel dispositivo
+
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
+            // File dove andra'la foto scattata
             File photoFile = null;
             try {
                 photoFile = createImageFile();
@@ -338,7 +373,8 @@ public class NewOggettoActivity extends AppCompatActivity {
                 // Error occurred while creating the File
 
             }
-            // Continue only if the File was successfully created
+            // Continua solo se il file e'stato creato con successo
+
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
                         "com.example.android.fileprovider",

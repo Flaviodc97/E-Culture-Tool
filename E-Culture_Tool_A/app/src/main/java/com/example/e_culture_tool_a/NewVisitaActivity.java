@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -53,7 +54,7 @@ public class NewVisitaActivity extends AppCompatActivity {
 
 
 
-
+        // adapter Spinner luoghi
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, luoghi);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mluogo.setAdapter(adapter);
@@ -62,20 +63,26 @@ public class NewVisitaActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot document : task.getResult())  {
-
+                        //add per Arraylist luoghi
                         luoghi.add(document.getString("nome"));
                     }
                 }else {
                     Log.d(TAG, "Error getting documents: ", task.getException());
                 }
+                // notifichiamo all'adapter che e'stato modificato l'arraylist
                 adapter.notifyDataSetChanged();
             }
         });
+
+        // Alla selezione di un Item nello spinner luoghi
         mluogo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
+                // luogo selezionato
                 selectedLuogo = parent.getItemAtPosition(position).toString(); //this is your selected item
                 Toast.makeText(NewVisitaActivity.this," "+selectedLuogo , Toast.LENGTH_SHORT).show();
+
+                //ricerca id del luogo selezionato
                 fStore.collectionGroup("Luoghi").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -100,9 +107,14 @@ public class NewVisitaActivity extends AppCompatActivity {
 
             }
         });
+        // Se l'utente clicca su Invia
         msend.setOnClickListener(view -> {
             String nomeVisita = mnomeVisita.getText().toString().trim();
             Log.d(TAG," "+luogo_id );
+            if(TextUtils.isEmpty(nomeVisita)){
+                mnomeVisita.setError("inserire il nome della visita");
+                return;
+            }
             Intent i = new Intent(NewVisitaActivity.this, SelectZoneActivity.class);
             i.putExtra("nomeLuogo", selectedLuogo);
             i.putExtra("id", luogo_id);

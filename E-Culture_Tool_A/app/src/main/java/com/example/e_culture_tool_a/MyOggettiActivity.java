@@ -61,6 +61,8 @@ public class MyOggettiActivity extends AppCompatActivity {
             }
         });
 
+
+        // Query per ogni Oggetto del Utente Attuale
         Query query=fStore.collectionGroup("Oggetti").whereEqualTo("author", user_id);
         Toast.makeText(MyOggettiActivity.this," user"+user_id,Toast.LENGTH_SHORT).show();;
         FirestoreRecyclerOptions<Oggetti> options=new FirestoreRecyclerOptions.Builder<Oggetti>().setQuery(query,Oggetti.class).build();
@@ -83,13 +85,6 @@ public class MyOggettiActivity extends AppCompatActivity {
 
 
 
-                /*holder.list_click.setOnClickListener(view -> {
-
-
-
-
-
-                });*/
 
                 holder.list_options.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -156,41 +151,7 @@ public class MyOggettiActivity extends AppCompatActivity {
                         });
                     }
                 });
-                /*holder.list_addDomanda.setOnClickListener(view -> {
-                    String id = model.getId();
-                    String nome = model.getNome();
-                    String luogoID = model.getLuogoID();
-                    String zonaID = model.getZonaID();
-                    String photo = model.getPhoto();
-                    Intent i = new Intent(MyOggettiActivity.this, MyDomandeMultipleActivity.class);
-                    i.putExtra("id",id);
-                    i.putExtra("nome",nome);
-                    i.putExtra("photo",photo);
-                    i.putExtra("luogoID", luogoID);
-                    i.putExtra("zonaID", zonaID);
-                    startActivity(i);
 
-                });
-
-
-                holder.list_addTempo.setOnMenuItemClickListener(view -> {
-
-                    String id = model.getId();
-                    String nome = model.getNome();
-                    String luogoID = model.getLuogoID();
-                    String zonaID = model.getZonaID();
-                    String photo = model.getPhoto();
-                    Intent i = new Intent(MyOggettiActivity.this, MyTempoDomandeActivity.class);
-                    i.putExtra("id",id);
-                    i.putExtra("nome",nome);
-                    i.putExtra("photo",photo);
-                    i.putExtra("luogoID", luogoID);
-                    i.putExtra("zonaID", zonaID);
-                    startActivity(i);
-
-                });
-
-                 */
                 if(model.getPhoto()!= null) {
                     Picasso.get().load(model.getPhoto()).into(holder.list_image);
                 }
@@ -213,7 +174,7 @@ public class MyOggettiActivity extends AppCompatActivity {
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
             list_name=itemView.findViewById(R.id.nome_medaglia_tempo);
-            list_image=itemView.findViewById(R.id.list_medaglie_tempo_image);
+            list_image=itemView.findViewById(R.id.list_medaglie_multiple);
             list_options = itemView.findViewById(R.id.options);
 
 
@@ -311,31 +272,5 @@ public class MyOggettiActivity extends AppCompatActivity {
         //
     }
 
-        /*
-    public void goHome(View view) {
-        fAuth = FirebaseAuth.getInstance();
-        user_id = fAuth.getCurrentUser().getUid();
-        fstore = FirebaseFirestore.getInstance();
-        DocumentReference docReference = fstore.collection("utenti").document(user_id);
-        docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-
-                String ruolo = value.getString("Curatore");
-                boolean b1 = Boolean.parseBoolean(ruolo);
-                if(b1){
-                    startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
-
-                }else {
-
-                    startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
-                }
-
-
-            }
-        });
-    }
-
-         */
 
 }

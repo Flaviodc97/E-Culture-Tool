@@ -44,6 +44,7 @@ public class MyDomandeMultipleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_domande_multiple);
 
+        // Vengono prese le Variabile pronvenienti dall'Intent se esistono
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             oggettoID = extras.getString("id");
@@ -59,6 +60,8 @@ public class MyDomandeMultipleActivity extends AppCompatActivity {
         user_id = fAuth.getCurrentUser().getUid();
 
         mFirestoreList=findViewById(R.id.recyclerViewDomande);
+
+        // Query Di tutte le Domande Multiple per L'oggetto selezionato
         Query query=fStore.collectionGroup("DomandeMultiple").whereEqualTo("oggettoID", oggettoID);
         FirestoreRecyclerOptions<DomandeMultiple> options=new FirestoreRecyclerOptions.Builder<DomandeMultiple>().setQuery(query,DomandeMultiple.class).build();
         adapter= new FirestoreRecyclerAdapter<DomandeMultiple, ProductsViewHolder>(options){
@@ -71,6 +74,8 @@ public class MyDomandeMultipleActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull DomandeMultiple model) {
+
+
 
                 holder.list_domanda.setText(model.getNome());
                 holder.list_click.setOnClickListener(view -> {
@@ -104,7 +109,7 @@ public class MyDomandeMultipleActivity extends AppCompatActivity {
 
 
     }
-
+    // Si viene reinderizzato su AddDomandaActivity
     public void addDomandaMultipla(View view) {
         Intent id = new Intent(MyDomandeMultipleActivity.this, AddDomandaActivity.class);
         id.putExtra("oggettoID",oggettoID);

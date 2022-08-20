@@ -57,9 +57,13 @@ public class MyVisiteActivity extends AppCompatActivity {
         flag = false;
         Bundle extras = getIntent().getExtras();
         if(extras!=null) flag = extras.getBoolean("flag");
+
+
         if(flag){
+            // Se si enta con Button VisiteCuratori
             query = fStore.collectionGroup("Visita");
         }else{
+            // Se si entra con Button Myvisite
             query = fStore.collection("utenti").document(user_id).collection("Visita");
         }
         FirestoreRecyclerOptions<Visita> options = new FirestoreRecyclerOptions.Builder<Visita>().setQuery(query, Visita.class).build();

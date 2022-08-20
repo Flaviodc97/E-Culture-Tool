@@ -31,7 +31,7 @@ public class DomandeTempoActivityV extends AppCompatActivity {
     private final static Integer sizesb = 3;
     CountDownTimer countDownTimer;
     long millisUntilFinished;
-    Integer prova;
+    Integer ndomanda;
     Integer dim;
     Integer puntit = 0;
     Boolean flagt = true;
@@ -42,9 +42,12 @@ public class DomandeTempoActivityV extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_domande_tempo_v);
 
+
+        // Passaggio dell'oggetto proveniente dall'Intent attraverso Gson
         Gson gson = new Gson();
         dt = gson.fromJson(getIntent().getStringExtra("myjson"), DomandeTempo.class);
 
+        // Passaggio delle Variabili provenienti dall'Intent
         Bundle extras = getIntent().getExtras();
         if(extras!=null){
             idOggetto = extras.getString("id");
@@ -63,8 +66,10 @@ public class DomandeTempoActivityV extends AppCompatActivity {
         time = findViewById(R.id.time);
         next = findViewById(R.id.next);
 
+
+        // Se l'utente clicca sul Button next viene mandato alla successiva domanda, se non ci sono piu'domande viene reinderizzato alla schermata di FineDomandaActivity
         next.setOnClickListener(view -> {
-            if(prova>=dim){
+            if(ndomanda >=dim){
                 Intent intent = new Intent(DomandeTempoActivityV.this, FineDomandeActivity.class);
                 intent.putExtra("flagt", flagt);
                 intent.putExtra("puntit", puntit);
@@ -84,17 +89,21 @@ public class DomandeTempoActivityV extends AppCompatActivity {
 
 
         });
-        prova = 0;
+        ndomanda = 0;
 
+
+        //inizializzato il tempo in millisencondi, usando il tempo inserito dal Curatore
         millisUntilFinished = dt.getTempo()*1000;
         loadRisposte();
+
+        //Viene fatto partire il countDown dei secondi
         countDownTimer = new CountDownTimer(millisUntilFinished, 1000){
             @Override
             public void onTick(long millisUntilFinished) {
-                // Update tvTimer every 1 second to show the number of seconds remaining.
+                // Viene mostrato nel setText il tempo che diminuisce ogni secondo
                 time.setText("" + (millisUntilFinished / 1000) + "s");
             }
-
+            //Se finisce il tempo senza che l'utente abbia finito di rispondere viene rimandato alla home
             public void onFinish(){
                 Intent intent = new Intent(DomandeTempoActivityV.this, HomeVisitatoreActivity.class);
                 startActivity(intent);
@@ -111,19 +120,36 @@ public class DomandeTempoActivityV extends AppCompatActivity {
 
     }
 
+    //Viene Caricata la domanda e le risposte della domanda
     private void loadRisposte(){
+
+        // Vengono prese le Domande Multiple dall'oggetto DomandeTempo
         rm = dt.getDm();
-        dm = rm.get(prova);
+
+        // Viene presa la Domanda Multipla attuale
+        dm = rm.get(ndomanda);
         dim = rm.size();
+        // Vengono prese le risposte errate della Domanda Multipla Attuale
         rb = (ArrayList<String>) dm.getRisposte_errate();
+
+        // Viene presa la risposta giusta dalla Domanda Multipla Attuale
         rg = dm.getRisposta_giusta();
+
+        // Viene Mischiato l'Arraylist delle risposte sbagliate
         Collections.shuffle(rb);
+
+
         domandaM.setText(dm.getNome());
-        Random rand = new Random(); //instance of random class
+
+        Random rand = new Random();
         int upperbound = 4;
-        //generate random values from 0-24
+        //Viene Generato un valore casuale tra 0 e 3 per la posizione della risposta Giusta
         int int_random = rand.nextInt(upperbound);
+
+        //Viene inserita la risposta Giusta nella posizione casuale
         rb.add(int_random, rg);
+
+        //Vengono inserite le risposte nei Button
         for(int i=0; i<sizesb+1; i++){
             switch (i){
                 case 0: r1.setText(rb.get(i));
@@ -132,9 +158,12 @@ public class DomandeTempoActivityV extends AppCompatActivity {
                 case 3: r4.setText(rb.get(i));
             }
         }
-        prova++;
+        //viene incrementato il contatore della domanda per passare a una nuova domanda
+        ndomanda++;
     }
 
+
+    //Viene verificata la risposta cliccata dall'utente
     public void verificaR(View view) {
         String answer = ((Button) view).getText().toString().trim();
         if(answer.equals(rg)){

@@ -76,7 +76,7 @@ public class UpdateLuogoActivity extends AppCompatActivity {
              inome = extras.getString("nome");
              idescrizione = extras.getString("descrizione");
              picStorageUrl = extras.getString("photo");
-            //The key argument here must match that used in the other activity
+
         }
 
         mnome = findViewById(R.id.updateNomeLuogo);
@@ -118,7 +118,7 @@ public class UpdateLuogoActivity extends AppCompatActivity {
     }
 
 
-
+// eliminazione del luogo
     public void deleteLuogo() {
         FirebaseAuth fauth = FirebaseAuth.getInstance();
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
@@ -159,7 +159,7 @@ public class UpdateLuogoActivity extends AppCompatActivity {
 
 
 
-
+ // upload su Firestore del Luogo
     private void uploadtoFirestore(String nome, String descrizione) {
 
         FirebaseAuth fauth = FirebaseAuth.getInstance();
@@ -213,7 +213,7 @@ public class UpdateLuogoActivity extends AppCompatActivity {
         }
 
     }
-    //intent per aprire la camera
+
 
 
     @Override
@@ -309,17 +309,17 @@ public class UpdateLuogoActivity extends AppCompatActivity {
     }
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Ensure that there's a camera activity to handle the intent
+
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
+
             File photoFile = null;
             try {
                 photoFile = createImageFile();
             } catch (IOException ex) {
-                // Error occurred while creating the File
+
 
             }
-            // Continue only if the File was successfully created
+
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
                         "com.example.android.fileprovider",

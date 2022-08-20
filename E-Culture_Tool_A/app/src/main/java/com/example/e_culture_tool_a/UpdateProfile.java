@@ -58,6 +58,7 @@ public class UpdateProfile extends AppCompatActivity {
 
         user_id = fAuth.getCurrentUser().getUid();
 
+        //inzializzazione degli EditText con i dati dell'utente
         DocumentReference doc = fStore.collection("utenti").document(user_id);
         doc.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -114,6 +115,8 @@ public class UpdateProfile extends AppCompatActivity {
 
     }
 
+
+    //possibilita'di eliminare il profilo
     public void deleteProfile(MenuItem item) {
         FirebaseUser userIstance = fAuth.getCurrentUser();
         AlertDialog.Builder dialog = new AlertDialog.Builder(UpdateProfile.this);

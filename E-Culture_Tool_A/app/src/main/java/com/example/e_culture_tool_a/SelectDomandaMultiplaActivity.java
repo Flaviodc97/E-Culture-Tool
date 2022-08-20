@@ -41,12 +41,14 @@ public class SelectDomandaMultiplaActivity extends AppCompatActivity {
         user_id = fAuth.getCurrentUser().getUid();
         mFirestoreList=(RecyclerView) findViewById(R.id.lista_domandem);
 
+        // Variabili provenienti dall'Intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             idOggetto = extras.getString("id");
             nomeOggetto = extras.getString("nome");
         }
 
+        // Query per ottenere le Domande per un determinato oggetto
         Query query=fStore.collectionGroup("DomandeMultiple").whereEqualTo("oggettoID", idOggetto);
         FirestoreRecyclerOptions<DomandeMultiple> options=new FirestoreRecyclerOptions.Builder<DomandeMultiple>().setQuery(query, DomandeMultiple.class).build();
 

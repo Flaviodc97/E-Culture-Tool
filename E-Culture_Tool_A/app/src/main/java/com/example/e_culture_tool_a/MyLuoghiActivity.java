@@ -51,21 +51,8 @@ public class MyLuoghiActivity extends AppCompatActivity {
 
         mFirestoreList=findViewById(R.id.firestore_luoghi_list);
 
-        /* QUery per tutti i Luoghi
-        fStore.collectionGroup("Luoghi").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        Log.d(TAG, document.getId() + " => " + document.getData());
-                    }
-                } else {
-                    Log.d(TAG, "Error getting documents: ", task.getException());
-                }
-            }
-        });
-         */
 
+        // Query per ottenere tutti i luoghi di un determinato utente
         Query query=fStore.collection("utenti").document(user_id).collection("Luoghi");
         FirestoreRecyclerOptions<Luogo> options=new FirestoreRecyclerOptions.Builder<Luogo>().setQuery(query,Luogo.class).build();
 
@@ -116,18 +103,7 @@ public class MyLuoghiActivity extends AppCompatActivity {
                         });
                     }
                 });
-                /*holder.list_click.setOnClickListener(view -> {
-                    String id= model.getId();
-                    String nome= model.getNome();
-                    String descrizione = model.getDescrizione();
-                    String photo = model.getPhoto();
-                    Intent i = new Intent(MyLuoghiActivity.this, UpdateLuogoActivity.class);
-                    i.putExtra("id",id);
-                    i.putExtra("nome",nome);
-                    i.putExtra("descrizione",descrizione);
-                    i.putExtra("photo",photo);
-                    startActivity(i);
-                });*/
+
 
             }
         };
@@ -155,6 +131,7 @@ public class MyLuoghiActivity extends AppCompatActivity {
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
             list_name=itemView.findViewById(R.id.list_luoghi);
+
             list_image=itemView.findViewById(R.id.Image_Luoghi);
             list_option= itemView.findViewById(R.id.LuoghiOptions);
 

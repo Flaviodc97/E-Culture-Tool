@@ -37,6 +37,8 @@ public class QRScannerActivity extends AppCompatActivity {
 
 
 
+        // Parte l'intent per lo QRscanner
+
         new IntentIntegrator(this).initiateScan();
         //Intent intent = new Intent(QRScannerActivity.this,HomeCuratoreActivity.class);
         //startActivity(intent);
@@ -47,6 +49,7 @@ public class QRScannerActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
         fStore = FirebaseFirestore.getInstance();
+        // Verifichiamo che l'utente e'un curatore o un visitatore
         DocumentReference docReference = fStore.collection("utenti").document(user_id);
         docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
@@ -54,10 +57,11 @@ public class QRScannerActivity extends AppCompatActivity {
 
                 String ruolo = value.getString("Curatore");
                 boolean b1 = Boolean.parseBoolean(ruolo);
+                //otteniamo il risultato dal QRScanner
                 IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
                 String risultato = result.getContents();
                 if(b1){
-                    //dati.setText(risultato);
+                    // Se l'utente e'un curatore, Faremo partire searchOggetto()
                     if(risultato!=null){
                         searchOggetto(risultato);
                         finish();
@@ -65,6 +69,7 @@ public class QRScannerActivity extends AppCompatActivity {
 
                 }else {
 
+                    // Se l'utente e'un Visitatore, faremo partire quizOggetto()
                     quizOggetto(risultato);
 
                 }
@@ -76,6 +81,8 @@ public class QRScannerActivity extends AppCompatActivity {
     }
 
 
+
+    // Cerchiamo l'oggetto Scannerizzato e facciamo partire l'intent per la modifica (Solo Curatore per i suoi oggetti)
     private void searchOggetto(String risultato) {
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
@@ -111,6 +118,8 @@ public class QRScannerActivity extends AppCompatActivity {
         });
     }
 
+
+    // Cerchiamo l'oggetto Scannerizzato e facciamo partire l'intent per la visulizzazione dei dati dell'oggetto e possibilita di svolgere gli esercizi (Solo Visitatore e Ospite)
     private void quizOggetto(String risultato) {
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();

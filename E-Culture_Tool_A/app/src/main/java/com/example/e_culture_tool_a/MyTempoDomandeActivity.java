@@ -61,6 +61,8 @@ public class MyTempoDomandeActivity extends AppCompatActivity {
 
 
             mFirestoreList=findViewById(R.id.rectempo);
+
+            // Query per ottenere tutte le domande a Tempo per un determinato oggetto
             Query query=fStore.collectionGroup("DomandeTempo").whereEqualTo("oggettoID", oggettoID);
             FirestoreRecyclerOptions<DomandeTempo> options=new FirestoreRecyclerOptions.Builder<DomandeTempo>().setQuery(query, DomandeTempo.class).build();
             adapter= new FirestoreRecyclerAdapter<DomandeTempo, ProductsViewHolder>(options){

@@ -42,9 +42,11 @@ public class VisualizzaMedaglieActivity extends AppCompatActivity {
         mFirestoreListMultiple=(RecyclerView) findViewById(R.id.rdm);
         mFirestoreListTempo=(RecyclerView) findViewById(R.id.rdt);
 
+
+        // Query che restituisce le Medaglie per le domande Multiple completate dall'utente
         Query querymultiple=fStore.collection("utenti").document(user_id).collection("MedaglieDomandeMultiple");
         FirestoreRecyclerOptions<MedaglieDomandeMultiple> options=new FirestoreRecyclerOptions.Builder<MedaglieDomandeMultiple>().setQuery(querymultiple,MedaglieDomandeMultiple.class).build();
-
+        // Query che restituisce le Medaglie per le domande a Tempo completate dall'utente
         Query querytempo=fStore.collection("utenti").document(user_id).collection("MedaglieDomandeTempo");
         FirestoreRecyclerOptions<MedaglieDomandeTempo> optionstempo=new FirestoreRecyclerOptions.Builder<MedaglieDomandeTempo>().setQuery(querytempo,MedaglieDomandeTempo.class).build();
 
@@ -113,7 +115,7 @@ public class VisualizzaMedaglieActivity extends AppCompatActivity {
         public ProductsViewHolderTempo(@NonNull View itemView) {
             super(itemView);
             list_nome_medaglia_tempo=itemView.findViewById(R.id.nome_medaglia_tempo);
-            list_image_medaglia_tempo=itemView.findViewById(R.id.list_medaglie_tempo_image);
+            list_image_medaglia_tempo=itemView.findViewById(R.id.list_medaglie_multiple);
         }
 
     }

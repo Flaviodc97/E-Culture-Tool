@@ -37,9 +37,11 @@ public class DomandeMultipleActivityV extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_domande_multiple_v);
 
+        // Viene passato nell'intent un Oggetto tramite Gson
         Gson gson = new Gson();
         dm = gson.fromJson(getIntent().getStringExtra("myjson"), DomandeMultiple.class);
 
+        // Vengono prese le variabili passate nell'intent
         Bundle extras = getIntent().getExtras();
         if(extras!=null){
             idOggetto = extras.getString("id");
@@ -55,8 +57,10 @@ public class DomandeMultipleActivityV extends AppCompatActivity {
         fineQuiz = findViewById(R.id.fineQuiz);
         domanda.setText(dm.getNome());
 
+        //Viene caricata la domanda nella TextView e le risposte nei Button
         loadRisposte();
 
+        // Se l'utente clicca su fine Quiz viene reinderizzato nella schermata di Fine Quiz
         fineQuiz.setOnClickListener(view -> {
             Intent intent = new Intent(DomandeMultipleActivityV.this, FineDomandeActivity.class);
             intent.putExtra("puntim", puntim);
@@ -69,15 +73,27 @@ public class DomandeMultipleActivityV extends AppCompatActivity {
 
     }
 
+    // Viene caricata la domanda nella TextView e le risposte nei Button
     private void loadRisposte(){
+
+        // Viene presa la risposta Giusta dall'oggetto dm
         rg = dm.getRisposta_giusta();
+
+        // Viene preso l'arrayList delle risposte Errate dall'oggetto dm
         rb = (ArrayList<String>) dm.getRisposte_errate();
-        Random rand = new Random(); //instance of random class
+
+        // Viene mischiato l'Arraylist delle risposte Errate
         Collections.shuffle(rb);
+
+        // Viene generato un numero random tra 0  e 3 , essa sara'la posizione della risposta giusta nell'Arraylist
+        Random rand = new Random();
         int upperbound = 4;
-        //generate random values from 0-24
         int int_random = rand.nextInt(upperbound);
+
+        // Viene inserita la risposta giusta nell'ArrayList nella posizione random trovata casualmente
         rb.add(int_random, rg);
+
+        // Viene inserita ogni domanda nei Button
         for(int i=0; i<sizesb+1; i++){
             switch (i){
                 case 0: r1.setText(rb.get(i));
@@ -88,13 +104,21 @@ public class DomandeMultipleActivityV extends AppCompatActivity {
         }
     }
 
+
+    // Verifica la risposta Cliccata dall'utente
     public void verificaR(View view) {
+
+        // Viene presa la risposta che l'utente ha cliccato
         String answer = ((Button) view).getText().toString().trim();
+
+        // Verifica che la risposta cliccata sia quella giusta
         if(answer.equals(rg)){
-            result.setText(RIGHT);
+            result.setText(RIGHT); // Se risposta giusta
             puntim = true;
         }
-        else result.setText(WRONG);
+        else result.setText(WRONG); //Se risposta sbagliata
+
+        //Viene tolta la possibilita'di cambiare risposta dopo aver cliccato
         r1.setEnabled(false);
         r2.setEnabled(false);
         r3.setEnabled(false);

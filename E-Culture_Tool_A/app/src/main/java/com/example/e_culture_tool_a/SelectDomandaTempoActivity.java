@@ -42,12 +42,15 @@ public class SelectDomandaTempoActivity extends AppCompatActivity {
         user_id = fAuth.getCurrentUser().getUid();
         mFirestoreList=(RecyclerView) findViewById(R.id.lista_domandet);
 
+
+        // Variabili provenienti dall'Intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             idOggetto = extras.getString("id");
             nomeOggetto = extras.getString("nome");
         }
 
+        // Query per trovare tutte le Domanda a tempo dato un Oggetto
         Query query=fStore.collectionGroup("DomandeTempo").whereEqualTo("oggettoID", idOggetto);
         FirestoreRecyclerOptions<DomandeTempo> options=new FirestoreRecyclerOptions.Builder<DomandeTempo>().setQuery(query, DomandeTempo.class).build();
 

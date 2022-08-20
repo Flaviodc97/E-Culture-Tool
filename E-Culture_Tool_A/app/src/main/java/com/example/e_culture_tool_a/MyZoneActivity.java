@@ -59,7 +59,7 @@ public class MyZoneActivity extends AppCompatActivity {
 
 
 
-
+        // Query per ottenere tutti le Zone dell'Utente attuale
         Query query=fStore.collectionGroup("Zone").whereEqualTo("author", user_id);
         FirestoreRecyclerOptions<Zone> options=new FirestoreRecyclerOptions.Builder<Zone>().setQuery(query,Zone.class).build();
 

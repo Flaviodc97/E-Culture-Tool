@@ -61,6 +61,8 @@ public class FineDomandeActivity extends AppCompatActivity {
 
         idMedal = usingRandomUUID();
 
+
+        // Vengono presi le variabili provenienti dall'intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             puntim = extras.getBoolean("puntim");
@@ -72,6 +74,7 @@ public class FineDomandeActivity extends AppCompatActivity {
             nomeOggetto = extras.getString("nome");
         }
 
+        // Viene verificato se si tratta di schermata di fine Gioco del Tipo Domande Multiple
         if(flagm){
             if(puntim){
                 score.setText("Hai risposto bene alla domanda, complimenti!");
@@ -92,6 +95,7 @@ public class FineDomandeActivity extends AppCompatActivity {
             }
         }
 
+        // Viene verificato se si tratta di schermata di fine Gioco del tipo Sfide a Tempo
         if(flagt){
             punteggio = (double) puntit/domandetot;
             punteggio = punteggio * 100;
@@ -131,12 +135,15 @@ public class FineDomandeActivity extends AppCompatActivity {
 
     }
 
+    // Creazione di una Stringa casuale
     private String usingRandomUUID() {
         UUID randomUUID = UUID.randomUUID();
 
         return randomUUID.toString().replaceAll("_", "");
     }
 
+
+    //Viene assegnata una medagli all'utente che ha completato i game
     private void assegnaMedaglia(String tipo){
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();

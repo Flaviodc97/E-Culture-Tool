@@ -57,7 +57,7 @@ public class HomeCuratoreActivity extends AppCompatActivity {
         arrow=findViewById(R.id.imageQuestion);
 
 
-        //
+        // Se Viene Cliccato sul Button viene mostrato un tutoria
 
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,33 +66,42 @@ public class HomeCuratoreActivity extends AppCompatActivity {
             }
         });
 
-        //Button Listener
+
+        // Se l'utente clicca sul Button Visite viene reinderizzato in MyVisiteActivity
 
         mbuttonVisite.setOnClickListener(view -> {
 
             startActivity(new Intent(getApplicationContext(), MyVisiteActivity.class));
 
         });
+
+        //Se l'utente clicca sul Button Luoghi viene reinderizzato in MyLuoghiActivity
         mbuttonLuogo.setOnClickListener(view -> {
 
             startActivity(new Intent(getApplicationContext(), MyLuoghiActivity.class));
 
         });
+
+        //Se l'utente clicca sul Button Zone viene reinderizzato in MyZonectivity
         mbuttonZone.setOnClickListener(view -> {
 
             startActivity(new Intent(getApplicationContext(), MyZoneActivity.class));
 
         });
 
+        //Se l'utente clicca sul Button Oggetti viene reinderizzato in MyOggettiActivity
         mbuttonOggetti.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), MyOggettiActivity.class));
 
         });
+
+        //Se l'utente clicca sul Button QR viene reinderizzato in QRScannerActivity
         mbuttonQR.setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), QRScannerActivity.class));
 
         });
 
+        //Se l'utente clicca sul Button Search viene reinderizzato in SearchActivity
         mbuttonSearch.setOnClickListener(view -> {
 
            startActivity(new Intent(getApplicationContext(), SearchActivity.class));
@@ -140,6 +149,7 @@ public class HomeCuratoreActivity extends AppCompatActivity {
         });
     }
 
+    /* Vengono mostrati i tutorial su come Utilizzare la home page */
     public void showToutorial(){
         showToutorialLuogo();
     }
