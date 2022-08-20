@@ -194,7 +194,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
     private void shareMessage() {
         salvaFile();
 
-        String stringFile = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+ "/" + filename;
+        String stringFile = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+ "/" + filename+nomeVisita+ext;
 
         File file = new File(stringFile);
         contentUri = FileProvider.getUriForFile(RecapVisitaActivity.this, "com.example.android.fileprovider", file);
