@@ -50,7 +50,6 @@ public class ShowVisitaActivity extends AppCompatActivity {
     private Visita visita;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
-    String user_id;
     private TextView mnomeVisita;
     Button mshare, msave;
 
@@ -67,7 +66,6 @@ public class ShowVisitaActivity extends AppCompatActivity {
         visita = gson.fromJson(getIntent().getStringExtra("myjson"), Visita.class);
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
-        user_id = fAuth.getCurrentUser().getUid();
 
         mFirestoreList=findViewById(R.id.EdgeVisitaShow);
 
