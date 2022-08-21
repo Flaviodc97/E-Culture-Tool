@@ -19,6 +19,7 @@
             android:src="@drawable/ic_immagine_2022_08_02_163109660" />
 
         <TextView
+            android:id="@+id/nomeProfilo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -107,6 +108,7 @@
 
 
             <TextView
+                android:id="@+id/visitep"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="105dp"
@@ -117,6 +119,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/miev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="105dp"

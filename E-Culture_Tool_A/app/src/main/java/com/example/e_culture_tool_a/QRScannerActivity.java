@@ -47,36 +47,44 @@ public class QRScannerActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         fAuth = FirebaseAuth.getInstance();
-        user_id = fAuth.getCurrentUser().getUid();
-        fStore = FirebaseFirestore.getInstance();
-        // Verifichiamo che l'utente e'un curatore o un visitatore
-        DocumentReference docReference = fStore.collection("utenti").document(user_id);
-        docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+        if(fAuth.getCurrentUser()==null){
+            IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+            String risultato = result.getContents();
+            quizOggetto(risultato);
+        }
+        else{
+            user_id = fAuth.getCurrentUser().getUid();
+            fStore = FirebaseFirestore.getInstance();
+            // Verifichiamo che l'utente e'un curatore o un visitatore
+            DocumentReference docReference = fStore.collection("utenti").document(user_id);
+            docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                String ruolo = value.getString("Curatore");
-                boolean b1 = Boolean.parseBoolean(ruolo);
-                //otteniamo il risultato dal QRScanner
-                IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-                String risultato = result.getContents();
-                if(b1){
-                    // Se l'utente e'un curatore, Faremo partire searchOggetto()
-                    if(risultato!=null){
-                        searchOggetto(risultato);
-                        finish();
+                    String ruolo = value.getString("Curatore");
+                    boolean b1 = Boolean.parseBoolean(ruolo);
+                    //otteniamo il risultato dal QRScanner
+                    IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+                    String risultato = result.getContents();
+                    if(b1){
+                        // Se l'utente e'un curatore, Faremo partire searchOggetto()
+                        if(risultato!=null){
+                            searchOggetto(risultato);
+                            finish();
+                        }
+
+                    }else {
+
+                        // Se l'utente e'un Visitatore, faremo partire quizOggetto()
+                        quizOggetto(risultato);
+
                     }
 
-                }else {
-
-                    // Se l'utente e'un Visitatore, faremo partire quizOggetto()
-                    quizOggetto(risultato);
 
                 }
+            });
+        }
 
-
-            }
-        });
 
     }
 
@@ -111,6 +119,7 @@ public class QRScannerActivity extends AppCompatActivity {
                             i.putExtra("luogoID", luogoID);
                             i.putExtra("zonaID", zonaID);
                             startActivity(i);
+                            finish();
                         }
                     }
                 }
@@ -122,10 +131,6 @@ public class QRScannerActivity extends AppCompatActivity {
     // Cerchiamo l'oggetto Scannerizzato e facciamo partire l'intent per la visulizzazione dei dati dell'oggetto e possibilita di svolgere gli esercizi (Solo Visitatore e Ospite)
     private void quizOggetto(String risultato) {
         fStore = FirebaseFirestore.getInstance();
-        fAuth = FirebaseAuth.getInstance();
-        user_id = fAuth.getCurrentUser().getUid();
-
-
         fStore.collectionGroup("Oggetti").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -151,6 +156,7 @@ public class QRScannerActivity extends AppCompatActivity {
                             i.putExtra("luogoID", luogoID);
                             i.putExtra("zonaID", zonaID);
                             startActivity(i);
+                            finish();
                         }
                     }
                 }

@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -25,6 +26,10 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     String user_id;
     Boolean flag = true;
+    ImageView MyVisiteimg;
+    TextView visitep;
+    TextView miev;
+    TextView nomeProfilo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +38,20 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
         qrButton = (ImageView)findViewById(R.id.QrImg);
         myvisiteButton = (ImageButton) findViewById(R.id.VisiteVisitatori);
         visiteCuratoriButton = (ImageView)findViewById(R.id.Visiteimg);
+        MyVisiteimg = findViewById(R.id.MyVisiteimg);
+        visitep = findViewById(R.id.visitep);
+        miev = findViewById(R.id.miev);
+        nomeProfilo = findViewById(R.id.nomeProfilo);
 
+
+        fAuth = FirebaseAuth.getInstance();
+        if(fAuth.getCurrentUser()==null){
+            myvisiteButton.setVisibility(View.INVISIBLE);
+            MyVisiteimg.setVisibility(View.INVISIBLE);
+            visitep.setVisibility(View.INVISIBLE);
+            miev.setVisibility(View.INVISIBLE);
+            nomeProfilo.setText("Home");
+        }
 
         // Se l'utente clicca su Visite curatori viene Reinderizzato in MyvisiteActivity dove visualizzera le visite dei Curatori
         visiteCuratoriButton.setOnClickListener(view -> {
@@ -58,6 +76,9 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
 
     public void goHome(View view) {
         fAuth = FirebaseAuth.getInstance();
+        if(fAuth.getCurrentUser()==null){
+            startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
+        }
         user_id = fAuth.getCurrentUser().getUid();
         fStore = FirebaseFirestore.getInstance();
         DocumentReference docReference = fStore.collection("utenti").document(user_id);
@@ -83,7 +104,12 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
     }
     public void goProfile(MenuItem item) {
 
-        startActivity( new Intent(getApplicationContext(), Profilo.class));
+        if(fAuth.getCurrentUser()==null){
+            startActivity( new Intent(getApplicationContext(), MainActivity.class));
+        }
+        else{
+            startActivity( new Intent(getApplicationContext(), Profilo.class));
+        }
 
     }
 }

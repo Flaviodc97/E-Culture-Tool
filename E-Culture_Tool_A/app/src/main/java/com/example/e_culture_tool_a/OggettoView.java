@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 public class OggettoView extends AppCompatActivity {
@@ -24,6 +26,7 @@ public class OggettoView extends AppCompatActivity {
     TextView nomeO, descrO;
     Button DomM, DomT;
 
+    FirebaseAuth fauth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,7 @@ public class OggettoView extends AppCompatActivity {
         DomM = findViewById(R.id.DomM);
         DomT = findViewById(R.id.DomT);
 
+        fauth = FirebaseAuth.getInstance();
 
         // Variabili provenienti dall'intent
         Bundle extras = getIntent().getExtras();
@@ -54,6 +58,11 @@ public class OggettoView extends AppCompatActivity {
         descrO.setText(descrizioneOggetto);
         Picasso.get().load(photoOggetto).into(fotoO);
 
+        if(fauth.getCurrentUser()==null)
+        {
+            DomM.setVisibility(View.INVISIBLE);
+            DomT.setVisibility(View.INVISIBLE);
+        }
 
         // se l'utente clicca su DomandeMultiple
         DomM.setOnClickListener(view -> {

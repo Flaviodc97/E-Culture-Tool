@@ -111,7 +111,13 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-
+        mospiteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, HomeVisitatoreActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /* Se l'utente e' loggato o effettua il login viene reinderizzato alla HomeCuratoreActivity o alla HomeVisitatoreActivity in base al tipo di Account con cui ci si e' loggati*/

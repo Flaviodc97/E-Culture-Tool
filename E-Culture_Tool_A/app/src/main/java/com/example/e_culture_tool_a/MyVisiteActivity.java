@@ -18,6 +18,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -44,6 +45,7 @@ public class MyVisiteActivity extends AppCompatActivity {
     private FirestoreRecyclerAdapter adapter;
     Query query;
     Boolean flag;
+    FloatingActionButton AddLuogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,8 @@ public class MyVisiteActivity extends AppCompatActivity {
 
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
-        user_id = fAuth.getCurrentUser().getUid();
+        AddLuogo =findViewById(R.id.AddLuogo);
+        if(fAuth.getCurrentUser()==null) AddLuogo.setVisibility(View.INVISIBLE);
         mFirestoreList = findViewById(R.id.list_visite);
         flag = false;
         Bundle extras = getIntent().getExtras();
@@ -64,6 +67,7 @@ public class MyVisiteActivity extends AppCompatActivity {
             query = fStore.collectionGroup("Visita");
         }else{
             // Se si entra con Button Myvisite
+            user_id = fAuth.getCurrentUser().getUid();
             query = fStore.collection("utenti").document(user_id).collection("Visita");
         }
         FirestoreRecyclerOptions<Visita> options = new FirestoreRecyclerOptions.Builder<Visita>().setQuery(query, Visita.class).build();
