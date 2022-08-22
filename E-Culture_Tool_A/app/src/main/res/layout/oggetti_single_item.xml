@@ -30,12 +30,12 @@
                 android:layout_marginRight="0dp">
 
                 <ImageView
-                    android:id="@+id/imagemedagliatempo"
+                    android:id="@+id/imageViewOggetti"
                     android:layout_width="380dp"
                     android:layout_height="100dp"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginRight="16dp"
                     app:srcCompat="@drawable/curvebuttonbg" />
 
                 <ImageView
@@ -52,9 +52,10 @@
                     android:id="@+id/options"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/imagemedagliatempo"
-                    android:layout_alignEnd="@+id/imagemedagliatempo"
-                    android:layout_marginTop="16dp"
+                    android:layout_alignTop="@+id/imageViewOggetti"
+                    android:layout_alignEnd="@+id/imageViewOggetti"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="17dp"
                     android:layout_marginRight="8dp"
                     app:srcCompat="@drawable/ic_baseline_more_vert_24" />
 
@@ -63,8 +64,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/imagemedagliatempo"
+                    android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="50dp"
                     android:layout_toEndOf="@+id/list_medaglie_multiple"
                     android:text="Oggetto 1"
                     android:textColor="#d703082b"

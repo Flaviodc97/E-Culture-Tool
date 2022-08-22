@@ -71,6 +71,18 @@ public class MyLuoghiActivity extends AppCompatActivity {
                 if(model.getPhoto()!= null) {
                     Picasso.get().load(model.getPhoto()).into(holder.list_image);
                 }
+
+                holder.list_click.setOnClickListener(view -> {
+                    String nomeLuogo = model.getNome();
+                    String fotoLuogo = model.getPhoto();
+                    String descrLuogo = model.getDescrizione();
+                    Intent intent = new Intent(MyLuoghiActivity.this, ShowLuoghi.class);
+                    intent.putExtra("fotoLuogo", fotoLuogo);
+                    intent.putExtra("nomeLuogo", nomeLuogo);
+                    intent.putExtra("descrLuogo", descrLuogo);
+                    startActivity(intent);
+                });
+
                 holder.list_option.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -127,6 +139,7 @@ public class MyLuoghiActivity extends AppCompatActivity {
         private TextView list_name;
         private ImageView list_image;
         private ImageView list_option;
+        private ImageView list_click;
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -134,7 +147,7 @@ public class MyLuoghiActivity extends AppCompatActivity {
 
             list_image=itemView.findViewById(R.id.Image_Luoghi);
             list_option= itemView.findViewById(R.id.LuoghiOptions);
-
+            list_click=itemView.findViewById(R.id.imageViewLuoghi);
         }
     }
 
