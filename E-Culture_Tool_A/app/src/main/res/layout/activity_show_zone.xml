@@ -15,19 +15,35 @@
             android:id="@+id/fotoZona"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/foto_bg"
+            android:padding="16dp"
             app:srcCompat="@drawable/bottonezona" />
 
         <TextView
             android:id="@+id/nomeZona"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:padding="16dp"
+            android:text="TextView"
+            android:textAllCaps="true"
+            android:textColor="@color/Primario" />
 
         <TextView
             android:id="@+id/descrZona"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:padding="16dp"
+            android:text="TextView"
+            android:textStyle="italic" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

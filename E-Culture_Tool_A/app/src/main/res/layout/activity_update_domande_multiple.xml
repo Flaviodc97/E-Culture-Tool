@@ -6,90 +6,164 @@
     android:layout_height="match_parent"
     tools:context=".UpdateDomandeMultipleActivity">
 
-    <EditText
-        android:id="@+id/domandaUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Domanda"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/rEsattaUpdate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
-
-    <EditText
-        android:id="@+id/rEsattaUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Risposta Esatta"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
-
-    <Button
-        android:id="@+id/UpdateDomandeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Modifica"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ListView
-        android:id="@+id/listSbagliate"
-        android:layout_width="398dp"
-        android:layout_height="221dp"
-        app:layout_constraintBottom_toTopOf="@+id/UpdateDomandeButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UpdateSbagliata"
-        app:layout_constraintVertical_bias="0.31" />
-
-    <EditText
-        android:id="@+id/UpdateSbagliata"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Risposta Sbagliata"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/UpdateDomandeButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rEsattaUpdate"
-        app:layout_constraintVertical_bias="0.13999999" />
-
-    <Button
-        android:id="@+id/buttonAddSbagliata"
-        android:layout_width="60dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@drawable/ic_baseline_add_24"
-        app:layout_constraintBottom_toTopOf="@+id/listSbagliate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
-        app:layout_constraintStart_toEndOf="@+id/UpdateSbagliata"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.82" />
-
-    <Button
-        android:id="@+id/UpdateRemove"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/ic_baseline_delete_24"
-        android:onClick="removeDomanda"
-        app:layout_constraintBottom_toTopOf="@+id/UpdateDomandeButton"
+        android:background="@color/Primario"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listSbagliate"
-        app:layout_constraintVertical_bias="0.473" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:text="Modifica Domanda"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Nome della Domanda:" />
+
+        <EditText
+            android:id="@+id/domandaUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rectangle"
+            android:ems="10"
+            android:hint="Domanda"
+            android:inputType="textPersonName"
+            android:padding="16dp" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Definisci la risposta giusta:" />
+
+        <EditText
+            android:id="@+id/rEsattaUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rectangle"
+            android:ems="10"
+            android:hint="Risposta Esatta"
+            android:inputType="textPersonName"
+            android:padding="16dp" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Aggingi una risposta errata:" />
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/UpdateSbagliata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle"
+                android:ems="10"
+                android:hint="Risposta Sbagliata"
+                android:inputType="textPersonName"
+                android:padding="16dp" />
+
+            <Button
+                android:id="@+id/buttonAddSbagliata"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="64dp"
+                android:background="@drawable/ic_baseline_add_24" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listSbagliate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/UpdateDomandeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/curvebuttonbgdefault"
+                android:gravity="center"
+                android:text="Modifica"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+
+            <Button
+                android:id="@+id/UpdateRemove"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_baseline_delete_24"
+                android:onClick="removeDomanda"
+                app:layout_constraintBottom_toTopOf="@+id/UpdateDomandeButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/listSbagliate"
+                app:layout_constraintVertical_bias="0.473" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
