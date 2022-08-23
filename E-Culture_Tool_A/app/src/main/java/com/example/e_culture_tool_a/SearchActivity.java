@@ -29,6 +29,7 @@ public class SearchActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
+        // Al click del bottone vengono mostrati tutti i luoghi
         btnLuoghi.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -45,6 +46,7 @@ public class SearchActivity extends AppCompatActivity {
 
         });
 
+        // Al click del bottone vengono mostrate tutte le zone
         btnZone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +61,8 @@ public class SearchActivity extends AppCompatActivity {
 
             }
         });
+
+        //Al click del bottone vengono mostrati tutti gli oggetti
         btnOggetti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

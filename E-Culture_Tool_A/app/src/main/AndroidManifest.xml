@@ -19,6 +19,15 @@
         android:theme="@style/Theme.ECulture_Tool_A"
         tools:targetApi="31">
         <activity
+            android:name=".ShowZone"
+            android:exported="false" />
+        <activity
+            android:name=".ShowOggetti"
+            android:exported="false" />
+        <activity
+            android:name=".ShowLuoghi"
+            android:exported="false" />
+        <activity
             android:name=".ShowVisitaActivity"
             android:exported="false" />
         <activity

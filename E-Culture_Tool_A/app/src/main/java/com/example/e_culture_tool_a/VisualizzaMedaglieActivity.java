@@ -115,7 +115,7 @@ public class VisualizzaMedaglieActivity extends AppCompatActivity {
         public ProductsViewHolderTempo(@NonNull View itemView) {
             super(itemView);
             list_nome_medaglia_tempo=itemView.findViewById(R.id.nome_medaglia_tempo);
-            list_image_medaglia_tempo=itemView.findViewById(R.id.list_medaglie_multiple);
+            list_image_medaglia_tempo=itemView.findViewById(R.id.imageMedaglia);
         }
 
     }

@@ -1,5 +1,6 @@
 package com.example.e_culture_tool_a.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,10 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.e_culture_tool_a.R;
+import com.example.e_culture_tool_a.RecyclerItemClickListener;
+import com.example.e_culture_tool_a.ShowOggetti;
+import com.example.e_culture_tool_a.ShowZone;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -40,6 +46,12 @@ public class OggettiFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     SearchView search;
     FirebaseFirestore fStore;
+
+    String fotoOggetto;
+    String nomeOggetto;
+    String descrOggetto;
+
+    TextView list_nome_oggetto;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -118,6 +130,31 @@ public class OggettiFragment extends Fragment {
                 recyclerView.setAdapter(adapter);
             }
         });
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                list_nome_oggetto = view.findViewById(R.id.list_nome_oggetto);
+                nomeOggetto = list_nome_oggetto.getText().toString();
+                for(int i = 0; i < OggettiList.size(); i++){
+                    if(nomeOggetto.equals(OggettiList.get(i).getNome())){
+                        descrOggetto = OggettiList.get(i).getDescrizione();
+                        fotoOggetto = OggettiList.get(i).getPhoto();
+                    }
+                }
+                Intent intent = new Intent(getActivity(), ShowOggetti.class);
+                intent.putExtra("nomeOggetto", nomeOggetto);
+                intent.putExtra("descrOggetto", descrOggetto);
+                intent.putExtra("fotoOggetto", fotoOggetto);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }));
+
         return view;
     }
 

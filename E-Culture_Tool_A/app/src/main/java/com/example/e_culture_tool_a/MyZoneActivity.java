@@ -75,6 +75,15 @@ public class MyZoneActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull Zone model) {
                 holder.list_name.setText(model.getNome());
 
+                holder.list_click.setOnClickListener(view -> {
+                    String nomeZona = model.getNome();
+                    String descrZona = model.getDescrizione();
+                    Intent intent = new Intent(MyZoneActivity.this, ShowZone.class);
+                    intent.putExtra("nomeZona", nomeZona);
+                    intent.putExtra("descrZona", descrZona);
+                    startActivity(intent);
+                });
+
                 holder.list_options.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -121,6 +130,7 @@ public class MyZoneActivity extends AppCompatActivity {
     private class ProductsViewHolder extends RecyclerView.ViewHolder{
         private TextView list_name;
         ImageView list_options;
+        private ImageView list_click;
 
 
 
@@ -128,6 +138,7 @@ public class MyZoneActivity extends AppCompatActivity {
             super(itemView);
             list_name=itemView.findViewById(R.id.list_my_zone);
             list_options=itemView.findViewById(R.id.ZoneOptions);
+            list_click=itemView.findViewById(R.id.image_click);
         }
     }
     public void addZone(View view) {

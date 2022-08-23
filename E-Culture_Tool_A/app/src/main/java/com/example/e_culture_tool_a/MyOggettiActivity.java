@@ -83,7 +83,18 @@ public class MyOggettiActivity extends AppCompatActivity {
                     Picasso.get().load(model.getPhoto()).into(holder.list_image);
                 }
 
+                holder.list_click.setOnClickListener(view -> {
+                    String nomeOggetto = model.getNome();
+                    String fotoOggetto = model.getPhoto();
+                    String descrOggetto = model.getDescrizione();
 
+                    Intent intent = new Intent(MyOggettiActivity.this, ShowOggetti.class);
+                    intent.putExtra("fotoOggetto", fotoOggetto);
+                    intent.putExtra("nomeOggetto", nomeOggetto);
+                    intent.putExtra("descrOggetto", descrOggetto);
+
+                    startActivity(intent);
+                });
 
 
                 holder.list_options.setOnClickListener(new View.OnClickListener() {
@@ -170,12 +181,14 @@ public class MyOggettiActivity extends AppCompatActivity {
 
         private ImageView list_options;
         private MenuItem list_addTempo;
+        private ImageView list_click;
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
-            list_name=itemView.findViewById(R.id.nome_medaglia_tempo);
-            list_image=itemView.findViewById(R.id.list_medaglie_multiple);
+            list_name=itemView.findViewById(R.id.list_nome_oggetto);
+            list_image=itemView.findViewById(R.id.imageOggetti);
             list_options = itemView.findViewById(R.id.options);
+            list_click=itemView.findViewById(R.id.imageViewOggetti);
 
 
         }

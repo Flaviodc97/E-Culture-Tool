@@ -43,7 +43,7 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
         miev = findViewById(R.id.miev);
         nomeProfilo = findViewById(R.id.nomeProfilo);
 
-
+        // Controllo se l'utente accede come ospite e imposto le funzioni che può svolgere
         fAuth = FirebaseAuth.getInstance();
         if(fAuth.getCurrentUser()==null){
             myvisiteButton.setVisibility(View.INVISIBLE);
@@ -76,6 +76,8 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
 
     public void goHome(View view) {
         fAuth = FirebaseAuth.getInstance();
+
+        // Controllo se l'utente accede come ospite e lo rimando alla sua home
         if(fAuth.getCurrentUser()==null){
             startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
         }
@@ -104,6 +106,7 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
     }
     public void goProfile(MenuItem item) {
 
+        // Controllo se l'utente accede come ospite e lo indirizzo alla schermata iniziale
         if(fAuth.getCurrentUser()==null){
             startActivity( new Intent(getApplicationContext(), MainActivity.class));
         }
