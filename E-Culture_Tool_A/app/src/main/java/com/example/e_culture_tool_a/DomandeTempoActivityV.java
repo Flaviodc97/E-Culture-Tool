@@ -138,7 +138,7 @@ public class DomandeTempoActivityV extends AppCompatActivity {
         // Viene Mischiato l'Arraylist delle risposte sbagliate
         Collections.shuffle(rb);
 
-
+        result.setVisibility(View.INVISIBLE);
         domandaM.setText(dm.getNome());
 
         Random rand = new Random();
@@ -165,6 +165,7 @@ public class DomandeTempoActivityV extends AppCompatActivity {
 
     //Viene verificata la risposta cliccata dall'utente
     public void verificaR(View view) {
+        result.setVisibility(View.VISIBLE);
         String answer = ((Button) view).getText().toString().trim();
         if(answer.equals(rg)){
             result.setText(RIGHT);

@@ -81,7 +81,10 @@ public class UpdateDomandeMultipleActivity extends AppCompatActivity {
             addNuovarispostaSbagliata(adapter);
         });
         mUpdate.setOnClickListener(view -> {
-
+            if(rsbagliata.size()<3) {
+                mrSbagliata.setError("Numero minimo di risposte errate non sufficienti ");
+                return;
+            }
             uploadToFirestore();
         });
     }

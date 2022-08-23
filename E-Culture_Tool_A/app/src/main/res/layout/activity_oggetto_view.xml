@@ -6,36 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".OggettoView">
 
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/Primario"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/TopOggettoView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:text="Giochi "
+            android:textColor="@color/white" />
+    </LinearLayout>
+
     <RelativeLayout
+        android:id="@+id/relativeLayout5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <Button
-            android:id="@+id/DomM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="153dp"
-            android:layout_marginTop="164dp"
-            android:layout_marginEnd="170dp"
-            android:layout_marginBottom="350dp"
-            android:text="Domande Multiple" />
-
-        <Button
-            android:id="@+id/DomT"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="156dp"
-            android:layout_marginTop="260dp"
-            android:layout_marginEnd="167dp"
-            android:layout_marginBottom="253dp"
-            android:text="Domande a tempo" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -47,42 +43,80 @@
             app:layout_constraintTop_toTopOf="parent">
 
 
-            <ImageView
-                android:id="@+id/fotoO"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="10dp"
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="326dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="30dp"
-                app:srcCompat="@drawable/bottoneoggetto" />
+                android:layout_marginRight="16dp">
 
-            <TextView
-                android:id="@+id/nomeO"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="89dp"
-                android:layout_marginTop="12dp"
-                android:text="TextView" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/descrO"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="91dp"
-                android:layout_marginTop="45dp"
-                android:text="TextView" />
+                    <TextView
+                        android:id="@+id/nomeO"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@+id/fotoO"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/descrO"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/nomeO"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@+id/fotoO"
+                        android:text="TextView" />
+
+                    <ImageView
+                        android:id="@+id/fotoO"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="16dp"
+                        app:srcCompat="@drawable/bottoneoggetto" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/DomT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/curvebuttonbgdefault"
+                android:text="Domande a tempo"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/DomM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/curvebuttonbgdefault"
+                android:text="Domande Multiple"
+                android:textColor="@color/white" />
+        </LinearLayout>
 
     </RelativeLayout>
 
