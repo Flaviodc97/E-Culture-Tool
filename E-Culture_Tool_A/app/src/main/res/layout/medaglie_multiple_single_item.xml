@@ -37,7 +37,7 @@
                     app:srcCompat="@drawable/curvebuttonbg" />
 
                 <ImageView
-                    android:id="@+id/imageOggetti"
+                    android:id="@+id/imageMedaglia"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:layout_alignStart="@+id/imagemedagliatempo"
@@ -54,8 +54,8 @@
                     android:layout_alignTop="@+id/imagemedagliatempo"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:layout_toEndOf="@+id/imageOggetti"
-                    android:text="Oggetto 1"
+                    android:layout_toEndOf="@+id/imageMedaglia"
+                    android:text="Medaglie M 1"
                     android:textColor="#d703082b"
                     android:textSize="23dp"
                     android:textStyle="bold" />
