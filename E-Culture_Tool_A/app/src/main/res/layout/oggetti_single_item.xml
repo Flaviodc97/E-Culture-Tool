@@ -39,7 +39,7 @@
                     app:srcCompat="@drawable/curvebuttonbg" />
 
                 <ImageView
-                    android:id="@+id/list_medaglie_multiple"
+                    android:id="@+id/imageOggetti"
                     android:layout_width="65dp"
                     android:layout_height="65dp"
                     android:layout_alignStart="@+id/imagemedagliatempo"
@@ -60,15 +60,15 @@
                     app:srcCompat="@drawable/ic_baseline_more_vert_24" />
 
                 <TextView
-                    android:id="@+id/nome_medaglia_tempo"
+                    android:id="@+id/list_nome_oggetto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/imagemedagliatempo"
+                    android:layout_alignParentTop="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="50dp"
-                    android:layout_toEndOf="@+id/list_medaglie_multiple"
+                    android:layout_toEndOf="@+id/imageOggetti"
                     android:text="Oggetto 1"
                     android:textColor="#d703082b"
                     android:textSize="23dp"
@@ -78,11 +78,12 @@
                     android:id="@+id/list_descrizione"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/nome_medaglia_tempo"
+                    android:layout_below="@+id/list_nome_oggetto"
+                    android:layout_marginStart="18dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="16dp"
-                    android:layout_toEndOf="@+id/list_medaglie_multiple"
+                    android:layout_toEndOf="@+id/imageOggetti"
                     android:text="Piccola Descrizione Oggetto 1"
                     android:textColor="#6003082b"
                     android:textSize="14dp"

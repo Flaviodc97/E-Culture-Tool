@@ -7,18 +7,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -41,6 +47,7 @@ public class UpdateVisitaActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     String user_id;
     List<String> zonelist = new ArrayList<>();
+    Button saveButton;
 
     private RecyclerView mFirestoreList;
     private FirestoreRecyclerAdapter adapter;
@@ -61,6 +68,7 @@ public class UpdateVisitaActivity extends AppCompatActivity {
         }
         mnome = findViewById(R.id.UpdateNomeVisita);
         mnome.setText(nomeVisita);
+        saveButton = findViewById(R.id.saveUpdate);
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
@@ -105,8 +113,17 @@ public class UpdateVisitaActivity extends AppCompatActivity {
         mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(adapter);
 
-
+        saveButton.setOnClickListener(view -> {
+            String nome = mnome.getText().toString().trim();
+            if(TextUtils.isEmpty(nome)){
+                mnome.setError("Nome non può essere vuoto");
+                return;
+            }
+            uploadtoFirestore(nome);
+        });
     }
+
+
 
     private void loadZone() {
         fStore.collectionGroup("Zone").whereEqualTo("luogoID", luogoID).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -146,4 +163,20 @@ public class UpdateVisitaActivity extends AppCompatActivity {
         super.onStart();
         adapter.startListening();
     }
+
+    private void uploadtoFirestore(String nome) {
+        fStore = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
+        user_id = fAuth.getCurrentUser().getUid();
+        DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Visita").document(idVisita);
+        doc.update("nome", nome).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(UpdateVisitaActivity.this, "Nome della visita aggiornato correttamente", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(UpdateVisitaActivity.this, MyVisiteActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
 }

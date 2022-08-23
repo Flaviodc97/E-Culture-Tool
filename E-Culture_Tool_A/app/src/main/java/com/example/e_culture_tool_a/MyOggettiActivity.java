@@ -185,8 +185,8 @@ public class MyOggettiActivity extends AppCompatActivity {
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
-            list_name=itemView.findViewById(R.id.nome_medaglia_tempo);
-            list_image=itemView.findViewById(R.id.list_medaglie_multiple);
+            list_name=itemView.findViewById(R.id.list_nome_oggetto);
+            list_image=itemView.findViewById(R.id.imageOggetti);
             list_options = itemView.findViewById(R.id.options);
             list_click=itemView.findViewById(R.id.imageViewOggetti);
 

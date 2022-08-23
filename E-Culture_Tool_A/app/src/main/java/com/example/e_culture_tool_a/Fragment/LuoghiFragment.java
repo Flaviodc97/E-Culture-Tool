@@ -1,5 +1,7 @@
 package com.example.e_culture_tool_a.Fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,13 +9,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.e_culture_tool_a.R;
+import com.example.e_culture_tool_a.RecyclerItemClickListener;
+import com.example.e_culture_tool_a.ShowLuoghi;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -43,6 +51,12 @@ public class LuoghiFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    String nomeLuogo;
+    String fotoLuogo;
+    String descrLuogo;
+
+    TextView list_luoghi;
 
     public LuoghiFragment() {
         // Required empty public constructor
@@ -89,6 +103,7 @@ public class LuoghiFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_luoghi, container, false);
         LuogoAdapter adapter=new LuogoAdapter(itemList,getContext());
 
+
         search=view.findViewById(R.id.Search);
         search.clearFocus();
 
@@ -124,6 +139,29 @@ public class LuoghiFragment extends Fragment {
                 }
             });
 
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                list_luoghi = view.findViewById(R.id.list_luoghi);
+                nomeLuogo = list_luoghi.getText().toString();
+                for(int i = 0; i < itemList.size(); i++){
+                    if(nomeLuogo.equals(itemList.get(i).getNome())){
+                        descrLuogo = itemList.get(i).getDescrizione();
+                        fotoLuogo = itemList.get(i).getPhoto();
+                    }
+                }
+                Intent intent = new Intent(getActivity(), ShowLuoghi.class);
+                intent.putExtra("nomeLuogo", nomeLuogo);
+                intent.putExtra("descrLuogo", descrLuogo);
+                intent.putExtra("fotoLuogo", fotoLuogo);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }));
 
         return view;
     }
@@ -140,4 +178,5 @@ public class LuoghiFragment extends Fragment {
             adapter.setFilteredList(filteredList );
         }
     }
+
 }

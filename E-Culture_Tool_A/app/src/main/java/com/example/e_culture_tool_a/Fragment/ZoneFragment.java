@@ -1,5 +1,6 @@
 package com.example.e_culture_tool_a.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,9 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.e_culture_tool_a.R;
+import com.example.e_culture_tool_a.RecyclerItemClickListener;
+import com.example.e_culture_tool_a.ShowLuoghi;
+import com.example.e_culture_tool_a.ShowZone;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -42,6 +47,11 @@ public class ZoneFragment extends Fragment {
     SearchView search;
 
     FirebaseFirestore fStore;
+
+    String nomeZona;
+    String descrZona;
+
+    TextView list_my_zone;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -119,6 +129,27 @@ public class ZoneFragment extends Fragment {
             }
         });
 
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                list_my_zone = view.findViewById(R.id.list_my_zone);
+                nomeZona = list_my_zone.getText().toString();
+                for(int i = 0; i < ZoneList.size(); i++){
+                    if(nomeZona.equals(ZoneList.get(i).getNome())){
+                        descrZona = ZoneList.get(i).getDescrizione();
+                    }
+                }
+                Intent intent = new Intent(getActivity(), ShowZone.class);
+                intent.putExtra("nomeZona", nomeZona);
+                intent.putExtra("descrZona", descrZona);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }));
         return view;
     }
     public void FilterList(String Text,ZonaAdapter adapter){

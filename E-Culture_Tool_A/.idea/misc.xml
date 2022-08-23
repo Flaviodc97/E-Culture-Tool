@@ -17,18 +17,21 @@
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_profile.xml" value="0.4041666666666667" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_profilo.xml" value="0.4" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_recap_visita.xml" value="0.4041666666666667" />
+        <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_search.xml" value="0.4041666666666667" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_select_zone.xml" value="0.4041666666666667" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_show_luoghi.xml" value="0.2857789855072464" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_show_oggetti.xml" value="0.2857789855072464" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_show_zone.xml" value="0.2857789855072464" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_profile.xml" value="0.2" />
+        <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_visita.xml" value="0.4041666666666667" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_zona.xml" value="0.4041666666666667" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_visualizza_medaglie.xml" value="0.39010416666666664" />
+        <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/fragment_luoghi.xml" value="0.4041666666666667" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/fragment_zone.xml" value="0.4041666666666667" />
-        <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/luoghi_single_item.xml" value="0.2857789855072464" />
+        <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/luoghi_single_item.xml" value="0.4" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/medaglie_multiple_single_item.xml" value="0.4" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/medaglie_tempo_single_item.xml" value="0.403125" />
-        <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/oggetti_single_item.xml" value="0.264" />
+        <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/oggetti_single_item.xml" value="0.4" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/visita_single_item.xml" value="0.2857789855072464" />
         <entry key="..\:/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/zone_single_item.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Christian/Desktop/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_home_visitatore.xml" value="0.12631578947368421" />
