@@ -130,15 +130,18 @@ public class UpdateZonaActivity extends AppCompatActivity {
 
             Log.d(TAG, "id luogo: " +iLuogoid+ "id zona"+id);
 
-
+            // Carico il nome e la descrizione aggiornati sul database
             uploadtoFirestore(nome,descrizione);
 
+            // Al click del bottone elimino la zona dal vecchio luogo di appartenenza
             if((luogo_id.equals(iLuogoid)) == false){
                 deletefromFirestore();
             }
 
 
         });
+
+        // Al click del bottone elimino una zona
         mdelete.setOnClickListener(view -> {
             deleteZona();
         });

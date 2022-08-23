@@ -55,7 +55,10 @@ public class MyVisiteActivity extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         AddLuogo =findViewById(R.id.AddLuogo);
+
+        // // Controllo se l'utente accede come ospite e nascondo la funzione di aggiunta visita
         if(fAuth.getCurrentUser()==null) AddLuogo.setVisibility(View.INVISIBLE);
+
         mFirestoreList = findViewById(R.id.list_visite);
         flag = false;
         Bundle extras = getIntent().getExtras();

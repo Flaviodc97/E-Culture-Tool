@@ -27,6 +27,7 @@ public class ShowOggetti extends AppCompatActivity {
         nomeOggetto = findViewById(R.id.nomeOggetto);
         descrOggetto = findViewById(R.id.descrOggetto);
 
+        // Variabili ottenuti da Intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             fO = extras.getString("fotoOggetto");
@@ -34,10 +35,10 @@ public class ShowOggetti extends AppCompatActivity {
             dO = extras.getString("descrOggetto");
         }
 
+        //Visualizzo le informazioni relative agli oggetti
         if(fO!=null){
             Picasso.get().load(fO).into(fotoOggetto);
         }
-
         nomeOggetto.setText(nO);
         descrOggetto.setText(dO);
     }

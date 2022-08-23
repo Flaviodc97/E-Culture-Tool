@@ -21,6 +21,7 @@ public class ShowZone extends AppCompatActivity {
         nomeZona = findViewById(R.id.nomeZona);
         descrZona = findViewById(R.id.descrZona);
 
+        // Variabili ottenuti da Intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             nZ = extras.getString("nomeZona");
@@ -28,6 +29,7 @@ public class ShowZone extends AppCompatActivity {
 
         }
 
+        //Visualizzo le informazioni relative alle zone
         nomeZona.setText(nZ);
         descrZona.setText(dZ);
     }

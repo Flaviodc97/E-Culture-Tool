@@ -159,11 +159,13 @@ public class UpdateOggettiActivity extends AppCompatActivity {
                 }
             });
 
+            // Al click del bottone richiedo i permessi per la fotocamera
         mcamera.setOnClickListener(view -> {
 
             askCamera();
         });
 
+        // Al click del bottone accedo alla galleria per prendere un'immagine
         mgalleria.setOnClickListener(view -> {
             Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(gallery, GALLERY_REQUEST_CODE);
@@ -173,23 +175,28 @@ public class UpdateOggettiActivity extends AppCompatActivity {
 
         });
 
-
+           // Al click del bottone eseguo l'update dell'oggetto
            mupdateButton.setOnClickListener( view -> {
                String nome = mnome.getText().toString().trim();
                String descrizione = mdescrizione.getText().toString().trim();
 
                Log.d(TAG, " id luogo "+iLuogoid+" id Zona"+ zona_id);
 
+               // Carico il nome e la descrizione aggiornati dell'oggetto sul database
                uploadtoFirestore(nome, descrizione);
                if((zona_id.equals(izonaid)) == false){
+                   // Elimino l'oggetto dalla vecchia zona di appartenenza
                    deletefromFirestore();
                }
 
 
 
            });
+
+           // Al click del bottone elimino il bottone
            mdelete.setOnClickListener(view -> {
 
+               // Elimino l'oggetto
                deleteOggetto();
            });
 
@@ -284,6 +291,8 @@ public class UpdateOggettiActivity extends AppCompatActivity {
                 String imageFileName = "JPEG_" + timeStamp + "." + getFileExt(contentUri);
                 Log.d("Uri", "image Uri:" + imageFileName);
                 //selectedImage.setImageURI(contentUri);
+
+                // Carico la foto aggiornata dell'oggetto sul database
                 uploadtoFirebase(imageFileName, contentUri);
 
 

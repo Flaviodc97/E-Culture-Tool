@@ -30,6 +30,7 @@ public class ShowLuoghi extends AppCompatActivity {
         nomeLuogo = findViewById(R.id.nomeLuogo);
         descrLuogo = findViewById(R.id.descrLuogo);
 
+        // Variabili ottenuti da Intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             fL = extras.getString("fotoLuogo");
@@ -38,10 +39,10 @@ public class ShowLuoghi extends AppCompatActivity {
 
         }
 
+        //Visualizzo le informazioni relative ai luoghi
         if(fL!=null){
             Picasso.get().load(fL).into(fotoLuogo);
         }
-
         nomeLuogo.setText(nL);
         descrLuogo.setText(dL);
     }

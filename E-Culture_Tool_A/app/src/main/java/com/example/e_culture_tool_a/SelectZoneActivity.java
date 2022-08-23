@@ -57,7 +57,7 @@ public class SelectZoneActivity extends AppCompatActivity {
         mFirestoreList = findViewById(R.id.firestore_zone_list);
         msub = findViewById(R.id.submitVisita);
 
-
+        // Variabili ottenuti da Intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             luogo_id = extras.getString("id");
@@ -73,7 +73,7 @@ public class SelectZoneActivity extends AppCompatActivity {
             //The key argument here must match that used in the other activity
         }
 
-
+        // Query per avere tutte le zone di un luogo
         Query query = fStore.collectionGroup("Zone").whereEqualTo("luogoID", luogo_id);
         FirestoreRecyclerOptions<Zone> options = new FirestoreRecyclerOptions.Builder<Zone>().setQuery(query, Zone.class).build();
 
@@ -116,7 +116,7 @@ public class SelectZoneActivity extends AppCompatActivity {
         mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(adapter);
 
-
+    // Al click del bottone seleziono le zone da visitare
     msub.setOnClickListener(view -> {
         Intent intent = new Intent(SelectZoneActivity.this, SelectEdgeActivity.class);
         Bundle args = new Bundle();

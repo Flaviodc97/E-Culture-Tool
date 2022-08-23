@@ -47,6 +47,8 @@ public class QRScannerActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         fAuth = FirebaseAuth.getInstance();
+
+        // Controllo se l'utente accede come ospite e lo indirizzo ai quiz sull'oggetto
         if(fAuth.getCurrentUser()==null){
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
             String risultato = result.getContents();

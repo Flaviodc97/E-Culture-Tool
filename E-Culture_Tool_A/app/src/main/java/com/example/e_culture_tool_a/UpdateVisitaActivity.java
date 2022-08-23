@@ -113,12 +113,14 @@ public class UpdateVisitaActivity extends AppCompatActivity {
         mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(adapter);
 
+        // Al click del bottone
         saveButton.setOnClickListener(view -> {
             String nome = mnome.getText().toString().trim();
             if(TextUtils.isEmpty(nome)){
                 mnome.setError("Nome non può essere vuoto");
                 return;
             }
+            // Carico la modifica del nome della visita sul database
             uploadtoFirestore(nome);
         });
     }
