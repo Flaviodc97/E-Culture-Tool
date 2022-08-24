@@ -33,17 +33,18 @@
 
 
     <LinearLayout
-        android:layout_width="390dp"
-        android:layout_height="391dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
+        android:layout_weight="1"
         android:background="@drawable/curvedbg"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="16dp"
             android:gravity="center_horizontal">
 
             <ImageView
@@ -183,14 +184,16 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
-            android:layout_width="408dp"
+            android:layout_width="match_parent"
             android:layout_height="72dp"
             android:background="@color/design_default_color_primary"
             app:itemIconTint="@color/white"
             app:itemTextColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:menu="@menu/bottombar"
-            tools:layout_editor_absoluteX="3dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/bottombar" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"

@@ -31,9 +31,9 @@
                     android:id="@+id/imagemedagliatempo"
                     android:layout_width="380dp"
                     android:layout_height="100dp"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="16dp"
                     app:srcCompat="@drawable/curvebuttonbg" />
 
                 <ImageView
@@ -42,7 +42,7 @@
                     android:layout_height="65dp"
                     android:layout_alignStart="@+id/imagemedagliatempo"
                     android:layout_alignTop="@+id/imagemedagliatempo"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:background="@color/Oro"
                     app:srcCompat="@drawable/ic_medaglia3" />
@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/imagemedagliatempo"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_toEndOf="@+id/imageMedaglia"
                     android:text="Medaglie M 1"

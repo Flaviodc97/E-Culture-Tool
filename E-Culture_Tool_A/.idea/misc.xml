@@ -116,11 +116,11 @@
         <entry key="app/src/main/res/drawable/round_bg.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_add_domanda.xml" value="0.2933117589206559" />
         <entry key="app/src/main/res/layout/activity_domande_multiple_v.xml" value="0.3656033238620623" />
-        <entry key="app/src/main/res/layout/activity_domande_tempo_v.xml" value="0.23048345761607353" />
+        <entry key="app/src/main/res/layout/activity_domande_tempo_v.xml" value="0.3497720928699798" />
         <entry key="app/src/main/res/layout/activity_example.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_fine_domande.xml" value="0.2944168090820313" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.15070921985815602" />
-        <entry key="app/src/main/res/layout/activity_home_visitatore.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_home_visitatore.xml" value="0.36937987415503104" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_miei_luoghi.xml" value="0.3978360795443302" />
         <entry key="app/src/main/res/layout/activity_my_domande_multiple.xml" value="0.28314025013159344" />
@@ -136,7 +136,7 @@
         <entry key="app/src/main/res/layout/activity_new_zone.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_oggetto_view.xml" value="0.3415061295971979" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.15070921985815602" />
-        <entry key="app/src/main/res/layout/activity_profilo.xml" value="0.30465819446753106" />
+        <entry key="app/src/main/res/layout/activity_profilo.xml" value="0.1417770385742187" />
         <entry key="app/src/main/res/layout/activity_qrscanner.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_recap_visita.xml" value="0.23558654785156247" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.15070921985815602" />
@@ -153,8 +153,11 @@
         <entry key="app/src/main/res/layout/activity_update_edge.xml" value="0.3025210084033613" />
         <entry key="app/src/main/res/layout/activity_update_luogo.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_update_oggetti.xml" value="0.15070921985815602" />
-        <entry key="app/src/main/res/layout/activity_update_visita.xml" value="0.4589764317722185" />
+        <entry key="app/src/main/res/layout/activity_update_profile.xml" value="0.26804809570312504" />
+        <entry key="app/src/main/res/layout/activity_update_tempo_domande.xml" value="0.30974394886206225" />
+        <entry key="app/src/main/res/layout/activity_update_visita.xml" value="0.272364493295656" />
         <entry key="app/src/main/res/layout/activity_update_zona.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_visualizza_medaglie.xml" value="0.31865660755346853" />
         <entry key="app/src/main/res/layout/domandamultipla_single_item.xml" value="0.35774809925268725" />
         <entry key="app/src/main/res/layout/edge_single_item.xml" value="0.32945837665804856" />
         <entry key="app/src/main/res/layout/foto_bg.xml" value="0.15020263424518743" />
@@ -162,7 +165,9 @@
         <entry key="app/src/main/res/layout/fragment_oggetti.xml" value="0.14336372847011145" />
         <entry key="app/src/main/res/layout/fragment_sbagliate.xml" value="0.14387031408308004" />
         <entry key="app/src/main/res/layout/fragment_zone.xml" value="0.14336372847011145" />
-        <entry key="app/src/main/res/layout/luoghi_single_item.xml" value="0.4801480912630802" />
+        <entry key="app/src/main/res/layout/luoghi_single_item.xml" value="0.2512387895052677" />
+        <entry key="app/src/main/res/layout/medaglie_multiple_single_item.xml" value="0.31922728626440605" />
+        <entry key="app/src/main/res/layout/medaglie_tempo_single_item.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/oggetti_single_item.xml" value="0.33705879682948653" />
         <entry key="app/src/main/res/layout/rounded_item.xml" value="0.14285714285714285" />
         <entry key="app/src/main/res/layout/sbagliata_single_item.xml" value="0.15020263424518743" />
@@ -170,6 +175,7 @@
         <entry key="app/src/main/res/layout/tempodomande_single_item.xml" value="0.3945233067722186" />
         <entry key="app/src/main/res/layout/visita_single_item.xml" value="0.3631757401888614" />
         <entry key="app/src/main/res/layout/zone_single_item.xml" value="0.3933042191927677" />
+        <entry key="app/src/main/res/menu/bottombar.xml" value="0.30462962962962964" />
         <entry key="app/src/main/res/menu/luoghi_menu.xml" value="0.30185185185185187" />
         <entry key="app/src/main/res/menu/object_menu.xml" value="0.30185185185185187" />
         <entry key="app/src/main/res/menu/visite_menu.xml" value="0.30185185185185187" />

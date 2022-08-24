@@ -42,6 +42,7 @@ public class ZonaAdapter extends RecyclerView.Adapter<ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.zonetxt.setText(itemList2.get(position).getNome());
+        holder.zone_options.setVisibility(View.INVISIBLE);
         holder.zone_desc_txt.setText(itemList2.get(position).getDescrizione());
     }
 

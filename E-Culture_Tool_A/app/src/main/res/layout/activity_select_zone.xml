@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/le_mie_visite"
-        android:text="Seleziona Le zone da visitare in ordine"
+        android:text="Seleziona le zone che vuoi visitare"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

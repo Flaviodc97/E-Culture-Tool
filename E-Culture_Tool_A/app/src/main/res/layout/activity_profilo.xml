@@ -66,7 +66,6 @@
                     android:autofillHints=""
                     android:background="@drawable/rectangle"
                     android:ems="10"
-                    android:gravity="right"
                     android:hint="@string/example_example_it"
                     android:inputType="textEmailAddress"
                     android:minHeight="48dp"

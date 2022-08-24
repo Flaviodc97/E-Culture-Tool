@@ -124,7 +124,7 @@ public class LuoghiFragment extends Fragment {
         recyclerView=view.findViewById(R.id.firestore_list_luoghi);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        
 
             Task<QuerySnapshot> query=fStore.collectionGroup("Luoghi").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override

@@ -29,9 +29,9 @@
                     android:id="@+id/image_multipla_click"
                     android:layout_width="380dp"
                     android:layout_height="100dp"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="16dp"
                     app:srcCompat="@drawable/curvebuttonbg" />
 
                 <ImageView
@@ -40,7 +40,7 @@
                     android:layout_height="65dp"
                     android:layout_alignStart="@+id/image_multipla_click"
                     android:layout_alignTop="@+id/image_multipla_click"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     app:srcCompat="@drawable/ic_baseline_timer_24" />
 
@@ -49,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/image_multipla_click"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_toEndOf="@+id/imageViewDm"
                     android:text="Zona 1"

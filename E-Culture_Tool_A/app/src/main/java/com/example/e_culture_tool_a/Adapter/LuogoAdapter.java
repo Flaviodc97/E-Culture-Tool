@@ -41,6 +41,7 @@ public class LuogoAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.itemtxt.setText(itemList1.get(position).getNome());
+        holder.luoghi_options.setVisibility(View.INVISIBLE);
 
         if(itemList1.get(position).getPhoto()!= null) {
             Picasso.get().load(itemList1.get(position).getPhoto()).into(holder.luoghi_img);
