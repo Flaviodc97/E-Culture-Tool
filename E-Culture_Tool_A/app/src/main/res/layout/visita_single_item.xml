@@ -69,19 +69,6 @@
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/list_descrizione"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/list_my_visite"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_toEndOf="@+id/imageViewVisita"
-                    android:text="@string/descrizione_visita"
-                    android:textColor="#6003082b"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
-
                 <ImageView
                     android:id="@+id/icon_check"
                     android:layout_width="55dp"

@@ -40,7 +40,6 @@ public class OggettoAdapter extends RecyclerView.Adapter<ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.oggettotxt.setText(itemList3.get(position).getNome());
         holder.oggetti_options.setVisibility(View.INVISIBLE);
-        holder.oggetto_desc_txt.setText(itemList3.get(position).getDescrizione());
         if(itemList3.get(position).getPhoto()!= null) {
             Picasso.get().load(itemList3.get(position).getPhoto()).into(holder.oggetto_img);
         }

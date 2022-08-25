@@ -72,7 +72,6 @@ public class AddDomandaActivity extends AppCompatActivity {
         // Se l'utente clicca su Salva vengono salvati i campi inseriti in Stringhe e viene salvato tutto su Firebase Firestore
         mSave.setOnClickListener(view -> {
             save();
-            saveToFirestore();
 
         });
 
@@ -120,13 +119,21 @@ public class AddDomandaActivity extends AppCompatActivity {
             mGiusta.setError(getResources().getString(R.string.inserire_risposta_giusta));
             return;
         }
+
         sbagliateList.add(mSbagliata.getText().toString().trim());
+
+        for(int i=0; i <sbagliateList.size(); i++)
+        {
+            /*if(TextUtils.isEmpty(sbagliateList.get(i))) sbagliateList.remove(i);*/
+            if(sbagliateList.get(i).equals("")) sbagliateList.remove(i);
+        }
+
         if(sbagliateList.size()<3){
             mDomanda.setError(getResources().getString(R.string.tre_risposte_errate));
             mGiusta.setError(getResources().getString(R.string.tre_risposte_errate));
             return;
         }
-
+        saveToFirestore();
     }
 
     //Viene Creata una Stringa casuale

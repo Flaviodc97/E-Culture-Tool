@@ -73,19 +73,6 @@
                     android:textSize="23dp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/list_descrizione"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/list_nome_oggetto"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_toEndOf="@+id/imageOggetti"
-                    android:text="@string/descrizione_oggetto"
-                    android:textColor="#6003082b"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 

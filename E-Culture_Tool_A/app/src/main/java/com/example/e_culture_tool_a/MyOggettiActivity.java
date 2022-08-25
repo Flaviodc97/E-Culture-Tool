@@ -89,6 +89,7 @@ public class MyOggettiActivity extends AppCompatActivity {
                     String descrOggetto = model.getDescrizione();
 
                     Intent intent = new Intent(MyOggettiActivity.this, ShowOggetti.class);
+                    intent.putExtra("idOggetto", model.getId());
                     intent.putExtra("fotoOggetto", fotoOggetto);
                     intent.putExtra("nomeOggetto", nomeOggetto);
                     intent.putExtra("descrOggetto", descrOggetto);

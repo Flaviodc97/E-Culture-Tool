@@ -36,11 +36,11 @@ public class ViewHolder extends RecyclerView.ViewHolder{
         luoghi_options=itemView.findViewById(R.id.LuoghiOptions);
 
         zonetxt=itemView.findViewById(R.id.list_my_zone);
-        zone_desc_txt=itemView.findViewById(R.id.list_descrizione);
+
         zone_options=itemView.findViewById(R.id.ZoneOptions);
 
         oggettotxt=itemView.findViewById(R.id.list_nome_oggetto);
-        oggetto_desc_txt=itemView.findViewById(R.id.list_descrizione);
+
         oggetto_img=itemView.findViewById(R.id.imageOggetti);
         oggetti_options=itemView.findViewById(R.id.options);
     }

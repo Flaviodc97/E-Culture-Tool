@@ -75,7 +75,7 @@ public class FineDomandeActivity extends AppCompatActivity {
                 score.setText(R.string.risposta_esatta);
                 medal.setBackgroundResource(R.color.Oro);
                 DocumentReference doc = fStore.collection("utenti").document(user_id).collection("MedaglieDomandeMultiple").document(idMedal);
-                MedaglieDomandeMultiple medaglia = new MedaglieDomandeMultiple(idMedal, R.string.medaglia +nomeOggetto+ R.string.oro, PUNTEGGIO_MULTIPLE, idOggetto, user_id);
+                MedaglieDomandeMultiple medaglia = new MedaglieDomandeMultiple(idMedal, getResources().getString(R.string.medaglia) +nomeOggetto+ getResources().getString(R.string.oro), PUNTEGGIO_MULTIPLE, idOggetto, user_id);
                 doc.set(medaglia).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

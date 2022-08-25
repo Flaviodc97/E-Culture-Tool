@@ -13,7 +13,9 @@ public class ShowOggetti extends AppCompatActivity {
     ImageView fotoOggetto;
     TextView nomeOggetto;
     TextView descrOggetto;
+    TextView idOggetto;
 
+    String idO;
     String fO;
     String nO;
     String dO;
@@ -26,10 +28,12 @@ public class ShowOggetti extends AppCompatActivity {
         fotoOggetto = findViewById(R.id.fotoOggetto);
         nomeOggetto = findViewById(R.id.nomeOggetto);
         descrOggetto = findViewById(R.id.descrOggetto);
+        idOggetto = findViewById(R.id.idOggetto);
 
         // Variabili ottenuti da Intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            idO = extras.getString("idOggetto");
             fO = extras.getString("fotoOggetto");
             nO = extras.getString("nomeOggetto");
             dO = extras.getString("descrOggetto");
@@ -39,6 +43,7 @@ public class ShowOggetti extends AppCompatActivity {
         if(fO!=null){
             Picasso.get().load(fO).into(fotoOggetto);
         }
+        idOggetto.setText(getResources().getText(R.string.id_qr_oggetto)+idO);
         nomeOggetto.setText(nO);
         descrOggetto.setText(dO);
     }

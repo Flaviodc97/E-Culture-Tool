@@ -375,7 +375,7 @@
     <string name="piccola_descrizione_percorso_1">Small Description Path 1</string>
     <string name="percorso_1">Route 1</string>
 
-
+    <string name="id_qr_oggetto">ID for generate qr code of the object: </string>
 
 
 
