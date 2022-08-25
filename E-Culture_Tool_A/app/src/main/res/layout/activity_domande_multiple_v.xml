@@ -24,7 +24,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
-                android:text="Domande Multiple"
+                android:text="@string/domande_multiple_a"
                 android:textColor="@color/white" />
         </LinearLayout>
 
@@ -117,7 +117,7 @@
                     android:background="@color/Primario"
                     android:gravity="left"
                     android:padding="16dp"
-                    android:text="Fine quiz"
+                    android:text="@string/fine_quiz"
                     android:textAlignment="center"
                     android:textColor="@color/white" />
 
@@ -132,7 +132,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Il tuo punteggio:" />
+                        android:text="@string/punteggio" />
 
                     <TextView
                         android:id="@+id/result"

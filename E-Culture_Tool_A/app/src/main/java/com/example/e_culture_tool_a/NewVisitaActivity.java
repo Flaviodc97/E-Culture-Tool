@@ -112,7 +112,7 @@ public class NewVisitaActivity extends AppCompatActivity {
             String nomeVisita = mnomeVisita.getText().toString().trim();
             Log.d(TAG," "+luogo_id );
             if(TextUtils.isEmpty(nomeVisita)){
-                mnomeVisita.setError("inserire il nome della visita");
+                mnomeVisita.setError(getResources().getString(R.string.inserire_un_nome));
                 return;
             }
             Intent i = new Intent(NewVisitaActivity.this, SelectZoneActivity.class);

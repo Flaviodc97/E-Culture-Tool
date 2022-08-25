@@ -76,41 +76,41 @@ public class RegisterActivity extends AppCompatActivity {
             // Se il campo email e' vuoto viene inserito un errore nella EditText
             if(TextUtils.isEmpty(email)){
 
-                memail.setError("Inserisci l'email");
+                memail.setError(getResources().getString(R.string.inserisci_email));
                 return;
 
             }
             // Se il campo password e' vuoto viene inserito un errore nella EditText
             if(TextUtils.isEmpty(password)){
 
-                mpassword.setError("Inserisci la Password");
+                mpassword.setError(getResources().getString(R.string.inserisci_password));
                 return;
             }
             // Se il campo nome e' vuoto viene inserito un errore nella EditText
             if(TextUtils.isEmpty(nome)){
 
-                mnome.setError("Inserisci Il tuo nome");
+                mnome.setError(getResources().getString(R.string.inserisci_nome));
                 return;
             }
 
             // Se il campo cognome e' vuoto viene inserito un errore nella EditText
             if(TextUtils.isEmpty(cognome)){
 
-                mcognome.setError("Inserisci il tuo cognome");
+                mcognome.setError(getResources().getString(R.string.inserisci_cognome));
                 return;
             }
             // Se il campo password  e' minore di 8 viene inserito un errore nella EditText
             if(password.length()<8){
-                mpassword.setError("la Password deve avere almeno 8 caratteri");
+                mpassword.setError(getResources().getString(R.string.password_caratteri));
                 return;
 
             }
 
             // Se il campo password e ripeti password non coincidono viene inserito un errore nelle EditText
-            if(!password.equals(mrpassword)){
+            if(!password.equals(mrpassword.getText().toString())){
 
-                mpassword.setError("le due Password non coincidono");
-                mrpassword.setError("le due Password non coincidono");
+                mpassword.setError(getResources().getString(R.string.password_diverse));
+                mrpassword.setError(getResources().getString(R.string.password_diverse));
 
             }
 
@@ -125,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                     if(task.isSuccessful()){
-                        Toast.makeText(RegisterActivity.this, "Account Creato con successo", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, R.string.account_creato_ok, Toast.LENGTH_SHORT).show();
                         user_id = fAuth.getCurrentUser().getUid();
 
                         /* Viene inserito un record nel DB Firebase FireStore con l'utente appena creato*/
@@ -148,7 +148,7 @@ public class RegisterActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), MainActivity.class ));
                         finish();
                     }else{
-                        Toast.makeText(RegisterActivity.this, "Error " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, R.string.error + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         mprogressBar.setVisibility(View.GONE);
 
                     }

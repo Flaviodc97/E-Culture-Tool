@@ -154,9 +154,9 @@ public class UpdateZonaActivity extends AppCompatActivity {
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         user_id = fauth.getCurrentUser().getUid();
         AlertDialog.Builder dialog = new AlertDialog.Builder(UpdateZonaActivity.this);
-        dialog.setTitle("Elimina Zona");
-        dialog.setMessage("Sicuro di voler eliminare la zona selezionata?");
-        dialog.setPositiveButton("Elimina Zona", new DialogInterface.OnClickListener() {
+        dialog.setTitle(R.string.elimina_zona);
+        dialog.setMessage(R.string.sicuro_elimina_zona);
+        dialog.setPositiveButton(R.string.elimina_zona, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(iLuogoid).collection("Zone").document(id);
@@ -164,14 +164,14 @@ public class UpdateZonaActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(UpdateZonaActivity.this, "Zona eliminata con successo", Toast.LENGTH_LONG).show();
+                            Toast.makeText(UpdateZonaActivity.this, R.string.zona_eliminata_ok, Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
                         }
                     }
                 });
             }
         });
-        dialog.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(R.string.annulla, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
@@ -195,7 +195,7 @@ public class UpdateZonaActivity extends AppCompatActivity {
         doc.set(zona).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(UpdateZonaActivity.this,"Zona caricata con successo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateZonaActivity.this,R.string.zona_modificata_ok, Toast.LENGTH_SHORT).show();
 
             }
 

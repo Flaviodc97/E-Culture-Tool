@@ -107,7 +107,7 @@ public class MyLuoghiActivity extends AppCompatActivity {
 
                                     break;
                                     case R.id.IdDeleteLuogo:
-                                        Toast.makeText(MyLuoghiActivity.this, "CANCELLA", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(MyLuoghiActivity.this, R.string.cancella, Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                                 return true;

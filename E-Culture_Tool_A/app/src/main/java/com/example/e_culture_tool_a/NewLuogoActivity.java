@@ -111,13 +111,13 @@ public class NewLuogoActivity extends AppCompatActivity {
 
             //Verifica che il campo nome non sia vuoto
             if(TextUtils.isEmpty(nome)){
-                mnome.setError("inserire un nome");
+                mnome.setError(getResources().getString(R.string.nome_non_vuoto));
                 return;
             }
 
             //Verifica che il campo descrizione non sia vuoto
             if(TextUtils.isEmpty(descrizione)){
-                mdescrizione.setError("inserire una descrizione");
+                mdescrizione.setError(getResources().getString(R.string.inserire_una_descrizione));
                 return;
             }
             String id = usingRandomUUID();
@@ -131,7 +131,7 @@ public class NewLuogoActivity extends AppCompatActivity {
             docReference.set(luogo).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
-                    Toast.makeText(NewLuogoActivity.this, "Luogo caricato con successo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewLuogoActivity.this, R.string.luogo_inserito_ok, Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -179,7 +179,7 @@ public class NewLuogoActivity extends AppCompatActivity {
 
             }else{
                 // Se rifiutato il permesso della Camera
-                Toast.makeText(NewLuogoActivity.this,"Bisogna Garantire il Permesso per la Camera", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewLuogoActivity.this,R.string.richiesta_camera, Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -247,14 +247,14 @@ public class NewLuogoActivity extends AppCompatActivity {
                     }
 
                 });
-                Toast.makeText(NewLuogoActivity.this,"Upload con successo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewLuogoActivity.this,R.string.upload_ok, Toast.LENGTH_SHORT).show();
 
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(NewLuogoActivity.this,"ERROR UPLOAD non andato a buon fine", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewLuogoActivity.this,R.string.upload_not, Toast.LENGTH_SHORT).show();
 
 
             }

@@ -136,11 +136,11 @@ public class NewZoneActivity extends AppCompatActivity {
             String nome = mnome.getText().toString().trim();
             String descrizione = mdescrizione.getText().toString().trim();
             if(TextUtils.isEmpty(nome)){
-                mnome.setError("inserire il nome");
+                mnome.setError(getResources().getString(R.string.inserire_un_nome));
                 return;
             }
             if(TextUtils.isEmpty(descrizione)){
-                mnome.setError("inserire la descrizione");
+                mnome.setError(getResources().getString(R.string.inserire_una_descrizione));
                 return;
             }
 
@@ -179,7 +179,7 @@ public class NewZoneActivity extends AppCompatActivity {
         doc.set(zona).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(NewZoneActivity.this,"Zona caricata con successo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewZoneActivity.this,R.string.zona_inserita_ok, Toast.LENGTH_SHORT).show();
 
             }
 

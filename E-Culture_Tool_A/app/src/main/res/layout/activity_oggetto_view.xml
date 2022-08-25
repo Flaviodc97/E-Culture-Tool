@@ -23,7 +23,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:text="Giochi "
+            android:text="@string/opzioni_oggetto"
             android:textColor="@color/white" />
     </LinearLayout>
 
@@ -105,7 +105,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:background="@drawable/curvebuttonbgdefault"
-                android:text="Domande a tempo"
+                android:text="@string/domande_tempo"
                 android:textColor="@color/white" />
 
             <Button

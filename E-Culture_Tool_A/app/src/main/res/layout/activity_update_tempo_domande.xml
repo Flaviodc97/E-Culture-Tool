@@ -27,7 +27,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
-                android:text="Modifica Domanda a tempo"
+                android:text="@string/modifica_domanda_tempo"
                 android:textColor="@color/white" />
         </LinearLayout>
 
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Nome della Domanda:"
+                android:text="@string/nome_domanda"
                 android:textColor="@color/Primario" />
 
             <EditText
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Tempo espresso in secondi: "
+                android:text="@string/tempo_secondi"
                 android:textColor="@color/Primario" />
 
             <EditText
@@ -112,7 +112,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/curvebuttonbgdefault"
                     android:padding="16dp"
-                    android:text="Invia"
+                    android:text="@string/invia"
                     android:textColor="@color/white" />
 
                 <Button
@@ -124,7 +124,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/curvebuttonbgdefault"
                     android:padding="16dp"
-                    android:text="Elimina"
+                    android:text="@string/elimina"
                     android:textColor="@color/white" />
             </LinearLayout>
 

@@ -98,7 +98,7 @@ public class UpdateEdgeActivity extends AppCompatActivity {
 
                     mzonaInizio.setVisibility(View.INVISIBLE);
 
-                    testo.setText("Inserire la zona di Arrivo");
+                    testo.setText(R.string.zona_arrivo);
 
                     showAlertDialogZonaFinale(UpdateEdgeActivity.this);
 
@@ -156,7 +156,7 @@ public class UpdateEdgeActivity extends AppCompatActivity {
     }
     public void showAlertDialogZonaIniziale(UpdateEdgeActivity view){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
-            builder.setMessage("Adesso Inserisci la zona di Partenza")
+            builder.setMessage(R.string.zona_partenza_adesso)
                     .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -167,7 +167,7 @@ public class UpdateEdgeActivity extends AppCompatActivity {
     }
     public void showAlertDialogZonaFinale(UpdateEdgeActivity view){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setMessage("Adesso Inserisci la zona di Arrivo")
+        builder.setMessage(R.string.zona_arrivo_adesso)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

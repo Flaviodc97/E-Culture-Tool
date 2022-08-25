@@ -19,8 +19,6 @@ import java.util.Random;
 
 public class DomandeTempoActivityV extends AppCompatActivity {
 
-    private static final String RIGHT = "Risposta Giusta!";
-    private static final String WRONG = "Risposta Sbagliata!";
     private TextView domanda, result, time, domandaM;
     private Button r1, r2, r3, r4, homev, next;
     DomandeTempo dt;
@@ -168,10 +166,10 @@ public class DomandeTempoActivityV extends AppCompatActivity {
         result.setVisibility(View.VISIBLE);
         String answer = ((Button) view).getText().toString().trim();
         if(answer.equals(rg)){
-            result.setText(RIGHT);
+            result.setText(R.string.risposta_esatta);
             puntit++;
         }
-        else result.setText(WRONG);
+        else result.setText(R.string.risposta_sbagliata);
         r1.setEnabled(false);
         r2.setEnabled(false);
         r3.setEnabled(false);

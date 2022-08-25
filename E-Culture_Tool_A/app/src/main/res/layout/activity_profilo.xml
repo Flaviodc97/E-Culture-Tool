@@ -22,7 +22,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:text="Mio Profilo"
+            android:text="@string/mio_profilo"
             android:textColor="@color/white" />
     </LinearLayout>
 
@@ -152,13 +152,15 @@
 
                 <Button
                     android:id="@+id/medaglie"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
-                    android:gravity="center"
-                    android:text="Visualizza le medaglie" />
+                    android:background="@drawable/round_bg"
+                    android:text="@string/visualizza_medaglie"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/buttonModifica"
@@ -167,7 +169,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/round_bg"
-                    android:text="Modifica profilo"
+                    android:text="@string/modifica_profilo"
                     android:textColor="@color/white" />
 
                 <Button

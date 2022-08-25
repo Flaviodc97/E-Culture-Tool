@@ -19,8 +19,6 @@ import java.util.Random;
 
 public class DomandeMultipleActivityV extends AppCompatActivity {
 
-    private static final String RIGHT = "Risposta Giusta!";
-    private static final String WRONG = "Risposta Sbagliata!";
     private TextView domanda, result;
     private Button r1, r2, r3, r4, fineQuiz;
     DomandeMultiple dm;
@@ -113,10 +111,10 @@ public class DomandeMultipleActivityV extends AppCompatActivity {
 
         // Verifica che la risposta cliccata sia quella giusta
         if(answer.equals(rg)){
-            result.setText(RIGHT); // Se risposta giusta
+            result.setText(R.string.risposta_esatta); // Se risposta giusta
             puntim = true;
         }
-        else result.setText(WRONG); //Se risposta sbagliata
+        else result.setText(R.string.risposta_sbagliata); //Se risposta sbagliata
 
         //Viene tolta la possibilita'di cambiare risposta dopo aver cliccato
         r1.setEnabled(false);

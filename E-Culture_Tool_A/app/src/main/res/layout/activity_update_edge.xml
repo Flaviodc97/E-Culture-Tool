@@ -33,7 +33,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
-                android:text="Aggiorna Tappa"
+                android:text="@string/aggiorna_tappa"
                 android:textColor="@color/white" />
         </LinearLayout>
 
@@ -48,7 +48,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:padding="16dp"
-            android:text="Inserire la zona di partenza"
+            android:text="@string/zona_partenza"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
             app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +94,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/curvebuttonbgdefault"
-            android:text="Modifica"
+            android:text="@string/modifica"
             android:textColor="@color/white"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"

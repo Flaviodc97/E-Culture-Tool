@@ -208,9 +208,9 @@ public class UpdateOggettiActivity extends AppCompatActivity {
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         user_id = fauth.getCurrentUser().getUid();
         AlertDialog.Builder dialog = new AlertDialog.Builder(UpdateOggettiActivity.this);
-        dialog.setTitle("Elimina Oggetto");
-        dialog.setMessage("Sicuro di voler eliminare l'oggetto selezionato?");
-        dialog.setPositiveButton("Elimina Oggetto", new DialogInterface.OnClickListener() {
+        dialog.setTitle(R.string.elimina_oggetto);
+        dialog.setMessage(R.string.sicuro_elimina_oggetto);
+        dialog.setPositiveButton(R.string.elimina_oggetto, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.d(TAG,"luogo "+iLuogoid+ " zona "+ izonaid+" oggetto"+id);
@@ -219,14 +219,14 @@ public class UpdateOggettiActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(UpdateOggettiActivity.this, "Oggetto eliminato con successo", Toast.LENGTH_LONG).show();
+                            Toast.makeText(UpdateOggettiActivity.this, R.string.oggetto_eliminato_ok, Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
                         }
                     }
                 });
             }
         });
-        dialog.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(R.string.annulla, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
@@ -257,7 +257,7 @@ public class UpdateOggettiActivity extends AppCompatActivity {
 
             }else{
                 // Se rifiutato il permesso della Camera
-                Toast.makeText(UpdateOggettiActivity.this,"Bisogna Garantire il Permesso per la Camera", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateOggettiActivity.this,R.string.richiesta_camera, Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -317,14 +317,14 @@ public class UpdateOggettiActivity extends AppCompatActivity {
                     }
 
                 });
-                Toast.makeText(UpdateOggettiActivity.this,"Upload con successo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateOggettiActivity.this,R.string.upload_ok, Toast.LENGTH_SHORT).show();
 
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(UpdateOggettiActivity.this,"ERROR UPLOAD non andato a buon fine", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateOggettiActivity.this,R.string.upload_not, Toast.LENGTH_SHORT).show();
 
 
             }
@@ -397,7 +397,7 @@ public class UpdateOggettiActivity extends AppCompatActivity {
         doc.set(oggetto).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(UpdateOggettiActivity.this,"Oggetto modificato con successo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateOggettiActivity.this,R.string.oggetto_modificato_ok, Toast.LENGTH_SHORT).show();
 
             }
 

@@ -3,11 +3,11 @@
 
     <item
         android:id="@+id/Id_multiple"
-        android:title="Domande Multiple" />
+        android:title="@string/domande_multiple_menu" />
     <item
         android:id="@+id/Id_Tempo"
-        android:title="Domande a tempo" />
+        android:title="@string/domande_tempo_menu" />
     <item
         android:id="@+id/Id_Modifica"
-        android:title="Modifica" />
+        android:title="@string/modifica_menu" />
 </menu>

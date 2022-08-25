@@ -22,7 +22,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:text="Riepilogo della Visita"
+            android:text="@string/riepilogo_visita"
             android:textColor="@color/white" />
     </LinearLayout>
 

@@ -106,7 +106,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
         adapterfine.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mzonaFine.setAdapter(adapterfine);
         showAlertDialogZonaIniziale(SelectEdgeActivity.this);
-        testo2.setText("Inserire la zona di Partenza");
+        testo2.setText(R.string.zona_partenza);
 
 
         mzonaInizio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -119,7 +119,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
 
                     mzonaInizio.setVisibility(View.INVISIBLE);
 
-                    testo2.setText("Inserire la zona di Arrivo");
+                    testo2.setText(R.string.zona_arrivo);
 
                     showAlertDialogZonaFinale(SelectEdgeActivity.this);
 
@@ -208,7 +208,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
 
     public void showAlertDialogZonaIniziale(SelectEdgeActivity view){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setMessage("Adesso Inserisci la zona di Partenza")
+        builder.setMessage(R.string.zona_partenza)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -219,7 +219,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
     }
     public void showAlertDialogZonaFinale(SelectEdgeActivity view){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setMessage("Adesso Inserisci la zona di Arrivo")
+        builder.setMessage(R.string.zona_arrivo)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

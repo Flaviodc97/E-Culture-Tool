@@ -191,17 +191,17 @@ public class RecapVisitaActivity extends AppCompatActivity {
 
         //Controlla se il file esiste
         if(!file.exists()){
-            Toast.makeText(RecapVisitaActivity.this, "file non esite", Toast.LENGTH_LONG).show();
+            Toast.makeText(RecapVisitaActivity.this, R.string.file_non_esiste, Toast.LENGTH_LONG).show();
             return;
         }
 
         //Attributi che l'intent deve avere per poter effettuare lo share e il richiamo di applicazioni che consentono di ricevere file
         Intent intentShare = new Intent(Intent.ACTION_SEND);
         intentShare.setType("text/*");
-        intentShare.putExtra(Intent.EXTRA_SUBJECT, "La mia visita a " + nomeLuogo); //per condividere con email app
+        intentShare.putExtra(Intent.EXTRA_SUBJECT, R.string.la_mia_visita_a + nomeLuogo); //per condividere con email app
         intentShare.putExtra(Intent.EXTRA_STREAM, contentUri);
         intentShare.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        RecapVisitaActivity.this.startActivity(Intent.createChooser(intentShare, "Condividi file"));
+        RecapVisitaActivity.this.startActivity(Intent.createChooser(intentShare, String.valueOf(R.string.condividi_file)));
 
 
     }
@@ -226,7 +226,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Toast.makeText(this,"file salvato" ,Toast.LENGTH_LONG).show();
+            Toast.makeText(this,R.string.file_salvato ,Toast.LENGTH_LONG).show();
         } else {
             //se non si hanno i permessi per la scrittura sullo storage del telefono
             requestPermissions();
@@ -239,11 +239,11 @@ public class RecapVisitaActivity extends AppCompatActivity {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
             //mostro spiegazione del permesso richeisto
             new AlertDialog.Builder(this)
-                    .setTitle("Per salvare il file bisgna accettare i permessi")
+                    .setTitle(R.string.permnessi_salva_file)
                     .setMessage("Accetta")
-                    .setPositiveButton("Accetta", (dialogInterface, i) -> ActivityCompat.requestPermissions(
+                    .setPositiveButton(R.string.accetta_a, (dialogInterface, i) -> ActivityCompat.requestPermissions(
                             RecapVisitaActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE))
-                    .setNegativeButton("Annulla",
+                    .setNegativeButton(R.string.annulla_account,
                             (dialogInterface, i) -> dialogInterface.dismiss()).create().show();
         } else {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
@@ -278,7 +278,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
 
         //File path = getApplicationContext().getFilesDir();
         zonelist.remove("Seleziona Zona");
-        message  =  " Percorso in luogo:" +nomeLuogo+ "\n Nome visita: " + nomeVisita + "\n zone visitate" + zonelist + "\n Percorsi:\n ";
+        message  =  R.string.percorso_in_luogo +nomeLuogo+ "\n " + R.string.nomev + nomeVisita + "\n " + R.string.zone_visitate + zonelist + "\n "+ R.string.percorsi + "\n ";
         for(int i = 0; i < zonelist.size()-1; i ++){
             for(int j = i+1; j<zonelist.size();j++) {
                 if (!(graph.getAllEdges(zonelist.get(i), zonelist.get(j)).toString().equals("[]"))) {

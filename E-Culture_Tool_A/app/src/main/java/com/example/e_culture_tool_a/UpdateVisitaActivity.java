@@ -117,7 +117,7 @@ public class UpdateVisitaActivity extends AppCompatActivity {
         saveButton.setOnClickListener(view -> {
             String nome = mnome.getText().toString().trim();
             if(TextUtils.isEmpty(nome)){
-                mnome.setError("Nome non può essere vuoto");
+                mnome.setError(getResources().getString(R.string.inserire_un_nome));
                 return;
             }
             // Carico la modifica del nome della visita sul database
@@ -174,7 +174,7 @@ public class UpdateVisitaActivity extends AppCompatActivity {
         doc.update("nome", nome).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(UpdateVisitaActivity.this, "Nome della visita aggiornato correttamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateVisitaActivity.this, R.string.nome_visita_aggiornato_ok, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(UpdateVisitaActivity.this, MyVisiteActivity.class);
                 startActivity(intent);
             }

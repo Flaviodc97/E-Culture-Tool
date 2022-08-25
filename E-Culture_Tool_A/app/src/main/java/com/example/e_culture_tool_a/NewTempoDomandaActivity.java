@@ -131,11 +131,11 @@ public class NewTempoDomandaActivity extends AppCompatActivity {
         String tempo = msecondi.getText().toString();
         int secondi =Integer.parseInt(tempo);
         if(TextUtils.isEmpty(nometempo)){
-            mnome.setError("inserire un nome");
+            mnome.setError(getResources().getString(R.string.inserire_un_nome));
             return;
         }
         if(TextUtils.isEmpty(tempo)){
-            msecondi.setError("inserire i secondi");
+            msecondi.setError(getResources().getString(R.string.inserire_tempo_secondi));
             return;
         }
 
@@ -144,7 +144,7 @@ public class NewTempoDomandaActivity extends AppCompatActivity {
         doc.set(dt).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(NewTempoDomandaActivity.this, "Domande a tempo inserito correttamente",Toast.LENGTH_SHORT);
+                Toast.makeText(NewTempoDomandaActivity.this, R.string.domanda_tempo_ok,Toast.LENGTH_SHORT);
                 startActivity(new Intent(NewTempoDomandaActivity.this, MyOggettiActivity.class));
             }
         });

@@ -120,9 +120,9 @@ public class Profilo extends AppCompatActivity {
     public void deleteProfile(MenuItem item) {
         FirebaseUser userIstance = fAuth.getCurrentUser();
         AlertDialog.Builder dialog = new AlertDialog.Builder(Profilo.this);
-        dialog.setTitle("Eliminazione Account");
-        dialog.setMessage("Sicuro di voler eliminare il tuo Account?");
-        dialog.setPositiveButton("Elimina Account", new DialogInterface.OnClickListener() {
+        dialog.setTitle(R.string.eliminazione_account);
+        dialog.setMessage(R.string.sicuro_elimina_account);
+        dialog.setPositiveButton(R.string.elimina_account, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -130,7 +130,7 @@ public class Profilo extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(Profilo.this, "Account eliminato con successo", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Profilo.this, R.string.account_eliminato_ok, Toast.LENGTH_LONG).show();
                             DocumentReference docReference = fStore.collection("utenti").document(user_id);
                             docReference.delete();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class ));
@@ -144,7 +144,7 @@ public class Profilo extends AppCompatActivity {
 
             }
         });
-        dialog.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(R.string.annulla_account, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();

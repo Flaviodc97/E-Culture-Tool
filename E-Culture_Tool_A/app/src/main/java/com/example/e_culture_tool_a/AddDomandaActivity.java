@@ -96,7 +96,7 @@ public class AddDomandaActivity extends AppCompatActivity {
         doc.set(dm).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(AddDomandaActivity.this, "Domanda Inserita con Successo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddDomandaActivity.this, R.string.domanda_inserita_ok, Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(AddDomandaActivity.this,MyOggettiActivity.class));
             }
         });
@@ -112,18 +112,18 @@ public class AddDomandaActivity extends AppCompatActivity {
 
         rgiusta = mGiusta.getText().toString().trim();
         if(TextUtils.isEmpty(domanda)){
-            mDomanda.setError("Inserire una Domanda");
+            mDomanda.setError(getResources().getString(R.string.inserire_una_domanda));
             return;
         }
 
         if(TextUtils.isEmpty(rgiusta)){
-            mGiusta.setError("Inserire una risposta Giusta");
+            mGiusta.setError(getResources().getString(R.string.inserire_risposta_giusta));
             return;
         }
         sbagliateList.add(mSbagliata.getText().toString().trim());
         if(sbagliateList.size()<3){
-            mDomanda.setError("Inserire almeno 3 risposte errate");
-            mGiusta.setError("Inserire almeno 3 risposte errate");
+            mDomanda.setError(getResources().getString(R.string.tre_risposte_errate));
+            mGiusta.setError(getResources().getString(R.string.tre_risposte_errate));
             return;
         }
 

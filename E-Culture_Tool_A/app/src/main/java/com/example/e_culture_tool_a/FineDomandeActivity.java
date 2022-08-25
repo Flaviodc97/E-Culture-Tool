@@ -24,11 +24,6 @@ import java.util.UUID;
 public class FineDomandeActivity extends AppCompatActivity {
 
     public static final int PUNTEGGIO_MULTIPLE = 50;
-    public static final String MEDAGLIA = "Medaglia ";
-    public static final String ORO = " Oro";
-    public static final String ARGENTO = " Argento";
-    public static final String BRONZO = " Bronzo";
-    public static final String PLATINO = " Platino";
     TextView score;
     Button finishQuiz;
     Integer puntit;
@@ -77,19 +72,19 @@ public class FineDomandeActivity extends AppCompatActivity {
         // Viene verificato se si tratta di schermata di fine Gioco del Tipo Domande Multiple
         if(flagm){
             if(puntim){
-                score.setText("Hai risposto bene alla domanda, complimenti!");
+                score.setText(R.string.risposta_esatta);
                 medal.setBackgroundResource(R.color.Oro);
                 DocumentReference doc = fStore.collection("utenti").document(user_id).collection("MedaglieDomandeMultiple").document(idMedal);
-                MedaglieDomandeMultiple medaglia = new MedaglieDomandeMultiple(idMedal, MEDAGLIA +nomeOggetto+ ORO, PUNTEGGIO_MULTIPLE, idOggetto, user_id);
+                MedaglieDomandeMultiple medaglia = new MedaglieDomandeMultiple(idMedal, R.string.medaglia +nomeOggetto+ R.string.oro, PUNTEGGIO_MULTIPLE, idOggetto, user_id);
                 doc.set(medaglia).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(FineDomandeActivity.this, "Medaglia assegnata al tuo account", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FineDomandeActivity.this, R.string.medaglia_assegnata, Toast.LENGTH_SHORT).show();
                     }
                 });
                 flagm=false;
             }else{
-                score.setText("Non hai risposto bene alla domanda, peccato!");
+                score.setText(R.string.risposta_sbagliata);
                 medal.setVisibility(View.INVISIBLE);
                 flagm=false;
             }
@@ -104,26 +99,26 @@ public class FineDomandeActivity extends AppCompatActivity {
                 medal.setVisibility(View.INVISIBLE);
             }
             if(punteggio > 0 && punteggio  <=25) {
-                tipo = BRONZO;
+                tipo = getResources().getString(R.string.bronzo);
                 medal.setBackgroundResource(R.color.Bronzo);
                 assegnaMedaglia(tipo);
             }
             if(punteggio > 25 && punteggio <= 75){
-                tipo = ARGENTO;
+                tipo = getResources().getString(R.string.argento);
                 medal.setBackgroundResource(R.color.Argento);
                 assegnaMedaglia(tipo);
             }
             if(punteggio > 75 && punteggio <= 99){
-                tipo = ORO;
+                tipo = getResources().getString(R.string.oro);
                 medal.setBackgroundResource(R.color.Oro);
                 assegnaMedaglia(tipo);
             }
             if(punteggio > 99){
-                tipo = PLATINO;
+                tipo = getResources().getString(R.string.platino);
                 medal.setBackgroundResource(R.color.Platino);
                 assegnaMedaglia(tipo);
             }
-            score.setText("Hai risposto bene a "+puntit+" domande su "+domandetot+" domande, percentuale: "+ punteggio);
+            score.setText(new StringBuilder().append(getResources().getString(R.string.hai_risposto_bene_a)).append(puntit).append(getResources().getString(R.string.domande_su)).append(domandetot).append(getResources().getString(R.string.domande)).append(getResources().getString(R.string.percentuale)).append(punteggio).toString());
             flagt = false;
         }
 
@@ -150,11 +145,11 @@ public class FineDomandeActivity extends AppCompatActivity {
         user_id = fAuth.getCurrentUser().getUid();
         tipo = tipo.trim();
         DocumentReference doc = fStore.collection("utenti").document(user_id).collection("MedaglieDomandeTempo").document(idMedal);
-        MedaglieDomandeTempo medaglia = new MedaglieDomandeTempo(idMedal, MEDAGLIA +nomeOggetto+ tipo, punteggio, idOggetto, user_id, tipo);
+        MedaglieDomandeTempo medaglia = new MedaglieDomandeTempo(idMedal, getResources().getString(R.string.medaglia) +nomeOggetto+ tipo, punteggio, idOggetto, user_id, tipo);
         doc.set(medaglia).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(FineDomandeActivity.this, "Medaglia assegnata al tuo account", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FineDomandeActivity.this, R.string.medaglia_assegnata, Toast.LENGTH_SHORT).show();
             }
         });
     }

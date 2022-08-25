@@ -128,7 +128,7 @@ public class ShowVisitaActivity extends AppCompatActivity {
 
         //Controlla se il file esiste
         if(!file.exists()){
-            Toast.makeText(ShowVisitaActivity.this, "file non esite", Toast.LENGTH_LONG).show();
+            Toast.makeText(ShowVisitaActivity.this, R.string.file_non_esiste, Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -138,7 +138,7 @@ public class ShowVisitaActivity extends AppCompatActivity {
         intentShare.putExtra(Intent.EXTRA_SUBJECT, "Subject Here"); //per condividere con email app
         intentShare.putExtra(Intent.EXTRA_STREAM, contentUri);
         intentShare.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        ShowVisitaActivity.this.startActivity(Intent.createChooser(intentShare, "Condividi file"));
+        ShowVisitaActivity.this.startActivity(Intent.createChooser(intentShare, String.valueOf(R.string.condividi_file)));
 
 
     }
@@ -152,11 +152,11 @@ public class ShowVisitaActivity extends AppCompatActivity {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
             //mostro spiegazione del permesso richeisto
             new AlertDialog.Builder(this)
-                    .setTitle("Per salvare il file bisgna accettare i permessi")
-                    .setMessage("Accetta")
-                    .setPositiveButton("Accetta", (dialogInterface, i) -> ActivityCompat.requestPermissions(
+                    .setTitle(R.string.permnessi_salva_file)
+                    .setMessage(R.string.accetta)
+                    .setPositiveButton(R.string.accetta, (dialogInterface, i) -> ActivityCompat.requestPermissions(
                             ShowVisitaActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE))
-                    .setNegativeButton("Annulla",
+                    .setNegativeButton(R.string.annulla,
                             (dialogInterface, i) -> dialogInterface.dismiss()).create().show();
         } else {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
@@ -197,7 +197,7 @@ public class ShowVisitaActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Toast.makeText(this,"file salvato" ,Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.file_salvato, Toast.LENGTH_LONG).show();
         } else {
             requestPermissions();
         }

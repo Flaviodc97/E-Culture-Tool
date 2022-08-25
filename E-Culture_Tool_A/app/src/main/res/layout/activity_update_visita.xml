@@ -19,7 +19,7 @@
             android:layout_marginTop="6dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/curvebuttonbg"
-            android:text="SALVA"
+            android:text="@string/salva_nome_visita"
             android:textColor="@color/Primario" />
 
         <View
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Modifica Visita"
+            android:text="@string/modifica_visita"
             android:textColor="@color/white" />
 
         <EditText
@@ -51,7 +51,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:padding="16dp"
-            android:text="Name"
+            android:text="@string/nome_visita"
             app:layout_constraintEnd_toStartOf="@+id/view3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

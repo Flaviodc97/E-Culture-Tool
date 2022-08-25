@@ -59,7 +59,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/curvebuttonbgdefault"
-            android:text="Torna alla home"
+            android:text="@string/torna_alla_home"
             android:textColor="@color/white" />
 
     </LinearLayout>

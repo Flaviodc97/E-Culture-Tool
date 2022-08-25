@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/rectangle"
-            android:text="Luoghi"
+            android:text="@string/luoghi_btn"
             android:textColor="@color/white" />
 
         <Button
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/white"
-            android:text="Zone"
+            android:text="@string/zone_btn"
             android:textColor="@color/Primario" />
 
         <Button
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/white"
-            android:text="Oggetti"
+            android:text="@string/oggetti_btn"
             android:textColor="@color/Primario" />
 
     </LinearLayout>

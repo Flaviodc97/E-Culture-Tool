@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Aggiungi Domanda"
+                android:text="@string/aggiungi_domanda"
                 android:textColor="@color/white" />
         </LinearLayout>
 
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="76dp"
-            android:text="Nome dell'oggetto:" />
+            android:text="@string/nome_oggetto" />
 
         <TextView
             android:id="@+id/nome_oggetto"
@@ -61,7 +61,7 @@
             android:layout_marginRight="16dp"
             android:background="@drawable/rectangle"
             android:ems="10"
-            android:hint="Domanda"
+            android:hint="@string/domanda"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:padding="16dp"
@@ -76,7 +76,7 @@
             android:layout_below="@+id/nome_oggetto"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="Nome della Domanda:" />
+            android:text="@string/nome_domanda" />
 
         <TextView
             android:id="@+id/textView9"
@@ -86,7 +86,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="Definisci la risposta Giusta" />
+            android:text="@string/definisci_risposta_giusta" />
 
         <EditText
             android:id="@+id/RispostaGiusta"
@@ -99,7 +99,7 @@
             android:layout_marginRight="16dp"
             android:background="@drawable/rectangle"
             android:ems="10"
-            android:hint="Risposta giusta"
+            android:hint="@string/risposta_giusta"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:padding="16dp"
@@ -124,7 +124,7 @@
                 android:layout_marginRight="8dp"
                 android:background="@drawable/rectangle"
                 android:ems="10"
-                android:hint="Risposta Errata"
+                android:hint="@string/risposta_errata"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 android:padding="16dp" />
@@ -139,7 +139,7 @@
                 android:layout_marginBottom="1dp"
                 android:background="@drawable/curvebuttonbgdefault"
                 android:padding="8dp"
-                android:text="Nuova Risposta Errata"
+                android:text="@string/nuova_risposta_errata"
                 android:textColor="@color/white" />
         </LinearLayout>
 
@@ -155,7 +155,7 @@
             android:layout_marginRight="16dp"
             android:background="@drawable/curvebuttonbgdefault"
             android:gravity="center"
-            android:text="Salva"
+            android:text="@string/salva_nome_visita"
             android:textColor="@color/white" />
     </RelativeLayout>
 

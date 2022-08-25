@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,8 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText memail;
@@ -32,10 +36,12 @@ public class MainActivity extends AppCompatActivity {
     Button mloginButton;
     Button mospiteButton;
     TextView mregisterText;
+    RadioButton radioItalia, radioInglese;
     ProgressBar mprogressBar;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String user_id;
+    Locale current;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         mloginButton = findViewById(R.id.ButtonRegister);
         mospiteButton = findViewById(R.id.ButtonOspite);
         mregisterText = findViewById(R.id.VaiRegistrazione);
+        radioItalia = findViewById(R.id.radioItalia);
+        radioInglese = findViewById(R.id.radioInglese);
         mprogressBar = findViewById(R.id.progressBarLogin);
 
         fStore = FirebaseFirestore.getInstance();
@@ -71,14 +79,14 @@ public class MainActivity extends AppCompatActivity {
             // Se il campo email e' vuoto viene inserito un errore nella EditText
             if(TextUtils.isEmpty(email)){
 
-                memail.setError("Inserisci l'email");
+                memail.setError(getResources().getString(R.string.error_email));
                 return;
 
             }
             // Se il campo password e' vuoto viene inserito un errore nella EditText
             if(TextUtils.isEmpty(password)){
 
-                mpassword.setError("Inserisci la Password");
+                mpassword.setError(getResources().getString(R.string.error_password));
                 return;
             }
             mprogressBar.setVisibility(View.VISIBLE);
@@ -92,12 +100,12 @@ public class MainActivity extends AppCompatActivity {
 
 
                     if(task.isSuccessful()){
-                        Toast.makeText(MainActivity.this, "Login effettuato con successo", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, R.string.login_ok, Toast.LENGTH_SHORT).show();
                         mprogressBar.setVisibility(View.GONE);
                         redirect();
 
                     }else{
-                        Toast.makeText(MainActivity.this, "Error " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, R.string.error + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         mprogressBar.setVisibility(View.GONE);
 
                     }
@@ -116,6 +124,72 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, HomeVisitatoreActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        current = getResources().getConfiguration().locale;
+        if(current.toString().equals("en")) radioInglese.setChecked(true);
+        else radioItalia.setChecked(true);
+
+        radioItalia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Locale current = getResources().getConfiguration().locale;
+                if(!current.toString().equals("en") && !current.toString().equals("en_US") && !current.toString().equals("en_us")) {
+
+                    Locale locale = new Locale("en");
+                    Locale.setDefault(locale);
+                    Configuration config = getBaseContext().getResources().getConfiguration();
+                    config.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(config,
+                            getBaseContext().getResources().getDisplayMetrics());
+
+                    // Fai rimandare ad homepage!
+                    Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
+                    startActivity(myIntent);
+                } else {
+                    Locale locale = new Locale("it_IT");
+                    Locale.setDefault(locale);
+                    Configuration config = getBaseContext().getResources().getConfiguration();
+                    config.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(config,
+                            getBaseContext().getResources().getDisplayMetrics());
+
+                    // Fai rimandare ad homepage!
+                    Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
+                    startActivity(myIntent);
+                }
+            }
+        });
+
+        radioInglese.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Locale current = getResources().getConfiguration().locale;
+                if(!current.toString().equals("en") && !current.toString().equals("en_US") && !current.toString().equals("en_us")) {
+
+                    Locale locale = new Locale("en");
+                    Locale.setDefault(locale);
+                    Configuration config = getBaseContext().getResources().getConfiguration();
+                    config.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(config,
+                            getBaseContext().getResources().getDisplayMetrics());
+
+                    // Fai rimandare ad homepage!
+                    Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
+                    startActivity(myIntent);
+                } else {
+                    Locale locale = new Locale("it_IT");
+                    Locale.setDefault(locale);
+                    Configuration config = getBaseContext().getResources().getConfiguration();
+                    config.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(config,
+                            getBaseContext().getResources().getDisplayMetrics());
+
+                    // Fai rimandare ad homepage!
+                    Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
+                    startActivity(myIntent);
+                }
             }
         });
     }

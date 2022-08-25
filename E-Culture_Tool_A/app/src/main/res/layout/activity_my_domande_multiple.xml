@@ -25,7 +25,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
-                android:text="Recap delle tue domande a risposta multipla"
+                android:text="@string/recap_domande_multiple"
                 android:textColor="@color/white" />
         </LinearLayout>
 

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Visualizzazione Medaglie"
+            android:text="@string/visualizzazione_medaglie"
             android:textColor="@color/white" />
     </LinearLayout>
 
@@ -45,7 +45,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:padding="16dp"
-                android:text="Medaglie Domande Multiple"
+                android:text="@string/medaglie_domande_multiple"
                 android:textColor="@color/Primario"
                 android:textSize="18dp" />
 
@@ -70,7 +70,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:padding="16dp"
-                android:text="Medaglie Domande Tempo"
+                android:text="@string/medaglie_domande_tempo"
                 android:textColor="@color/Primario"
                 android:textSize="18dp" />
 

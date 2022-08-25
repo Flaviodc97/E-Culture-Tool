@@ -22,7 +22,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:text="Modifica Domanda"
+            android:text="@string/modifica_domanda"
             android:textColor="@color/white" />
 
     </LinearLayout>
@@ -43,7 +43,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Nome della Domanda:" />
+            android:text="@string/nome_domanda" />
 
         <EditText
             android:id="@+id/domandaUpdate"
@@ -65,7 +65,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Definisci la risposta giusta:" />
+            android:text="@string/definisci_risposta_giusta" />
 
         <EditText
             android:id="@+id/rEsattaUpdate"
@@ -76,7 +76,7 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/rectangle"
             android:ems="10"
-            android:hint="Risposta Esatta"
+            android:hint="@string/risposta_giusta"
             android:inputType="textPersonName"
             android:padding="16dp" />
 
@@ -87,7 +87,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Aggingi una risposta errata:" />
+            android:text="@string/aggiungi_risposta_errata" />
         <LinearLayout
             android:id="@+id/linearLayout7"
             android:layout_width="match_parent"
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rectangle"
                 android:ems="10"
-                android:hint="Risposta Sbagliata"
+                android:hint="@string/risposta_errata"
                 android:inputType="textPersonName"
                 android:padding="16dp" />
 
@@ -143,7 +143,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/curvebuttonbgdefault"
                 android:gravity="center"
-                android:text="Modifica"
+                android:text="@string/modifica"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -3,8 +3,8 @@
 
     <item
         android:id="@+id/IdAggiornaVisita"
-        android:title="Aggiorna" />
+        android:title="@string/aggiorna" />
     <item
         android:id="@+id/IdDeleteVisita"
-        android:title="Cancella" />
+        android:title="@string/cancella" />
 </menu>

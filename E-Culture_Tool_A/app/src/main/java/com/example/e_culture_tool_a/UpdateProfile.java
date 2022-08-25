@@ -86,7 +86,7 @@ public class UpdateProfile extends AppCompatActivity {
                 @Override
                 public void onSuccess(Void unused) {
                     Log.d("TAG", "Caricato con successo" + user_id);
-                    Toast.makeText(UpdateProfile.this, "Profilo modificato con successo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateProfile.this, R.string.profilo_modificato_ok, Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -120,9 +120,9 @@ public class UpdateProfile extends AppCompatActivity {
     public void deleteProfile(MenuItem item) {
         FirebaseUser userIstance = fAuth.getCurrentUser();
         AlertDialog.Builder dialog = new AlertDialog.Builder(UpdateProfile.this);
-        dialog.setTitle("Eliminazione Account");
-        dialog.setMessage("Sicuro di voler eliminare il tuo Account?");
-        dialog.setPositiveButton("Elimina Account", new DialogInterface.OnClickListener() {
+        dialog.setTitle(R.string.eliminazione_account);
+        dialog.setMessage(R.string.sicuro_elimina_account);
+        dialog.setPositiveButton(R.string.elimina_account, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -130,7 +130,7 @@ public class UpdateProfile extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(UpdateProfile.this, "Account eliminato con successo", Toast.LENGTH_LONG).show();
+                            Toast.makeText(UpdateProfile.this, R.string.account_eliminato_ok, Toast.LENGTH_LONG).show();
                             DocumentReference docReference = fStore.collection("utenti").document(user_id);
                             docReference.delete();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class ));

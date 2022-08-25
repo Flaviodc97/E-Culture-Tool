@@ -124,8 +124,8 @@ public class UpdateLuogoActivity extends AppCompatActivity {
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         user_id = fauth.getCurrentUser().getUid();
         AlertDialog.Builder dialog = new AlertDialog.Builder(UpdateLuogoActivity.this);
-        dialog.setTitle("Elimina Luogo");
-        dialog.setMessage("Sicuro di voler eliminare il luogo selezionato?");
+        dialog.setTitle(R.string.elimina_luogo);
+        dialog.setMessage(R.string.sicuro_elimina_luogo);
         dialog.setPositiveButton("Elimina Luogo", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -134,14 +134,14 @@ public class UpdateLuogoActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(UpdateLuogoActivity.this, "Luogo eliminato con successo", Toast.LENGTH_LONG).show();
+                            Toast.makeText(UpdateLuogoActivity.this, R.string.luogo_eliminato_ok, Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
                         }
                     }
                 });
             }
         });
-        dialog.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(R.string.annulla_account, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
             dialogInterface.dismiss();
@@ -177,7 +177,7 @@ public class UpdateLuogoActivity extends AppCompatActivity {
         doc.set(luogo).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(UpdateLuogoActivity.this,"Luogo modificato con successo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateLuogoActivity.this,R.string.luogo_modificato_ok, Toast.LENGTH_SHORT).show();
             }
         });
         startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
@@ -207,7 +207,7 @@ public class UpdateLuogoActivity extends AppCompatActivity {
 
             }else{
                 // Se rifiutato il permesso della Camera
-                Toast.makeText(UpdateLuogoActivity.this,"Bisogna Garantire il Permesso per la Camera", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateLuogoActivity.this,R.string.richiesta_camera, Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -267,14 +267,14 @@ public class UpdateLuogoActivity extends AppCompatActivity {
                     }
 
                 });
-                Toast.makeText(UpdateLuogoActivity.this,"Upload con successo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateLuogoActivity.this,R.string.upload_ok, Toast.LENGTH_SHORT).show();
 
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(UpdateLuogoActivity.this,"ERROR UPLOAD non andato a buon fine", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateLuogoActivity.this,R.string.upload_not, Toast.LENGTH_SHORT).show();
 
 
             }

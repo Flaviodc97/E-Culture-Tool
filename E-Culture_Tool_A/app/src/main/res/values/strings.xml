@@ -1,63 +1,282 @@
 <resources>
+
+    <!-- Stringhe per Main Activity -->
     <string name="app_name">E-Culture_Tool_A</string>
-    <string name="email">Email:</string>
-    <string name="e_veloce_e_semplice">E\' veloce e semplice</string>
-    <string name="iscriviti">Iscriviti</string>
+    <string name="benvenuto">Benvenuto</string>
+    <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="error_email">Inserisci la mail!</string>
+    <string name="error_password">Inserisci la password!</string>
+    <string name="login">LOGIN</string>
+    <string name="login_ok">Login effettuato con successo</string>
+    <string name="error">Error </string>
+    <string name="continua_come_ospite">CONTINUA COME OSPITE</string>
+    <string name="nuovo_utente_registrati">Nuovo utente? Registrati ora</string>
+    <string name="seleziona_lingua">Seleziona una lingua</string>
+    <string name="italiano">Italiano</string>
+    <string name="inglese">Inglese</string>
+
+    <!-- Stringhe per Register Activity -->
+    <string name="iscriviti">Iscriviti</string>
+    <string name="e_veloce_e_semplice">E\' veloce e semplice</string>
     <string name="ripeti_la_password">Ripeti la password</string>
-    <string name="nome">Nome:</string>
-    <string name="cognome">Cognome:</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
     <string name="curatore">Curatore</string>
     <string name="registrati">REGISTRATI</string>
+    <string name="inserisci_email">Inserisci la mail</string>
+    <string name="inserisci_password">Inserisci la password</string>
+    <string name="inserisci_nome">Inserisci il tuo nome</string>
+    <string name="inserisci_cognome">Inserisci il tuo cognome</string>
+    <string name="password_caratteri">La password deve avere almeno 8 caratteri</string>
+    <string name="password_diverse">La due password non coincidono</string>
+    <string name="account_creato_ok">Account creato con successo</string>
+
+    <!-- Stringhe per Home Visitatore -->
+    <string name="home_visitatore">Home Visitatore</string>
+    <string name="visite_dei_curatori">Visite dei Curatori</string>
+    <string name="visite_consigliate_dai_curatori">Visite consigliate dai curatori</string>
+    <string name="visite_personalizzate">Visite personalizzate</string>
+    <string name="le_mie_visite">Le mie visite</string>
+    <string name="qrcode_scanner">QR Code Scanner</string>
+    <string name="cerca_tramite_qrcode">Cerca tramite QR Code</string>
     <string name="logo">Logo</string>
-    <string name="logout">Logout</string>
     <string name="example_example_it">example@example_it</string>
     <string name="ciccio">ciccio</string>
     <string name="cappuccio">cappuccio</string>
-    <string name="applica_modifiche">Applica Modifiche</string>
-    <string name="elimina_profilo">Elimina Profilo</string>
     <string name="back">Back</string>
     <string name="profile">Profile</string>
     <string name="qrcode">Qrcode</string>
-    <string name="le_mie_visite">Le mie Visite</string>
-    <string name="cerca_tramite_qrcode">Cerca tramite QRcode</string>
-    <string name="visitevisitatore">VisiteVisitatore</string>
-    <string name="qrcode_scanner">QRCode Scanner</string>
-    <string name="todo">TODO</string>
-    <string name="visite_personalizzate">Visite personalizzate</string>
-    <string name="visitecuratore">VisiteCuratore</string>
-    <string name="visite_consigliate_dai_curatori">Visite consigliate dai curatori</string>
-    <string name="visite_dei_curatori">Visite dei Curatori</string>
-    <string name="home_visitatore">Home Visitatore</string>
-    <string name="i_miei_percorsi">I miei percorsi</string>
-    <string name="i_miei_percorsig">I miei percorsi</string>
-    <string name="visite_curatore">Visite Curatore</string>
-    <string name="home">home</string>
-    <string name="bottoneadd">BottoneAdd</string>
-    <string name="piccola_descrizione_percorso_1">Piccola Descrizione Percorso 1</string>
-    <string name="percorso_1">Percorso 1</string>
-    <string name="benvenuto">Benvenuto</string>
+
+    <!-- Stringhe per Profilo -->
+    <string name="mio_profilo">Mio profilo</string>
+    <string name="visualizza_medaglie">Visualizza le medaglie</string>
+    <string name="modifica_profilo">Modifica Profilo</string>
+    <string name="logout">Logout</string>
+    <string name="elimina_profilo">Elimina Profilo</string>
+    <string name="eliminazione_account">Eliminazione account</string>
+    <string name="sicuro_elimina_account">Sicuro di voler eliminare il tuo Account?</string>
+    <string name="elimina_account">Elimina account</string>
+    <string name="account_eliminato_ok">Account eliminato con successo</string>
+    <string name="annulla_account">Annulla</string>
+
+    <!-- Stringhe per Update Profile -->
+    <string name="profilo_modificato_ok">Profilo modificato con successo</string>
+    <string name="applica_modifiche">Applica Modifiche</string>
+
+    <!-- Stringhe per Visualizza Medaglie -->
+    <string name="visualizzazione_medaglie">Visualizzazione Medaglie</string>
+    <string name="medaglie_domande_multiple">Medaglie Domande Multiple</string>
+    <string name="medaglie_domande_tempo">Medaglie Domande Tempo</string>
+
+    <!-- Stringhe per Home Curatore -->
+    <string name="home_curatore">Home Curatore</string>
+    <string name="luoghi">Luoghi</string>
+    <string name="zone">Zone</string>
+    <string name="oggetti">Oggetti</string>
+    <string name="visite">Visite</string>
+    <string name="cerca">Cerca</string>
+
+    <!-- Stringhe per My Luoghi -->
+    <string name="i_miei_luoghi">I miei luoghi</string>
+
+    <!-- Stringhe per Update Luogo -->
+    <string name="camera">CAMERA</string>
+    <string name="galleria">GALLERIA</string>
+    <string name="nome_luogo">Nome del luogo</string>
+    <string name="descrizione_luogo">Descrizione del luogo</string>
+    <string name="invia">INVIA</string>
+
+    <!-- Stringhe per My Zone -->
+    <string name="le_mie_zone">Le mie zone</string>
+
+    <!-- Stringhe per Update Zona -->
+    <string name="modifica_zona">Modifica zona</string>
+    <string name="nome_zona">Nome della zona</string>
+    <string name="descrizione_zona">Descrizione della zona</string>
+    <string name="seleziona_luogo">Seleziona luogo</string>
+    <string name="conferma">Conferma</string>
+
+    <!-- Stringhe per My Oggetti -->
+    <string name="i_miei_oggetti">I miei oggetti</string>
+
+    <!-- Stringhe per Update Oggetto -->
+    <string name="nome_oggetto">Nome dell\' oggetto</string>
+    <string name="descrizione_oggetto">Descrizione dell\' oggetto</string>
+    <string name="modifica_oggetto">Modifica oggetto</string>
+    <string name="seleziona_zona">Seleziona zona</string>
+
+    <!-- Stringhe per My Visite -->
+    <string name="visita_eliminata_ok">Visita eliminata con successo</string>
+
+    <!-- Stringhe per Update Visita -->
+    <string name="nome_non_vuoto">Nome non può essere vuoto</string>
+    <string name="nome_visita_aggiornato_ok">Nome della visita aggiornato correttamente</string>
+    <string name="modifica_visita">Modifica Visita</string>
+    <string name="nome_visita">Nome della visita</string>
+    <string name="salva_nome_visita">SALVA</string>
+
+    <!-- Stringhe per Visite personalizzate -->
+    <string name="scelta_app_condivisione_percorso">Scegli con quale app condividere il percorso</string>
+    <string name="file_salvato">File salvato</string>
+    <string name="file_non_esiste">File non esiste</string>
+    <string name="app_per_condividere_non_trovata">Non è stata trovata alcuna app per la condivisione.</string>
+
+    <!-- Stringhe per Show Visite Activity -->
+    <string name="permnessi_salva_file">Per salvare il file bisgna accettare i permessi</string>
+    <string name="accetta">Accetta</string>
+    <string name="annulla">Annulla</string>
+    <string name="riepilogo_visita">Riepilogo della Visita</string>
 
 
-    <!-- Stringhe per Home curatore -->
-    <string name="Titolo_luogo">Pulsante Luoghi</string>
-    <string name="Descrizione_luogo">Qua potrai gestire i tuoi luoghi</string>
 
-    <string name="Titolo_Zona">Pulsante Zone</string>
-    <string name="Descrizione_Zona">Qua potrai gestire le tue zone</string>
+    <!-- Stringhe per Update Edge -->
+    <string name="aggiorna_tappa">Aggiorna tappa</string>
+    <string name="zona_partenza">Inserire la zona di partenza</string>
+    <string name="zona_arrivo">Inserire la zona di arrivo</string>
+    <string name="inserito_con_sucesso">Percorso inserito con successo</string>
+    <string name="zona_partenza_adesso">Adesso inserisci la zona di partenza</string>
+    <string name="zona_arrivo_adesso">Adesso inserisci la zona di arrivo</string>
+    <string name="modifica">MODIFICA</string>
 
-    <string name="Titolo_Oggetto">Pulsante Oggetti</string>
-    <string name="Descrizione_Oggetto">Qua potrai gestire i tuoi Oggetti</string>
+    <!-- Stringhe per Search -->
+    <string name="luoghi_btn">LUOGHI</string>
+    <string name="zone_btn">ZONE</string>
+    <string name="oggetti_btn">OGGETTI</string>
 
-    <string name="Titolo_Visite">Pulsante Visite</string>
-    <string name="Descrizione_Visite">Qua potrai gestire le tue visite</string>
+    <!-- Stringhe per Oggetto View -->
+    <string name="opzioni_oggetto">Opzione oggetto</string>
+    <string name="domande_multiple">DOMANDE MULTIPLE</string>
+    <string name="domande_tempo">DOMANDE A TEMPO</string>
 
-    <string name="Titolo_Qr">Pulsante Qr</string>
-    <string name="Descrizione_Qr">Qua potrai utilizzare il  Qr</string>
+    <!-- Stringhe per Domande Multiple Activity-->
+    <string name="fine_quiz">FINE QUIZ</string>
+    <string name="punteggio">Il tuo punteggio:</string>
+    <string name="domande_multiple_a">Domande multiple</string>
+    <string name="risposta_esatta">Risposta giusta!</string>
+    <string name="risposta_sbagliata">Risposta sbagliata!</string>
 
-    <string name="Titolo_Search">Pulsante Cerca</string>
-    <string name="Descrizione_Search">Qua potrai effettuare una ricerca </string>
+    <!-- Stringhe per Domande Tempo Activity-->
+    <string name="domande_tempo_a">Domande a tempo</string>
+    <string name="tempo_rimanente">Tempo rimanente:</string>
+    <string name="torna_alla_home">TORNA ALLA HOME</string>
+    <string name="prossima_domanda">PROSSIMA DOMANDA</string>
 
+    <!-- Stringhe per Fine Domande Activity-->
+    <string name="la_tua_medaglia">La tua medaglia</string>
+    <string name="il_tuo_punteggio">Il tuo punteggio:</string>
+    <string name="medaglia">Medaglia</string>
+    <string name="oro">Oro</string>
+    <string name="argento">Argento</string>
+    <string name="bronzo">Bronzo</string>
+    <string name="platino">Platino</string>
+    <string name="hai_risposto_bene_a">"Hai risposto bene a </string>
+    <string name="domande_su">domande su </string>
+    <string name="domande">domande, </string>
+    <string name="percentuale">percentuale: </string>
+    <string name="medaglia_assegnata">Medaglia assegnata al tuo account</string>
+
+    <!-- Stringhe per My Domande Multiple-->
+    <string name="recap_domande_multiple">Recap delle tue domande a risposta multipla</string>
+
+    <!-- Stringhe per Options Menu-->
+    <string name="aggiorna">Aggiorna</string>
+    <string name="cancella">Cancella</string>
+    <string name="modifica_menu">Modifica</string>
+    <string name="domande_multiple_menu">Domande Multiple</string>
+    <string name="domande_tempo_menu">Domande a tempo</string>
+
+    <!-- Stringhe per Add Domanda-->
+    <string name="domanda_inserita_ok">"Domanda Inserita con Successo"</string>
+    <string name="inserire_una_domanda">"Inserire una Domanda"</string>
+    <string name="inserire_risposta_giusta">"Inserire una risposta Giusta"</string>
+    <string name="tre_risposte_errate">"Inserire almeno 3 risposte errate"</string>
+    <string name="aggiungi_domanda">Aggiungi Domanda</string>
+    <string name="nome_domanda">Nome della domanda</string>
+    <string name="definisci_risposta_giusta">Definisci la risposta giusta</string>
+    <string name="nuova_risposta_errata">NUOVA RISPOSTA ERRATA</string>
+    <string name="domanda">Domanda</string>
+    <string name="risposta_giusta">Risposta Giusta</string>
+    <string name="risposta_errata">Risposta Errata</string>
+
+    <!-- Stringhe per Nuovo Luogo-->
+    <string name="crea_nuovo_luogo">Crea nuovo luogo</string>
+    <string name="inserire_un_nome">Inserire un nome</string>
+    <string name="inserire_una_descrizione">Inserire una descrizione</string>
+    <string name="luogo_inserito_ok">Luogo caricato con successo</string>
+    <string name="richiesta_camera">Bisogna Garantire il Permesso per la Camera</string>
+    <string name="upload_ok">Upload con successo</string>
+    <string name="upload_not">ERROR UPLOAD non andato a buon fine</string>
+
+    <!-- Stringhe per Nuovo Oggetto-->
+    <string name="oggetto_inserito_ok">Oggetto caricato con successo</string>
+    <string name="crea_nuovo_oggetto">Crea nuovo oggetto</string>
+
+    <!-- Stringhe per Nuova domanda a tempo-->
+    <string name="inserire_tempo_secondi">Inserire il tempo in secondi</string>
+    <string name="domanda_tempo_ok">Domande a tempo inserita correttamente</string>
+    <string name="nuova_domanda_tempo">Nuova domanda a tempo</string>
+    <string name="tempo_secondi">Tempo espresso in secondi</string>
+
+    <!-- Stringhe per Nuova visita-->
+    <string name="inserire_nome_visita">Inserire il nome della visita</string>
+    <string name="crea_nuova_visita">Crea nuova visita</string>
+    <string name="continua">CONTINUA</string>
+
+    <!-- Stringhe per Nuova zona-->
+    <string name="zona_inserita_ok">Zona caricata con successo</string>
+    <string name="crea_nuova_zona">Crea nuova zona</string>
+
+    <!-- Stringhe per Select Edge-->
+    <string name="seleziona_tappa">Seleziona una tappa</string>
+    <string name="nuovo_percorso">NUOVO PERCORSO</string>
+
+    <!-- Stringhe per Select Zone-->
+    <string name="seleziona_zone">Seleziona le zone che vuoi visitare</string>
+
+    <!-- Stringhe per Update domande multiple-->
+    <string name="aggiungi_risposta_errata">Aggiungi una risposta errata</string>
+    <string name="modifica_domanda">Modifica domanda</string>
+    <string name="numero_minimo_errate">Numero minimo di risposte errate non sufficienti</string>
+
+    <!-- Stringhe per Update domande tempo-->
+    <string name="domanda_tempo_eliminata_ok">Domanda a tempo eliminata con successo</string>
+    <string name="domanda_tempo_modificata_ok">Domanda a tempo modificata correttamente</string>
+    <string name="modifica_domanda_tempo">Modifica domanda a tempo</string>
+    <string name="elimina">ELIMINA</string>
+
+    <!-- Stringhe per Visita single item-->
+    <string name="descrizione_visita">Descrizione della visita</string>
+
+    <!-- Stringhe per recap visita-->
+    <string name="la_mia_visita_a">La mia visita a </string>
+    <string name="condividi_file">Condividi file</string>
+    <string name="permessi_per_salvare_il_file">Per salvare il file bisgna accettare i permessi</string>
+    <string name="accetta_a">Accetta</string>
+    <string name="percorso_in_luogo">Percorso in luogo: </string>
+    <string name="nomev">Nome visita: </string>
+    <string name="zone_visitate">Zone visitate:</string>
+    <string name="percorsi">Percorsi: </string>
+
+    <!--  Stringhe per Update Luogo-->
+    <string name="elimina_luogo">Elimina luogo</string>
+    <string name="sicuro_elimina_luogo">Sicuro di voler eliminare il luogo selezionato?</string>
+    <string name="luogo_eliminato_ok">Luogo eliminato con successo</string>
+    <string name="luogo_modificato_ok">Luogo modificato con successo</string>
+
+    <!--  Stringhe per Update Oggetti-->
+    <string name="elimina_oggetto">Elimina oggetto</string>
+    <string name="sicuro_elimina_oggetto">Sicuro di voler eliminare l\'oggetto selezionato?</string>
+    <string name="oggetto_eliminato_ok">Oggetto eliminato con successo</string>
+    <string name="oggetto_modificato_ok">Oggetto modificato con successo</string>
+
+    <!--  Stringhe per Update Zona -->
+    <string name="elimina_zona">Elimina zona</string>
+    <string name="sicuro_elimina_zona">Sicuro di voler eliminare la zona selezionata?</string>
+    <string name="zona_eliminata_ok">Zona eliminata con successo</string>
+    <string name="zona_modificata_ok">Zona modificata con successo</string>
+
+    <!-- Stringhe per Tutorial-->
     <!-- Stringhe per MyLuoghi  -->
     <string name="Titolo_My_Luogo">Contenitore per i tuoi luoghi</string>
     <string name="Descrizione_My_Luogo">Qui ci sono tutti i luoghi inseriti da te  </string>
@@ -118,8 +337,50 @@
     <string name="Titolo_Spinner_New_Oggetto">Menù a tendina Oggetto</string>
     <string name="Descrizione_Spinner_New_Oggetto">Tramite questo menù a tendina dovrai definire a quale zona si riferisce l\'oggetto che stai inserendo</string>
 
-    <string name="scelta_app_condivisione_percorso">Scegli con quale app condividere il percorso</string>
-    <string name="app_per_condividere_non_trovata">Non è stata trovata un app per la condivisione.</string>
+    <string name="Titolo_luogo">Pulsante Luoghi</string>
+    <string name="Descrizione_luogo">Qua potrai gestire i tuoi luoghi</string>
+
+    <string name="Titolo_Zona">Pulsante Zone</string>
+    <string name="Descrizione_Zona">Qua potrai gestire le tue zone</string>
+
+    <string name="Titolo_Oggetto">Pulsante Oggetti</string>
+    <string name="Descrizione_Oggetto">Qua potrai gestire i tuoi Oggetti</string>
+
+    <string name="Titolo_Visite">Pulsante Visite</string>
+    <string name="Descrizione_Visite">Qua potrai gestire le tue visite</string>
+
+    <string name="Titolo_Qr">Pulsante Qr</string>
+    <string name="Descrizione_Qr">Qua potrai utilizzare il  Qr</string>
+
+    <string name="Titolo_Search">Pulsante Cerca</string>
+    <string name="Descrizione_Search">Qua potrai effettuare una ricerca </string>
+
+
+
+
+    <string name="visitevisitatore">VisiteVisitatore</string>
+
+    <string name="todo">TODO</string>
+
+    <string name="visitecuratore">VisiteCuratore</string>
+
+
+
+    <string name="i_miei_percorsi">I miei percorsi</string>
+    <string name="i_miei_percorsig">I miei percorsi</string>
+    <string name="visite_curatore">Visite Curatore</string>
+    <string name="home">home</string>
+    <string name="bottoneadd">BottoneAdd</string>
+    <string name="piccola_descrizione_percorso_1">Piccola Descrizione Percorso 1</string>
+    <string name="percorso_1">Percorso 1</string>
+
+
+
+
+
+
+
+
     <string name="Luogo_di_partenza">Scegli luogo di partenza</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

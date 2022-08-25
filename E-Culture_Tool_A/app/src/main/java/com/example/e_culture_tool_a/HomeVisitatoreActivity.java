@@ -46,10 +46,10 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
         // Controllo se l'utente accede come ospite e imposto le funzioni che può svolgere
         fAuth = FirebaseAuth.getInstance();
         if(fAuth.getCurrentUser()==null){
-            myvisiteButton.setVisibility(View.INVISIBLE);
-            MyVisiteimg.setVisibility(View.INVISIBLE);
-            visitep.setVisibility(View.INVISIBLE);
-            miev.setVisibility(View.INVISIBLE);
+            myvisiteButton.setVisibility(View.GONE);
+            MyVisiteimg.setVisibility(View.GONE);
+            visitep.setVisibility(View.GONE);
+            miev.setVisibility(View.GONE);
             nomeProfilo.setText("Home");
         }
 

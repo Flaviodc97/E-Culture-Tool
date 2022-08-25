@@ -162,7 +162,7 @@ public class UpdateTempoDomandeActivity extends AppCompatActivity {
         doc.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(UpdateTempoDomandeActivity.this, "Domanda a tempo eliminato con successo", Toast.LENGTH_SHORT);
+                Toast.makeText(UpdateTempoDomandeActivity.this, R.string.domanda_tempo_eliminata_ok, Toast.LENGTH_SHORT);
                 startActivity(new Intent(UpdateTempoDomandeActivity.this, MyOggettiActivity.class));
             }
         });
@@ -184,7 +184,7 @@ public class UpdateTempoDomandeActivity extends AppCompatActivity {
         doc.set(ndt).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(UpdateTempoDomandeActivity.this, "Domande a tempo modificata correttamente",Toast.LENGTH_SHORT);
+                Toast.makeText(UpdateTempoDomandeActivity.this, R.string.domanda_tempo_modificata_ok,Toast.LENGTH_SHORT);
                 startActivity(new Intent(UpdateTempoDomandeActivity.this, MyOggettiActivity.class));
             }
         });

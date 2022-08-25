@@ -186,11 +186,11 @@ public class NewOggettoActivity extends AppCompatActivity {
             String descrizione = mdescrizione.getText().toString().trim();
             String id = usingRandomUUID();
             if(TextUtils.isEmpty(nome)){
-                mnome.setError("inserire un nome");
+                mnome.setError(getResources().getString(R.string.inserire_un_nome));
                 return;
             }
             if(TextUtils.isEmpty(descrizione)){
-                mnome.setError("inserire una descrizione");
+                mnome.setError(getResources().getString(R.string.inserire_una_descrizione));
                 return;
             }
 
@@ -208,7 +208,7 @@ public class NewOggettoActivity extends AppCompatActivity {
             doc.set(oggetto).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
-                    Toast.makeText(NewOggettoActivity.this,"Oggetto caricata con successo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewOggettoActivity.this,R.string.oggetto_inserito_ok, Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -255,7 +255,7 @@ public class NewOggettoActivity extends AppCompatActivity {
 
             }else{
                 // Se rifiutato il permesso della Camera
-                Toast.makeText(NewOggettoActivity.this,"Bisogna Garantire il Permesso per la Camera", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewOggettoActivity.this,R.string.richiesta_camera, Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -319,14 +319,14 @@ public class NewOggettoActivity extends AppCompatActivity {
                     }
 
                 });
-                Toast.makeText(NewOggettoActivity.this,"Upload con successo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewOggettoActivity.this,R.string.upload_ok, Toast.LENGTH_SHORT).show();
 
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(NewOggettoActivity.this,"ERROR UPLOAD non andato a buon fine", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewOggettoActivity.this,R.string.upload_not, Toast.LENGTH_SHORT).show();
 
 
             }

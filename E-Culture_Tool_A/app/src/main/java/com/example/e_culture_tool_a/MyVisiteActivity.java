@@ -176,7 +176,7 @@ public class MyVisiteActivity extends AppCompatActivity {
         doc.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(MyVisiteActivity.this, "Visita eliminata con successo", Toast.LENGTH_LONG);
+                Toast.makeText(MyVisiteActivity.this, R.string.visita_eliminata_ok, Toast.LENGTH_LONG);
 
             }
         });

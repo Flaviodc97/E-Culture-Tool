@@ -77,7 +77,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_toEndOf="@+id/imageViewVisita"
-                    android:text="Piccola Descrizione zona"
+                    android:text="@string/descrizione_visita"
                     android:textColor="#6003082b"
                     android:textSize="14dp"
                     android:textStyle="bold" />

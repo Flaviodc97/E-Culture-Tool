@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:text="Home Curatore"
+            android:text="@string/home_curatore"
             android:textColor="#df03082b"
             android:textSize="25dp"
             android:textStyle="bold" />
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="110dp"
                     android:layout_marginTop="30dp"
-                    android:text="Luoghi"
+                    android:text="@string/luoghi"
                     android:textColor="#d703082b"
                     android:textSize="23dp"
                     android:textStyle="bold" />
@@ -122,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="110dp"
                     android:layout_marginTop="30dp"
-                    android:text="Zone"
+                    android:text="@string/zone"
                     android:textColor="#d703082b"
                     android:textSize="23dp"
                     android:textStyle="bold" />
@@ -159,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="105dp"
                     android:layout_marginTop="20dp"
-                    android:text="Oggetti"
+                    android:text="@string/oggetti"
                     android:textColor="#d703082b"
                     android:textSize="23dp"
                     android:textStyle="bold" />
@@ -195,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="105dp"
                     android:layout_marginTop="20dp"
-                    android:text="Visite"
+                    android:text="@string/visite"
                     android:textColor="#d703082b"
                     android:textSize="23dp"
                     android:textStyle="bold" />
@@ -230,7 +230,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="105dp"
                     android:layout_marginTop="20dp"
-                    android:text="QR Scanner"
+                    android:text="@string/qrcode_scanner"
                     android:textColor="#d703082b"
                     android:textSize="23dp"
                     android:textStyle="bold" />
@@ -265,7 +265,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="105dp"
                     android:layout_marginTop="20dp"
-                    android:text="Cerca"
+                    android:text="@string/cerca"
                     android:textColor="#d703082b"
                     android:textSize="23dp"
                     android:textStyle="bold" />

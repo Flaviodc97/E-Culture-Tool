@@ -23,7 +23,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:text="Modifica Profilo"
+            android:text="@string/modifica_profilo"
             android:textColor="@color/white" />
     </LinearLayout>
 

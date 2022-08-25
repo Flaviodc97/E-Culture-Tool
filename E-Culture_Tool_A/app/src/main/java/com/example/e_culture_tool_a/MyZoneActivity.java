@@ -1,11 +1,13 @@
 package com.example.e_culture_tool_a;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,7 +21,10 @@ import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -107,7 +112,7 @@ public class MyZoneActivity extends AppCompatActivity {
                                         startActivity(i);
                                         break;
                                     case R.id.IdDeleteZona:
-                                        Toast.makeText(MyZoneActivity.this, "CANCELLA", Toast.LENGTH_SHORT).show();
+                                        deleteZona(model.getLuogoID(), model.getId());
                                         break;
                                 }
                                 return true;
@@ -222,7 +227,38 @@ public class MyZoneActivity extends AppCompatActivity {
         //
     }
 
+    private void deleteZona(String iLuogoid, String id) {
 
+        FirebaseAuth fauth = FirebaseAuth.getInstance();
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        user_id = fauth.getCurrentUser().getUid();
+        AlertDialog.Builder dialog = new AlertDialog.Builder(MyZoneActivity.this);
+        dialog.setTitle(R.string.elimina_zona);
+        dialog.setMessage(R.string.sicuro_elimina_zona);
+        dialog.setPositiveButton(R.string.elimina_zona, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(iLuogoid).collection("Zone").document(id);
+                doc.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(MyZoneActivity.this, R.string.zona_eliminata_ok, Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
+                        }
+                    }
+                });
+            }
+        });
+        dialog.setNegativeButton(R.string.annulla, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = dialog.create();
+        alertDialog.show();
+    }
 
 
 

@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/IdAggiornaZona"
-        android:title="Aggiorna" />
+        android:title="@string/aggiorna" />
     <item
         android:id="@+id/IdDeleteZona"
-        android:title="Cancella" />
+        android:title="@string/cancella" />
 </menu>
