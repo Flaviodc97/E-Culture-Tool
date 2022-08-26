@@ -198,7 +198,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
         //Attributi che l'intent deve avere per poter effettuare lo share e il richiamo di applicazioni che consentono di ricevere file
         Intent intentShare = new Intent(Intent.ACTION_SEND);
         intentShare.setType("text/*");
-        intentShare.putExtra(Intent.EXTRA_SUBJECT, R.string.la_mia_visita_a + nomeLuogo); //per condividere con email app
+        intentShare.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.la_mia_visita_a) + nomeLuogo); //per condividere con email app
         intentShare.putExtra(Intent.EXTRA_STREAM, contentUri);
         intentShare.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         RecapVisitaActivity.this.startActivity(Intent.createChooser(intentShare, String.valueOf(R.string.condividi_file)));
@@ -278,7 +278,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
 
         //File path = getApplicationContext().getFilesDir();
         zonelist.remove("Seleziona Zona");
-        message  =  R.string.percorso_in_luogo +nomeLuogo+ "\n " + R.string.nomev + nomeVisita + "\n " + R.string.zone_visitate + zonelist + "\n "+ R.string.percorsi + "\n ";
+        message  =  getResources().getString(R.string.percorso_in_luogo) +nomeLuogo+ "\n " + getResources().getString(R.string.nomev) + nomeVisita + "\n " + getResources().getString(R.string.zone_visitate) + zonelist + "\n "+ getResources().getString(R.string.percorsi) + "\n ";
         for(int i = 0; i < zonelist.size()-1; i ++){
             for(int j = i+1; j<zonelist.size();j++) {
                 if (!(graph.getAllEdges(zonelist.get(i), zonelist.get(j)).toString().equals("[]"))) {
