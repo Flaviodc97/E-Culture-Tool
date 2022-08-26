@@ -80,7 +80,7 @@ public class NewVisitaActivity extends AppCompatActivity {
             {
                 // luogo selezionato
                 selectedLuogo = parent.getItemAtPosition(position).toString(); //this is your selected item
-                Toast.makeText(NewVisitaActivity.this," "+selectedLuogo , Toast.LENGTH_SHORT).show();
+
 
                 //ricerca id del luogo selezionato
                 fStore.collectionGroup("Luoghi").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

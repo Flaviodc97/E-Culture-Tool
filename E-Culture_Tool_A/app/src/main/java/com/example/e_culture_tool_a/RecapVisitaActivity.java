@@ -1,6 +1,7 @@
 package com.example.e_culture_tool_a;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -28,7 +29,10 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
 import org.jgrapht.Graph;
@@ -62,7 +66,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
     Graph<String, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
 
     List<String> zonelist = new ArrayList<>();
-    Button mshare, msave;
+    Button mshare, msave, returnHome;
     String message;
 
 
@@ -90,6 +94,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
 
         mshare = findViewById(R.id.shareButton);
         msave = findViewById(R.id.salvaButton);
+        returnHome = findViewById(R.id.returnHome);
 
 
 
@@ -162,6 +167,31 @@ public class RecapVisitaActivity extends AppCompatActivity {
 
         });
 
+    returnHome.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            fAuth = FirebaseAuth.getInstance();
+            user_id = fAuth.getCurrentUser().getUid();
+            fStore = FirebaseFirestore.getInstance();
+            DocumentReference docReference = fStore.collection("utenti").document(user_id);
+            docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                    String ruolo = value.getString("Curatore");
+                    boolean b1 = Boolean.parseBoolean(ruolo);
+                    if(b1){
+                        startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
+
+                    }else {
+
+                        startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
+                    }
+
+
+                }
+            });
+        }
+    });
     }
 
 
@@ -191,7 +221,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
 
         //Controlla se il file esiste
         if(!file.exists()){
-            Toast.makeText(RecapVisitaActivity.this, R.string.file_non_esiste, Toast.LENGTH_LONG).show();
+            Toast.makeText(RecapVisitaActivity.this, getResources().getString(R.string.file_non_esiste), Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -226,7 +256,7 @@ public class RecapVisitaActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Toast.makeText(this,R.string.file_salvato ,Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getResources().getString(R.string.file_salvato),Toast.LENGTH_LONG).show();
         } else {
             //se non si hanno i permessi per la scrittura sullo storage del telefono
             requestPermissions();
@@ -261,14 +291,12 @@ public class RecapVisitaActivity extends AppCompatActivity {
 
         if (requestCode == STORAGE_PERMISSION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //Toast.makeText(this, "Permesso concesso", Toast.LENGTH_LONG).show();
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("string");
                 builder.setPositiveButton("ivnrivm", (dialog, which) -> { });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                //Toast.makeText(this, "Permesso rifiutato", Toast.LENGTH_LONG).show();
             }
         }
     }

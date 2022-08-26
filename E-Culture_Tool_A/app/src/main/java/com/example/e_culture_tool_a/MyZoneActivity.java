@@ -243,7 +243,7 @@ public class MyZoneActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(MyZoneActivity.this, R.string.zona_eliminata_ok, Toast.LENGTH_LONG).show();
+                            Toast.makeText(MyZoneActivity.this, getResources().getString(R.string.zona_eliminata_ok), Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
                         }
                     }

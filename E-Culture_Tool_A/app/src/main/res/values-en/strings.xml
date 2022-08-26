@@ -107,6 +107,8 @@
     <string name="seleziona_zona">Select area</string>
 
     <!-- Stringhe per My Visite -->
+    <string name="elimina_visita">Delete visit</string>
+    <string name="sicuro_elimina_visita">Are you sure you want to delete the selected visit?</string>
     <string name="visita_eliminata_ok">Visit successfully deleted</string>
 
     <!-- Stringhe per Update Visita -->
@@ -141,7 +143,7 @@
 
     <!-- Stringhe per Search -->
     <string name="luoghi_btn">PLACES</string>
-    <string name="zone_btn">ZONE</string>
+    <string name="zone_btn">AREAS</string>
     <string name="oggetti_btn">OBJECTS</string>
 
     <!-- Stringhe per Oggetto View -->
@@ -376,7 +378,7 @@
     <string name="percorso_1">Route 1</string>
 
     <string name="id_qr_oggetto">ID for generate qr code of the object: </string>
-
+    <string name="nessun_dato_trovato">No data found</string>
 
 
 

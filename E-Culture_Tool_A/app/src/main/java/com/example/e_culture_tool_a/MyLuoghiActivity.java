@@ -1,5 +1,6 @@
 package com.example.e_culture_tool_a;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +21,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
@@ -107,7 +112,7 @@ public class MyLuoghiActivity extends AppCompatActivity {
 
                                     break;
                                     case R.id.IdDeleteLuogo:
-                                        Toast.makeText(MyLuoghiActivity.this, R.string.cancella, Toast.LENGTH_SHORT).show();
+                                        deleteLuogo(model.getId());
                                     break;
                                 }
                                 return true;
@@ -169,6 +174,39 @@ public class MyLuoghiActivity extends AppCompatActivity {
         startActivity( new Intent(getApplicationContext(), NewLuogoActivity.class));
 
     }
+
+    public void deleteLuogo(String id) {
+        FirebaseAuth fauth = FirebaseAuth.getInstance();
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        user_id = fauth.getCurrentUser().getUid();
+        AlertDialog.Builder dialog = new AlertDialog.Builder(MyLuoghiActivity.this);
+        dialog.setTitle(R.string.elimina_luogo);
+        dialog.setMessage(R.string.sicuro_elimina_luogo);
+        dialog.setPositiveButton(getResources().getString(R.string.elimina_luogo), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(id);
+                doc.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(MyLuoghiActivity.this, getResources().getString(R.string.luogo_eliminato_ok), Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
+                        }
+                    }
+                });
+            }
+        });
+        dialog.setNegativeButton(getResources().getString(R.string.annulla_account), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = dialog.create();
+        alertDialog.show();
+    }
+
     public void goProfile(MenuItem item) {
 
         startActivity( new Intent(getApplicationContext(), UpdateProfile.class));

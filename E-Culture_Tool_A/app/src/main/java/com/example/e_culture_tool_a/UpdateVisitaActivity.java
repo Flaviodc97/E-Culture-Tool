@@ -174,7 +174,7 @@ public class UpdateVisitaActivity extends AppCompatActivity {
         doc.update("nome", nome).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(UpdateVisitaActivity.this, R.string.nome_visita_aggiornato_ok, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateVisitaActivity.this, getResources().getString(R.string.nome_visita_aggiornato_ok), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(UpdateVisitaActivity.this, MyVisiteActivity.class);
                 startActivity(intent);
             }

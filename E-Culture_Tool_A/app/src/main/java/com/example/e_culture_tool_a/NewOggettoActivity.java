@@ -208,7 +208,7 @@ public class NewOggettoActivity extends AppCompatActivity {
             doc.set(oggetto).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
-                    Toast.makeText(NewOggettoActivity.this,R.string.oggetto_inserito_ok, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewOggettoActivity.this, getResources().getString(R.string.oggetto_inserito_ok), Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -255,7 +255,7 @@ public class NewOggettoActivity extends AppCompatActivity {
 
             }else{
                 // Se rifiutato il permesso della Camera
-                Toast.makeText(NewOggettoActivity.this,R.string.richiesta_camera, Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewOggettoActivity.this, getResources().getString(R.string.richiesta_camera), Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -319,14 +319,14 @@ public class NewOggettoActivity extends AppCompatActivity {
                     }
 
                 });
-                Toast.makeText(NewOggettoActivity.this,R.string.upload_ok, Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewOggettoActivity.this, getResources().getString(R.string.upload_ok), Toast.LENGTH_SHORT).show();
 
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(NewOggettoActivity.this,R.string.upload_not, Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewOggettoActivity.this, getResources().getString(R.string.upload_not), Toast.LENGTH_SHORT).show();
 
 
             }
@@ -413,7 +413,6 @@ public class NewOggettoActivity extends AppCompatActivity {
                     {
                         if (state == MaterialTapTargetPrompt.STATE_FINISHED)
                         {
-                            Toast.makeText(NewOggettoActivity.this, "CANEEEE", Toast.LENGTH_SHORT).show();
 
                             showToutorial_Galleria_New_Oggetto();
                         }

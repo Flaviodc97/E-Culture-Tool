@@ -79,7 +79,7 @@ public class FineDomandeActivity extends AppCompatActivity {
                 doc.set(medaglia).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(FineDomandeActivity.this, R.string.medaglia_assegnata, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FineDomandeActivity.this, getResources().getString(R.string.medaglia_assegnata), Toast.LENGTH_SHORT).show();
                     }
                 });
                 flagm=false;
@@ -149,7 +149,7 @@ public class FineDomandeActivity extends AppCompatActivity {
         doc.set(medaglia).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(FineDomandeActivity.this, R.string.medaglia_assegnata, Toast.LENGTH_SHORT).show();
+                Toast.makeText(FineDomandeActivity.this, getResources().getString(R.string.medaglia_assegnata), Toast.LENGTH_SHORT).show();
             }
         });
     }

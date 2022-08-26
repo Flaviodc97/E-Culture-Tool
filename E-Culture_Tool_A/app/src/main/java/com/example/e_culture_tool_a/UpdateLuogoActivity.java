@@ -91,10 +91,8 @@ public class UpdateLuogoActivity extends AppCompatActivity {
         melimina = findViewById(R.id.deleteLuogo);
         cameraBtn.setOnClickListener(view -> {
             askCamera();
-            Toast.makeText(UpdateLuogoActivity.this, "camera click", Toast.LENGTH_SHORT).show();
         });
         galleryBtn.setOnClickListener(view -> {
-            Toast.makeText(UpdateLuogoActivity.this,"galleria click", Toast.LENGTH_SHORT).show();
             Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(gallery, GALLERY_REQUEST_CODE);
 
@@ -134,7 +132,7 @@ public class UpdateLuogoActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(UpdateLuogoActivity.this, R.string.luogo_eliminato_ok, Toast.LENGTH_LONG).show();
+                            Toast.makeText(UpdateLuogoActivity.this, getResources().getString(R.string.luogo_eliminato_ok), Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
                         }
                     }
@@ -177,7 +175,7 @@ public class UpdateLuogoActivity extends AppCompatActivity {
         doc.set(luogo).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(UpdateLuogoActivity.this,R.string.luogo_modificato_ok, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateLuogoActivity.this, getResources().getString(R.string.luogo_modificato_ok), Toast.LENGTH_SHORT).show();
             }
         });
         startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
@@ -207,7 +205,7 @@ public class UpdateLuogoActivity extends AppCompatActivity {
 
             }else{
                 // Se rifiutato il permesso della Camera
-                Toast.makeText(UpdateLuogoActivity.this,R.string.richiesta_camera, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateLuogoActivity.this, getResources().getString(R.string.richiesta_camera), Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -267,14 +265,14 @@ public class UpdateLuogoActivity extends AppCompatActivity {
                     }
 
                 });
-                Toast.makeText(UpdateLuogoActivity.this,R.string.upload_ok, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateLuogoActivity.this, getResources().getString(R.string.upload_ok), Toast.LENGTH_SHORT).show();
 
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(UpdateLuogoActivity.this,R.string.upload_not, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateLuogoActivity.this, getResources().getString(R.string.upload_not), Toast.LENGTH_SHORT).show();
 
 
             }

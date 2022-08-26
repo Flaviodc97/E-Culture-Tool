@@ -86,7 +86,7 @@ public class UpdateProfile extends AppCompatActivity {
                 @Override
                 public void onSuccess(Void unused) {
                     Log.d("TAG", "Caricato con successo" + user_id);
-                    Toast.makeText(UpdateProfile.this, R.string.profilo_modificato_ok, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateProfile.this, getResources().getString(R.string.profilo_modificato_ok), Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -130,7 +130,7 @@ public class UpdateProfile extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(UpdateProfile.this, R.string.account_eliminato_ok, Toast.LENGTH_LONG).show();
+                            Toast.makeText(UpdateProfile.this, getResources().getString(R.string.account_eliminato_ok), Toast.LENGTH_LONG).show();
                             DocumentReference docReference = fStore.collection("utenti").document(user_id);
                             docReference.delete();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class ));

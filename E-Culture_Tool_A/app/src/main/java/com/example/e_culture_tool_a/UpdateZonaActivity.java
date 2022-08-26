@@ -98,7 +98,6 @@ public class UpdateZonaActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                 selectedLuogo = parent.getItemAtPosition(position).toString(); //this is your selected item
-                Toast.makeText(UpdateZonaActivity.this," "+selectedLuogo , Toast.LENGTH_SHORT).show();
                 fStore.collection("utenti").document(user_id)
                         .collection("Luoghi").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -164,7 +163,7 @@ public class UpdateZonaActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(UpdateZonaActivity.this, R.string.zona_eliminata_ok, Toast.LENGTH_LONG).show();
+                            Toast.makeText(UpdateZonaActivity.this, getResources().getString(R.string.zona_eliminata_ok), Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
                         }
                     }
@@ -195,7 +194,7 @@ public class UpdateZonaActivity extends AppCompatActivity {
         doc.set(zona).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(UpdateZonaActivity.this,R.string.zona_modificata_ok, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateZonaActivity.this, getResources().getString(R.string.zona_modificata_ok), Toast.LENGTH_SHORT).show();
 
             }
 

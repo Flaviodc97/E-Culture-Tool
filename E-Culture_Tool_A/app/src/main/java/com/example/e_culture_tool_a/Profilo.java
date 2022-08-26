@@ -130,7 +130,7 @@ public class Profilo extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(Profilo.this, R.string.account_eliminato_ok, Toast.LENGTH_LONG).show();
+                            Toast.makeText(Profilo.this, getResources().getString(R.string.account_eliminato_ok), Toast.LENGTH_LONG).show();
                             DocumentReference docReference = fStore.collection("utenti").document(user_id);
                             docReference.delete();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class ));

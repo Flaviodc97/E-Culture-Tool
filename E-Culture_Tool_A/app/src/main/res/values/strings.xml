@@ -107,6 +107,8 @@
     <string name="seleziona_zona">Seleziona zona</string>
 
     <!-- Stringhe per My Visite -->
+    <string name="elimina_visita">Elimina visita</string>
+    <string name="sicuro_elimina_visita">Sicuro di voler eliminare la visita selezionata?</string>
     <string name="visita_eliminata_ok">Visita eliminata con successo</string>
 
     <!-- Stringhe per Update Visita -->
@@ -376,7 +378,7 @@
 
 
     <string name="id_qr_oggetto">ID per generare il qr dell\'oggetto: </string>
-
+    <string name="nessun_dato_trovato">Nessun dato trovato</string>
 
 
 

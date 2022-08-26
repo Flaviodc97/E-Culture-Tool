@@ -1,8 +1,10 @@
 package com.example.e_culture_tool_a;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -46,18 +48,24 @@ public class MyVisiteActivity extends AppCompatActivity {
     Query query;
     Boolean flag;
     FloatingActionButton AddLuogo;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_visite);
 
+        textView = findViewById(R.id.textView);
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         AddLuogo =findViewById(R.id.AddLuogo);
 
         // // Controllo se l'utente accede come ospite e nascondo la funzione di aggiunta visita
-        if(fAuth.getCurrentUser()==null) AddLuogo.setVisibility(View.INVISIBLE);
+        if(fAuth.getCurrentUser()==null) {
+            textView.setText(R.string.visite);
+            AddLuogo.setVisibility(View.INVISIBLE);
+        }
+
 
         mFirestoreList = findViewById(R.id.list_visite);
         flag = false;
@@ -67,6 +75,7 @@ public class MyVisiteActivity extends AppCompatActivity {
 
         if(flag){
             // Se si enta con Button VisiteCuratori
+            textView.setText(R.string.visite);
             query = fStore.collectionGroup("Visita");
         }else{
             // Se si entra con Button Myvisite
@@ -169,18 +178,35 @@ public class MyVisiteActivity extends AppCompatActivity {
     }
 
     private void eliminaVisita(Visita model) {
-        fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
         user_id = fAuth.getCurrentUser().getUid();
-        DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Visita").document(model.getId());
-        doc.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(MyVisiteActivity.this);
+        dialog.setTitle(R.string.elimina_visita);
+        dialog.setMessage(R.string.sicuro_elimina_visita);
+        dialog.setPositiveButton(getResources().getString(R.string.elimina_visita), new DialogInterface.OnClickListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(MyVisiteActivity.this, R.string.visita_eliminata_ok, Toast.LENGTH_LONG);
-
+            public void onClick(DialogInterface dialogInterface, int i) {
+                DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Visita").document(model.getId());
+                doc.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(MyVisiteActivity.this, getResources().getString(R.string.visita_eliminata_ok), Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
+                        }
+                    }
+                });
             }
         });
-
+        dialog.setNegativeButton(getResources().getString(R.string.annulla_account), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = dialog.create();
+        alertDialog.show();
     }
 
     private class ProductsViewHolder extends RecyclerView.ViewHolder {

@@ -10,16 +10,18 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item_rec_list"
-        android:layout_width="389dp"
-        android:layout_height="572dp"
+        android:layout_width="wrap_content"
+        android:layout_height="385dp"
         android:layout_below="@+id/salvaButton"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="192dp"
         android:background="@drawable/curvebuttonbgdefault" />
 
     <Button
@@ -42,4 +44,16 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/ic_baseline_save_alt_24" />
+
+    <Button
+        android:id="@+id/returnHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="159dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="102dp"
+        android:text="@string/torna_alla_home" />
 </RelativeLayout>

@@ -116,7 +116,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/curvebuttonbgdefault"
-                android:text="Domande Multiple"
+                android:text="@string/domande_multiple"
                 android:textColor="@color/white" />
         </LinearLayout>
 

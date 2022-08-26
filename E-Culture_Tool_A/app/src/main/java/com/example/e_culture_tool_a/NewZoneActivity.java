@@ -102,7 +102,7 @@ public class NewZoneActivity extends AppCompatActivity {
             {
                 //otteniamo il luogo selezionato
                 selectedLuogo = parent.getItemAtPosition(position).toString(); //this is your selected item
-                Toast.makeText(NewZoneActivity.this," "+selectedLuogo , Toast.LENGTH_SHORT).show();
+
 
                 //cerchiamo l'id del luogo selezionato
                 fStore.collection("utenti").document(user_id)
@@ -179,7 +179,7 @@ public class NewZoneActivity extends AppCompatActivity {
         doc.set(zona).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(NewZoneActivity.this,R.string.zona_inserita_ok, Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewZoneActivity.this, getResources().getString(R.string.zona_inserita_ok), Toast.LENGTH_SHORT).show();
 
             }
 

@@ -144,7 +144,7 @@ public class NewTempoDomandaActivity extends AppCompatActivity {
         doc.set(dt).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(NewTempoDomandaActivity.this, R.string.domanda_tempo_ok,Toast.LENGTH_SHORT);
+                Toast.makeText(NewTempoDomandaActivity.this, getResources().getString(R.string.domanda_tempo_ok),Toast.LENGTH_SHORT);
                 startActivity(new Intent(NewTempoDomandaActivity.this, MyOggettiActivity.class));
             }
         });

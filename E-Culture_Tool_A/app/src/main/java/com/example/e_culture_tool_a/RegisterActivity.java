@@ -125,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                     if(task.isSuccessful()){
-                        Toast.makeText(RegisterActivity.this, R.string.account_creato_ok, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, getResources().getString(R.string.account_creato_ok), Toast.LENGTH_SHORT).show();
                         user_id = fAuth.getCurrentUser().getUid();
 
                         /* Viene inserito un record nel DB Firebase FireStore con l'utente appena creato*/
@@ -148,7 +148,7 @@ public class RegisterActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), MainActivity.class ));
                         finish();
                     }else{
-                        Toast.makeText(RegisterActivity.this, R.string.error + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, getResources().getString(R.string.error) + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         mprogressBar.setVisibility(View.GONE);
 
                     }
@@ -174,7 +174,6 @@ public class RegisterActivity extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 String ruolo = value.getString("Curatore");
-                Toast.makeText(RegisterActivity.this, ruolo , Toast.LENGTH_SHORT).show();
 
                 boolean b1 = Boolean.parseBoolean(ruolo);
 

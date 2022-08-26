@@ -100,12 +100,12 @@ public class MainActivity extends AppCompatActivity {
 
 
                     if(task.isSuccessful()){
-                        Toast.makeText(MainActivity.this, R.string.login_ok, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, getResources().getString(R.string.login_ok), Toast.LENGTH_SHORT).show();
                         mprogressBar.setVisibility(View.GONE);
                         redirect();
 
                     }else{
-                        Toast.makeText(MainActivity.this, R.string.error + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, getResources().getString(R.string.error) + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         mprogressBar.setVisibility(View.GONE);
 
                     }
@@ -206,7 +206,6 @@ public class MainActivity extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                 String ruolo = value.getString("Curatore");
-                Toast.makeText(MainActivity.this, ruolo , Toast.LENGTH_SHORT).show();
 
                 boolean b1 = Boolean.parseBoolean(ruolo);
 

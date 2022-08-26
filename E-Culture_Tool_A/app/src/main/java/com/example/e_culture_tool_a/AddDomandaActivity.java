@@ -95,7 +95,7 @@ public class AddDomandaActivity extends AppCompatActivity {
         doc.set(dm).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(AddDomandaActivity.this, R.string.domanda_inserita_ok, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddDomandaActivity.this, getResources().getString(R.string.domanda_inserita_ok), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(AddDomandaActivity.this,MyOggettiActivity.class));
             }
         });

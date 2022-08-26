@@ -135,7 +135,6 @@ public class UpdateOggettiActivity extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                     selectedZona = parent.getItemAtPosition(position).toString(); //this is your selected item
-                    Toast.makeText(UpdateOggettiActivity.this," "+selectedZona , Toast.LENGTH_SHORT).show();
                     fStore.collectionGroup("Zone").whereEqualTo("author", user_id).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -219,7 +218,7 @@ public class UpdateOggettiActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(UpdateOggettiActivity.this, R.string.oggetto_eliminato_ok, Toast.LENGTH_LONG).show();
+                            Toast.makeText(UpdateOggettiActivity.this, getResources().getString(R.string.oggetto_eliminato_ok), Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
                         }
                     }
@@ -257,7 +256,7 @@ public class UpdateOggettiActivity extends AppCompatActivity {
 
             }else{
                 // Se rifiutato il permesso della Camera
-                Toast.makeText(UpdateOggettiActivity.this,R.string.richiesta_camera, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateOggettiActivity.this, getResources().getString(R.string.richiesta_camera), Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -317,14 +316,14 @@ public class UpdateOggettiActivity extends AppCompatActivity {
                     }
 
                 });
-                Toast.makeText(UpdateOggettiActivity.this,R.string.upload_ok, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateOggettiActivity.this, getResources().getString(R.string.upload_ok), Toast.LENGTH_SHORT).show();
 
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(UpdateOggettiActivity.this,R.string.upload_not, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateOggettiActivity.this, getResources().getString(R.string.upload_not), Toast.LENGTH_SHORT).show();
 
 
             }
@@ -397,7 +396,7 @@ public class UpdateOggettiActivity extends AppCompatActivity {
         doc.set(oggetto).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(UpdateOggettiActivity.this,R.string.oggetto_modificato_ok, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateOggettiActivity.this, getResources().getString(R.string.oggetto_modificato_ok), Toast.LENGTH_SHORT).show();
 
             }
 

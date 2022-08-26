@@ -128,7 +128,7 @@ public class ShowVisitaActivity extends AppCompatActivity {
 
         //Controlla se il file esiste
         if(!file.exists()){
-            Toast.makeText(ShowVisitaActivity.this, R.string.file_non_esiste, Toast.LENGTH_LONG).show();
+            Toast.makeText(ShowVisitaActivity.this, getResources().getString(R.string.file_non_esiste), Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -168,14 +168,12 @@ public class ShowVisitaActivity extends AppCompatActivity {
 
         if (requestCode == STORAGE_PERMISSION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //Toast.makeText(this, "Permesso concesso", Toast.LENGTH_LONG).show();
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("string");
                 builder.setPositiveButton("ivnrivm", (dialog, which) -> { });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                //Toast.makeText(this, "Permesso rifiutato", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -197,7 +195,7 @@ public class ShowVisitaActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Toast.makeText(this, R.string.file_salvato, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getResources().getString(R.string.file_salvato), Toast.LENGTH_LONG).show();
         } else {
             requestPermissions();
         }

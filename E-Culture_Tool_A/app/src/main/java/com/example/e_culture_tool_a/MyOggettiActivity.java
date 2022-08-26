@@ -64,7 +64,6 @@ public class MyOggettiActivity extends AppCompatActivity {
 
         // Query per ogni Oggetto del Utente Attuale
         Query query=fStore.collectionGroup("Oggetti").whereEqualTo("author", user_id);
-        Toast.makeText(MyOggettiActivity.this," user"+user_id,Toast.LENGTH_SHORT).show();;
         FirestoreRecyclerOptions<Oggetti> options=new FirestoreRecyclerOptions.Builder<Oggetti>().setQuery(query,Oggetti.class).build();
 
         adapter= new FirestoreRecyclerAdapter<Oggetti, ProductsViewHolder>(options) {
