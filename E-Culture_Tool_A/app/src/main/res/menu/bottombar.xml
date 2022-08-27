@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="@string/back"
-        android:icon="@drawable/ic_baseline_arrow_back_24"
-        android:id="@+id/BackButton"/>
+    <item android:title="QRcode"
+        android:icon="@drawable/ic_baseline_qr_code_scanner_24"
+        android:id="@+id/BackButton"
+        android:onClick="goQR"
+        />
 
     <item android:title=""
         android:id="@+id/Vuoto"

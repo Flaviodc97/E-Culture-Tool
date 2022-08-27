@@ -86,19 +86,53 @@
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/rectangle.xml" value="0.1" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/wave.xml" value="0.1375" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/drawable/wave2.xml" value="0.1375" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_add_domanda.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_domande_multiple_v.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_domande_tempo_v.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_fine_domande.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_home.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_home_visitatore.xml" value="0.25" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_main.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_mie_visite.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_miei_luoghi.xml" value="0.26145833333333335" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_domande_multiple.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_oggetti.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_percorsi.xml" value="0.19427083333333334" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_tempo_domande.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_visite.xml" value="0.165" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_my_zone.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_luogo.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_oggetto.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_tempo_domanda.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_visita.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_visite.xml" value="0.26145833333333335" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_new_zone.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_oggetto_view.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_profile.xml" value="0.17982456140350878" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_profilo.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_qrscanner.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_recap_visita.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_register.xml" value="0.165" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_search.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_select_domanda_multipla.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_select_domanda_tempo.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_select_edge.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_select_zone.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_show_luoghi.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_show_oggetti.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_show_visita.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_show_zone.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_domande_multiple.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_edge.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_luogo.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_oggetti.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_profile.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_tempo_domande.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_visita.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_update_zona.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/activity_visualizza_medaglie.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/domandamultipla_single_item.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/layout/medaglie_multiple_single_item.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/menu/bottombar.xml" value="0.1" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/menu/menu.xml" value="0.335" />
         <entry key="..\:/Users/andro/Documents/Tesi/Git/E-Culture-Tool/E-Culture_Tool_A/app/src/main/res/menu/top_app_bar.xml" value="0.1" />

@@ -115,7 +115,12 @@ public class HomeCuratoreActivity extends AppCompatActivity {
 
 
 
+    public void goQR(MenuItem item) {
 
+        startActivity( new Intent(getApplicationContext(), QRScannerActivity.class));
+
+
+    }
 
     public void goProfile(MenuItem item) {
 

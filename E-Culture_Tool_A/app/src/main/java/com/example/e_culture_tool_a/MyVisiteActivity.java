@@ -1,6 +1,7 @@
 package com.example.e_culture_tool_a;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +25,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -193,7 +197,7 @@ public class MyVisiteActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(MyVisiteActivity.this, getResources().getString(R.string.visita_eliminata_ok), Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class ));
+
                         }
                     }
                 });
@@ -240,5 +244,46 @@ public class MyVisiteActivity extends AppCompatActivity {
 
     public void addPercorso(View view) {
         startActivity(new Intent(getApplicationContext(), NewVisitaActivity.class));
+    }
+
+
+
+    public void goQR(MenuItem item) {
+
+        startActivity( new Intent(getApplicationContext(), QRScannerActivity.class));
+
+
+    }
+
+    public void goProfile(MenuItem item) {
+
+        startActivity( new Intent(getApplicationContext(), Profilo.class));
+
+
+    }
+
+
+    public void goHome(View view) {
+        fAuth = FirebaseAuth.getInstance();
+        user_id = fAuth.getCurrentUser().getUid();
+        fStore = FirebaseFirestore.getInstance();
+        DocumentReference docReference = fStore.collection("utenti").document(user_id);
+        docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                String ruolo = value.getString("Curatore");
+                boolean b1 = Boolean.parseBoolean(ruolo);
+                if(b1){
+                    startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
+
+                }else {
+
+                    startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
+                }
+
+
+            }
+        });
     }
 }

@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -345,6 +346,46 @@ public class RecapVisitaActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         adapter.startListening();
+    }
+
+
+    public void goQR(MenuItem item) {
+
+        startActivity( new Intent(getApplicationContext(), QRScannerActivity.class));
+
+
+    }
+
+    public void goProfile(MenuItem item) {
+
+        startActivity( new Intent(getApplicationContext(), Profilo.class));
+
+
+    }
+
+
+    public void goHome(View view) {
+        fAuth = FirebaseAuth.getInstance();
+        user_id = fAuth.getCurrentUser().getUid();
+        fStore = FirebaseFirestore.getInstance();
+        DocumentReference docReference = fStore.collection("utenti").document(user_id);
+        docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                String ruolo = value.getString("Curatore");
+                boolean b1 = Boolean.parseBoolean(ruolo);
+                if(b1){
+                    startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
+
+                }else {
+
+                    startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
+                }
+
+
+            }
+        });
     }
 
 

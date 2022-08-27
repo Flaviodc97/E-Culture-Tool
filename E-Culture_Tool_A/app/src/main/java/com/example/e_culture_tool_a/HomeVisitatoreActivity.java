@@ -73,6 +73,12 @@ public class HomeVisitatoreActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+    public void goQR(MenuItem item) {
+
+        startActivity( new Intent(getApplicationContext(), QRScannerActivity.class));
+
+
+    }
 
     public void goHome(View view) {
         fAuth = FirebaseAuth.getInstance();

@@ -1,12 +1,15 @@
 package com.example.e_culture_tool_a;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,7 +20,11 @@ import com.example.e_culture_tool_a.Models.MedaglieDomandeTempo;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
 public class VisualizzaMedaglieActivity extends AppCompatActivity {
@@ -134,5 +141,42 @@ public class VisualizzaMedaglieActivity extends AppCompatActivity {
         adapterMultiple.startListening();
         adapterTempo.startListening();
     }
+    public void goQR(MenuItem item) {
 
+        startActivity( new Intent(getApplicationContext(), QRScannerActivity.class));
+
+
+    }
+
+    public void goProfile(MenuItem item) {
+
+        startActivity( new Intent(getApplicationContext(), Profilo.class));
+
+
+    }
+
+
+    public void goHome(View view) {
+        fAuth = FirebaseAuth.getInstance();
+        user_id = fAuth.getCurrentUser().getUid();
+        fStore = FirebaseFirestore.getInstance();
+        DocumentReference docReference = fStore.collection("utenti").document(user_id);
+        docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                String ruolo = value.getString("Curatore");
+                boolean b1 = Boolean.parseBoolean(ruolo);
+                if(b1){
+                    startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
+
+                }else {
+
+                    startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
+                }
+
+
+            }
+        });
+    }
 }

@@ -154,6 +154,13 @@ public class Profilo extends AppCompatActivity {
         alertDialog.show();
 
     }
+    public void goQR(MenuItem item) {
+
+        startActivity( new Intent(getApplicationContext(), QRScannerActivity.class));
+
+
+    }
+
 
     public void goProfile(MenuItem item) {
 
