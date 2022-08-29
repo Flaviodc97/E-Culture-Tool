@@ -358,6 +358,13 @@
     <string name="Titolo_Search">Search button</string>
     <string name="Descrizione_Search">Here you can search</string>
 
+    <!-- Stringhe per New Visita  -->
+    <string name="Titolo_Visita">Contenitore for the name of your visit</string>
+    <string name="Descrizione_Visita">Here you enter the name of your visit</string>
+
+    <string name="Titolo_Visita_Spinner">Places drop-down menu</string>
+    <string name="Descrizione_Visita_Spinner">Here are the places you will want to visit </string>
+
 
 
 

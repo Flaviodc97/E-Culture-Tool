@@ -3,6 +3,7 @@ package com.example.e_culture_tool_a;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -31,6 +33,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground;
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
+
 public class NewVisitaActivity extends AppCompatActivity {
     private static final String TAG = "NEW_VISITA";
     Spinner mluogo;
@@ -43,6 +49,7 @@ public class NewVisitaActivity extends AppCompatActivity {
     String luogo_id;
     String user_id;
     Button msend;
+    ImageView Tutorial;
 
 
 
@@ -57,7 +64,15 @@ public class NewVisitaActivity extends AppCompatActivity {
         mluogo = findViewById(R.id.spinnerLuogovisite);
         msend = findViewById(R.id.sendluogo);
         mnomeVisita = findViewById(R.id.nomeVisita);
+        Tutorial=findViewById(R.id.question_my_new_Visita);
 
+
+        Tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showToutorial();
+            }
+        });
 
 
         // adapter Spinner luoghi
@@ -173,6 +188,74 @@ public class NewVisitaActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+
+    public void showToutorial(){
+        showToutorialVisite();
+    }
+
+    public void showToutorialVisite(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewVisitaActivity.this)
+                .setTarget(R.id.nomeVisita)
+                .setPrimaryText(R.string.Titolo_Visita)
+                .setSecondaryText(R.string.Descrizione_Visita)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                            showToutoriaSpinnerVisite();
+                        }
+                    }
+                })
+                .show();
+        //
+    }
+    public void showToutoriaSpinnerVisite(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(NewVisitaActivity.this)
+                .setTarget(R.id.spinnerLuogovisite)
+                .setPrimaryText(R.string.Titolo_Visita_Spinner)
+                .setSecondaryText(R.string.Descrizione_Visita_Spinner)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                        }
+                    }
+                })
+                .show();
+        //
     }
 
 

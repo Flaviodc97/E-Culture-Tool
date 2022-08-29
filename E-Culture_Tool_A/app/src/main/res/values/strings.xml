@@ -357,7 +357,12 @@
     <string name="Titolo_Search">Pulsante Cerca</string>
     <string name="Descrizione_Search">Qua potrai effettuare una ricerca </string>
 
+    <!-- Stringhe per New Visita  -->
+    <string name="Titolo_Visita">Contenitore del nome della tua visita</string>
+    <string name="Descrizione_Visita">Qui inserirai il nome della tua visita </string>
 
+    <string name="Titolo_Visita_Spinner">Menù a tendina luoghi</string>
+    <string name="Descrizione_Visita_Spinner">Qui ci saranno i luoghi che vorrai visitare </string>
 
 
     <string name="visitevisitatore">VisiteVisitatore</string>
