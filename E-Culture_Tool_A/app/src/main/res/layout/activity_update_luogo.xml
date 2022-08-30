@@ -1,73 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UpdateLuogoActivity">
-    <LinearLayout
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/design_default_color_primary" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/ModificaLuogo"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/deleteLuogo"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/ic_baseline_delete_24" />
+
+
+    </RelativeLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="72dp">
 
-            <View
-                android:id="@+id/view"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/design_default_color_primary" />
+                android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/deleteLuogo"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/ic_baseline_delete_24" />
+                <ImageView
+                    android:id="@+id/UpdateimageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="16dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ic_bottoneluogo" />
 
+                <ImageView
+                    android:id="@+id/imagePlaceHolder"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="52dp"
+                    android:layout_marginEnd="52dp"
+                    android:padding="50dp"
+                    android:paddingStart="50dp"
+                    android:paddingLeft="50dp"
+                    android:paddingTop="50dp"
+                    android:paddingEnd="50dp"
+                    android:paddingRight="50dp"
+                    android:paddingBottom="50dp"
+                    android:visibility="invisible"
+                    app:srcCompat="@android:drawable/ic_menu_gallery" />
 
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/UpdateimageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="16dp"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/ic_bottoneluogo" />
-
-            <ImageView
-                android:id="@+id/imagePlaceHolder"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="52dp"
-                android:layout_marginEnd="52dp"
-                android:padding="50dp"
-                android:paddingStart="50dp"
-                android:paddingLeft="50dp"
-                android:paddingTop="50dp"
-                android:paddingEnd="50dp"
-                android:paddingRight="50dp"
-                android:paddingBottom="50dp"
-                android:visibility="invisible"
-                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-        </RelativeLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -96,6 +115,7 @@
                     android:text="@string/galleria"
                     android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -123,7 +143,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="16dp"
-                    android:background="@drawable/round_border"
+                    android:background="@drawable/rectangle"
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="@string/descrizione_luogo"
@@ -144,8 +164,8 @@
             </LinearLayout>
 
 
-
         </LinearLayout>
+    </ScrollView>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -177,4 +197,4 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</RelativeLayout>

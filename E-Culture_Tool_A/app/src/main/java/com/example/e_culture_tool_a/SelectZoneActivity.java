@@ -3,12 +3,14 @@ package com.example.e_culture_tool_a;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +35,10 @@ import java.util.List;
 
 import com.example.e_culture_tool_a.Models.Zone;
 
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground;
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
+
 public class SelectZoneActivity extends AppCompatActivity {
     private static final String TAG = "SELECT_ZONE";
     FirebaseFirestore fStore;
@@ -45,6 +51,7 @@ public class SelectZoneActivity extends AppCompatActivity {
     List<String> zonevisita = new ArrayList<>();
     Button msub;
     Button mavanti;
+    ImageView Tutorial;
 
 
     private RecyclerView mFirestoreList;
@@ -62,6 +69,7 @@ public class SelectZoneActivity extends AppCompatActivity {
         user_id = fAuth.getCurrentUser().getUid();
         mFirestoreList = findViewById(R.id.firestore_zone_list);
         msub = findViewById(R.id.submitVisita);
+        Tutorial=findViewById(R.id.Question_select_my_zone);
 
         // Variabili ottenuti da Intent
         Bundle extras = getIntent().getExtras();
@@ -75,9 +83,13 @@ public class SelectZoneActivity extends AppCompatActivity {
             Log.d(TAG, "nomeVisita:" + nomeVisita);
 
 
-
-            //The key argument here must match that used in the other activity
         }
+        Tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showToutorial();
+            }
+        });
 
         // Query per avere tutte le zone di un luogo
         Query query = fStore.collectionGroup("Zone").whereEqualTo("luogoID", luogo_id);
@@ -93,7 +105,6 @@ public class SelectZoneActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull Zone model) {
-                //holder.list_name.setText(model.getNome());
                 holder.list_name.setText(model.getNome());
                 holder.list_options.setVisibility(View.INVISIBLE);
                 holder.list_click.setOnClickListener(view -> {
@@ -207,6 +218,42 @@ public class SelectZoneActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void showToutorial(){
+        showToutorialSelectedZone();
+    }
+
+    public void showToutorialSelectedZone(){
+        //
+        int color1 = ContextCompat.getColor(getApplicationContext(),R.color.white);
+        int color2 = ContextCompat.getColor(getApplicationContext(),R.color.Primario);
+
+        new MaterialTapTargetPrompt.Builder(SelectZoneActivity.this)
+
+                .setTarget(R.id.firestore_zone_list)
+                .setPrimaryText(R.string.Titolo_selected_My_Zone)
+                .setSecondaryText(R.string.Descrizione_selected_My_Zone)
+                .setPrimaryTextColour(color2)
+                .setSecondaryTextColour(color2)
+                .setPromptBackground(new RectanglePromptBackground())
+                .setBackgroundColour(color1)
+                .setPromptFocal(new RectanglePromptFocal())
+                .setFocalColour(color2)
+                .setCaptureTouchEventOnFocal(true)
+                .setCaptureTouchEventOutsidePrompt(true)
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_FINISHED)
+                        {
+                        }
+                    }
+                })
+                .show();
+        //
     }
 
 

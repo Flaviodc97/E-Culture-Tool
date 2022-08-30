@@ -46,6 +46,7 @@
     </RelativeLayout>
 
     <ScrollView
+        android:id="@+id/ScrollCuratore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
@@ -54,224 +55,231 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/curvedbg"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/RelativeLuogo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:gravity="center_horizontal">
-
-                <ImageView
-                    android:id="@+id/viewLuoghiBTN"
-                    android:layout_width="380dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/curvebuttonbg" />
-
-                <ImageButton
-                    android:id="@+id/luoghiBTN"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="25dp"
-                    android:background="@drawable/ic_bottoneluogo"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-                <TextView
-                    android:id="@+id/descriptionLuoghi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="110dp"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/luoghi"
-                    android:textColor="#d703082b"
-                    android:textSize="23dp"
-                    android:textStyle="bold" />
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/RelativeZone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
-
-                <ImageView
-                    android:id="@+id/viewZoneBTN"
-                    android:layout_width="380dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/curvebuttonbg" />
-
-                <ImageButton
-                    android:id="@+id/zoneBTN"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="25dp"
-                    android:background="@drawable/ic_bottonezona"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-                <TextView
-                    android:id="@+id/descriptionzona"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="110dp"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/zone"
-                    android:textColor="#d703082b"
-                    android:textSize="23dp"
-                    android:textStyle="bold" />
-
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/RelativeOggetto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
-
-                <ImageView
-                    android:id="@+id/viewOggetti"
-                    android:layout_width="380dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/curvebuttonbg" />
-
-                <ImageButton
-                    android:id="@+id/oggettiBTN"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="25dp"
-                    android:background="@drawable/ic_bottoneoggetto"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-                <TextView
-                    android:id="@+id/descriptionOggetti"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="105dp"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/oggetti"
-                    android:textColor="#d703082b"
-                    android:textSize="23dp"
-                    android:textStyle="bold" />
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/RelativeVisite"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal">
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/curvedbg"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/viewVisite"
-                    android:layout_width="380dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/curvebuttonbg" />
-
-                <ImageButton
-                    android:id="@+id/visiteBTN"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="25dp"
-                    android:background="@drawable/ic_bottonevisite"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-                <TextView
-                    android:id="@+id/descriptionVisite"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/RelativeLuogo"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="105dp"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/visite"
-                    android:textColor="#d703082b"
-                    android:textSize="23dp"
-                    android:textStyle="bold" />
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/viewLuoghiBTN"
+                        android:layout_width="380dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/curvebuttonbg" />
+
+                    <ImageButton
+                        android:id="@+id/luoghiBTN"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:background="@drawable/ic_bottoneluogo"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:id="@+id/descriptionLuoghi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/luoghi"
+                        android:textColor="#d703082b"
+                        android:textSize="23dp"
+                        android:textStyle="bold" />
 
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/RelativeQr"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal">
-
-                <ImageView
-                    android:id="@+id/viewQR"
-                    android:layout_width="380dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/curvebuttonbg" />
-
-                <ImageButton
-                    android:id="@+id/qrBTN"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="25dp"
-                    android:background="@drawable/ic_baseline_qr_code_scanner_24" />
-
-                <TextView
-                    android:id="@+id/descriptionQR"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/RelativeZone"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="105dp"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/qrcode_scanner"
-                    android:textColor="#d703082b"
-                    android:textSize="23dp"
-                    android:textStyle="bold" />
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/viewZoneBTN"
+                        android:layout_width="380dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/curvebuttonbg" />
+
+                    <ImageButton
+                        android:id="@+id/zoneBTN"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:background="@drawable/ic_bottonezona"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:id="@+id/descriptionzona"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="110dp"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/zone"
+                        android:textColor="#d703082b"
+                        android:textSize="23dp"
+                        android:textStyle="bold" />
 
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/RelativeSearch"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal">
-
-                <ImageView
-                    android:id="@+id/viewSearch"
-                    android:layout_width="380dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/curvebuttonbg" />
-
-                <ImageButton
-                    android:id="@+id/searchBTN"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="25dp"
-                    android:background="@drawable/ic_bottonecerca" />
-
-                <TextView
-                    android:id="@+id/descriptionSearch"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/RelativeOggetto"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="105dp"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/cerca"
-                    android:textColor="#d703082b"
-                    android:textSize="23dp"
-                    android:textStyle="bold" />
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/viewOggetti"
+                        android:layout_width="380dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/curvebuttonbg" />
+
+                    <ImageButton
+                        android:id="@+id/oggettiBTN"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:background="@drawable/ic_bottoneoggetto"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:id="@+id/descriptionOggetti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="105dp"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/oggetti"
+                        android:textColor="#d703082b"
+                        android:textSize="23dp"
+                        android:textStyle="bold" />
 
 
-            </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RelativeVisite"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/viewVisite"
+                        android:layout_width="380dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/curvebuttonbg" />
+
+                    <ImageButton
+                        android:id="@+id/visiteBTN"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:background="@drawable/ic_bottonevisite"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:id="@+id/descriptionVisite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="105dp"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/visite"
+                        android:textColor="#d703082b"
+                        android:textSize="23dp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RelativeSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/viewSearch"
+                        android:layout_width="380dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/curvebuttonbg" />
+
+                    <ImageButton
+                        android:id="@+id/searchBTN"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:background="@drawable/ic_bottonecerca" />
+
+                    <TextView
+                        android:id="@+id/descriptionSearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="105dp"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/cerca"
+                        android:textColor="#d703082b"
+                        android:textSize="23dp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RelativeQr"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/viewQR"
+                        android:layout_width="380dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/curvebuttonbg" />
+
+                    <ImageButton
+                        android:id="@+id/qrBTN"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:background="@drawable/ic_baseline_qr_code_scanner_24" />
+
+                    <TextView
+                        android:id="@+id/descriptionQR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="105dp"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/qrcode_scanner"
+                        android:textColor="#d703082b"
+                        android:textSize="23dp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

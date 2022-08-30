@@ -303,6 +303,9 @@
     <string name="Titolo_My_Zone">Contenitore per le tue zone </string>
     <string name="Descrizione_My_Zone">Qui ci sono tutte le zone inseriti da te  </string>
 
+    <string name="Titolo_selected_My_Zone">Zone che vuoi visitare </string>
+    <string name="Descrizione_selected_My_Zone">Seleziona con un tap le zone che vuoi visitare  </string>
+
     <string name="Titolo_Add_Zone">Pulsante Aggiungi Zona </string>
     <string name="Descrizione_Add_Zone">Tramite questo pulsante potrai inserire una nuova zona </string>
 
@@ -385,11 +388,19 @@
     <string name="id_qr_oggetto">ID per generare il qr dell\'oggetto: </string>
     <string name="nessun_dato_trovato">Nessun dato trovato</string>
 
+    <string name="le_tue_domande_multipl">Domande Multiple</string>
+
+
 
 
 
     <string name="Luogo_di_partenza">Scegli luogo di partenza</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ModificaLuogo">Modifica Luogo</string>
+    <string name="le_tue_domande_a_tempo">Le tue domande a tempo</string>
+    <string name="ShareButton">ShareButton</string>
+    <string name="SaveButton">SaveButton</string>
+    <string name="item_rec_list">item_rec_list</string>
 
 </resources>

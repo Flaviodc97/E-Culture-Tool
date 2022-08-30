@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,6 +34,7 @@ public class HomeCuratoreActivity extends AppCompatActivity {
     ImageView mbuttonQR;
     ImageView mbuttonSearch;
     ImageView arrow;
+    ScrollView scroll;
     MaterialTapTargetPrompt.Builder builder;
 
 
@@ -55,6 +57,9 @@ public class HomeCuratoreActivity extends AppCompatActivity {
 
         mbuttonSearch = findViewById(R.id.viewSearch);
         arrow=findViewById(R.id.imageQuestion);
+        scroll=findViewById(R.id.ScrollCuratore);
+
+
 
 
         // Se Viene Cliccato sul Button viene mostrato un tutoria
@@ -183,6 +188,7 @@ public class HomeCuratoreActivity extends AppCompatActivity {
                     {
                         if (state == MaterialTapTargetPrompt.STATE_FINISHED)
                         {
+
                             showToutorialZone();
                         }
                     }
@@ -247,7 +253,7 @@ public class HomeCuratoreActivity extends AppCompatActivity {
                     {
                         if (state == MaterialTapTargetPrompt.STATE_FINISHED)
                         {
-                            
+                            scroll.fullScroll(View.FOCUS_DOWN);
                             showToutorialVisite();
                         }
                     }

@@ -307,6 +307,9 @@
     <string name="Titolo_Add_Zone">Add Zone button</string>
     <string name="Descrizione_Add_Zone">With this button you can insert a new zone</string>
 
+    <string name="Titolo_selected_My_Zone">Areas you want to visit </string>
+    <string name="Descrizione_selected_My_Zone">Tap to select the areas you want to visit  </string>
+
     <!-- Stringhe per New Zone  -->
     <string name="Titolo_Nome_New_Zona">Zone Name Field</string>
     <string name="Descrizione_Nome_New_Zona">In this field you will need to enter the name of the zone you want to add</string>
@@ -388,13 +391,20 @@
     <string name="nessun_dato_trovato">No data found</string>
 
 
+    <string name="le_tue_domande_multipl">Multiple Questions</string>
 
 
 
     <string name="Luogo_di_partenza">Choose place of departure</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ModificaLuogo">Edit Place</string>
+    <string name="le_tue_domande_a_tempo">Your time questions</string>
 
+
+    <string name="ShareButton">ShareButton</string>
+    <string name="SaveButton">SaveButton</string>
+    <string name="item_rec_list">item_rec_list</string>
 
 
 </resources>
