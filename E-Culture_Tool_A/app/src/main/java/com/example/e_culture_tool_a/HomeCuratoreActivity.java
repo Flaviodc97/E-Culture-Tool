@@ -253,7 +253,6 @@ public class HomeCuratoreActivity extends AppCompatActivity {
                     {
                         if (state == MaterialTapTargetPrompt.STATE_FINISHED)
                         {
-                            scroll.fullScroll(View.FOCUS_DOWN);
                             showToutorialVisite();
                         }
                     }
@@ -286,7 +285,7 @@ public class HomeCuratoreActivity extends AppCompatActivity {
                     {
                         if (state == MaterialTapTargetPrompt.STATE_FINISHED)
                         {
-                            showToutorialQr();
+                            showToutorialSearch();
                         }
                     }
                 })
@@ -318,7 +317,7 @@ public class HomeCuratoreActivity extends AppCompatActivity {
                     {
                         if (state == MaterialTapTargetPrompt.STATE_FINISHED)
                         {
-                            showToutorialSearch();
+
                         }
                     }
                 })
@@ -350,7 +349,8 @@ public class HomeCuratoreActivity extends AppCompatActivity {
                     {
                         if (state == MaterialTapTargetPrompt.STATE_FINISHED)
                         {
-
+                            scroll.fullScroll(View.FOCUS_DOWN);
+                            showToutorialQr();
                         }
                     }
                 })

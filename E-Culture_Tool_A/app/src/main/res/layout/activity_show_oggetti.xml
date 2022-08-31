@@ -55,6 +55,13 @@
             android:layout_marginEnd="16dp"
             android:padding="16dp"
             android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/copy_Text"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_baseline_content_copy_24" />
     </LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

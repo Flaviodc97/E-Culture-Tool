@@ -270,11 +270,11 @@ public class RecapVisitaActivity extends AppCompatActivity {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
             //mostro spiegazione del permesso richeisto
             new AlertDialog.Builder(this)
-                    .setTitle(R.string.permnessi_salva_file)
-                    .setMessage("Accetta")
-                    .setPositiveButton(R.string.accetta_a, (dialogInterface, i) -> ActivityCompat.requestPermissions(
+                    .setTitle(getResources().getString(R.string.permnessi_salva_file))
+                    .setMessage(getResources().getString(R.string.accetta))
+                    .setPositiveButton(getResources().getString(R.string.accetta_a), (dialogInterface, i) -> ActivityCompat.requestPermissions(
                             RecapVisitaActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE))
-                    .setNegativeButton(R.string.annulla_account,
+                    .setNegativeButton(getResources().getString(R.string.annulla_account),
                             (dialogInterface, i) -> dialogInterface.dismiss()).create().show();
         } else {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
@@ -294,8 +294,8 @@ public class RecapVisitaActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("string");
-                builder.setPositiveButton("ivnrivm", (dialog, which) -> { });
+                builder.setTitle(getResources().getString(R.string.consentire_autorizzazione));
+                builder.setPositiveButton(getResources().getString(R.string.accetta), (dialog, which) -> { });
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }

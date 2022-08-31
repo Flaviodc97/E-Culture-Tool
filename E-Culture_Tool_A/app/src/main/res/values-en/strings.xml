@@ -371,11 +371,11 @@
 
 
 
-    <string name="visitevisitatore">VisitsVisitor</string>
+    <string name="visitevisitatore">Visits Visitor</string>
 
     <string name="todo">TODO</string>
 
-    <string name="visitecuratore">VisitsCurator</string>
+    <string name="visitecuratore">Visits Curator</string>
 
 
 
@@ -390,9 +390,10 @@
     <string name="id_qr_oggetto">ID for generate qr code of the object: </string>
     <string name="nessun_dato_trovato">No data found</string>
 
-
+    <string name="consentire_autorizzazione">Permission must be allowed</string>
+    <string name="id_oggetto_copiato">Object ID copied</string>
     <string name="le_tue_domande_multipl">Multiple Questions</string>
-
+    <string name="ripeti_home">You are already in home!</string>
 
 
     <string name="Luogo_di_partenza">Choose place of departure</string>

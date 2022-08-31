@@ -125,7 +125,7 @@
     <string name="app_per_condividere_non_trovata">Non è stata trovata alcuna app per la condivisione.</string>
 
     <!-- Stringhe per Show Visite Activity -->
-    <string name="permnessi_salva_file">Per salvare il file bisgna accettare i permessi</string>
+    <string name="permnessi_salva_file">Per salvare il file bisogna accettare i permessi</string>
     <string name="accetta">Accetta</string>
     <string name="annulla">Annulla</string>
     <string name="riepilogo_visita">Riepilogo della Visita</string>
@@ -368,11 +368,11 @@
     <string name="Descrizione_Visita_Spinner">Qui ci saranno i luoghi che vorrai visitare </string>
 
 
-    <string name="visitevisitatore">VisiteVisitatore</string>
+    <string name="visitevisitatore">Visite Visitatore</string>
 
     <string name="todo">TODO</string>
 
-    <string name="visitecuratore">VisiteCuratore</string>
+    <string name="visitecuratore">Visite Curatore</string>
 
 
 
@@ -390,9 +390,9 @@
 
     <string name="le_tue_domande_multipl">Domande Multiple</string>
 
-
-
-
+    <string name="consentire_autorizzazione">Bisogna consentire l\'autorizzazione</string>
+    <string name="id_oggetto_copiato">ID oggetto copiato</string>
+    <string name="ripeti_home">Sei già nella home!</string>
 
     <string name="Luogo_di_partenza">Scegli luogo di partenza</string>
     <!-- TODO: Remove or change this placeholder text -->

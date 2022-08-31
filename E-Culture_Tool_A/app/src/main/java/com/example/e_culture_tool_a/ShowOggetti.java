@@ -3,12 +3,17 @@ package com.example.e_culture_tool_a;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -24,6 +29,7 @@ public class ShowOggetti extends AppCompatActivity {
     TextView nomeOggetto;
     TextView descrOggetto;
     TextView idOggetto;
+    Button copy_Text;
 
     String idO;
     String fO;
@@ -39,6 +45,7 @@ public class ShowOggetti extends AppCompatActivity {
         nomeOggetto = findViewById(R.id.nomeOggetto);
         descrOggetto = findViewById(R.id.descrOggetto);
         idOggetto = findViewById(R.id.idOggetto);
+        copy_Text = findViewById(R.id.copy_Text);
 
         // Variabili ottenuti da Intent
         Bundle extras = getIntent().getExtras();
@@ -56,6 +63,21 @@ public class ShowOggetti extends AppCompatActivity {
         idOggetto.setText(getResources().getText(R.string.id_qr_oggetto)+idO);
         nomeOggetto.setText(nO);
         descrOggetto.setText(dO);
+
+        //Al click del bottone copia l'id dell'oggetto negli appunti del telefono
+        copy_Text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //ClipboardManager consiste in una classe con i metodi per ottenere e impostare i dati degli appunti correnti.
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                //Con questa istruzione settiamo il testo da copiare
+                ClipData clip = ClipData.newPlainText("ID", idO);
+                //Inserisco il testo da copiare negli appunti
+                clipboard.setPrimaryClip(clip);
+
+                Toast.makeText(ShowOggetti.this, getResources().getString(R.string.id_oggetto_copiato), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void goQR(MenuItem item) {

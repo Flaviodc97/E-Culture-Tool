@@ -44,6 +44,7 @@ public class MyDomandeMultipleActivity extends AppCompatActivity {
     String luogoid;
     String photoOggetto;
     String zonaid;
+    TextView nomeOggettoD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,8 @@ public class MyDomandeMultipleActivity extends AppCompatActivity {
             zonaid = extras.getString("zonaID");
         }
 
+        nomeOggettoD = findViewById(R.id.nome_oggetto_domande);
+        nomeOggettoD.setText(nomeOggetto);
 
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();

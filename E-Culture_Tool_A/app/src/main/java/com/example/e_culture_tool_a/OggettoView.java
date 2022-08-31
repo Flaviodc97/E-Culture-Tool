@@ -108,25 +108,31 @@ public class OggettoView extends AppCompatActivity {
 
     public void goHome(View view) {
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
-        String user_id = fAuth.getCurrentUser().getUid();
-        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
-        DocumentReference docReference = fStore.collection("utenti").document(user_id);
-        docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                String ruolo = value.getString("Curatore");
-                boolean b1 = Boolean.parseBoolean(ruolo);
-                if(b1){
-                    startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
+        // Controllo se l'utente accede come ospite e lo rimando alla sua home
+        if(fAuth.getCurrentUser()==null){
+            startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
+        }
+        else{
+            String user_id = fAuth.getCurrentUser().getUid();
+            FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+            DocumentReference docReference = fStore.collection("utenti").document(user_id);
+            docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                }else {
+                    String ruolo = value.getString("Curatore");
+                    boolean b1 = Boolean.parseBoolean(ruolo);
+                    if(b1){
+                        startActivity(new Intent(getApplicationContext(), HomeCuratoreActivity.class));
 
-                    startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
+                    }else {
+
+                        startActivity(new Intent(getApplicationContext(), HomeVisitatoreActivity.class));
+                    }
                 }
+            });
+        }
 
-
-            }
-        });
     }
 }
