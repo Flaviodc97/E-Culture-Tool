@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UpdateDomandeMultipleActivity">
+    tools:context=".UpdateTempoDomandeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,15 +16,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:text="@string/modifica_domanda"
+            android:text="@string/modifica_domanda_tempo"
             android:textColor="@color/white" />
-
     </LinearLayout>
 
     <ScrollView
@@ -43,16 +42,16 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/textView22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/nome_domanda" />
+                android:text="@string/nome_domanda"
+                android:textColor="@color/Primario" />
 
             <EditText
-                android:id="@+id/domandaUpdate"
+                android:id="@+id/NomeDomandaTempo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -60,21 +59,21 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/rectangle"
                 android:ems="10"
-                android:hint="Domanda"
+                android:hint="Nome"
                 android:inputType="textPersonName"
                 android:padding="16dp" />
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/textView23"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/definisci_risposta_giusta" />
+                android:text="@string/tempo_secondi"
+                android:textColor="@color/Primario" />
 
             <EditText
-                android:id="@+id/rEsattaUpdate"
+                android:id="@+id/UpdateSecondiDomandaTempo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -82,104 +81,65 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/rectangle"
                 android:ems="10"
-                android:hint="@string/risposta_giusta"
-                android:inputType="textPersonName"
-                android:padding="16dp" />
-
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/aggiungi_risposta_errata" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/UpdateSbagliata"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle"
-                    android:ems="10"
-                    android:hint="@string/risposta_errata"
-                    android:inputType="textPersonName"
-                    android:padding="16dp" />
-
-                <Button
-                    android:id="@+id/buttonAddSbagliata"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="64dp"
-                    android:background="@drawable/ic_baseline_add_24" />
-            </LinearLayout>
-
-            <ListView
-                android:id="@+id/listSbagliate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:hint="Tempo in secondi"
+                android:inputType="number"
+                android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/UpdaterecyclerDomandeMUltiple"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/curvebuttonbgdefault"
+                android:overScrollMode="never"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/UpdateSecondiDomandaTempo" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="64dp"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/UpdateDomandeButton"
-                    android:layout_width="match_parent"
+                    android:id="@+id/UpdateSubmitDomandaTempo"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:background="@drawable/curvebuttonbgdefault"
-                    android:gravity="center"
-                    android:text="@string/modifica"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+                    android:padding="16dp"
+                    android:text="@string/invia"
+                    android:textColor="@color/white" />
 
                 <Button
-                    android:id="@+id/UpdateRemove"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/ic_baseline_delete_24"
-                    android:onClick="removeDomanda"
-                    app:layout_constraintBottom_toTopOf="@+id/UpdateDomandeButton"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/listSbagliate"
-                    app:layout_constraintVertical_bias="0.473" />
-
+                    android:id="@+id/removeDomande"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/curvebuttonbgdefault"
+                    android:padding="16dp"
+                    android:text="@string/elimina"
+                    android:textColor="@color/white" />
             </LinearLayout>
-
 
         </LinearLayout>
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="match_parent">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
@@ -206,6 +166,5 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

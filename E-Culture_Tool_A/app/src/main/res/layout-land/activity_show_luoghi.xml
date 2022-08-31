@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShowOggetti">
+    tools:context=".ShowLuoghi">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -12,15 +12,17 @@
         android:layout_marginBottom="72dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/linearLayout8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/fotoOggetto"
+                android:id="@+id/fotoLuogo"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_marginStart="16dp"
@@ -28,10 +30,10 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/foto_bg"
                 android:padding="16dp"
-                app:srcCompat="@drawable/bottoneoggetto" />
+                app:srcCompat="@drawable/bottoneluogo" />
 
             <TextView
-                android:id="@+id/nomeOggetto"
+                android:id="@+id/nomeLuogo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -44,7 +46,7 @@
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/descrOggetto"
+                android:id="@+id/descrLuogo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -53,24 +55,6 @@
                 android:padding="16dp"
                 android:text="TextView"
                 android:textStyle="italic" />
-
-            <TextView
-                android:id="@+id/idOggetto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:padding="16dp"
-                android:textStyle="italic" />
-
-            <Button
-                android:id="@+id/copy_Text"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_baseline_content_copy_24"
-                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
     </ScrollView>
 
