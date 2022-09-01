@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.e_culture_tool_a.Models.DomandeMultiple;
 import com.google.firebase.auth.FirebaseAuth;
@@ -120,10 +121,14 @@ public class DomandeMultipleActivityV extends AppCompatActivity {
 
         // Verifica che la risposta cliccata sia quella giusta
         if(answer.equals(rg)){
+            Toast.makeText(DomandeMultipleActivityV.this, getResources().getString(R.string.risposta_esatta), Toast.LENGTH_SHORT).show();
             result.setText(R.string.risposta_esatta); // Se risposta giusta
             puntim = true;
         }
-        else result.setText(R.string.risposta_sbagliata); //Se risposta sbagliata
+        else{
+            Toast.makeText(DomandeMultipleActivityV.this, getResources().getString(R.string.risposta_sbagliata), Toast.LENGTH_SHORT).show();
+            result.setText(R.string.risposta_sbagliata); //Se risposta sbagliata
+        }
 
         //Viene tolta la possibilita'di cambiare risposta dopo aver cliccato
         r1.setEnabled(false);

@@ -237,6 +237,7 @@
     <string name="seleziona_zone">Seleziona le zone che vuoi visitare</string>
 
     <!-- Stringhe per Update domande multiple-->
+    <string name="domanda_multipla_eliminata_ok">Domanda multipla eliminata con successo</string>
     <string name="aggiungi_risposta_errata">Aggiungi una risposta errata</string>
     <string name="modifica_domanda">Modifica domanda</string>
     <string name="numero_minimo_errate">Numero minimo di risposte errate non sufficienti</string>

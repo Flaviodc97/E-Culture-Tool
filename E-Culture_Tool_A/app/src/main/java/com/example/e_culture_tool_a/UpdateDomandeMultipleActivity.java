@@ -16,8 +16,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.e_culture_tool_a.Models.DomandeMultiple;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -131,8 +134,14 @@ public class UpdateDomandeMultipleActivity extends AppCompatActivity {
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
         String user_id = fAuth.getCurrentUser().getUid();
         DocumentReference doc = fStore.collection("utenti").document(user_id).collection("Luoghi").document(luogoID).collection("Zone").document(zonaID).collection("Oggetti").document(oggettoID).collection("DomandeMultiple").document(domandaID);
-        doc.delete();
-        startActivity(new Intent(UpdateDomandeMultipleActivity.this,MyOggettiActivity.class));
+        doc.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(UpdateDomandeMultipleActivity.this, getResources().getString(R.string.domanda_multipla_eliminata_ok), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(UpdateDomandeMultipleActivity.this,MyOggettiActivity.class));
+            }
+        });
+
 
 
 

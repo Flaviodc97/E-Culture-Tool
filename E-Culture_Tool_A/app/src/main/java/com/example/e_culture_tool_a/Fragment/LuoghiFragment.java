@@ -173,7 +173,7 @@ public class LuoghiFragment extends Fragment {
             }
         }
         if (filteredList.isEmpty()){
-            Toast.makeText(getContext(), getResources().getString(R.string.nessun_dato_trovato), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), getResources().getString(R.string.nessun_dato_trovato), Toast.LENGTH_SHORT).show();
         }else{
             adapter.setFilteredList(filteredList );
         }

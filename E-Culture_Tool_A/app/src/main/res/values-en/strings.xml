@@ -237,12 +237,13 @@
     <string name="seleziona_zone">Select the areas you want to visit</string>
 
     <!-- Stringhe per Update domande multiple-->
+    <string name="domanda_multipla_eliminata_ok">Multiple question successfully deleted</string>
     <string name="aggiungi_risposta_errata">Add an incorrect answer</string>
     <string name="modifica_domanda">Edit question</string>
     <string name="numero_minimo_errate">Insufficient minimum number of incorrect answers</string>
 
     <!-- Stringhe per Update domande tempo-->
-    <string name="domanda_tempo_eliminata_ok">Timed question successfully cleared</string>
+    <string name="domanda_tempo_eliminata_ok">Timed question successfully deleted</string>
     <string name="domanda_tempo_modificata_ok">Timed question modified correctly</string>
     <string name="modifica_domanda_tempo">Timed question modification</string>
     <string name="elimina">DELETE</string>
