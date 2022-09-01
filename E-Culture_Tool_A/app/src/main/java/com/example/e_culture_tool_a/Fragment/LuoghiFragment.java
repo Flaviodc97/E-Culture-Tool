@@ -39,6 +39,7 @@ import com.example.e_culture_tool_a.Models.Luogo;
  * Use the {@link LuoghiFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+/*Fragment Utilizzato per stampare tutti i luoghi presenti su database firestore */
 public class LuoghiFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -125,7 +126,7 @@ public class LuoghiFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         
-
+        //Query per prelevare tutti i luoghi presenti nel DB
             Task<QuerySnapshot> query=fStore.collectionGroup("Luoghi").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -138,7 +139,7 @@ public class LuoghiFragment extends Fragment {
                     recyclerView.setAdapter(adapter);
                 }
             });
-
+        //Funzione che definisce il listner su un elemento della recyclerView
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -150,6 +151,7 @@ public class LuoghiFragment extends Fragment {
                         fotoLuogo = itemList.get(i).getPhoto();
                     }
                 }
+                //passaggio di dati attraverso l'intent
                 Intent intent = new Intent(getActivity(), ShowLuoghi.class);
                 intent.putExtra("nomeLuogo", nomeLuogo);
                 intent.putExtra("descrLuogo", descrLuogo);
@@ -165,6 +167,11 @@ public class LuoghiFragment extends Fragment {
 
         return view;
     }
+    /*Funzione utilizzata per implementare la funzionalità di ricerca dei luoghi
+        @params String Text prende la stringa scritta nella barra di ricerca
+                LuogoAdapter adapter adapter contenente tutti i luoghi presenti nel database
+
+     */
     public void FilterList(String Text,LuogoAdapter adapter){
         List<Luogo> filteredList=new ArrayList<Luogo>();
         for (Luogo luogo: itemList){

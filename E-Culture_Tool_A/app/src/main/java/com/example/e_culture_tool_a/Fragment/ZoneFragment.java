@@ -37,6 +37,7 @@ import com.example.e_culture_tool_a.Models.Zone;
  * Use the {@link ZoneFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+/*Fragment Utilizzato per stampare tutte le zone presenti su database firestore */
 public class ZoneFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -116,6 +117,7 @@ public class ZoneFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        //Query per prelevare tutti le zone presenti nel DB
         Task<QuerySnapshot> query=fStore.collectionGroup("Zone").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -129,6 +131,7 @@ public class ZoneFragment extends Fragment {
             }
         });
 
+        //Funzione che definisce il listner su un elemento della recyclerView
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -152,6 +155,11 @@ public class ZoneFragment extends Fragment {
         }));
         return view;
     }
+    /*Funzione utilizzata per implementare la funzionalità di ricerca sulle zone
+        @params String Text prende la stringa scritta nella barra di ricerca
+                LuogoAdapter adapter adapter contenente tuttle zone presenti nel database
+
+     */
     public void FilterList(String Text,ZonaAdapter adapter){
         List<Zone> filteredList=new ArrayList<Zone>();
         for (Zone zone: ZoneList){

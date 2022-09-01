@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_culture_tool_a.R;
-
+    /*Classe utilizzata dagli Adapter  Luoghi,Zone e Oggetti */
 public class ViewHolder extends RecyclerView.ViewHolder{
 
     public TextView itemtxt;

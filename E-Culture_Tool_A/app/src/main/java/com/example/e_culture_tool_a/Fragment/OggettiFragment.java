@@ -38,6 +38,7 @@ import com.example.e_culture_tool_a.Models.Oggetti;
  * Use the {@link OggettiFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+/*Fragment Utilizzato per stampare tutti gli oggetti presenti su database firestore */
 public class OggettiFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -117,7 +118,7 @@ public class OggettiFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
+        //Query per prelevare tutti gli oggetti presenti nel DB
         Task<QuerySnapshot> query=fStore.collectionGroup("Oggetti").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -131,6 +132,7 @@ public class OggettiFragment extends Fragment {
             }
         });
 
+        //Funzione che definisce il listner su un elemento della recyclerView
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -157,7 +159,11 @@ public class OggettiFragment extends Fragment {
 
         return view;
     }
+    /*Funzione utilizzata per implementare la funzionalità di ricerca sugli oggetti
+        @params String Text prende la stringa scritta nella barra di ricerca
+                LuogoAdapter adapter adapter contenente tutti gli oggetti presenti nel database
 
+     */
     public void FilterList(String Text, OggettoAdapter adapter){
         List<Oggetti> filteredList=new ArrayList<Oggetti>();
         for (Oggetti oggetto: OggettiList){
