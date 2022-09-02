@@ -78,9 +78,15 @@ public class MyVisiteActivity extends AppCompatActivity {
 
 
         if(flag){
-            // Se si enta con Button VisiteCuratori
-            textView.setText(R.string.visite);
-            query = fStore.collectionGroup("Visita");
+            if(fAuth.getCurrentUser()==null){
+                textView.setText(R.string.visite);
+                query = fStore.collectionGroup("Visita");
+            }else {
+                // Se si enta con Button VisiteCuratori
+                textView.setText(R.string.visite);
+                user_id = fAuth.getCurrentUser().getUid();
+                query = fStore.collectionGroup("Visita").whereNotEqualTo("author", user_id);
+            }
         }else{
             // Se si entra con Button Myvisite
             user_id = fAuth.getCurrentUser().getUid();
