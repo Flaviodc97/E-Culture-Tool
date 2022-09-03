@@ -203,6 +203,7 @@ public class SelectEdgeActivity extends AppCompatActivity {
 
             i.putExtra("BUNDLE", arg);
             startActivity(i);
+            finish();
 
 
         });
